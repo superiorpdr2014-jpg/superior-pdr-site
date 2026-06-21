@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDR凹痕修復 — SUPERIOR PDR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  /* ─ hero ─ */
+  .svc-hero{padding:140px 48px 80px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .svc-hero .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(ellipse 80% 90% at 30% 50%,#000,transparent 80%)}
+  .svc-hero .inner{max-width:1260px;margin:0 auto;position:relative;z-index:1}
+  .svc-hero h1{font-family:'Bebas Neue';font-size:clamp(52px,7vw,96px);line-height:.95;letter-spacing:.02em;margin:18px 0 24px}
+  .svc-hero .lead{color:var(--ink-dim);font-size:18px;max-width:640px;line-height:1.7;margin:0;text-wrap:pretty}
+
+  /* ─ shared section ─ */
+  .sec{max-width:1260px;margin:0 auto;padding:64px 48px}
+  .sec+.sec{border-top:1px solid var(--line)}
+  .sec h2{font-family:'Bebas Neue';font-size:clamp(30px,3.5vw,52px);letter-spacing:.02em;margin:0 0 20px;line-height:1}
+  .sec p{font-size:17px;color:var(--ink-dim);line-height:1.8;max-width:860px;margin:0 0 18px;text-wrap:pretty}
+  .sec p strong{color:var(--ink)}
+
+  /* ─ icons animated strip ─ */
+  .icons-inner{max-width:1260px;margin:0 auto;padding:56px 48px}
+  .icon-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+  @media(max-width:760px){.icon-strip{grid-template-columns:repeat(2,1fr);gap:20px}}
+  .icon-card{display:flex;flex-direction:column;align-items:center;gap:14px;opacity:0;transform:translateY(24px) scale(.88)}
+  @keyframes iconIn{to{opacity:1;transform:none}}
+  .icon-card.in{animation:iconIn .52s cubic-bezier(.34,1.56,.64,1) forwards}
+  .icon-card.in:nth-child(1){animation-delay:0s}
+  .icon-card.in:nth-child(2){animation-delay:.12s}
+  .icon-card.in:nth-child(3){animation-delay:.24s}
+  .icon-card.in:nth-child(4){animation-delay:.36s}
+  .icon-img{width:160px;height:155px;overflow:hidden;background-image:url('media/pdr-icons.png');background-size:400% auto;background-repeat:no-repeat;background-position-y:0%}
+  .icon-label{font-family:'Bebas Neue';font-size:26px;letter-spacing:.06em;color:var(--ink);text-align:center;line-height:1}
+  .icon-desc{font-size:14px;color:var(--ink-dim);text-align:center;line-height:1.55;max-width:170px}
+
+  /* ─ action photos ─ */
+  .action-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+  @media(max-width:720px){.action-grid{grid-template-columns:1fr}}
+  .action-grid img{width:100%;border-radius:12px;border:1px solid var(--line);display:block;object-fit:cover;aspect-ratio:16/9}
+
+  /* ─ case photos ─ */
+  .case-stack{display:flex;flex-direction:column;gap:20px;margin-top:36px}
+  .case-photo{width:100%;border-radius:12px;border:1px solid var(--line);display:block;object-fit:cover}
+  .case-photo.wide{aspect-ratio:16/7}
+  .case-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:720px){.case-pair{grid-template-columns:1fr}}
+  .case-pair img{width:100%;border-radius:12px;border:1px solid var(--line);display:block;object-fit:cover;aspect-ratio:4/3}
+  .case-label{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);margin-top:8px;padding:0 4px}
+
+  /* ─ comparison table ─ */
+  .vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px}
+  @media(max-width:720px){.vs-grid{grid-template-columns:1fr}}
+  .vs-col{background:var(--bg-elev);border:1px solid var(--line);border-radius:14px;padding:32px 34px}
+  .vs-col.featured{border-color:rgba(255,42,61,.3);background:rgba(24,10,13,.4)}
+  .vs-col-title{font-family:'Bebas Neue';font-size:28px;letter-spacing:.04em;margin:0 0 20px;line-height:1}
+  .vs-col.featured .vs-col-title{color:var(--accent)}
+  .vs-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+  .vs-list li{font-size:15px;color:var(--ink-dim);line-height:1.65;padding-left:20px;position:relative}
+  .vs-list li::before{content:'·';position:absolute;left:0;color:var(--accent);font-weight:700;font-size:20px;line-height:1.2}
+
+  /* ─ history block ─ */
+  .history-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:36px}
+  @media(max-width:800px){.history-inner{grid-template-columns:1fr}}
+  .history-img{width:100%;border-radius:12px;border:1px solid var(--line);display:block;object-fit:cover;aspect-ratio:4/3}
+
+  /* ─ video ─ */
+  .yt-wrap{margin-top:36px;border-radius:14px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/9}
+  .yt-wrap iframe{width:100%;height:100%;display:block;border:none}
+
+  /* ─ highlight ─ */
+  .highlight{background:rgba(255,42,61,.05);border:1px solid rgba(255,42,61,.2);border-radius:12px;padding:28px 32px;margin-top:28px}
+  .highlight h3{font-family:'Bebas Neue';font-size:26px;letter-spacing:.04em;color:var(--accent);margin:0 0 10px}
+  .highlight p{font-size:15px;color:var(--ink-dim);line-height:1.7;margin:0}
+
+  /* ─ inline ba slider ─ */
+  .ba-wrap-inline{border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/7;position:relative}
+  .baSlider{position:relative;width:100%;height:100%;overflow:hidden;cursor:ew-resize;user-select:none}
+  .baSlider .img{position:absolute;inset:0}
+  .baSlider .img.after{clip-path:inset(0 0 0 50%)}
+  .baSlider .ph{position:absolute;inset:0}
+  .baSlider .handle{position:absolute;top:0;bottom:0;width:2px;background:var(--accent);left:50%;transform:translateX(-50%);box-shadow:0 0 18px var(--accent);z-index:3}
+  .baSlider .handle .knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;box-shadow:0 0 24px rgba(255,42,61,.5);color:#fff;font-size:16px;font-weight:700}
+  .baSlider .lbl-before{position:absolute;top:14px;left:14px;font-family:'JetBrains Mono';font-size:12px;letter-spacing:.22em;color:#fff;background:rgba(7,8,11,.7);padding:5px 10px;border-radius:2px;z-index:4;border-left:2px solid rgba(255,255,255,.3)}
+  .baSlider .lbl-after{position:absolute;top:14px;right:14px;font-family:'JetBrains Mono';font-size:12px;letter-spacing:.22em;color:var(--accent);background:rgba(7,8,11,.7);padding:5px 10px;border-radius:2px;z-index:4;border-left:2px solid var(--accent)}
+  /* ─ cta ─ */
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+  .btn-prim{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;background:var(--accent);color:#fff;transition:opacity .2s}
+  .btn-sec{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;border:1px solid var(--line-bright);color:var(--ink);transition:opacity .2s}
+  .btn-prim:hover,.btn-sec:hover{opacity:.8}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(max-width:720px){.svc-hero,.sec,.icons-inner{padding-left:24px;padding-right:24px}}
+</style>
+</head>
+<body>
+
+<nav class="top" id="topnav" data-current="svc-pdr"></nav>
+
+<header class="svc-hero">
+  <div class="grid-overlay"></div>
+  <div class="inner">
+    <div class="section-eyebrow" data-en="SERVICES · PDR" data-zh="服務項目 · PDR凹痕修復">服務項目 · PDR凹痕修復</div>
+    <h1>PDR<br><span class="accent">凹痕修復</span></h1>
+    <p class="lead">不噴漆、不補土、不鑽洞——以精密工具從板件內側還原凹痕，完整保留您的原廠烤漆。台灣俗稱「微鈑金」，是目前唯一能保留原廠漆面的修復方式。</p>
+  </div>
+</header>
+
+<!-- 四大優勢 icons -->
+<div class="icons-wrap">
+  <div class="icons-inner">
+    <div class="icon-strip">
+      <div class="icon-card">
+        <div class="icon-img" style="background-position:0% 0%"></div>
+        <div class="icon-label">不用烤漆</div>
+        <div class="icon-desc">全程保留原廠烤漆<br>零噴漆作業</div>
+      </div>
+      <div class="icon-card">
+        <div class="icon-img" style="background-position:33.33% 0%"></div>
+        <div class="icon-label">修復快速</div>
+        <div class="icon-desc">局部作業<br>多數案例當日完工</div>
+      </div>
+      <div class="icon-card">
+        <div class="icon-img" style="background-position:66.67% 0%"></div>
+        <div class="icon-label">避免色差</div>
+        <div class="icon-desc">不重噴漆<br>新舊漆面色澤一致</div>
+      </div>
+      <div class="icon-card">
+        <div class="icon-img" style="background-position:100% 0%"></div>
+        <div class="icon-label">車價保值</div>
+        <div class="icon-desc">原廠漆面完整<br>維持最高轉售價值</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 什麼是 PDR -->
+<section class="sec reveal">
+  <div class="section-eyebrow" data-en="WHAT IS PDR" data-zh="關於 PDR">關於 PDR</div>
+  <h2>什麼是 PDR 免烤漆凹痕修復？</h2>
+  <p><strong>PDR（Paintless Dent Repair）全名「免烤漆凹痕修復」</strong>，台灣人又稱「微鈑金」，是一種修復汽機車板金凹痕的特殊工藝。技師們利用特殊工具以推、敲、拉、頂、滑等方式，結合「槓桿原理」與「光線折射原理」來進行板金整平，只要烤漆表面完好無損，或漆面傷得不嚴重，就可以使用 PDR 修復。PDR 技術可適用於鋁合金和鋼板上的小酒窩以及大凹痕。</p>
+  <p>PDR 技術非常仰賴技術本質的工藝，技術再加上特殊設計的工具，施加壓力於凹陷的區域，搭配技師的細心與耐心，調整金屬板金直到恢復原貌。選擇 PDR 凹痕修復除了保留原漆、避免色差，還能節省寶貴時間，最重要的是原廠漆面讓車價保值。</p>
+  <div class="action-grid">
+    <div>
+      <img src="media/pdr-still-3.jpg" alt="卓越技師進行PDR修復作業">
+    </div>
+    <div>
+      <img src="media/pdr-still-4.jpg" alt="PDR精密工具特寫">
+    </div>
+  </div>
+</section>
+
+<!-- 修復案例 -->
+<section class="sec reveal">
+  <div class="section-eyebrow" data-en="CASE STUDIES" data-zh="修復案例">修復案例</div>
+  <h2>修復前後對比</h2>
+  <p>以下為卓越實際完工案例，完整保留原廠漆面，修復後與新車無異。</p>
+  <div class="case-stack">
+    <div>
+      <div class="ba-wrap-inline">
+        <div class="baSlider" id="lexus-ba">
+          <div class="lbl-before">BEFORE</div>
+          <div class="lbl-after">AFTER</div>
+          <div class="img before" style="background:url('media/pdr-lexus-before.jpg') center/cover no-repeat"></div>
+          <div class="img after">
+            <div class="ph" id="pdr-lexus-after-ph" style="position:absolute;inset:0;background:url('media/pdr-lexus-after.jpg') center/cover no-repeat"></div>
+          </div>
+          <div class="handle"><div class="knob">⇄</div></div>
+        </div>
+      </div>
+      <div class="case-label">Mercedes Benz GLK · 右前葉 · 大凹痕修復</div>
+    </div>
+    <div>
+      <div class="ba-wrap-inline" style="aspect-ratio:4/3">
+        <div class="baSlider" id="mazda-ba">
+          <div class="lbl-before">BEFORE</div>
+          <div class="lbl-after">AFTER</div>
+          <div class="img before" style="background:url('media/pdr-mazda-before.jpg') center/cover no-repeat"></div>
+          <div class="img after">
+            <div class="ph" style="position:absolute;inset:0;background:url('media/pdr-mazda-after.jpg') center/cover no-repeat"></div>
+          </div>
+          <div class="handle"><div class="knob">⇄</div></div>
+        </div>
+      </div>
+      <div class="case-label">MASERATI Ghibli · 右後葉修復</div>
+    </div>
+
+  </div>
+</section>
+<section class="sec reveal">
+  <div class="section-eyebrow" data-en="PDR vs TRADITIONAL" data-zh="比較">PDR vs 傳統板金烤漆</div>
+  <h2>PDR 與傳統板金烤漆的差異</h2>
+  <p>PDR 技術是<strong>目前唯一一個可以幫您保留原漆的方法</strong>，不會破壞車身的原漆，也不會利用補土跟重新烤漆來掩蓋受傷的位置，更不會讓相鄰板件跟著重新烤漆。</p>
+  <p>PDR 仍存在限制因素，包括烤漆的韌性，以及金屬受傷後被延展的程度。一般而言，凹痕越淺修復越完整；只要金屬和烤漆不被過度延展，即使很大面積的凹痕也可以完全修復。撞擊點非常尖深的凹痕和摺痕較不適合 PDR 技術。</p>
+  <div class="vs-grid">
+    <div class="vs-col featured">
+      <div class="vs-col-title">PDR 技術優點</div>
+      <ul class="vs-list">
+        <li>局部作業，收費較傳統板烤低，作業時間快速，可當日交車</li>
+        <li>省略傳統板金磨除原漆的步驟，保有原廠漆，避免色差</li>
+        <li>免除傳統板金點焊作業，保護原板件的金屬應力與延展性</li>
+        <li>免補土，使板件保持完整，維持烤漆壽命</li>
+        <li>免噴漆與金油，無化學溶劑揮發，環保無污染</li>
+      </ul>
+    </div>
+    <div class="vs-col">
+      <div class="vs-col-title">原廠車漆優點</div>
+      <ul class="vs-list">
+        <li>原漆自然耐久，厚度與硬度表現是最佳的</li>
+        <li>原漆光色澤均勻鮮明，較不易久後變色或泛黃</li>
+        <li>原漆附著力好，不容易有龜裂、脫漆或起泡</li>
+        <li>原漆代表板件完整，避免撞過或接合等疑慮</li>
+        <li>原漆車價高，也較容易轉售脫手</li>
+      </ul>
+    </div>
+  </div>
+  <img class="case-photo wide" src="media/pdr-sam.jpg" alt="PDR修復案例" style="margin-top:28px">
+</section>
+
+<!-- PDR 起源 + 影片 -->
+<section class="sec reveal">
+  <div class="section-eyebrow" data-en="HISTORY" data-zh="歷史起源">歷史起源</div>
+  <h2>PDR 技術的由來</h2>
+  <div class="history-inner">
+    <div>
+      <p>嚴格說起來，PDR 這個技術已經有超過 60 年的歷史。1960 年，美國紐約市舉辦了 International Motor Sports Show，一位名叫 <strong>Oskar Flaig</strong> 的工作人員，為了保持展場裡車輛板金的完整性，因此發明了這項技術。</p>
+      <p>如今 PDR 技術已在全球廣泛應用，卓越自 2014 年引進並持續精進，累積三萬筆修復案例，是台灣最具國際視野的 PDR 專業團隊。</p>
+      <div class="highlight">
+        <h3>卓越的承諾</h3>
+        <p>我們已慢慢地完善公司修復流程——以合理的價格，保持最高標準而不犧牲客戶品質。卓越絕對是您修復凹痕的最佳選擇。</p>
+      </div>
+    </div>
+    <div>
+      <img class="history-img" src="media/pdr-technician.png" alt="卓越技師赴美研修">
+    </div>
+  </div>
+  <div class="yt-wrap" style="margin-top:40px">
+    <iframe src="https://www.youtube.com/embed/_IaEse9SirA?si=M7aqTwJQb2i9Nkfb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec reveal">
+  <div class="section-eyebrow" data-en="GET STARTED" data-zh="立即預約">立即預約</div>
+  <h2>免費評估，當日報價</h2>
+  <p>攜車至任一直營據點，技師將為您現場評估並提供合理報價。無需預約，歡迎直接來店。</p>
+  <div class="cta-row">
+    <a class="btn-prim" href="https://line.me/R/ti/p/%40pdr.tw" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      <span>LINE 立即預約</span>
+    </a>
+    <a class="btn-sec" href="pricing.html">參考價目</a>
+    <a class="btn-sec" href="contact.html">尋找據點</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-links">
+      <a href="Superior-PDR.html" data-en="Home" data-zh="首頁">首頁</a>
+      <a href="pdr.html" data-en="Services" data-zh="服務項目">服務項目</a>
+      <a href="Superior-PDR.html#showcase" data-en="Showcase" data-zh="修復案例">修復案例</a>
+      <a href="Superior-PDR.html#training" data-en="Training" data-zh="技術教學">技術教學</a>
+      <a href="contact.html" data-en="Locations" data-zh="據點分佈">據點分佈</a>
+      <a href="pricing.html" data-en="Pricing" data-zh="預約與估價">預約與估價</a>
+    </div>
+    <a href="Superior-PDR.html" class="logo">
+      <img class="logo-circle" src="media/logo-circle.png" alt="Superior PDR">
+      <div class="logo-text">
+        <div class="top-line">SUPERIOR PDR</div>
+        <div class="bot-line">© 2026 SUPERIOR PDR · ALL RIGHTS RESERVED</div>
+      </div>
+    </a>
+    <div class="foot-social">
+      <a href="https://www.instagram.com/superiorpdrtaiwan/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg></a>
+      <a href="https://www.youtube.com/channel/UC8mXr_dYrD6Or-jA91W1irw?view_as=subscriber" target="_blank" rel="noopener" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.2 5 12 5 12 5s-4.2 0-7.2.1c-.4 0-1.2.1-2 .9C2.2 6.6 2 8 2 8S1.8 9.6 1.8 11.2v1.5C1.8 14.3 2 16 2 16s.2 1.4.8 2c.8.8 1.7.8 2.1.9C6.4 19 12 19 12 19s4.2 0 7.2-.2c.4 0 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1.5C22.2 9.6 22 8 22 8zM9.8 14.5v-5.7l5.4 2.9-5.4 2.8z"/></svg></a>
+      <a href="https://www.facebook.com/PdrSuperior" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script src="assets/image-slot.js"></script>
+<script>
+/* ── icons appear ── */
+(function(){
+  var cards=document.querySelectorAll('.icon-card');
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.2});
+  cards.forEach(function(el){io.observe(el);});
+})();
+/* ── BA sliders ── */
+(function(){
+  function initBA(id){
+    var root=document.getElementById(id);
+    if(!root)return;
+    var handle=root.querySelector('.handle');
+    var after=root.querySelector('.img.after');
+    var dragging=false;
+    function setPos(cx){var r=root.getBoundingClientRect();var pct=Math.max(0,Math.min(100,(cx-r.left)/r.width*100));handle.style.left=pct+'%';after.style.clipPath='inset(0 0 0 '+pct+'%)';}
+    root.addEventListener('mousedown',function(e){dragging=true;setPos(e.clientX);e.preventDefault();});
+    root.addEventListener('touchstart',function(e){dragging=true;setPos(e.touches[0].clientX);});
+    window.addEventListener('mousemove',function(e){if(dragging)setPos(e.clientX);});
+    window.addEventListener('touchmove',function(e){if(dragging)setPos(e.touches[0].clientX);});
+    window.addEventListener('mouseup',function(){dragging=false;});
+    window.addEventListener('touchend',function(){dragging=false;});
+    var demoed=false;
+    new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting&&!demoed){demoed=true;var pos=50,dir=-1,frames=0;(function tick(){pos+=dir*0.4;if(pos<25)dir=1;if(pos>75)dir=-1;handle.style.left=pos+'%';after.style.clipPath='inset(0 0 0 '+pos+'%)';if(++frames<280)requestAnimationFrame(tick);})();}});},{threshold:0.4}).observe(root);
+  }
+  initBA('lexus-ba');
+  initBA('mazda-ba');
+})();
+</script>
+  if(!root)return;
+  var handle=root.querySelector('.handle');
+  var after=root.querySelector('.img.after');
+  var dragging=false;
+  function setPos(cx){
+    var r=root.getBoundingClientRect();
+    var pct=Math.max(0,Math.min(100,(cx-r.left)/r.width*100));
+    handle.style.left=pct+'%';
+    after.style.clipPath='inset(0 0 0 '+pct+'%)';
+  }
+  root.addEventListener('mousedown',function(e){dragging=true;setPos(e.clientX);e.preventDefault();});
+  root.addEventListener('touchstart',function(e){dragging=true;setPos(e.touches[0].clientX);});
+  window.addEventListener('mousemove',function(e){if(dragging)setPos(e.clientX);});
+  window.addEventListener('touchmove',function(e){if(dragging)setPos(e.touches[0].clientX);});
+  window.addEventListener('mouseup',function(){dragging=false;});
+  window.addEventListener('touchend',function(){dragging=false;});
+  /* auto demo */
+  var demoed=false;
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting&&!demoed){
+        demoed=true;
+        var pos=50,dir=-1,frames=0;
+        (function tick(){
+          pos+=dir*0.4;
+          if(pos<25)dir=1;
+          if(pos>75)dir=-1;
+          handle.style.left=pos+'%';
+          after.style.clipPath='inset(0 0 0 '+pos+'%)';
+          if(++frames<280)requestAnimationFrame(tick);
+        })();
+      }
+    });
+  },{threshold:0.4}).observe(root);
+})();
+</script>
+</html>

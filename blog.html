@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>技術部落格 — SUPERIOR PDR 卓越凹痕修復</title>
+<meta name="description" content="卓越凹痕修復 SUPERIOR PDR 官方技術部落格。凹痕修復 PDR 技術解析、國際競賽全紀錄、Tesla Porsche LEXUS BMW Mercedes 修復案例、GPR Glue Pull Repair 教學，台灣最頂尖的 Paintless Dent Repair 知識庫。">
+<meta name="keywords" content="凹痕修復,PDR,Paintless Dent Repair,免烤漆凹痕修復,板金,微板金,鈑金修復,GPR,Glue Pull Repair,Lateral Tension,台北凹痕修復,台灣凹痕修復,Tesla凹痕,Porsche凹痕,LEXUS凹痕,BMW凹痕,Mercedes凹痕,鋁合金修復,不鑽洞修復,卓越凹痕,SUPERIOR PDR,PDR工具,KECO,Stanliner,PDR教育,PDR訓練,PDR競賽,國際裁判,DB EXPO,MTE Tag Team,PDR College">
+<meta property="og:title" content="技術部落格 — SUPERIOR PDR 卓越凹痕修復">
+<meta property="og:description" content="台灣 PDR 業界 benchmark。174 篇技術文章，從修復案例到國際賽事全紀錄。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/104da3d9-9ff1-402a-a0b0-842bf99fc8f6.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/26437e21-be61-4b36-881e-960b5f8d7a41.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/c0b8ee7d-aefb-4a44-9efc-3d77029dd4f6.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/c0b8ee7d-aefb-4a44-9efc-3d77029dd4f6.woff2") format('woff2');
+}
+
+:root {
+  --bg: #07080b;
+  --bg-elev: #0d1014;
+  --bg-card: #11151b;
+  --line: rgba(255,255,255,0.07);
+  --line-bright: rgba(255,255,255,0.13);
+  --ink: #f3f5f8;
+  --ink-dim: #9aa3b2;
+  --ink-mute: #5e6675;
+  --accent: #ff2a3d;
+  --accent-glow: rgba(255,42,61,0.45);
+  --accent-soft: rgba(255,42,61,0.10);
+  --radius: 6px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Space Grotesk', 'Noto Sans TC', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── NAV (matched to Superior PDR.html) ── */
+nav.top {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: linear-gradient(180deg, rgba(7,8,11,0.95) 0%, rgba(7,8,11,0.6) 80%, transparent 100%);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  padding: 18px 48px;
+  display: flex; align-items: center; gap: 48px;
+  border-bottom: 1px solid transparent; transition: border-color .3s;
+}
+nav.top.scrolled { border-color: var(--line); }
+.logo { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+.logo-circle { width: 46px; height: 46px; display: block; object-fit: contain; filter: drop-shadow(0 0 14px rgba(255,42,61,0.4)); }
+.logo-text { display: flex; flex-direction: column; line-height: 1; }
+.logo-text .top-line {
+  font-family: 'Bebas Neue'; font-size: 26px; letter-spacing: 0.1em; line-height: 1;
+  font-weight: 700; color: #ff2a3d; filter: drop-shadow(0 0 0.06em rgba(255,42,61,0.45));
+}
+.logo-text .bot-line {
+  font-family: 'JetBrains Mono'; font-weight: 700; font-size: 10px;
+  letter-spacing: 0.24em; color: var(--ink); margin-top: 3px;
+}
+nav.top .links { display: flex; gap: 32px; flex: 1; justify-content: center; }
+nav.top .links a {
+  font-size: 13px; font-weight: 500; color: var(--ink-dim);
+  position: relative; padding: 6px 0; letter-spacing: 0.02em; transition: color .2s; white-space: nowrap;
+}
+nav.top .links a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
+}
+nav.top .links a:hover, nav.top .links a.active { color: var(--ink); }
+nav.top .links a:hover::after, nav.top .links a.active::after { transform: scaleX(1); }
+.cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 11px 22px; border-radius: 4px;
+  background: var(--accent); color: white;
+  font-family: 'JetBrains Mono'; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  border: 1px solid var(--accent); cursor: pointer;
+  transition: all .25s; position: relative; overflow: hidden; white-space: nowrap;
+}
+.cta::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: translateX(-100%); transition: transform .6s;
+}
+.cta:hover::before { transform: translateX(100%); }
+.cta:hover { box-shadow: 0 0 24px var(--accent-glow); transform: translateY(-1px); }
+.cta.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.cta.ghost:hover { background: var(--accent-soft); }
+.lang-toggle {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 4px;
+  background: rgba(255,255,255,0.02); border: 1px solid var(--line-bright);
+  font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.06em; font-weight: 600;
+  color: var(--ink-dim); transition: all .2s; cursor: pointer;
+}
+.lang-toggle:hover { border-color: var(--accent); background: var(--accent-soft); }
+.lang-toggle .lang-opt { transition: color .2s; }
+.lang-toggle .lang-opt.active { color: var(--accent); }
+.lang-toggle .lang-sep { color: var(--ink-mute); opacity: .6; }
+
+/* ── HERO ── */
+.blog-hero {
+  padding: 120px 40px 80px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.blog-hero::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse 80% 60% at 20% -10%, rgba(255,42,61,0.08), transparent 70%);
+  pointer-events: none;
+}
+.hero-inner { max-width: 1200px; margin: 0 auto; }
+.section-eyebrow {
+  font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.32em;
+  color: var(--accent); display: inline-flex; align-items: center; gap: 14px;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.section-eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--accent); }
+.blog-hero h1 {
+  font-family: 'Bebas Neue';
+  font-size: clamp(52px, 8vw, 96px);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.blog-hero h1 em { color: var(--accent); font-style: normal; }
+.blog-hero .sub {
+  color: var(--ink-dim); font-size: 16px; max-width: 560px; line-height: 1.65;
+  margin-bottom: 40px;
+}
+.hero-stats {
+  display: flex; gap: 40px; flex-wrap: wrap;
+  padding-top: 32px; border-top: 1px solid var(--line);
+}
+.hero-stat .val {
+  font-family: 'Bebas Neue'; font-size: 36px; letter-spacing: 0.04em; color: var(--ink);
+}
+.hero-stat .val span { color: var(--accent); }
+.hero-stat .lbl {
+  font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.2em;
+  color: var(--ink-mute); text-transform: uppercase; margin-top: 2px;
+}
+
+/* ── SEO KEYWORD STRIP ── */
+.keyword-strip {
+  border-bottom: 1px solid var(--line);
+  padding: 14px 40px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.keyword-strip::-webkit-scrollbar { height: 0; }
+.keyword-strip-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 10px; align-items: center; }
+.kw-tag {
+  font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.14em;
+  color: var(--ink-mute); background: var(--bg-card); border: 1px solid var(--line);
+  padding: 5px 10px; border-radius: 3px; white-space: nowrap; transition: color .2s, border-color .2s;
+  cursor: default;
+}
+.kw-tag:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ── FILTER BAR ── */
+.filter-bar {
+  padding: 28px 40px;
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 82px; z-index: 50;
+  background: rgba(7,8,11,0.95);
+  backdrop-filter: blur(10px);
+}
+.filter-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.filter-btn {
+  font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.16em;
+  text-transform: uppercase; padding: 8px 16px; border-radius: 3px;
+  border: 1px solid var(--line); background: transparent; color: var(--ink-mute);
+  cursor: pointer; transition: all .2s;
+}
+.filter-btn:hover { color: var(--ink); border-color: var(--line-bright); }
+.filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-count {
+  margin-left: auto;
+  font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.1em; color: var(--ink-mute);
+}
+
+/* ── FEATURED STRIP ── */
+.featured-section {
+  max-width: 1200px; margin: 60px auto 0; padding: 0 40px;
+}
+.sec-label {
+  font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.3em;
+  color: var(--ink-mute); text-transform: uppercase;
+  display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+}
+.sec-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+.featured-card {
+  background: var(--bg-card);
+  padding: 32px 28px;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: background .2s;
+  position: relative;
+  overflow: hidden;
+}
+.featured-card .fc-img {
+  position: absolute; inset: 0; z-index: 0;
+}
+.featured-card .fc-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0.22; transition: opacity .35s;
+}
+.featured-card:hover .fc-img img { opacity: 0.32; }
+.featured-card .fc-content {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; gap: 10px; height: 100%;
+}
+.featured-card::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--accent); opacity: 0; z-index: 2;
+  transition: opacity .25s;
+}
+.featured-card:hover { background: #131820; }
+.featured-card:hover::before { opacity: 1; }
+.featured-card .cat-tag {
+  font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.22em;
+  color: var(--accent); text-transform: uppercase;
+}
+.featured-card h3 {
+  font-size: 16px; font-weight: 600; line-height: 1.4; color: var(--ink);
+}
+.featured-card .meta-row {
+  font-family: 'JetBrains Mono'; font-size: 10px; color: var(--ink-mute);
+  letter-spacing: 0.1em; margin-top: auto;
+}
+.featured-card .arrow {
+  width: 28px; height: 28px; border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; font-size: 12px; color: var(--ink-mute);
+  margin-top: 8px; transition: border-color .2s, color .2s;
+}
+.featured-card:hover .arrow { border-color: var(--accent); color: var(--accent); }
+.featured-card.large {
+  grid-row: span 2;
+  background: linear-gradient(135deg, #131820, #0d1117);
+}
+.featured-card.large h3 { font-size: 20px; line-height: 1.3; }
+
+/* ── ARTICLE GRID ── */
+.articles-section {
+  max-width: 1200px; margin: 0 auto; padding: 0 40px 80px;
+}
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.art-card {
+  background: var(--bg-card);
+  display: flex; flex-direction: column;
+  transition: background .2s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.art-card:hover { background: #12161e; }
+.art-card .card-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #0d1014;
+  flex-shrink: 0;
+  position: relative;
+}
+.art-card .card-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease, opacity .3s;
+  opacity: 0.88;
+}
+.art-card:hover .card-thumb img { transform: scale(1.04); opacity: 1; }
+.art-card .card-thumb .thumb-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(7,8,11,0.6) 100%);
+  pointer-events: none;
+}
+.art-card .card-body {
+  padding: 16px 18px 18px;
+  display: flex; flex-direction: column; gap: 6px; flex: 1;
+}
+.art-card .cat-tag {
+  font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.art-card .cat-tag.COMPETITION { color: #f5a623; }
+.art-card .cat-tag.REPAIR { color: #4cd4ff; }
+.art-card .cat-tag.TRAINING { color: #7ed87e; }
+.art-card .cat-tag.TECHNIQUE { color: #c084fc; }
+.art-card .cat-tag.NEWS { color: var(--ink-mute); }
+.art-card h4 {
+  font-size: 13.5px; font-weight: 600; color: var(--ink);
+  line-height: 1.45; flex: 1;
+}
+.art-card .art-date {
+  font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.14em;
+  color: var(--ink-mute); margin-top: 4px;
+}
+.art-card .read-more {
+  font-size: 11px; color: var(--accent); opacity: 0; transform: translateX(-4px);
+  transition: opacity .2s, transform .2s; letter-spacing: 0.06em;
+}
+.art-card:hover .read-more { opacity: 1; transform: translateX(0); }
+
+/* hidden = filtered out */
+.art-card.hidden { display: none; }
+
+/* ── LOAD MORE ── */
+.load-more-wrap {
+  text-align: center; padding: 40px 0;
+}
+.load-more-wrap .count-info {
+  font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.14em;
+  color: var(--ink-mute); margin-bottom: 20px;
+}
+
+/* ── CTA BANNER ── */
+.cta-banner {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 48px 40px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--bg-elev), var(--bg));
+}
+.cta-banner h2 {
+  font-family: 'Bebas Neue'; font-size: clamp(32px, 5vw, 52px);
+  letter-spacing: 0.04em; margin-bottom: 12px;
+}
+.cta-banner h2 span { color: var(--accent); }
+.cta-banner p { color: var(--ink-dim); font-size: 15px; margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ── FOOTER ── */
+footer { border-top: 1px solid var(--line); padding: 40px; }
+.foot-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 24px;
+}
+.foot-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.foot-links a { font-size: 13px; color: var(--ink-mute); transition: color .2s; }
+.foot-links a:hover { color: var(--ink); }
+.foot-social { display: flex; gap: 16px; }
+.foot-social a {
+  width: 32px; height: 32px; border: 1px solid var(--line);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  color: var(--ink-mute); transition: border-color .2s, color .2s;
+}
+.foot-social a:hover { border-color: var(--accent); color: var(--accent); }
+.foot-copy {
+  font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.2em;
+  color: var(--ink-mute); text-align: center; width: 100%;
+  padding-top: 24px; border-top: 1px solid var(--line);
+  margin-top: 16px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav.top { padding: 14px 20px; gap: 16px; }
+  nav.top .links { display: none; }
+  .logo-circle { width: 40px; height: 40px; }
+  .blog-hero { padding: 100px 20px 60px; }
+  .featured-grid { grid-template-columns: 1fr 1fr; }
+  .featured-card.large { grid-row: span 1; grid-column: span 2; }
+  .articles-grid { grid-template-columns: 1fr 1fr; }
+  .featured-section, .articles-section { padding: 0 20px 60px; }
+  .filter-bar { padding: 20px; top: 68px; }
+  .keyword-strip { padding: 12px 20px; }
+  .hero-stats { gap: 24px; }
+}
+@media (max-width: 600px) {
+  .featured-grid { grid-template-columns: 1fr; }
+  .featured-card.large { grid-column: span 1; }
+  .articles-grid { grid-template-columns: 1fr; }
+  .blog-hero h1 { font-size: 52px; }
+  .hero-stats { gap: 20px; }
+  footer { padding: 28px 20px; }
+  .foot-inner { flex-direction: column; align-items: flex-start; }
+}
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .5s, transform .5s; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top" id="topnav" data-current="blog"></nav>
+
+<!-- HERO -->
+<section class="blog-hero">
+  <div class="hero-inner reveal">
+    <div class="section-eyebrow">FIELD NOTES · SUPERIOR PDR</div>
+    <h1>KNOWLEDGE<br><em>BASE</em></h1>
+    <p class="sub">凹痕修復技術解析、國際競賽全紀錄、修復案例深度分享。台灣 PDR 業界 benchmark 的 174 篇技術文章。</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="val">174<span>+</span></div>
+        <div class="lbl">技術文章</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val">12<span>+</span></div>
+        <div class="lbl">國際賽事</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val">30,000<span>+</span></div>
+        <div class="lbl">修復案例</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val">2014<span>→</span></div>
+        <div class="lbl">持續記錄</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEO KEYWORD STRIP -->
+<div class="keyword-strip">
+  <div class="keyword-strip-inner">
+    <span class="kw-tag">凹痕修復</span>
+    <span class="kw-tag">PDR</span>
+    <span class="kw-tag">Paintless Dent Repair</span>
+    <span class="kw-tag">免烤漆修復</span>
+    <span class="kw-tag">GPR Glue Pull Repair</span>
+    <span class="kw-tag">Lateral Tension</span>
+    <span class="kw-tag">Tesla凹痕</span>
+    <span class="kw-tag">Porsche PDR</span>
+    <span class="kw-tag">LEXUS凹痕</span>
+    <span class="kw-tag">BMW鋁合金</span>
+    <span class="kw-tag">Mercedes Benz</span>
+    <span class="kw-tag">Mazda凹痕</span>
+    <span class="kw-tag">台北凹痕修復</span>
+    <span class="kw-tag">台灣PDR</span>
+    <span class="kw-tag">鋁合金板金</span>
+    <span class="kw-tag">不鑽洞修復</span>
+    <span class="kw-tag">微板金</span>
+    <span class="kw-tag">板金修復</span>
+    <span class="kw-tag">DB EXPO 2026</span>
+    <span class="kw-tag">MTE Tag Team</span>
+    <span class="kw-tag">PDR College</span>
+    <span class="kw-tag">KECO工具</span>
+    <span class="kw-tag">Stanliner</span>
+    <span class="kw-tag">重機凹痕</span>
+    <span class="kw-tag">冰雹凹痕</span>
+    <span class="kw-tag">PDR訓練</span>
+    <span class="kw-tag">PDR教育</span>
+    <span class="kw-tag">南強工商PDR</span>
+    <span class="kw-tag">Dent Trainer</span>
+    <span class="kw-tag">卓越凹痕</span>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <button class="filter-btn active" data-filter="ALL">ALL</button>
+    <button class="filter-btn" data-filter="COMPETITION">🏆 國際競賽</button>
+    <button class="filter-btn" data-filter="REPAIR">🔧 修復案例</button>
+    <button class="filter-btn" data-filter="TRAINING">🎓 教育訓練</button>
+    <button class="filter-btn" data-filter="TECHNIQUE">⚙️ 技術知識</button>
+    <button class="filter-btn" data-filter="NEWS">📢 品牌動態</button>
+    <span class="filter-count" id="filterCount">174 篇文章</span>
+  </div>
+</div>
+
+<!-- FEATURED -->
+<div class="featured-section">
+  <div class="sec-label reveal">FEATURED · 精選重點</div>
+  <div class="featured-grid reveal">
+    <a class="featured-card large" href="https://www.tar-tw.com/taiwan_advanced_training2016" target="_blank">
+      <div class="fc-img"><img src="blog-images/7106.jpg" alt="台灣PDR國際研討會" loading="eager"></div>
+      <div class="fc-content">
+        <div class="cat-tag">COMPETITION · 2026</div>
+        <h3>台灣PDR國際研討會｜凹痕修復技術全面進化的一天</h3>
+        <p style="color:var(--ink-dim);font-size:13px;line-height:1.6;flex:1">2026年5月，台灣首屆 PDR 國際技術研討會。來自亞洲各地頂尖技師齊聚，技術交流重新定義行業標準。</p>
+        <div class="meta-row">2026.05.05 &nbsp;·&nbsp; SEMINAR</div>
+        <div class="arrow">→</div>
+      </div>
+    </a>
+    <a class="featured-card" href="https://www.tar-tw.com/italy_dbexpo2026" target="_blank">
+      <div class="fc-img"><img src="blog-images/7042.jpg" alt="DB EXPO 2026" loading="eager"></div>
+      <div class="fc-content">
+        <div class="cat-tag">COMPETITION · ITALY</div>
+        <h3>站在歐洲頂端：受邀擔任 DB EXPO 2026 國際裁判</h3>
+        <div class="meta-row">2026.04.05 &nbsp;·&nbsp; Italy · Milano</div>
+        <div class="arrow">→</div>
+      </div>
+    </a>
+    <a class="featured-card" href="https://www.tar-tw.com/2026mte_3rd_place" target="_blank">
+      <div class="fc-img"><img src="blog-images/6977.jpg" alt="MTE 世界第三名" loading="eager"></div>
+      <div class="fc-content">
+        <div class="cat-tag">COMPETITION · USA</div>
+        <h3>美國 MTE Tag Team 大賽 ⸺ 世界第三名</h3>
+        <div class="meta-row">2026.02.23 &nbsp;·&nbsp; MTE USA</div>
+        <div class="arrow">→</div>
+      </div>
+    </a>
+    <a class="featured-card" href="https://www.tar-tw.com/mazda3-gpr" target="_blank">
+      <div class="fc-img"><img src="blog-images/6794.jpg" alt="Mazda3 GPR" loading="eager"></div>
+      <div class="fc-content">
+        <div class="cat-tag">REPAIR · GPR TECHNIQUE</div>
+        <h3>別人不修，我挑戰 EP1 — Mazda3 Glue Pull Repair 極限挑戰</h3>
+        <div class="meta-row">2025.10.26 &nbsp;·&nbsp; GPR · CASE STUDY</div>
+        <div class="arrow">→</div>
+      </div>
+    </a>
+    <a class="featured-card" href="https://www.tar-tw.com/superiorpdr-pdr-college" target="_blank">
+      <div class="fc-img"><img src="blog-images/6691.jpg" alt="PDR COLLEGE" loading="eager"></div>
+      <div class="fc-content">
+        <div class="cat-tag">TRAINING · USA · TEXAS</div>
+        <h3>卓越凹痕在美國德州 PDR COLLEGE 的夢幻研修之旅</h3>
+        <div class="meta-row">2025.10.19 &nbsp;·&nbsp; PDR College · Texas</div>
+        <div class="arrow">→</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- ARTICLE GRID -->
+<div class="articles-section">
+  <div class="sec-label reveal">ALL ARTICLES · 全部文章</div>
+  <div class="articles-grid" id="articlesGrid">
+    <!-- Populated by JS -->
+  </div>
+  <div class="load-more-wrap" id="loadMoreWrap">
+    <div class="count-info" id="countInfo"></div>
+    <button class="cta ghost" id="loadMoreBtn">載入更多文章</button>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<div class="cta-banner reveal">
+  <h2>準備好了嗎？<span>免費估價</span></h2>
+  <p>8 家直營店，精修 Tesla · Porsche · LEXUS · BMW · Mercedes。不鑽洞、不烤漆，還原原廠狀態。</p>
+  <div class="cta-group">
+    <a class="cta" href="pricing.html">前往官網估價</a>
+    <a class="cta ghost" href="https://lin.ee/superior" target="_blank">LINE 詢問</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-links">
+      <a href="Superior-PDR.html">Home</a>
+      <a href="Superior-PDR.html#services">Services</a>
+      <a href="Superior-PDR.html#showcase">Showcase</a>
+      <a href="Superior-PDR.html#training">Training</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Locations</a>
+    </div>
+    <div class="logo-wrap">
+      <div class="logo-mark"><span>S</span></div>
+      <div class="logo-text">
+        <div class="top-line">SUPERIOR PDR</div>
+        <div class="bot-line">TAIWAN · 8 STUDIOS</div>
+      </div>
+    </a>
+    <div class="foot-social">
+      <a href="https://www.instagram.com/superiorpdrtaiwan" target="_blank" aria-label="Instagram">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@superiorpdr" target="_blank" aria-label="YouTube">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.2 5 12 5 12 5s-4.2 0-7.2.1c-.4 0-1.2.1-2 .9C2.2 6.6 2 8 2 8S1.8 9.6 1.8 11.2v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.3.9 1.7.2 7 .2 7 .2s4.2 0 7.2-.2c.4 0 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5C22.2 9.6 22 8 22 8z"/><polygon points="10,15 15,12 10,9" fill="white"/></svg>
+      </a>
+      <a href="https://www.facebook.com/superiorpdr" target="_blank" aria-label="Facebook">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="foot-copy">© 2026 SUPERIOR PDR · ALL RIGHTS RESERVED · 卓越凹痕修復車體維美中心 · 台灣8家直營</div>
+</footer>
+
+<script>
+/* ── ARTICLE DATA (from WordPress — 174 posts) ── */
+const ARTICLES = [
+{"t":"台灣PDR國際研討會｜凹痕修復技術全面進化的一天","u":"https://www.tar-tw.com/taiwan_advanced_training2016","d":"2026-05-05","c":"COMPETITION","i":"blog-images/7106.jpg"},
+{"t":"站在歐洲的頂端：受邀擔任義大利DB EXPO 2026 國際凹痕修復大賽裁判全紀錄","u":"https://www.tar-tw.com/italy_dbexpo2026","d":"2026-04-05","c":"COMPETITION","i":"blog-images/7042.jpg"},
+{"t":"中國第一屆凹痕修復大師賽｜站上國際裁判席的三天震撼體驗","u":"https://www.tar-tw.com/china-first-competition","d":"2026-04-01","c":"COMPETITION","i":"blog-images/7002.jpg"},
+{"t":"美國MTE從一趟輕鬆的PDR展會旅程，到站上世界第三名的舞台","u":"https://www.tar-tw.com/2026mte_3rd_place","d":"2026-02-23","c":"COMPETITION","i":"blog-images/6977.jpg"},
+{"t":"2023 Asia Advanced Training Workshop（AAW）全紀錄｜卓越凹痕修復PDR TRAINING","u":"https://www.tar-tw.com/2023asia_advanced_training","d":"2025-12-27","c":"COMPETITION","i":"blog-images/6880.jpg"},
+{"t":"別人不修，我挑戰 EP1 — Mazda3凹痕修復實錄｜Glue Pull Repair技術極限挑戰","u":"https://www.tar-tw.com/mazda3-gpr","d":"2025-10-26","c":"TECHNIQUE","i":"blog-images/6794.jpg"},
+{"t":"別人不修，我挑戰 EP2 — LEXUS NX350新車凹痕修復紀錄","u":"https://www.tar-tw.com/44km-lexusnx350","d":"2025-10-23","c":"REPAIR","i":"blog-images/6778.jpg"},
+{"t":"卓越凹痕在美國德州 PDR COLLEGE 的夢幻旅程","u":"https://www.tar-tw.com/superiorpdr-pdr-college","d":"2025-10-19","c":"REPAIR","i":"blog-images/6691.jpg"},
+{"t":"特斯拉 Model 3 撞到真的要切板金、換板金嗎？讓卓越告訴你最好的做法","u":"https://www.tar-tw.com/2022-08-17-teslamodel3smash","d":"2022-08-17","c":"REPAIR","i":"blog-images/6559.jpg"},
+{"t":"Porsche 718 GTS撞到了！！凹痕修復鑽洞才能處理？不鑽洞的堅持由我們卓越而起","u":"https://www.tar-tw.com/porsche-718-gts%e6%92%9e%e5%88%b0%e4%ba%86%ef%bc%81%ef%bc%81%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e9%91%bd%e6%b4%9e%e6%89%8d%e8%83%bd%e8%99%95%e7%90%86%ef%bc%9f%e4%b8%8d%e9%91%bd%e6%b4%9e%e7%9a%84","d":"2022-06-24","c":"REPAIR","i":"blog-images/6533.jpg"},
+{"t":"LEXUS板金延展凹痕修復｜PDR工具介紹POWER PDR BOX｜台北凹痕修復","u":"https://www.tar-tw.com/lexus_streched_dent","d":"2022-05-21","c":"TECHNIQUE","i":"blog-images/6512.jpg"},
+{"t":"鋁合金板金不用烤漆，來看如何局部板金處理｜Mercedes Benz S213前葉子板微鈑金｜台北凹痕修復","u":"https://www.tar-tw.com/mercedesbenz_aluminum","d":"2022-04-13","c":"REPAIR","i":"blog-images/6488.png"},
+{"t":"如何不用烤漆修復這種大撞板金？｜汽車凹痕修復微鈑金技術","u":"https://www.tar-tw.com/toyotahiacesmashdent","d":"2022-03-29","c":"TECHNIQUE","i":"blog-images/6480.jpg"},
+{"t":"卓越汽車微板金旗艦中心特別的111年1月11日正式開幕","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a%e6%b1%bd%e8%bb%8a%e5%be%ae%e6%9d%bf%e9%87%91%e6%97%97%e8%89%a6%e4%b8%ad%e5%bf%83%e7%89%b9%e5%88%a5%e7%9a%84111%e5%b9%b41%e6%9c%8811%e6%97%a5%e6%ad%a3%e5%bc%8f%e9%96%8b%e5%b9%95","d":"2022-01-25","c":"NEWS","i":"blog-images/6459.jpg"},
+{"t":"為證明修車實力老婆竟動手砸自己愛車！凹痕修復還有救嗎？！【超老師】","u":"https://www.tar-tw.com/%e7%82%ba%e8%ad%89%e6%98%8e%e4%bf%ae%e8%bb%8a%e5%af%a6%e5%8a%9b%e8%80%81%e5%a9%86%e7%ab%9f%e5%8b%95%e6%89%8b%e7%a0%b8%e8%87%aa%e5%b7%b1%e6%84%9b%e8%bb%8a%ef%bc%81%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2021-12-23","c":"REPAIR","i":"blog-images/6430.jpg"},
+{"t":"卓越科普小教室EP2.你們的疑問我們都來為你解惑！","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a%e7%a7%91%e6%99%ae%e5%b0%8f%e6%95%99%e5%ae%a4ep2-%e4%bd%a0%e5%80%91%e7%9a%84%e7%96%91%e5%95%8f%e6%88%91%e5%80%91%e9%83%bd%e4%be%86%e7%82%ba%e4%bd%a0%e8%a7%a3%e6%83%91%ef%bc%81","d":"2021-12-01","c":"TRAINING","i":"blog-images/6380.jpg"},
+{"t":"為了把凹痕修好，臉要弄髒！我們台中店的阿毛毛會怎麼弄咧？","u":"https://www.tar-tw.com/%e7%82%ba%e4%ba%86%e6%8a%8a%e5%87%b9%e7%97%95%e4%bf%ae%e5%a5%bd%ef%bc%8c%e8%87%89%e8%a6%81%e5%bc%84%e9%ab%92%ef%bc%81%e6%88%91%e5%80%91%e5%8f%b0%e4%b8%ad%e5%ba%97%e7%9a%84%e9%98%bf%e6%af%9b%e6%af%9b","d":"2021-11-24","c":"REPAIR","i":"blog-images/6365.jpg"},
+{"t":"挺過疫情！凹痕修復教育訓練中心 學生終於畢業啦！","u":"https://www.tar-tw.com/%e6%8c%ba%e9%81%8e%e7%96%ab%e6%83%85%ef%bc%81%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e6%95%99%e8%82%b2%e8%a8%93%e7%b7%b4%e4%b8%ad%e5%bf%83-%e5%ad%b8%e7%94%9f%e7%b5%82%e6%96%bc%e7%95%a2%e6%a5%ad%e5%95%a6","d":"2021-11-01","c":"TRAINING","i":"blog-images/6320.jpg"},
+{"t":"EDGY TOOLS WEDGE LIGHT 凹痕修復工具車窗檔介紹","u":"https://www.tar-tw.com/edgy-tools-wedge-light-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e5%b7%a5%e5%85%b7%e8%bb%8a%e7%aa%97%e6%aa%94%e4%bb%8b%e7%b4%b9","d":"2021-10-30","c":"TECHNIQUE","i":"blog-images/6311.jpg"},
+{"t":"卓越新單元科普小教室：國產車？進口車？修復迷思大公開！","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a%e6%96%b0%e5%96%ae%e5%85%83%e7%a7%91%e6%99%ae%e5%b0%8f%e6%95%99%e5%ae%a4%ef%bc%9a%e5%9c%8b%e7%94%a2%e8%bb%8a%ef%bc%9f%e9%80%b2%e5%8f%a3%e8%bb%8a%ef%bc%9f%e4%bf%ae%e5%be%a9%e8%bf%b7","d":"2021-10-29","c":"TRAINING","i":"blog-images/6327.jpg"},
+{"t":"南強工商 x 卓越凹痕 新北創新教育加速器計劃","u":"https://www.tar-tw.com/%e5%8d%97%e5%bc%b7%e5%b7%a5%e5%95%86-x-%e5%8d%93%e8%b6%8a%e5%87%b9%e7%97%95-%e6%96%b0%e5%8c%97%e5%89%b5%e6%96%b0%e6%95%99%e8%82%b2%e5%8a%a0%e9%80%9f%e5%99%a8%e8%a8%88%e5%8a%83","d":"2021-10-26","c":"TRAINING","i":"blog-images/6297.png"},
+{"t":"五倍卷本週五開始啟用！你們想好要怎麼使用了嗎？","u":"https://www.tar-tw.com/%e4%ba%94%e5%80%8d%e5%8d%b7%e6%9c%ac%e9%80%b1%e4%ba%94%e9%96%8b%e5%a7%8b%e5%95%9f%e7%94%a8%ef%bc%81%e4%bd%a0%e5%80%91%e6%83%b3%e5%a5%bd%e8%a6%81%e6%80%8e%e9%ba%bc%e4%bd%bf%e7%94%a8%e4%ba%86%e5%97%8e","d":"2021-10-08","c":"REPAIR","i":"blog-images/6281.png"},
+{"t":"重機油桶凹了怎麼辦？選擇最佳方式不怕生鏽、不用烤漆、不用補土PDR凹痕修復","u":"https://www.tar-tw.com/%e9%87%8d%e6%a9%9f%e6%b2%b9%e6%a1%b6%e5%87%b9%e4%ba%86%e6%80%8e%e9%ba%bc%e8%be%a6%ef%bc%9f%e9%81%b8%e6%93%87%e6%9c%80%e4%bd%b3%e6%96%b9%e5%bc%8f%e4%b8%8d%e6%80%95%e7%94%9f%e9%8f%bd%e3%80%81%e4%b8%8d","d":"2021-09-29","c":"REPAIR","i":"blog-images/6238.jpg"},
+{"t":"你們想知道這樣的凹痕在同部位同鈑件的修復價格嗎？","u":"https://www.tar-tw.com/%e4%bd%a0%e5%80%91%e6%83%b3%e7%9f%a5%e9%81%93%e9%80%99%e6%a8%a3%e7%9a%84%e5%87%b9%e7%97%95%e5%9c%a8%e5%90%8c%e9%83%a8%e4%bd%8d%e5%90%8c%e9%88%91%e4%bb%b6%e7%9a%84%e4%bf%ae%e5%be%a9%e5%83%b9%e6%a0%bc","d":"2021-09-27","c":"REPAIR","i":"blog-images/6222.jpg"},
+{"t":"卓越凹痕全體同仁 祝大家中秋節快樂！！","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a%e5%87%b9%e7%97%95%e5%85%a8%e9%ab%94%e5%90%8c%e4%bb%81-%e7%a5%9d%e5%a4%a7%e5%ae%b6%e4%b8%ad%e7%a7%8b%e7%af%80%e5%bf%ab%e6%a8%82%ef%bc%81%ef%bc%81","d":"2021-09-23","c":"NEWS","i":"blog-images/6210.jpg"},
+{"t":"TESLA MODEL3內部結構整形、外皮凹痕整平作品｜後葉超大扭曲凹痕修復紀錄｜卓越微板金修復中心","u":"https://www.tar-tw.com/tesla-model3%e5%85%a7%e9%83%a8%e7%b5%90%e6%a7%8b%e6%95%b4%e5%bd%a2%e3%80%81%e5%a4%96%e7%9a%ae%e5%87%b9%e7%97%95%e6%95%b4%e5%b9%b3%e4%bd%9c%e5%93%81%ef%bd%9c%e5%be%8c%e8%91%89%e8%b6%85%e5%a4%a7","d":"2021-09-22","c":"REPAIR","i":"blog-images/6205.jpg"},
+{"t":"【亞洲首創】凹痕修復PDR專業教室，微板金人才培育計畫即將啟動","u":"https://www.tar-tw.com/%e3%80%90%e4%ba%9e%e6%b4%b2%e9%a6%96%e5%89%b5%e3%80%91%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9pdr%e5%b0%88%e6%a5%ad%e6%95%99%e5%ae%a4%ef%bc%8c%e5%be%ae%e6%9d%bf%e9%87%91%e4%ba%ba%e6%89%8d%e5%9f%b9","d":"2021-09-18","c":"TRAINING","i":"blog-images/6200.jpg"},
+{"t":"pri:məveərə！偉士牌凹痕修復｜卓越汽車凹痕修復中心","u":"https://www.tar-tw.com/2021-09-09-prim%c9%99ve%c9%99r%c9%99%ef%bc%81%e5%81%89%e5%a3%ab%e7%89%8c%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%ef%bd%9c%e5%8d%93%e8%b6%8a%e6%b1%bd%e8%bb%8a%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e4%b8%ad","d":"2021-09-09","c":"REPAIR","i":"blog-images/6182.jpg"},
+{"t":"「新北創新教育加速器計畫」PDR微鈑金 南強工商正式開班授課！","u":"https://www.tar-tw.com/%e3%80%8c%e6%96%b0%e5%8c%97%e5%89%b5%e6%96%b0%e6%95%99%e8%82%b2%e5%8a%a0%e9%80%9f%e5%99%a8%e8%a8%88%e7%95%ab%e3%80%8dpdr%e5%be%ae%e9%88%91%e9%87%91-%e5%8d%97%e5%bc%b7%e5%b7%a5%e5%95%86%e6%ad%a3","d":"2021-09-08","c":"TRAINING","i":"blog-images/6178.jpg"},
+{"t":"美國NO.1！PDR線上訓練平台「Dent Trainer」開放線上教學影片","u":"https://www.tar-tw.com/%e7%be%8e%e5%9c%8bno-1%ef%bc%81pdr%e7%b7%9a%e4%b8%8a%e8%a8%93%e7%b7%b4%e5%b9%b3%e5%8f%b0%e3%80%8cdent-trainer%e3%80%8d%e9%96%8b%e6%94%be%e7%b7%9a%e4%b8%8a%e6%95%99%e5%ad%b8%e5%bd%b1%e7%89%87","d":"2021-09-07","c":"TRAINING","i":"blog-images/6161.jpg"},
+{"t":"汽車凹痕DIY工具教學、微板金凹陷修復工具使用推薦｜凹痕修復神器詳細步驟讓你一學就會！","u":"https://www.tar-tw.com/2021-08-18-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e7%a5%9e%e5%99%a8%e8%a9%b3%e7%b4%b0%e6%ad%a5%e9%a9%9f%e8%ae%93%e4%bd%a0%e4%b8%80%e5%ad%b8%e5%b0%b1%e6%9c%83","d":"2021-08-18","c":"TECHNIQUE","i":"blog-images/6134.jpg"},
+{"t":"Go Red大王指名卓越幫忙修復愛車凹痕！｜卓越汽車凹痕修復中心","u":"https://www.tar-tw.com/go-red%e5%a4%a7%e7%8e%8b%e6%8c%87%e5%90%8d%e5%8d%93%e8%b6%8a%e5%b9%ab%e5%bf%99%e4%bf%ae%e5%be%a9%e6%84%9b%e8%bb%8a%e5%87%b9%e7%97%95%ef%bc%81","d":"2021-08-13","c":"NEWS","i":"blog-images/6126.jpg"},
+{"t":"「修這種傷只能鑽洞？」當有人這樣跟你說，就要想一想了&#8230;","u":"https://www.tar-tw.com/%e3%80%8c%e4%bf%ae%e9%80%99%e7%a8%ae%e5%82%b7%e5%8f%aa%e8%83%bd%e9%91%bd%e6%b4%9e%ef%bc%9f%e3%80%8d%e7%95%b6%e6%9c%89%e4%ba%ba%e9%80%99%e6%a8%a3%e8%b7%9f%e4%bd%a0%e8%aa%aa%ef%bc%8c%e5%b0%b1%e8%a6%81","d":"2021-08-12","c":"REPAIR","i":"blog-images/6113.jpg"},
+{"t":"寶馬 BMW 大7 豪華座車 鋁合金延展凹痕修復｜卓越汽車凹痕修復中心","u":"https://www.tar-tw.com/%e5%af%b6%e9%a6%ac-bmw-%e5%a4%a77-%e8%b1%aa%e8%8f%af%e5%ba%a7%e8%bb%8a-%e9%8b%81%e5%90%88%e9%87%91%e5%bb%b6%e5%b1%95%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%ef%bd%9c%e5%8d%93%e8%b6%8a%e6%b1%bd%e8%bb%8a","d":"2021-08-11","c":"REPAIR","i":"blog-images/6103.jpg"},
+{"t":"特斯拉車主一定都知道！？最常見的凹痕位置就在這邊&#8230;","u":"https://www.tar-tw.com/%e7%89%b9%e6%96%af%e6%8b%89%e8%bb%8a%e4%b8%bb%e4%b8%80%e5%ae%9a%e9%83%bd%e7%9f%a5%e9%81%93%ef%bc%81%ef%bc%9f%e6%9c%80%e5%b8%b8%e8%a6%8b%e7%9a%84%e5%87%b9%e7%97%95%e4%bd%8d%e7%bd%ae%e5%b0%b1%e5%9c%a8","d":"2021-08-10","c":"REPAIR","i":"blog-images/6085.jpg"},
+{"t":"Tesla撞成這樣不用烤漆真的假的？原廠修復價格驚人你怎麼選擇？｜卓越汽車凹痕修復中心","u":"https://www.tar-tw.com/2021-07-12-tesla%e6%92%9e%e6%88%90%e9%80%99%e6%a8%a3%e4%b8%8d%e7%94%a8%e7%83%a4%e6%bc%86model3","d":"2021-07-12","c":"REPAIR","i":"blog-images/6066.jpg"},
+{"t":"NISSAN ROGUE後尾門板金全完塌陷凹痕修復","u":"https://www.tar-tw.com/6018","d":"2021-06-23","c":"REPAIR","i":"blog-images/6018.jpeg"},
+{"t":"Audi A3讓每個凹痕修復技師聞風喪膽的車身下菱線凹痕","u":"https://www.tar-tw.com/%e8%ae%93%e6%af%8f%e5%80%8b%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e6%8a%80%e5%b8%ab%e8%81%9e%e9%a2%a8%e5%96%aa%e8%86%bd%e7%9a%84%e8%bb%8a%e8%ba%ab%e4%b8%8b%e8%8f%b1%e7%b7%9a%e5%87%b9%e7%97%95","d":"2021-06-17","c":"REPAIR","i":"blog-images/5845.png"},
+{"t":"BMW X5 天殺的鋁合金","u":"https://www.tar-tw.com/bmw-x5-%e5%a4%a9%e6%ae%ba%e7%9a%84%e9%8b%81%e5%90%88%e9%87%91","d":"2021-05-24","c":"REPAIR","i":"blog-images/5701.jpg"},
+{"t":"Volkswagen 常見修復車款系列","u":"https://www.tar-tw.com/volkswagen-%e5%b8%b8%e8%a6%8b%e4%bf%ae%e5%be%a9%e8%bb%8a%e6%ac%be%e7%b3%bb%e5%88%97","d":"2021-04-29","c":"REPAIR","i":"blog-images/5682.jpg"},
+{"t":"今年開始和南強工商有固定客座教學！ 開課囉！","u":"https://www.tar-tw.com/%e4%bb%8a%e5%b9%b4%e9%96%8b%e5%a7%8b%e5%92%8c%e5%8d%97%e5%bc%b7%e5%b7%a5%e5%95%86%e6%9c%89%e5%9b%ba%e5%ae%9a%e5%ae%a2%e5%ba%a7%e6%95%99%e5%ad%b8%ef%bc%81-%e9%96%8b%e8%aa%b2%e5%9b%89%ef%bc%81","d":"2021-04-19","c":"TRAINING","i":"blog-images/5657.jpg"},
+{"t":"Volvo鈑金有超硬嗎？","u":"https://www.tar-tw.com/2021-04-13-5631","d":"2021-04-13","c":"REPAIR","i":"blog-images/5631.jpg"},
+{"t":"Kawasaki W800 重機油箱凹痕修復","u":"https://www.tar-tw.com/kawasakiw800pdr","d":"2021-03-27","c":"REPAIR","i":"blog-images/5611.jpg"},
+{"t":"蘋果新聞專訪SUPERIOR卓越凹痕修復","u":"https://www.tar-tw.com/apple-news","d":"2021-02-09","c":"REPAIR","i":"blog-images/5594.jpg"},
+{"t":"Ford Focus ST-Line 下車身大凹痕修復","u":"https://www.tar-tw.com/fordfocusst-line%e4%b8%8b%e8%bb%8a%e8%ba%ab%e5%a4%a7%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2021-02-05","c":"REPAIR","i":"blog-images/5580.jpg"},
+{"t":"【台中 Ford Focus 車門摺線凹】","u":"https://www.tar-tw.com/%e3%80%90%e5%8f%b0%e4%b8%ad-ford-focus-%e8%bb%8a%e9%96%80%e6%91%ba%e7%b7%9a%e5%87%b9%e3%80%91","d":"2020-03-16","c":"REPAIR","i":"blog-images/5392.png"},
+{"t":"世界上沒有什麼凹痕是一顆C4不能解決的，如果有，那就兩顆！ &#8211; 【Volvo V60 凹痕修復】","u":"https://www.tar-tw.com/%e4%b8%96%e7%95%8c%e4%b8%8a%e6%b2%92%e6%9c%89%e4%bb%80%e9%ba%bc%e5%87%b9%e7%97%95%e6%98%af%e4%b8%80%e9%a1%86c4%e4%b8%8d%e8%83%bd%e8%a7%a3%e6%b1%ba%e7%9a%84%ef%bc%8c%e5%a6%82%e6%9e%9c%e6%9c%89%ef%bc%8c","d":"2020-03-16","c":"REPAIR","i":"blog-images/5387.jpg"},
+{"t":"HINO 500 日野巨獸 凹痕修復","u":"https://www.tar-tw.com/hino-500-%e6%97%a5%e9%87%8e%e5%b7%a8%e7%8d%b8-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2020-03-16","c":"REPAIR","i":"blog-images/5382.jpg"},
+{"t":"不怕沒錢修，怕的是有錢也不能修 &#8211; 裕隆日產 Nissan Kicks 凹痕修復","u":"https://www.tar-tw.com/%e4%b8%8d%e6%80%95%e6%b2%92%e9%8c%a2%e4%bf%ae%ef%bc%8c%e6%80%95%e7%9a%84%e6%98%af%e6%9c%89%e9%8c%a2%e4%b9%9f%e4%b8%8d%e8%83%bd%e4%bf%ae-%e8%a3%95%e9%9a%86%e6%97%a5%e7%94%a2-nissan-kicks-%e5%87%b9","d":"2020-03-16","c":"REPAIR","i":"blog-images/5378.jpg"},
+{"t":"鋁合金車身撞擊難鈑金　撞上特斯拉　維修費高","u":"https://www.tar-tw.com/%e9%8b%81%e5%90%88%e9%87%91%e8%bb%8a%e8%ba%ab%e6%92%9e%e6%93%8a%e9%9b%a3%e9%88%91%e9%87%91%e3%80%80%e6%92%9e%e4%b8%8a%e7%89%b9%e6%96%af%e6%8b%89%e3%80%80%e7%b6%ad%e4%bf%ae%e8%b2%bb%e9%ab%98","d":"2020-03-16","c":"REPAIR","i":"blog-images/5374.jpg"},
+{"t":"BMW 1series 前葉超深大面積","u":"https://www.tar-tw.com/bmw-1series-%e5%89%8d%e8%91%89%e8%b6%85%e6%b7%b1%e5%a4%a7%e9%9d%a2%e7%a9%8d","d":"2020-03-16","c":"REPAIR","i":"blog-images/5369.jpg"},
+{"t":"是什麼樣的凹痕，讓車主如此焦急地尋求幫助？？","u":"https://www.tar-tw.com/%e6%98%af%e4%bb%80%e9%ba%bc%e6%a8%a3%e7%9a%84%e5%87%b9%e7%97%95%ef%bc%8c%e8%ae%93%e8%bb%8a%e4%b8%bb%e5%a6%82%e6%ad%a4%e7%84%a6%e6%80%a5%e5%9c%b0%e5%b0%8b%e6%b1%82%e5%b9%ab%e5%8a%a9%ef%bc%9f%ef%bc%9f","d":"2020-03-16","c":"REPAIR","i":"blog-images/5364.jpg"},
+{"t":"有種任務是老闆交代上天下海赴湯蹈火也要使命必達！ Benz GLC400 左前葉大深凹痕修復","u":"https://www.tar-tw.com/%e6%9c%89%e7%a8%ae%e4%bb%bb%e5%8b%99%e6%98%af%e8%80%81%e9%97%86%e4%ba%a4%e4%bb%a3%e4%b8%8a%e5%a4%a9%e4%b8%8b%e6%b5%b7%e8%b5%b4%e6%b9%af%e8%b9%88%e7%81%ab%e4%b9%9f%e8%a6%81%e4%bd%bf%e5%91%bd%e5%bf%85","d":"2020-03-16","c":"REPAIR","i":"blog-images/5359.jpg"},
+{"t":"本田 Honda CRV 凹痕修復","u":"https://www.tar-tw.com/%e6%9c%ac%e7%94%b0-honda-crv-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2020-03-16","c":"REPAIR","i":"blog-images/5355.jpg"},
+{"t":"Tesla Model3 全車鋁合金 特斯拉凹痕修復","u":"https://www.tar-tw.com/tesla-model3-%e5%85%a8%e8%bb%8a%e9%8b%81%e5%90%88%e9%87%91-%e7%89%b9%e6%96%af%e6%8b%89%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2020-03-16","c":"REPAIR","i":"blog-images/5350.jpg"},
+{"t":"2020凹痕修復教學的第一批學生畢業啦！","u":"https://www.tar-tw.com/%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e6%95%99%e5%ad%b8%e8%aa%b2%e7%a8%8b-2","d":"2020-03-10","c":"TRAINING","i":"blog-images/5346.jpg"},
+{"t":"卓越 PDR凹痕修復技術教學課程 &#8211; 前進原廠","u":"https://www.tar-tw.com/%e5%8e%9f%e5%bb%a0%e6%8a%80%e8%a1%93%e6%95%99%e5%ad%b8%e8%aa%b2%e7%a8%8b","d":"2020-03-10","c":"TRAINING","i":"blog-images/5340.jpg"},
+{"t":"Mecedes E63S 汽車清潔打蠟紀錄外加全車高溫蒸氣殺菌消毒｜修完凹痕也不忘了幫車車洗乾淨","u":"https://www.tar-tw.com/%e6%ad%a1%e8%bf%8e%e5%85%89%e8%87%a8superior%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9-2","d":"2020-03-10","c":"REPAIR","i":"blog-images/5337.jpg"},
+{"t":"極深極硬！Porsche保時捷 鋁合金凹痕修復","u":"https://www.tar-tw.com/%e6%a5%b5%e6%b7%b1%e6%a5%b5%e7%a1%ac%ef%bc%81porsche%e4%bf%9d%e6%99%82%e6%8d%b7-%e9%8b%81%e5%90%88%e9%87%91%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-12-30","c":"REPAIR","i":"blog-images/5303.jpg"},
+{"t":"【暖男凹痕修復】 TOYOTA 豐田 大面積深凹痕修復","u":"https://www.tar-tw.com/%e3%80%90%e6%9a%96%e7%94%b7%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e3%80%91-toyota-%e8%b1%90%e7%94%b0-%e5%a4%a7%e9%9d%a2%e7%a9%8d%e6%b7%b1%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-12-30","c":"REPAIR","i":"blog-images/5300.jpg"},
+{"t":"福斯 Volkswagen GOLF 前後葉大傷 凹痕修復","u":"https://www.tar-tw.com/%e7%a6%8f%e6%96%af-volkswagen-golf-%e5%89%8d%e5%be%8c%e8%91%89%e5%a4%a7%e5%82%b7-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-12-30","c":"REPAIR","i":"blog-images/5297.jpg"},
+{"t":"今天不PO凹痕修復，我們PO修復下巴 &#8211; 馬自達 Mazda6 保桿修復","u":"https://www.tar-tw.com/%e4%bb%8a%e5%a4%a9%e4%b8%8dpo%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%ef%bc%8c%e6%88%91%e5%80%91po%e4%bf%ae%e5%be%a9%e4%b8%8b%e5%b7%b4-%e9%a6%ac%e8%87%aa%e9%81%94-mazda6-%e4%bf%9d%e6%a1%bf%e4%bf%ae","d":"2019-12-30","c":"REPAIR","i":"blog-images/5294.jpg"},
+{"t":"極深！挑戰怪物級凹痕 LEXUS","u":"https://www.tar-tw.com/%e6%a5%b5%e6%b7%b1%ef%bc%81%e6%8c%91%e6%88%b0%e6%80%aa%e7%89%a9%e7%b4%9a%e5%87%b9%e7%97%95-lexus","d":"2019-12-30","c":"REPAIR","i":"blog-images/5289.jpg"},
+{"t":"【台北店神速修復手】BENZ 賓士 下車身凹痕修復","u":"https://www.tar-tw.com/%e3%80%90%e5%8f%b0%e5%8c%97%e5%ba%97%e7%a5%9e%e9%80%9f%e4%bf%ae%e5%be%a9%e6%89%8b%e3%80%91benz-%e8%b3%93%e5%a3%ab-%e4%b8%8b%e8%bb%8a%e8%ba%ab%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-12-30","c":"REPAIR","i":"blog-images/5286.jpg"},
+{"t":"什麼是藝術？TOYOTA PRIUS 豐田 凹痕修復","u":"https://www.tar-tw.com/%e4%bb%80%e9%ba%bc%e6%98%af%e8%97%9d%e8%a1%93%ef%bc%9ftoyota-prius-%e8%b1%90%e7%94%b0-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-12-30","c":"REPAIR","i":"blog-images/5283.jpg"},
+{"t":"【困擾的問題】 納智捷 LUXGEN S5 GT225 凹痕修復","u":"https://www.tar-tw.com/%e3%80%90%e5%9b%b0%e6%93%be%e7%9a%84%e5%95%8f%e9%a1%8c%e3%80%91-%e7%b4%8d%e6%99%ba%e6%8d%b7-luxgen-s5-gt225-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-11-29","c":"REPAIR","i":"blog-images/5268.jpg"},
+{"t":"福斯 Volkswagen GOLF GTI 「二次」凹痕修復","u":"https://www.tar-tw.com/%e7%a6%8f%e6%96%af-volkswagen-golf-gti-%e3%80%8c%e4%ba%8c%e6%ac%a1%e3%80%8d%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-11-29","c":"REPAIR","i":"blog-images/5264.jpg"},
+{"t":"一台車上的凹痕是一瞬間的事情 豐田 Altis 凹痕修復","u":"https://www.tar-tw.com/%e4%b8%80%e5%8f%b0%e8%bb%8a%e4%b8%8a%e7%9a%84%e5%87%b9%e7%97%95%e6%98%af%e4%b8%80%e7%9e%ac%e9%96%93%e7%9a%84%e4%ba%8b%e6%83%85-%e8%b1%90%e7%94%b0-altis-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-11-29","c":"REPAIR","i":"blog-images/5261.jpg"},
+{"t":"AUDI A3 奧迪 凹痕修復","u":"https://www.tar-tw.com/audi-a3-%e5%a5%a7%e8%bf%aa-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-11-29","c":"REPAIR","i":"blog-images/5258.jpg"},
+{"t":"Mazda CX3 馬自達凹痕修復","u":"https://www.tar-tw.com/mazda-cx3-%e9%a6%ac%e8%87%aa%e9%81%94%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-10-28","c":"REPAIR","i":"blog-images/5217.jpg"},
+{"t":"凌志LENXUS NX200t凹痕修復","u":"https://www.tar-tw.com/%e5%87%8c%e5%bf%97lenxus-nx200t%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-10-28","c":"REPAIR","i":"blog-images/5213.jpg"},
+{"t":"寶馬 BMW 凹痕修復","u":"https://www.tar-tw.com/%e5%af%b6%e9%a6%ac-bmw-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-10-28","c":"REPAIR","i":"blog-images/5209.jpg"},
+{"t":"最遙遠的距離 Benz C class賓士凹痕修復","u":"https://www.tar-tw.com/%e6%9c%80%e9%81%99%e9%81%a0%e7%9a%84%e8%b7%9d%e9%9b%a2-benz-c-class%e8%b3%93%e5%a3%ab%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-10-28","c":"REPAIR","i":"blog-images/5205.jpg"},
+{"t":"車子左邊被撞了一下，該如何是好？？福特Mondeokl凹痕修復","u":"https://www.tar-tw.com/%e8%bb%8a%e5%ad%90%e5%b7%a6%e9%82%8a%e8%a2%ab%e6%92%9e%e4%ba%86%e4%b8%80%e4%b8%8b%ef%bc%8c%e8%a9%b2%e5%a6%82%e4%bd%95%e6%98%af%e5%a5%bd%ef%bc%9f%ef%bc%9f%e7%a6%8f%e7%89%b9mondeokl%e5%87%b9%e7%97%95","d":"2019-10-28","c":"REPAIR","i":"blog-images/5202.jpg"},
+{"t":"歡迎光臨SUPERIOR凹痕修復｜汽車板金雕刻藝術附加美容鍍膜全紀錄｜公開透明讓人放心的維修過程去哪裡找？FORD MUSTANG凹痕修復","u":"https://www.tar-tw.com/%e6%ad%a1%e8%bf%8e%e5%85%89%e8%87%a8superior%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-10-17","c":"REPAIR","i":"blog-images/5197.jpg"},
+{"t":"扯！前店家推到尖點漆裂 寶馬凹痕修復 我們是怎麼修的","u":"https://www.tar-tw.com/%e6%89%af%ef%bc%81%e5%89%8d%e5%ba%97%e5%ae%b6%e6%8e%a8%e5%88%b0%e5%b0%96%e9%bb%9e%e6%bc%86%e8%a3%82-%e5%af%b6%e9%a6%ac%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9-%e6%88%91%e5%80%91%e6%98%af%e6%80%8e%e9%ba%bc","d":"2019-10-04","c":"REPAIR","i":"blog-images/5186.jpg"},
+{"t":"又是這台！難怪大家搶著買&#x1f525;&#x1f525;&#x1f525;｜豐田 TOYOTA RAV4 微鈑金凹痕修復","u":"https://www.tar-tw.com/%e5%8f%88%e6%98%af%e9%80%99%e5%8f%b0%ef%bc%81%e9%9b%a3%e6%80%aa%e5%a4%a7%e5%ae%b6%e6%90%b6%e8%91%97%e8%b2%b7%f0%9f%94%a5%f0%9f%94%a5%f0%9f%94%a5%ef%bd%9c%e8%b1%90%e7%94%b0-toyota-rav4-%e5%be%ae","d":"2019-10-03","c":"REPAIR","i":"blog-images/5184.jpg"},
+{"t":"BMW 118i 凹痕修復","u":"https://www.tar-tw.com/bmw-118i-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-09-27","c":"REPAIR","i":"blog-images/5181.jpg"},
+{"t":"開口笑怎麼辦呢？Mazda3 凹痕修復","u":"https://www.tar-tw.com/%e9%96%8b%e5%8f%a3%e7%ac%91%e6%80%8e%e9%ba%bc%e8%be%a6%e5%91%a2%ef%bc%9fmazda3-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-09-27","c":"REPAIR","i":"blog-images/5178.jpg"},
+{"t":"這是真的，我們真的修好了！Subaru Forester 凹痕修復｜Superior 卓越凹痕修復｜微鈑金快速修復","u":"https://www.tar-tw.com/%e9%80%99%e6%98%af%e7%9c%9f%e7%9a%84%ef%bc%8c%e6%88%91%e5%80%91%e7%9c%9f%e7%9a%84%e4%bf%ae%e5%a5%bd%e4%ba%86%ef%bc%81subaru-forester-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%ef%bd%9csuperior","d":"2019-09-27","c":"REPAIR","i":"blog-images/5175.jpg"},
+{"t":"Volkswagen Golf 凹痕修復","u":"https://www.tar-tw.com/volkswagen-golf-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-09-27","c":"REPAIR","i":"blog-images/5171.jpg"},
+{"t":"凹痕修復價格評估流程介紹｜公開透明的價格量尺與標準｜獨家ERP資料管理整合系統","u":"https://www.tar-tw.com/pdr%e5%be%ae%e9%88%91%e9%87%91%e4%bf%ae%e5%be%a9%e5%89%8d%e5%bf%85%e7%9c%8b%e5%bf%85%e7%9c%8b%e5%bf%85%e7%9c%8blexus-is300%e9%8b%81%e5%90%88%e9%87%91%e5%bc%95%e6%93%8e%e8%93%8b%e5%87%b9%e7%97%95-2-2-5","d":"2019-09-20","c":"REPAIR","i":"blog-images/5169.jpg"},
+{"t":"Benz 後尾門超級深凹","u":"https://www.tar-tw.com/benz-%e5%be%8c%e5%b0%be%e9%96%80%e8%b6%85%e7%b4%9a%e6%b7%b1%e5%87%b9","d":"2019-09-16","c":"REPAIR","i":"blog-images/5163.jpg"},
+{"t":"對不起，這種傷我們也能做","u":"https://www.tar-tw.com/%e5%b0%8d%e4%b8%8d%e8%b5%b7%ef%bc%8c%e9%80%99%e7%a8%ae%e5%82%b7%e6%88%91%e5%80%91%e4%b9%9f%e8%83%bd%e5%81%9a","d":"2019-09-16","c":"REPAIR","i":"blog-images/5160.jpg"},
+{"t":"汽車板金猛爆全世界│狂賀2019俄羅斯喀山技職奧運勇奪銀牌│南強工商汽車科國手顏翔昱","u":"https://www.tar-tw.com/%e6%b1%bd%e8%bb%8a%e6%9d%bf%e9%87%91%e7%8c%9b%e7%88%86%e5%85%a8%e4%b8%96%e7%95%8c%e2%94%82%e7%8b%82%e8%b3%802019%e4%bf%84%e7%be%85%e6%96%af%e5%96%80%e5%b1%b1%e6%8a%80%e8%81%b7%e5%a5%a7%e9%81%8b","d":"2019-09-03","c":"COMPETITION","i":"blog-images/5156.jpg"},
+{"t":"TOYOTA RAV4 凹痕修復","u":"https://www.tar-tw.com/toyota-rav4-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-08-30","c":"REPAIR","i":"blog-images/5153.jpg"},
+{"t":"Porsche macan 凹痕修復","u":"https://www.tar-tw.com/porsche-macan-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-08-30","c":"REPAIR","i":"blog-images/5150.jpg"},
+{"t":"貨真價實的PDR凹痕修復、微鈑金│尾門立體的車身線條撞歪腰惹｜卓越的免烤漆鈑金技術｜免補土免烤漆的高品質修復","u":"https://www.tar-tw.com/pdr%e5%be%ae%e9%88%91%e9%87%91%e4%bf%ae%e5%be%a9%e5%89%8d%e5%bf%85%e7%9c%8b%e5%bf%85%e7%9c%8b%e5%bf%85%e7%9c%8blexus-is300%e9%8b%81%e5%90%88%e9%87%91%e5%bc%95%e6%93%8e%e8%93%8b%e5%87%b9%e7%97%95-2-2-4","d":"2019-08-29","c":"TECHNIQUE","i":"blog-images/5145.jpg"},
+{"t":"修鈑金修到暴頭，這是一個嘔心瀝血的作品｜Volkswagen T5｜台中凹痕修復專家｜台中專業微鈑金","u":"https://www.tar-tw.com/pdr%e5%be%ae%e9%88%91%e9%87%91%e4%bf%ae%e5%be%a9%e5%89%8d%e5%bf%85%e7%9c%8b%e5%bf%85%e7%9c%8b%e5%bf%85%e7%9c%8blexus-is300%e9%8b%81%e5%90%88%e9%87%91%e5%bc%95%e6%93%8e%e8%93%8b%e5%87%b9%e7%97%95-2-2-3","d":"2019-08-29","c":"REPAIR","i":"blog-images/5142.jpg"},
+{"t":"凹痕到底大不大？","u":"https://www.tar-tw.com/%e5%87%b9%e7%97%95%e5%88%b0%e5%ba%95%e5%a4%a7%e4%b8%8d%e5%a4%a7%ef%bc%9f","d":"2019-08-23","c":"REPAIR","i":"blog-images/5139.jpg"},
+{"t":"BMW X3凹痕修復 車身線條嚴重塌陷","u":"https://www.tar-tw.com/bmw-x3%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9-%e8%bb%8a%e8%ba%ab%e7%b7%9a%e6%a2%9d%e5%9a%b4%e9%87%8d%e5%a1%8c%e9%99%b7","d":"2019-08-23","c":"REPAIR","i":"blog-images/5136.jpg"},
+{"t":"Dent Time Advanced PDR Training｜Newest and More Convenient tools Learning｜","u":"https://www.tar-tw.com/pdr%e5%be%ae%e9%88%91%e9%87%91%e4%bf%ae%e5%be%a9%e5%89%8d%e5%bf%85%e7%9c%8b%e5%bf%85%e7%9c%8b%e5%bf%85%e7%9c%8blexus-is300%e9%8b%81%e5%90%88%e9%87%91%e5%bc%95%e6%93%8e%e8%93%8b%e5%87%b9%e7%97%95-2-2-2","d":"2019-08-23","c":"REPAIR","i":"blog-images/5134.jpg"},
+{"t":"美國PDR進階技術訓練，就讓卓越凹痕修復、名倫凹痕修復及凹痕車庫來告訴你！","u":"https://www.tar-tw.com/pdr%e5%be%ae%e9%88%91%e9%87%91%e4%bf%ae%e5%be%a9%e5%89%8d%e5%bf%85%e7%9c%8b%e5%bf%85%e7%9c%8b%e5%bf%85%e7%9c%8blexus-is300%e9%8b%81%e5%90%88%e9%87%91%e5%bc%95%e6%93%8e%e8%93%8b%e5%87%b9%e7%97%95-2-2","d":"2019-08-23","c":"TRAINING","i":"blog-images/5132.jpg"},
+{"t":"跟他拚了皮卡超硬轉角鈑金｜到府牽車到府維修通通來｜FORD RANGER微鈑金凹痕修復","u":"https://www.tar-tw.com/pdr%e5%be%ae%e9%88%91%e9%87%91%e4%bf%ae%e5%be%a9%e5%89%8d%e5%bf%85%e7%9c%8b%e5%bf%85%e7%9c%8b%e5%bf%85%e7%9c%8blexus-is300%e9%8b%81%e5%90%88%e9%87%91%e5%bc%95%e6%93%8e%e8%93%8b%e5%87%b9%e7%97%95-2","d":"2019-08-23","c":"REPAIR","i":"blog-images/5130.jpg"},
+{"t":"Ford Mondeo凹痕修復","u":"https://www.tar-tw.com/ford-mondeo%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-08-08","c":"REPAIR","i":"blog-images/5125.jpg"},
+{"t":"這次不是修車！","u":"https://www.tar-tw.com/%e9%80%99%e6%ac%a1%e4%b8%8d%e6%98%af%e4%bf%ae%e8%bb%8a%ef%bc%81","d":"2019-07-31","c":"REPAIR","i":"blog-images/5114.jpg"},
+{"t":"師傅要崩潰啦～～！ Mini coopers凹痕修復","u":"https://www.tar-tw.com/%e5%b8%ab%e5%82%85%e8%a6%81%e5%b4%a9%e6%bd%b0%e5%95%a6%ef%bd%9e%ef%bd%9e%ef%bc%81-mini-coopers%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-07-26","c":"REPAIR","i":"blog-images/5107.jpg"},
+{"t":"加倍的義大利浪漫 VESPA 偉士牌重機凹痕修復","u":"https://www.tar-tw.com/%e5%8a%a0%e5%80%8d%e7%9a%84%e7%be%a9%e5%a4%a7%e5%88%a9%e6%b5%aa%e6%bc%ab-vespa-%e5%81%89%e5%a3%ab%e7%89%8c%e9%87%8d%e6%a9%9f%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-07-26","c":"REPAIR","i":"blog-images/5102.jpg"},
+{"t":"菁英怪大凹痕！ Mini clubman凹痕修復","u":"https://www.tar-tw.com/%e8%8f%81%e8%8b%b1%e6%80%aa%e5%a4%a7%e5%87%b9%e7%97%95%ef%bc%81-mini-clubman%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-07-19","c":"REPAIR","i":"blog-images/5081.jpg"},
+{"t":"抓到兇手了！ HYUNDAI Tucson凹痕修復","u":"https://www.tar-tw.com/%e6%8a%93%e5%88%b0%e5%85%87%e6%89%8b%e4%ba%86%ef%bc%81-hyundai-tucson%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-07-19","c":"REPAIR","i":"blog-images/5077.jpg"},
+{"t":"一個禮拜內最常接到的凹痕修復是什麼樣的傷呢？","u":"https://www.tar-tw.com/%e4%b8%80%e5%80%8b%e7%a6%ae%e6%8b%9c%e5%85%a7%e6%9c%80%e5%b8%b8%e6%8e%a5%e5%88%b0%e7%9a%84%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e6%98%af%e4%bb%80%e9%ba%bc%e6%a8%a3%e7%9a%84%e5%82%b7%e5%91%a2%ef%bc%9f","d":"2019-07-15","c":"REPAIR","i":"blog-images/5074.jpg"},
+{"t":"下車身稜線大凹 &#8211; BMW X6凹痕修復","u":"https://www.tar-tw.com/%e4%b8%8b%e8%bb%8a%e8%ba%ab%e7%a8%9c%e7%b7%9a%e5%a4%a7%e5%87%b9-bmw-x6%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-07-15","c":"REPAIR","i":"blog-images/5071.jpg"},
+{"t":"TOYOTA RAV4凹痕修復 &#8211; 你/妳，可以再靠近一點","u":"https://www.tar-tw.com/toyota-rav4%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9-%e4%bd%a0-%e5%a6%b3%ef%bc%8c%e5%8f%af%e4%bb%a5%e5%86%8d%e9%9d%a0%e8%bf%91%e4%b8%80%e9%bb%9e","d":"2019-07-05","c":"REPAIR","i":"blog-images/5066.jpg"},
+{"t":"我的凹痕能不能修？ &#8211; Mazda凹痕修復 馬三的前葉輪拱凹","u":"https://www.tar-tw.com/%e6%88%91%e7%9a%84%e5%87%b9%e7%97%95%e8%83%bd%e4%b8%8d%e8%83%bd%e4%bf%ae%ef%bc%9f-mazda%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9-%e9%a6%ac%e4%b8%89%e7%9a%84%e5%89%8d%e8%91%89%e8%bc%aa%e6%8b%b1%e5%87%b9","d":"2019-07-01","c":"REPAIR","i":"blog-images/5062.jpg"},
+{"t":"Superior 卓越凹痕修復 BMW M3凹痕修復 C柱大凹","u":"https://www.tar-tw.com/%e5%9c%a8%e5%a4%a7%e9%9b%a8%e4%b8%ad%e7%9b%b8%e9%81%87-bmw%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9-m3-c%e6%9f%b1%e5%a4%a7%e5%87%b9","d":"2019-06-28","c":"REPAIR","i":"blog-images/5051.jpg"},
+{"t":"卓越領隊，同業參與美國聖地牙哥進階PDR訓練課程","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a%e9%a0%98%e9%9a%8a%ef%bc%8c%e5%90%8c%e6%a5%ad%e5%8f%83%e8%88%87%e7%be%8e%e5%9c%8b%e8%81%96%e5%9c%b0%e7%89%99%e5%93%a5%e9%80%b2%e9%9a%8epdr%e8%a8%93%e7%b7%b4%e8%aa%b2%e7%a8%8b","d":"2019-06-24","c":"TRAINING","i":"blog-images/5041.jpg"},
+{"t":"SUPERIOR卓越順利取得美國國際汽車權威機構IMI的HYBRID/EV電動車的維修資格認可","u":"https://www.tar-tw.com/superior%e5%8d%93%e8%b6%8a%e9%a0%86%e5%88%a9%e5%8f%96%e5%be%97%e7%be%8e%e5%9c%8b%e5%9c%8b%e9%9a%9b%e6%b1%bd%e8%bb%8a%e6%ac%8a%e5%a8%81%e6%a9%9f%e6%a7%8bimi%e7%9a%84hybrid-ev%e9%9b%bb%e5%8b%95%e8%bb%8a","d":"2019-06-24","c":"REPAIR","i":"blog-images/5030.jpg"},
+{"t":"PDR微鈑金修復前必看必看必看Lexus is300鋁合金引擎蓋凹痕修復","u":"https://www.tar-tw.com/pdr%e5%be%ae%e9%88%91%e9%87%91%e4%bf%ae%e5%be%a9%e5%89%8d%e5%bf%85%e7%9c%8b%e5%bf%85%e7%9c%8b%e5%bf%85%e7%9c%8blexus-is300%e9%8b%81%e5%90%88%e9%87%91%e5%bc%95%e6%93%8e%e8%93%8b%e5%87%b9%e7%97%95","d":"2019-06-24","c":"REPAIR","i":"blog-images/5027.jpg"},
+{"t":"BMW X1 Deep Ding後尾門豪深的凹痕阿","u":"https://www.tar-tw.com/bmw-x1-deep-ding%e5%be%8c%e5%b0%be%e9%96%80%e8%b1%aa%e6%b7%b1%e7%9a%84%e5%87%b9%e7%97%95%e9%98%bf","d":"2019-06-24","c":"REPAIR","i":"blog-images/5024.jpg"},
+{"t":"Mazda CX3車門大面積凹痕的完美修復，免烤漆免補土","u":"https://www.tar-tw.com/mazda-cx3%e8%bb%8a%e9%96%80%e5%a4%a7%e9%9d%a2%e7%a9%8d%e5%87%b9%e7%97%95%e7%9a%84%e5%ae%8c%e7%be%8e%e4%bf%ae%e5%be%a9%ef%bc%8c%e5%85%8d%e7%83%a4%e6%bc%86%e5%85%8d%e8%a3%9c%e5%9c%9f","d":"2019-06-24","c":"REPAIR","i":"blog-images/5020.jpg"},
+{"t":"車身內部鋼樑 &#8211; TOYOTA CHR 前葉輪拱稜線大凹","u":"https://www.tar-tw.com/%e8%bb%8a%e8%ba%ab%e5%85%a7%e9%83%a8%e9%8b%bc%e6%a8%91-toyota-chr-%e5%89%8d%e8%91%89%e8%bc%aa%e6%8b%b1%e7%a8%9c%e7%b7%9a%e5%a4%a7%e5%87%b9","d":"2019-06-21","c":"REPAIR","i":"blog-images/4842.jpg"},
+{"t":"長凹痕 Part II- NISSAN KICKS 車門稜線大面積凹","u":"https://www.tar-tw.com/%e9%95%b7%e5%87%b9%e7%97%95-part-ii-nissan-kicks-%e8%bb%8a%e9%96%80%e7%a8%9c%e7%b7%9a%e5%a4%a7%e9%9d%a2%e7%a9%8d%e5%87%b9","d":"2019-06-21","c":"REPAIR","i":"blog-images/4839.jpg"},
+{"t":"凹痕有多長？辣～麼長！ &#8211; TOYOTA TACOMA 車門長條凹","u":"https://www.tar-tw.com/%e5%87%b9%e7%97%95%e6%9c%89%e5%a4%9a%e9%95%b7%ef%bc%9f%e8%be%a3%ef%bd%9e%e9%ba%bc%e9%95%b7%ef%bc%81-toyota-tacoma-%e8%bb%8a%e9%96%80%e9%95%b7%e6%a2%9d%e5%87%b9","d":"2019-06-12","c":"REPAIR","i":"blog-images/4833.jpg"},
+{"t":"凹痕在哪裡 絕對難不倒你II &#8211; Tesla model x 後尾門鈑金邊緣凹","u":"https://www.tar-tw.com/%e5%87%b9%e7%97%95%e5%9c%a8%e5%93%aa%e8%a3%a1-%e7%b5%95%e5%b0%8d%e9%9b%a3%e4%b8%8d%e5%80%92%e4%bd%a0ii-tesla-model-x-%e5%be%8c%e5%b0%be%e9%96%80%e9%88%91%e9%87%91%e9%82%8a%e7%b7%a3%e5%87%b9","d":"2019-06-12","c":"REPAIR","i":"blog-images/4830.jpg"},
+{"t":"凹痕在哪裡 絕對難不倒你 &#8211; NISSAN KICKS 車門稜線凹","u":"https://www.tar-tw.com/%e5%87%b9%e7%97%95%e5%9c%a8%e5%93%aa%e8%a3%a1-%e7%b5%95%e5%b0%8d%e9%9b%a3%e4%b8%8d%e5%80%92%e4%bd%a0-nissan-kicks-%e8%bb%8a%e9%96%80%e7%a8%9c%e7%b7%9a%e5%87%b9","d":"2019-05-30","c":"REPAIR","i":"blog-images/4826.jpg"},
+{"t":"修復又快又精準才是好技師 &#8211; FORD FOCUS 前葉稜線大凹","u":"https://www.tar-tw.com/%e4%bf%ae%e5%be%a9%e5%8f%88%e5%bf%ab%e5%8f%88%e7%b2%be%e6%ba%96%e6%89%8d%e6%98%af%e5%a5%bd%e6%8a%80%e5%b8%ab-ford-focus-%e5%89%8d%e8%91%89%e7%a8%9c%e7%b7%9a%e5%a4%a7%e5%87%b9","d":"2019-05-30","c":"REPAIR","i":"blog-images/4823.jpg"},
+{"t":"硬碰硬！ &#8211; Volvo V40","u":"https://www.tar-tw.com/%e7%a1%ac%e7%a2%b0%e7%a1%ac%ef%bc%81-volvo-v40","d":"2019-05-21","c":"REPAIR","i":"blog-images/4819.jpg"},
+{"t":"卓越老朋友之一 &#8211; Mazda 3","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a%e8%80%81%e6%9c%8b%e5%8f%8b%e4%b9%8b%e4%b8%80-mazda-3","d":"2019-05-21","c":"REPAIR","i":"blog-images/4816.jpg"},
+{"t":"賓士Mercedes Benz GLC43這樣的大面積凹痕也有辦法修！？","u":"https://www.tar-tw.com/%e9%80%99%e6%a8%a3%e7%9a%84%e5%a4%a7%e9%9d%a2%e7%a9%8d%e5%87%b9%e7%97%95%e4%b9%9f%e6%9c%89%e8%be%a6%e6%b3%95%e4%bf%ae%ef%bc%81%ef%bc%9f-benz-glc43","d":"2019-05-10","c":"REPAIR","i":"blog-images/4796.jpg"},
+{"t":"神秘的力量 &#8211; Benz 300","u":"https://www.tar-tw.com/%e7%a5%9e%e7%a7%98%e7%9a%84%e5%8a%9b%e9%87%8f-benz-300","d":"2019-05-10","c":"REPAIR","i":"blog-images/4793.jpg"},
+{"t":"福斯VW GOLF 輪拱邊緣微鈑金凹痕修復","u":"https://www.tar-tw.com/%e7%a6%8f%e6%96%afvw-golf-%e8%bc%aa%e6%8b%b1%e9%82%8a%e7%b7%a3%e5%be%ae%e9%88%91%e9%87%91%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-05-08","c":"REPAIR","i":"blog-images/4789.jpg"},
+{"t":"2018 IASRE JAPAN PDR競技全紀錄｜日本國際凹痕修復競技錦標賽","u":"https://www.tar-tw.com/2018-iasre-japan-pdr%e7%ab%b6%e6%8a%80%e5%85%a8%e7%b4%80%e9%8c%84%ef%bd%9c%e6%97%a5%e6%9c%ac%e5%9c%8b%e9%9a%9b%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e7%ab%b6%e6%8a%80%e9%8c%a6%e6%a8%99%e8%b3%bd","d":"2019-05-08","c":"REPAIR","i":"blog-images/4786.png"},
+{"t":"對抗VOLVO V60 鈑金硬度王者","u":"https://www.tar-tw.com/%e5%b0%8d%e6%8a%97volvo-v60-%e9%88%91%e9%87%91%e7%a1%ac%e5%ba%a6%e7%8e%8b%e8%80%85","d":"2019-05-08","c":"REPAIR","i":"blog-images/4783.jpg"},
+{"t":"強敵兼老朋友再次出現！ Benz E300　輪拱大面積凹痕","u":"https://www.tar-tw.com/%e5%bc%b7%e6%95%b5%e5%85%bc%e8%80%81%e6%9c%8b%e5%8f%8b%e5%86%8d%e6%ac%a1%e5%87%ba%e7%8f%be%ef%bc%81-benz-e300%e3%80%80%e8%bc%aa%e6%8b%b1%e5%a4%a7%e9%9d%a2%e7%a9%8d%e5%87%b9%e7%97%95","d":"2019-05-08","c":"REPAIR","i":"blog-images/4778.jpg"},
+{"t":"Rolls Royce &#8211; 當幸福(?)來敲門","u":"https://www.tar-tw.com/rolls-royce-%e7%95%b6%e5%b9%b8%e7%a6%8f%e4%be%86%e6%95%b2%e9%96%80","d":"2019-05-08","c":"REPAIR","i":"blog-images/4775.jpg"},
+{"t":"不要低估小凹痕&#8230;有時它們更難修復！ &#8211; MAZDA CX-5","u":"https://www.tar-tw.com/%e3%80%90-%e4%b8%8d%e8%a6%81%e4%bd%8e%e4%bc%b0%e5%b0%8f%e5%87%b9%e7%97%95-%e6%9c%89%e6%99%82%e5%ae%83%e5%80%91%e6%9b%b4%e9%9b%a3%e4%bf%ae%e5%be%a9%ef%bc%81-mazda-cx-5-%e3%80%91","d":"2019-05-08","c":"REPAIR","i":"blog-images/4771.jpg"},
+{"t":"MINICOOPER 大逃殺","u":"https://www.tar-tw.com/mini-cooper-ii","d":"2019-05-08","c":"REPAIR","i":"blog-images/4764.jpg"},
+{"t":"MINI COOPER &#8211; 長形摺線凹痕","u":"https://www.tar-tw.com/mini-cooper","d":"2019-05-08","c":"REPAIR","i":"blog-images/4761.jpg"},
+{"t":"【台中PDR學生 &#8211; 從印尼來的小鮮肉Andy】","u":"https://www.tar-tw.com/%e3%80%90%e5%8f%b0%e4%b8%ad%e5%ad%b8%e7%94%9f%e5%88%86%e4%ba%ab-%e5%8d%b0%e5%b0%bc%e5%b0%8f%e9%ae%ae%e8%82%89andy%e3%80%91","d":"2019-05-08","c":"REPAIR","i":"blog-images/4756.jpg"},
+{"t":"HONDA CRV後尾門超級深凹痕修復","u":"https://www.tar-tw.com/4752","d":"2019-05-08","c":"REPAIR","i":"blog-images/4752.jpg"},
+{"t":"凹痕兩相好 Lexus nx200t","u":"https://www.tar-tw.com/4751","d":"2019-05-08","c":"REPAIR","i":"blog-images/4751.jpg"},
+{"t":"TOYOTA CAMRY &#8211; 左前葉大面積凹","u":"https://www.tar-tw.com/toyota-camry","d":"2019-05-08","c":"REPAIR","i":"blog-images/4748.jpg"},
+{"t":"Volkswagen TIGUAN &#8211; 常見也難修的下車身稜線凹痕","u":"https://www.tar-tw.com/volkswagen-tiguan","d":"2019-05-08","c":"REPAIR","i":"blog-images/4744.jpg"},
+{"t":"MINI COOPER CLUBMAN嚴重大面積變形的鈑金","u":"https://www.tar-tw.com/mini-cooper-clubman","d":"2019-05-08","c":"REPAIR","i":"blog-images/4735.jpg"},
+{"t":"BENZ E300 &#8211; 下車身稜線深凹","u":"https://www.tar-tw.com/benz-e300","d":"2019-05-08","c":"REPAIR","i":"blog-images/4736.jpg"},
+{"t":"LEXUS NX200 &#8211; 有本事不鑽洞","u":"https://www.tar-tw.com/lexus-nx200","d":"2019-05-08","c":"REPAIR","i":"blog-images/4730.jpg"},
+{"t":"金門Hyundai Elantra全車凹痕修復","u":"https://www.tar-tw.com/%e9%87%91%e9%96%80hyundai-elantra%e5%85%a8%e8%bb%8a%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2019-05-08","c":"REPAIR","i":"blog-images/4728.jpg"},
+{"t":"BMW M4 &#8211; 如果凹痕出現在特殊色的車身上","u":"https://www.tar-tw.com/bmw-m4","d":"2019-05-08","c":"REPAIR","i":"blog-images/4723.jpg"},
+{"t":"TESLA MODEL X鷗翼車門凹痕修復/微鈑金作品","u":"https://www.tar-tw.com/tesla-model-x","d":"2019-05-08","c":"REPAIR","i":"blog-images/4721.jpg"},
+{"t":"TOYOTA PREVIA &#8211; 後葉子鈑深凹","u":"https://www.tar-tw.com/toyota-previa","d":"2019-05-08","c":"REPAIR","i":"blog-images/4718.jpg"},
+{"t":"賓士Mercedes BENZ A250後尾門超應超難做凹痕修復","u":"https://www.tar-tw.com/%e8%b3%93%e5%a3%abmercedes-benz-a250","d":"2019-05-08","c":"REPAIR","i":"blog-images/4712.png"},
+{"t":"SYM重機油箱MPDR凹陷修復","u":"https://www.tar-tw.com/sym%e9%87%8d%e6%a9%9f%e6%b2%b9%e7%ae%b1mpdr%e5%87%b9%e9%99%b7%e4%bf%ae%e5%be%a9%ef%bd%9c%e9%87%8d%e6%a9%9f%e6%97%8f%e7%be%a4%e4%b8%8d%e5%8f%af%e4%b8%8d%e7%9f%a5%e7%9a%84%e5%85%a8%e6%96%b0%e4%bf%ae","d":"2019-05-08","c":"REPAIR","i":"blog-images/4710.jpg"},
+{"t":"馬自達Mazda CX3大面積的完美修復，免烤漆免補土","u":"https://www.tar-tw.com/%e9%a6%ac%e8%87%aa%e9%81%94mazda-cx3-%e5%a4%a7%e9%9d%a2%e7%a9%8d%e7%9a%84%e5%ae%8c%e7%be%8e%e4%bf%ae%e5%be%a9%ef%bc%8c%e5%85%8d%e7%83%a4%e6%bc%86%e5%85%8d%e8%a3%9c%e5%9c%9f","d":"2019-05-08","c":"REPAIR","i":"blog-images/4706.jpg"},
+{"t":"Volkswagen GOLF","u":"https://www.tar-tw.com/volkswagen-golf-%e8%8b%a5%e5%87%b9%e7%97%95%e6%98%af%e8%bb%8a%e4%b8%bb%e7%9a%84%e5%a4%a2%e9%9d%a8%ef%bc%8c%e5%8d%93%e8%b6%8a%e5%b0%b1%e6%98%af%e8%bb%8a%e4%b8%bb%e7%9a%84%e6%95%91%e6%98%9f-%ef%bd%9csup","d":"2019-05-08","c":"REPAIR","i":"blog-images/4695.jpg"},
+{"t":"MAZDA3 前葉子鈑深長凹痕｜微鈑金快速修復","u":"https://www.tar-tw.com/mazda-3","d":"2019-05-08","c":"REPAIR","i":"blog-images/4693.jpg"},
+{"t":"Honda Odyssey 後尾門大面積凹痕修復/微鈑金","u":"https://www.tar-tw.com/honda-odyssey-%e5%be%8c%e5%b0%be%e9%96%80%e5%a4%a7%e9%9d%a2%e7%a9%8d%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9-%e5%be%ae%e9%88%91%e9%87%91","d":"2019-05-08","c":"REPAIR","i":"blog-images/4689.jpg"},
+{"t":"2019 卓越春節過年公告","u":"https://www.tar-tw.com/2019-%e5%8d%93%e8%b6%8a%e6%98%a5%e7%af%80%e9%81%8e%e5%b9%b4%e5%85%ac%e5%91%8a","d":"2019-02-02","c":"REPAIR","i":"blog-images/4244.jpg"},
+{"t":"日本 IASRE &#8211; PDR 競賽(經驗累積篇)","u":"https://www.tar-tw.com/%e6%97%a5%e6%9c%ac-iasre-pdr-%e7%ab%b6%e8%b3%bd%e7%b6%93%e9%a9%97%e7%b4%af%e7%a9%8d%e7%af%87","d":"2019-01-05","c":"COMPETITION","i":"blog-images/4156.jpg"},
+{"t":"日本 IASRE &#8211; PDR 競賽(國際篇)","u":"https://www.tar-tw.com/%e6%97%a5%e6%9c%ac-iasre-pdr-%e7%ab%b6%e8%b3%bd","d":"2019-01-05","c":"COMPETITION","i":"blog-images/4145.jpg"},
+{"t":"PDR專業工具推薦 &#8211; MUST HAVE","u":"https://www.tar-tw.com/superior-pdr-training-center-dent-master-%e7%95%a2%e6%a5%ad-2","d":"2019-01-05","c":"TECHNIQUE","i":"blog-images/4142.jpg"},
+{"t":"Superior PDR Training Center &#8211; Dent Master 畢業","u":"https://www.tar-tw.com/superior-pdr-training-center-dent-master-%e7%95%a2%e6%a5%ad","d":"2019-01-05","c":"TRAINING","i":"blog-images/4140.jpg"},
+{"t":"專業來自於持續精進技術","u":"https://www.tar-tw.com/%e5%b0%88%e6%a5%ad%e4%be%86%e8%87%aa%e6%96%bc%e6%8c%81%e7%ba%8c%e7%b2%be%e9%80%b2%e6%8a%80%e8%a1%93","d":"2018-11-17","c":"TECHNIQUE","i":"blog-images/3949.jpg"},
+{"t":"凹痕修復專家- 這就是23年紮紮實實的車體鈑金","u":"https://www.tar-tw.com/%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e5%b0%88%e5%ae%b6-%e9%80%99%e5%b0%b1%e6%98%af23%e5%b9%b4%e7%b4%ae%e7%b4%ae%e5%af%a6%e5%af%a6%e7%9a%84%e8%bb%8a%e9%ab%94%e9%88%91%e9%87%91","d":"2018-11-17","c":"REPAIR","i":"blog-images/3947.jpg"},
+{"t":"【店休公告】- 亞洲區凹痕修復進階研討會(11/5~11/8)","u":"https://www.tar-tw.com/%e3%80%90%e5%ba%97%e4%bc%91%e5%85%ac%e5%91%8a%e3%80%91-%e4%ba%9e%e6%b4%b2%e5%8d%80%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e9%80%b2%e9%9a%8e%e7%a0%94%e8%a8%8e%e6%9c%83","d":"2018-11-02","c":"COMPETITION","i":"blog-images/3902.jpg"},
+{"t":"C250 鋁合金的救星 &#8211; 凹痕修復","u":"https://www.tar-tw.com/c250-%e9%8b%81%e5%90%88%e9%87%91%e7%9a%84%e6%95%91%e6%98%9f-%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2018-10-24","c":"REPAIR","i":"blog-images/3897.jpg"},
+{"t":"Dentstage PDR tools 凹痕工廠 &#8211; 上市開賣囉","u":"https://www.tar-tw.com/dentstage-pdr-tools-%e5%87%b9%e7%97%95%e5%b7%a5%e5%bb%a0-%e4%b8%8a%e5%b8%82%e9%96%8b%e8%b3%a3%e5%9b%89","d":"2018-10-18","c":"REPAIR","i":"blog-images/3883.jpg"},
+{"t":"First PDR 3 Days Advanced Training in Taiwan","u":"https://www.tar-tw.com/first-pdr-3-days-advanced-training-in-taiwan","d":"2018-09-03","c":"REPAIR","i":"blog-images/3830.jpg"},
+{"t":"魂動紅Mazda CX-5 折線深V凹痕完美修復","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e4%b8%ad%e5%bf%83-%e9%ad%82%e5%8b%95%e7%b4%85mazda-cx-5-%e6%8a%98%e7%b7%9a%e6%b7%b1v%e5%87%b9%e7%97%95%e5%ae%8c%e7%be%8e%e4%bf%ae%e5%be%a9","d":"2018-08-13","c":"REPAIR","i":"blog-images/3795.jpg"},
+{"t":"卓越凹痕修復中心 &#8211; 原來引擎蓋可以這樣修","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e4%b8%ad%e5%bf%83-%e5%8e%9f%e4%be%86%e5%bc%95%e6%93%8e%e8%93%8b%e5%8f%af%e4%bb%a5%e9%80%99%e6%a8%a3%e4%bf%ae","d":"2018-08-01","c":"REPAIR","i":"blog-images/3751.png"},
+{"t":"卓越凹痕修復 中和旗艦店及台中旗艦店 開幕慶活動","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9-%e4%b8%ad%e5%92%8c%e6%97%97%e8%89%a6%e5%ba%97%e5%8f%8a%e5%8f%b0%e4%b8%ad%e6%97%97%e8%89%a6%e5%ba%97-%e9%96%8b%e5%b9%95%e6%85%b6%e6%b4%bb%e5%8b%95","d":"2018-08-01","c":"NEWS","i":"blog-images/3736.jpg"},
+{"t":"卓越凹痕修復中心 &#8211; 重機油箱凹痕修復","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e4%b8%ad%e5%bf%83-%e9%87%8d%e6%a9%9f%e6%b2%b9%e7%ae%b1%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9","d":"2018-06-13","c":"REPAIR","i":"blog-images/3687.jpg"},
+{"t":"卓越凹痕修復中心 &#8211; 台中旗艦店 Superior PDR Training Center 正式試營運","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e4%b8%ad%e5%bf%83-%e5%8f%b0%e4%b8%ad%e6%97%97%e8%89%a6%e5%ba%97-superior-pdr-training-center-%e6%ad%a3%e5%bc%8f%e8%a9%a6%e7%87%9f%e9%81%8b","d":"2018-05-16","c":"REPAIR","i":"blog-images/3525.jpg"},
+{"t":"PDR 凹痕修復訓練中心(北、中、南) 正式公開招生","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a2017%e5%b9%b4%e7%b5%82%e6%84%9f%e8%ac%9d%e7%a5%ad%e3%80%90%e7%ac%ac%e4%ba%8c%e5%bd%88-%e6%b6%88%e8%b2%bb%e5%a4%a7%e5%84%aa%e6%83%a0%e3%80%91-2-2-2-2","d":"2018-04-25","c":"TRAINING","i":"blog-images/3494.jpg"},
+{"t":"卓越技術推廣培訓教育計畫 &#8211; Archer培訓成功案例","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a2017%e5%b9%b4%e7%b5%82%e6%84%9f%e8%ac%9d%e7%a5%ad%e3%80%90%e7%ac%ac%e4%ba%8c%e5%bd%88-%e6%b6%88%e8%b2%bb%e5%a4%a7%e5%84%aa%e6%83%a0%e3%80%91-2-2-2","d":"2018-02-24","c":"TRAINING","i":"blog-images/2877.jpg"},
+{"t":"卓越技術推廣培訓教育計畫 &#8211; Howe培訓成功案例","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a2017%e5%b9%b4%e7%b5%82%e6%84%9f%e8%ac%9d%e7%a5%ad%e3%80%90%e7%ac%ac%e4%ba%8c%e5%bd%88-%e6%b6%88%e8%b2%bb%e5%a4%a7%e5%84%aa%e6%83%a0%e3%80%91-2-2","d":"2018-02-22","c":"TRAINING","i":"blog-images/2870.jpg"},
+{"t":"卓越技術推廣培訓教育計畫","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a2017%e5%b9%b4%e7%b5%82%e6%84%9f%e8%ac%9d%e7%a5%ad%e3%80%90%e7%ac%ac%e4%ba%8c%e5%bd%88-%e6%b6%88%e8%b2%bb%e5%a4%a7%e5%84%aa%e6%83%a0%e3%80%91-2","d":"2018-02-12","c":"TRAINING","i":"blog-images/2864.jpg"},
+{"t":"卓越2017年終感謝祭【第二彈 消費大優惠】","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a2017%e5%b9%b4%e7%b5%82%e6%84%9f%e8%ac%9d%e7%a5%ad%e3%80%90%e7%ac%ac%e4%ba%8c%e5%bd%88-%e6%b6%88%e8%b2%bb%e5%a4%a7%e5%84%aa%e6%83%a0%e3%80%91","d":"2017-12-14","c":"REPAIR","i":"blog-images/2855.jpg"},
+{"t":"卓越2017年終感謝祭【贈品大放送】","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a%e5%a3%ab%e6%9e%97%e6%97%97%e8%89%a6%e5%ba%97%e5%91%a8%e5%b9%b4%e6%85%b6%e6%b4%bb%e5%8b%95-2","d":"2017-12-04","c":"REPAIR","i":"blog-images/2844.jpg"},
+{"t":"卓越士林旗艦店周年慶活動","u":"https://www.tar-tw.com/%e5%8d%93%e8%b6%8a%e5%a3%ab%e6%9e%97%e6%97%97%e8%89%a6%e5%ba%97%e5%91%a8%e5%b9%b4%e6%85%b6%e6%b4%bb%e5%8b%95","d":"2017-08-01","c":"REPAIR","i":"blog-images/2815.jpg"},
+{"t":"Benz E250 德國SF鍍膜塗層作業","u":"https://www.tar-tw.com/benz-e250-%e5%be%b7%e5%9c%8bsf%e9%8d%8d%e8%86%9c%e5%a1%97%e5%b1%a4%e4%bd%9c%e6%a5%ad","d":"2017-07-07","c":"REPAIR","i":"blog-images/2757.jpg"},
+{"t":"士林旗艦店優惠活動","u":"https://www.tar-tw.com/%e6%9c%80%e6%96%b0%e6%b6%88%e6%81%af4","d":"2017-06-12","c":"REPAIR","i":"blog-images/2352.png"},
+{"t":"卓越凹痕修復日記","u":"https://www.tar-tw.com/%e6%9c%80%e6%96%b0%e6%b6%88%e6%81%af1","d":"2016-12-28","c":"REPAIR","i":"blog-images/2349.png"},
+{"t":"細節決定成敗","u":"https://www.tar-tw.com/%e6%9c%80%e6%96%b0%e6%b6%88%e6%81%af3","d":"2016-12-27","c":"REPAIR","i":"blog-images/2351.jpg"},
+{"t":"Bentley 漆作修復","u":"https://www.tar-tw.com/%e6%9c%80%e6%96%b0%e6%b6%88%e6%81%af2","d":"2016-12-20","c":"REPAIR","i":"blog-images/2350.jpg"}
+];
+
+/* ── CONFIG ── */
+const PAGE_SIZE = 30;
+let currentFilter = 'ALL';
+let showing = PAGE_SIZE;
+
+/* ── RENDER ── */
+function formatDate(d) {
+  return d.replace(/-/g, '.').substring(0,7);
+}
+function catLabel(c) {
+  const m = {COMPETITION:'國際競賽',REPAIR:'修復案例',TRAINING:'教育訓練',TECHNIQUE:'技術知識',NEWS:'品牌動態'};
+  return m[c] || c;
+}
+
+function getFiltered() {
+  if (currentFilter === 'ALL') return ARTICLES;
+  return ARTICLES.filter(a => a.c === currentFilter);
+}
+
+function render() {
+  const filtered = getFiltered();
+  const grid = document.getElementById('articlesGrid');
+  grid.innerHTML = '';
+  const visible = filtered.slice(0, showing);
+  visible.forEach(a => {
+    const card = document.createElement('a');
+    card.className = 'art-card';
+    card.href = a.u;
+    card.target = '_blank';
+    card.rel = 'noopener';
+    card.innerHTML = `
+      <div class="card-thumb">
+        <img src="${a.i}" alt="${a.t}" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'">
+        <div class="thumb-overlay"></div>
+      </div>
+      <div class="card-body">
+        <span class="cat-tag ${a.c}">${catLabel(a.c)}</span>
+        <h4>${a.t}</h4>
+        <div class="art-date">${formatDate(a.d)}</div>
+        <span class="read-more">閱讀全文 →</span>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+  const total = filtered.length;
+  document.getElementById('countInfo').textContent = `顯示 ${Math.min(showing, total)} / ${total} 篇`;
+  document.getElementById('filterCount').textContent = total + ' 篇文章';
+  const btn = document.getElementById('loadMoreBtn');
+  const wrap = document.getElementById('loadMoreWrap');
+  if (showing >= total) {
+    btn.style.display = 'none';
+  } else {
+    btn.style.display = '';
+  }
+  if (total === 0) {
+    grid.innerHTML = '<div style="padding:48px;color:var(--ink-mute);font-family:JetBrains Mono;letter-spacing:.1em;text-align:center;width:100%">NO ARTICLES</div>';
+    wrap.style.display = 'none';
+  } else {
+    wrap.style.display = '';
+  }
+}
+
+/* ── FILTER BUTTONS ── */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    showing = PAGE_SIZE;
+    render();
+    document.getElementById('articlesGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+/* ── LOAD MORE ── */
+document.getElementById('loadMoreBtn').addEventListener('click', () => {
+  showing += PAGE_SIZE;
+  render();
+});
+
+/* ── NAV SCROLL ── */
+const nav = document.getElementById('topnav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 30);
+});
+
+/* ── REVEAL ── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ── INIT ── */
+render();
+</script>
+<script>
+(function(){
+  var nav = document.getElementById('topnav');
+  if(nav){
+    var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 30); };
+    window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  }
+  var btn = document.getElementById('langToggle');
+  var lang = 'zh';
+  function apply(l){
+    lang = l;
+    document.querySelectorAll('#topnav [data-zh]').forEach(function(el){
+      var v = el.getAttribute('data-'+l); if(v!=null) el.textContent = v;
+    });
+    document.querySelectorAll('#langToggle .lang-opt').forEach(function(o){ o.classList.remove('active'); });
+    var act = document.querySelector('#langToggle .lang-opt.'+l); if(act) act.classList.add('active');
+    document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  }
+  if(btn){ btn.addEventListener('click', function(){ apply(lang==='zh'?'en':'zh'); }); }
+})();
+</script>
+</body>
+</html>

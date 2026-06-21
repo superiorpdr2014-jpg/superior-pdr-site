@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>電動車凹痕修復 — SUPERIOR PDR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  /* ─ hero ─ */
+  .svc-hero{padding:180px 48px 120px;position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:url('media/ev-volvo-before.jpg') center/cover no-repeat}
+  .svc-hero::before{content:"";position:absolute;inset:0;background:rgba(7,8,11,.55);z-index:0}
+  .svc-hero .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(ellipse 80% 90% at 30% 50%,#000,transparent 80%)}
+  .svc-hero .inner{max-width:1260px;margin:0 auto;position:relative;z-index:2}
+  .svc-hero h1{font-family:'Bebas Neue';font-size:clamp(52px,7vw,96px);line-height:.95;letter-spacing:.02em;margin:18px 0 24px}
+  .svc-hero .lead{color:var(--ink-dim);font-size:18px;max-width:640px;line-height:1.7;margin:0;text-wrap:pretty}
+
+  /* ─ shared ─ */
+  .sec{max-width:1260px;margin:0 auto;padding:64px 48px}
+  .sec+.sec{border-top:1px solid var(--line)}
+  .sec h2{font-family:'Bebas Neue';font-size:clamp(30px,3.5vw,52px);letter-spacing:.02em;margin:0 0 20px;line-height:1}
+  .sec p{font-size:17px;color:var(--ink-dim);line-height:1.8;max-width:860px;margin:0 0 18px;text-wrap:pretty}
+  .sec p strong{color:var(--ink)}
+
+  /* ─ IMI feature row ─ */
+  .imi-row{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:36px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  @media(max-width:780px){.imi-row{grid-template-columns:1fr}}
+  .imi-photo{position:relative;min-height:340px;background:var(--bg-elev)}
+  .imi-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .imi-text{background:var(--bg-card);padding:40px 44px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+  .imi-badge{display:inline-flex;align-items:center;gap:12px;background:#fff;border-radius:8px;padding:10px 16px;width:fit-content}
+  .imi-badge img{height:40px;width:auto;display:block}
+  .imi-text h3{font-family:'Bebas Neue';font-size:36px;letter-spacing:.04em;color:var(--ink);margin:0;line-height:1.1}
+  .imi-text p{font-size:16px;color:var(--ink-dim);line-height:1.75;margin:0}
+
+  /* ─ challenge two-col ─ */
+  .challenge-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;align-items:stretch}
+  @media(max-width:860px){.challenge-row{grid-template-columns:1fr}}
+  .challenge-video{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000;min-height:300px}
+  .challenge-video video{width:100%;height:100%;object-fit:cover;display:block}
+  .challenge-cards{display:flex;flex-direction:column;gap:16px}
+  .ev-card{background:var(--bg-elev);border:1px solid var(--line);border-radius:12px;padding:28px 30px}
+  .ev-card-tag{font-family:'JetBrains Mono';font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .ev-card h3{font-size:19px;font-weight:700;color:var(--ink);margin:0 0 10px}
+  .ev-card p{font-size:15px;color:var(--ink-dim);line-height:1.7;margin:0}
+
+  /* ─ BA slider ─ */
+  .ba-wrap{border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/7;position:relative;margin-top:32px}
+  .baSlider{position:relative;width:100%;height:100%;overflow:hidden;cursor:ew-resize;user-select:none}
+  .baSlider .img{position:absolute;inset:0}
+  .baSlider .img.after{clip-path:inset(0 0 0 50%)}
+  .baSlider .ph{position:absolute;inset:0}
+  .baSlider .handle{position:absolute;top:0;bottom:0;width:2px;background:var(--accent);left:50%;transform:translateX(-50%);box-shadow:0 0 18px var(--accent);z-index:3}
+  .baSlider .handle .knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;box-shadow:0 0 24px rgba(255,42,61,.5);color:#fff;font-size:16px;font-weight:700}
+  .baSlider .lbl-before,.baSlider .lbl-after{position:absolute;top:14px;font-family:'JetBrains Mono';font-size:12px;letter-spacing:.22em;background:rgba(7,8,11,.7);padding:5px 10px;border-radius:2px;z-index:4}
+  .baSlider .lbl-before{left:14px;color:#fff;border-left:2px solid rgba(255,255,255,.3)}
+  .baSlider .lbl-after{right:14px;color:var(--accent);border-left:2px solid var(--accent)}
+
+  /* ─ video grid ─ */
+  .video-section{max-width:1600px;margin:0 auto;padding:64px 48px;border-top:1px solid var(--line)}
+  .video-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
+  @media(max-width:640px){.video-grid{grid-template-columns:repeat(2,1fr)}}
+  .video-wrap{border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:946/1080;background:#000}
+  .video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+
+  /* ─ photo pair ─ */
+  .photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+  @media(max-width:640px){.photo-pair{grid-template-columns:1fr}}
+  .photo-pair img{width:100%;border-radius:12px;border:1px solid var(--line);display:block;object-fit:cover;aspect-ratio:4/3}
+  .wide-photo{width:100%;border-radius:12px;border:1px solid var(--line);display:block;object-fit:cover;margin-top:32px}
+
+  /* ─ IMI cert ─ */
+  .cert-wrap{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;margin-top:36px}
+  @media(max-width:780px){.cert-wrap{grid-template-columns:1fr}}
+  .cert-img{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+  .cert-text h3{font-family:'Bebas Neue';font-size:32px;letter-spacing:.04em;color:var(--accent);margin:0 0 16px;line-height:1}
+
+  /* ─ Tesla trunk banner ─ */
+  .tesla-banner{position:relative;width:100%;aspect-ratio:16/7;border-radius:12px;overflow:hidden;border:1px solid var(--line);margin-top:32px;cursor:pointer}
+  .tesla-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity .5s ease}
+  .tesla-banner .img-bright{opacity:0}
+  .tesla-banner:hover .img-bright{opacity:1}
+  .tesla-banner .banner-label{position:absolute;bottom:14px;left:14px;font-family:'JetBrains Mono';font-size:12px;letter-spacing:.2em;color:#fff;background:rgba(7,8,11,.7);padding:5px 12px;border-radius:2px;z-index:4;pointer-events:none;text-transform:uppercase}
+  /* ─ NO trio layout ─ */
+  .no-trio{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:0;margin-top:20px;border-radius:14px;overflow:hidden;border:1px solid var(--line);min-height:400px}
+  @media(max-width:900px){.no-trio{grid-template-columns:1fr}}
+  .no-trio-photo{overflow:hidden;position:relative}
+  .no-trio-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .no-trio-photo .img-color{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease}
+  .no-trio-photo:hover .img-color{opacity:1}
+  .no-trio-center{background:var(--bg-card);padding:44px 32px;display:flex;flex-direction:column;justify-content:center}
+  .no-line{font-family:'Bebas Neue';font-size:26px;letter-spacing:.04em;color:var(--ink);line-height:1.5;text-align:center}
+  .no-line span{color:var(--ink-dim);font-family:'Space Grotesk';font-size:18px;font-weight:600;letter-spacing:0}
+  .no-trio-desc{font-size:15px;color:var(--ink-dim);line-height:1.75;margin-top:20px;text-align:center}
+
+  /* ─ highlight ─ */
+  .highlight{background:rgba(255,42,61,.05);border:1px solid rgba(255,42,61,.2);border-radius:12px;padding:28px 32px;margin-top:28px}
+  .highlight h3{font-family:'Bebas Neue';font-size:26px;letter-spacing:.04em;color:var(--accent);margin:0 0 10px}
+  .highlight p{font-size:15px;color:var(--ink-dim);line-height:1.7;margin:0}
+
+  /* ─ list ─ */
+  .ev-list{list-style:none;padding:0;margin:16px 0 0;display:flex;flex-direction:column;gap:10px}
+  .ev-list li{font-size:16px;color:var(--ink-dim);line-height:1.6;padding-left:20px;position:relative}
+  .ev-list li::before{content:'·';position:absolute;left:0;color:var(--accent);font-weight:700;font-size:20px;line-height:1.2}
+
+  /* ─ pills / cta ─ */
+  .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .pill{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.13em;text-transform:uppercase;padding:7px 16px;border-radius:6px;border:1px solid var(--line-bright);color:var(--ink-dim)}
+  .pill.accent{border-color:rgba(255,42,61,.5);color:var(--accent);background:rgba(255,42,61,.06)}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+  .btn-prim{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;background:var(--accent);color:#fff;transition:opacity .2s}
+  .btn-sec{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;border:1px solid var(--line-bright);color:var(--ink);transition:opacity .2s}
+  .btn-prim:hover,.btn-sec:hover{opacity:.8}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(max-width:720px){.svc-hero,.sec{padding-left:24px;padding-right:24px}}
+</style>
+</head>
+<body>
+
+<nav class="top" id="topnav" data-current="svc-ev"></nav>
+
+<header class="svc-hero">
+  <div class="grid-overlay"></div>
+  <div class="inner">
+    <div class="section-eyebrow" data-en="SERVICES · EV PDR" data-zh="服務項目 · 電動車凹痕修復">服務項目 · 電動車凹痕修復</div>
+    <h1>電動車<br><span class="accent">凹痕修復</span></h1>
+    <p class="lead">IMI 二級電動車認證技師，處理 Tesla、Porsche、Volvo 等電動車的鋁合金板件凹痕，安全、無傷漆、完整保留原廠塗裝。</p>
+  </div>
+</header>
+
+<!-- IMI 認證 -->
+<section class="sec reveal">
+  <div class="section-eyebrow" data-en="CERTIFICATION" data-zh="合格認證">合格認證</div>
+  <h2>IMI 合格電動車技師證照</h2>
+  <p>卓越技師持有<strong>英國 IMI（Institute of the Motor Industry）二級電動車維修認證</strong>，是台灣極少數依循國際標準施工的合格電動車 PDR 技師，遵循美國汽車公會（IMI）建議的方法和程序維修車輛。</p>
+  <div class="imi-row">
+    <div class="imi-photo">
+      <img src="media/ev-screenshot.png" alt="IMI認證技師">
+    </div>
+    <div class="imi-text">
+      <div class="imi-badge">
+        <svg width="48" height="36" viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="116" height="86" rx="6" stroke="#1a1a2e" stroke-width="4"/><text x="60" y="38" text-anchor="middle" font-family="Arial" font-weight="900" font-size="28" fill="#1a1a2e">IMI</text><text x="60" y="58" text-anchor="middle" font-family="Arial" font-size="8" fill="#1a1a2e">INSTITUTE OF THE MOTOR INDUSTRY</text><text x="60" y="74" text-anchor="middle" font-family="Arial" font-size="7" fill="#1a1a2e">ELECTRIC VEHICLE CERTIFICATION</text></svg>
+        <span style="font-family:'JetBrains Mono';font-size:11px;font-weight:700;letter-spacing:.1em;color:#1a1a2e">EV CERTIFIED</span>
+      </div>
+      <h3>合格的技師證照</h3>
+      <p>我們經過電動車維修認證，並遵循美國汽車公會（IMI）建議的方法和程序維修車輛，確保修復安全且不損傷高壓電系統。</p>
+      <p>我們自從電動車推出以來，已有數百輛電動車修復成功的紀錄，並獲得許多車主的認可。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 三大挑戰 -->
+<section class="sec reveal">
+  <div class="section-eyebrow" data-en="CHALLENGES" data-zh="三大挑戰">三大挑戰</div>
+  <h2>電動車凹痕修復的三大挑戰</h2>
+  <p>所有車輛都可能在板件上產生凹痕，Tesla Model X、Volvo Recharge 等電動車也不例外。然而電動車的凹痕修復難度遠高於一般燃油車，要以不傷烤漆的 PDR 方式完成，更是對技術的極致考驗。</p>
+  <div class="challenge-row">
+    <div class="challenge-video">
+      <video src="media/ev-complete.mp4" autoplay loop muted playsinline></video>
+    </div>
+    <div class="challenge-cards">
+      <div class="ev-card">
+        <div class="ev-card-tag">材質</div>
+        <h3>大量鋁合金板件</h3>
+        <p>電動車普遍採用鋁合金或複合性車體結構，金屬延展性低，施工難度遠高於鋼板，需要專用工具與不同的施力方式。</p>
+      </div>
+      <div class="ev-card">
+        <div class="ev-card-tag">安全</div>
+        <h3>高壓電系統風險</h3>
+        <p>電動車高壓電池系統電壓可達數百伏特，錯誤的拆卸程序可能造成危險，必須依循 IMI 認證程序施工。</p>
+      </div>
+      <div class="ev-card">
+        <div class="ev-card-tag">品質</div>
+        <h3>車艙異音問題</h3>
+        <p>電動車行駛時極為安靜，修復後若有任何鬆動或細微異音，車主都能輕易察覺，對修復品質要求極高。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tesla 修復案例 -->
+<section class="sec reveal">
+  <div class="section-eyebrow" data-en="REPAIR CASES" data-zh="修復案例">修復案例</div>
+  <h2>Tesla 修復前後對比</h2>
+  <p>拖動滑桿比較修復前後，完整保留原廠烤漆。</p>
+  <div class="ba-wrap" style="aspect-ratio:4/3;margin-top:32px">
+    <div class="baSlider" id="ev-ba">
+      <div class="lbl-before">BEFORE</div>
+      <div class="lbl-after">AFTER</div>
+      <div class="img before" style="background:url('media/ev-tesla-case1.jpg') center/cover no-repeat"></div>
+      <div class="img after" style="clip-path:inset(0 0 0 50%)">
+        <div class="ph" style="position:absolute;inset:0;background:url('media/ev-tesla-case2.jpg') center/cover no-repeat"></div>
+      </div>
+      <div class="handle"><div class="knob">⇄</div></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- NO 4大特點 + 施工照 -->
+<section class="sec reveal">
+  <div class="section-eyebrow" data-en="OUR ADVANTAGE" data-zh="技術優勢">技術優勢</div>
+  <h2>電動車 PDR ── 零損傷修復</h2>
+
+  <div class="no-trio">
+    <div class="no-trio-photo"><img src="media/ev-tesla-trunk-dark.jpg" alt="Tesla 尾門 暗"><img class="img-color" src="media/ev-tesla-trunk-bright.jpg" alt="Tesla 尾門 彩色"></div>
+    <div class="no-trio-center">
+      <div class="no-line">NO CUTTING <span>不用切板金</span></div>
+      <div class="no-line">NO GRINDING <span>不用研磨</span></div>
+      <div class="no-line">NO WELDING <span>沒有焊點</span></div>
+      <div class="no-line">NO REPAINTING <span>不用重新烤漆</span></div>
+      <p class="no-trio-desc">卓越擁有多年修復鋁件和鋼板等複合性材質的經驗，尤其是特斯拉車型的凹痕。多年的經驗，現在絕對可以很有自信，且快速安全的完成各種凹痕，讓您的愛車恢復到損壞前的狀態，並保留愛車原本的價值。</p>
+    </div>
+    <div class="no-trio-photo"><img src="media/ev-volvo-dark.jpg" alt="Volvo T8 AWD 暗"><img class="img-color" src="media/ev-volvo-bright.jpg" alt="Volvo T8 AWD 彩色"></div>
+  </div>
+
+  <img src="media/ev-technician.jpg" alt="卓越技師施工中" style="width:100%;border-radius:12px;border:1px solid var(--line);display:block;object-fit:contain;background:#000;margin-top:20px">
+</section>
+
+<!-- 修復影片 -->
+<section class="reveal">
+<div class="video-section">
+  <div class="section-eyebrow" data-en="REPAIR VIDEOS" data-zh="修復影片">修復影片</div>
+  <h2>實際修復過程</h2>
+  <div class="video-grid">
+    <div class="video-wrap">
+      <video src="media/ev-model3-rear.mp4" autoplay loop muted playsinline></video>
+    </div>
+    <div class="video-wrap">
+      <video src="media/ev-modelx.mp4" autoplay loop muted playsinline></video>
+    </div>
+    <div class="video-wrap">
+      <video src="media/ev-model3-panel.mp4" autoplay loop muted playsinline></video>
+    </div>
+    <div class="video-wrap">
+      <video src="media/ev-model3-aluminum.mp4" autoplay loop muted playsinline></video>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- IMI 認證書 + CTA -->
+<section class="sec reveal">
+  <div class="section-eyebrow" data-en="CREDENTIAL" data-zh="認證書">認證書</div>
+  <h2>英國 IMI 電動車維修認證</h2>
+  <div class="cert-wrap">
+    <img class="cert-img" src="media/ev-imi-cert.png" alt="IMI International Level 2 電動車維修認證書">
+    <div class="cert-text">
+      <h3>IMI International Level 2 Award in Electric/Hybrid Vehicle Routine Maintenance Activities</h3>
+      <p>持有人：<strong>Cheng Chieh Ma（馬承傑）</strong></p>
+      <p>頒發機構：Institute of the Motor Industry（英國汽車工業學會）</p>
+      <p>認證編號：INT-EHVRM2-A　　發證日期：29/05/2019</p>
+      <div class="highlight">
+        <h3>選擇卓越的理由</h3>
+        <p>台灣極少數持有國際電動車維修認證的 PDR 技師，每一台電動車都依循最高安全標準作業。</p>
+      </div>
+      <div class="pill-row">
+        <span class="pill accent">IMI 二級電動車認證</span>
+        <span class="pill">Tesla · Porsche · Volvo</span>
+        <span class="pill">鋁合金板件</span>
+        <span class="pill">不重新烤漆</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn-prim" href="https://line.me/R/ti/p/%40pdr.tw" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          <span>LINE 立即預約</span>
+        </a>
+        <a class="btn-sec" href="pricing.html">參考價目</a>
+        <a class="btn-sec" href="contact.html">尋找據點</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 客戶見證影片 -->
+<section class="sec reveal">
+  <div class="section-eyebrow" data-en="VIDEO" data-zh="影片">影片</div>
+  <h2>修復實錄</h2>
+  <div class="yt-wrap" id="drive-video-wrap" style="aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid var(--line);margin-top:32px;background:#000">
+    <iframe id="drive-video" width="100%" height="100%" style="display:block;border:none" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-links">
+      <a href="Superior-PDR.html" data-en="Home" data-zh="首頁">首頁</a>
+      <a href="pdr.html" data-en="Services" data-zh="服務項目">服務項目</a>
+      <a href="Superior-PDR.html#showcase" data-en="Showcase" data-zh="修復案例">修復案例</a>
+      <a href="Superior-PDR.html#training" data-en="Training" data-zh="技術教學">技術教學</a>
+      <a href="contact.html" data-en="Locations" data-zh="據點分佈">據點分佈</a>
+      <a href="pricing.html" data-en="Pricing" data-zh="預約與估價">預約與估價</a>
+    </div>
+    <a href="Superior-PDR.html" class="logo">
+      <img class="logo-circle" src="media/logo-circle.png" alt="Superior PDR">
+      <div class="logo-text">
+        <div class="top-line">SUPERIOR PDR</div>
+        <div class="bot-line">© 2026 SUPERIOR PDR · ALL RIGHTS RESERVED</div>
+      </div>
+    </a>
+    <div class="foot-social">
+      <a href="https://www.instagram.com/superiorpdrtaiwan/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg></a>
+      <a href="https://www.youtube.com/channel/UC8mXr_dYrD6Or-jA91W1irw?view_as=subscriber" target="_blank" rel="noopener" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.2 5 12 5 12 5s-4.2 0-7.2.1c-.4 0-1.2.1-2 .9C2.2 6.6 2 8 2 8S1.8 9.6 1.8 11.2v1.5C1.8 14.3 2 16 2 16s.2 1.4.8 2c.8.8 1.7.8 2.1.9C6.4 19 12 19 12 19s4.2 0 7.2-.2c.4 0 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1.5C22.2 9.6 22 8 22 8zM9.8 14.5v-5.7l5.4 2.9-5.4 2.8z"/></svg></a>
+      <a href="https://www.facebook.com/PdrSuperior" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  var root=document.getElementById('ev-ba');
+  if(!root)return;
+  var handle=root.querySelector('.handle'),after=root.querySelector('.img.after'),dragging=false;
+  function setPos(cx){var r=root.getBoundingClientRect(),pct=Math.max(0,Math.min(100,(cx-r.left)/r.width*100));handle.style.left=pct+'%';after.style.clipPath='inset(0 0 0 '+pct+'%)';}
+  root.addEventListener('mousedown',function(e){dragging=true;setPos(e.clientX);e.preventDefault();});
+  root.addEventListener('touchstart',function(e){dragging=true;setPos(e.touches[0].clientX);});
+  window.addEventListener('mousemove',function(e){if(dragging)setPos(e.clientX);});
+  window.addEventListener('touchmove',function(e){if(dragging)setPos(e.touches[0].clientX);});
+  window.addEventListener('mouseup',function(){dragging=false;});
+  window.addEventListener('touchend',function(){dragging=false;});
+  var demoed=false;
+  new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting&&!demoed){demoed=true;var pos=50,dir=-1,frames=0;(function tick(){pos+=dir*0.4;if(pos<25)dir=1;if(pos>75)dir=-1;handle.style.left=pos+'%';after.style.clipPath='inset(0 0 0 '+pos+'%)';if(++frames<280)requestAnimationFrame(tick);})();}});},{threshold:0.4}).observe(root);
+})();
+</script>
+<script>
+(function(){
+  var wrap=document.getElementById('drive-video-wrap');
+  var iframe=document.getElementById('drive-video');
+  var loaded=false;
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting&&!loaded){
+        loaded=true;
+        iframe.src='https://drive.google.com/file/d/1Y-5RCesTeHCWOq_Hl3itRXgSMWTa03lq/preview?autoplay=1';
+      }
+    });
+  },{threshold:0.3}).observe(wrap);
+})();
+</script>
+</body>
+</html>

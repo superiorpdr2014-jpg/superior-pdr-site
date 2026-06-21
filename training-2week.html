@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>中階技術訓練 2 Week · 技術教學 — SUPERIOR PDR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* ── hero ── */
+.t-hero{position:relative;min-height:90vh;display:flex;align-items:flex-end;overflow:hidden;border-bottom:1px solid var(--line)}
+.t-hero .bg{position:absolute;inset:0;background:url('media/training-2w-hero.png') center/cover no-repeat;background-position:center 30%;z-index:0;transition:transform 8s ease}
+.t-hero:hover .bg{transform:scale(1.03)}
+.t-hero .overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,8,11,.96) 0%,rgba(7,8,11,.55) 50%,rgba(7,8,11,.1) 100%);z-index:1}
+.t-hero .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:54px 54px;z-index:1}
+.t-hero .inner{position:relative;z-index:2;max-width:1260px;margin:0 auto;padding:0 48px 72px;width:100%}
+.t-hero .breadcrumb{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:20px}
+.t-hero .breadcrumb a{color:var(--ink-mute);transition:color .2s}
+.t-hero .breadcrumb a:hover{color:var(--ink-dim)}
+.t-hero .breadcrumb span{color:var(--accent)}
+.t-hero .eyebrow{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.t-hero h1{font-family:'Bebas Neue';font-size:clamp(60px,9vw,120px);line-height:.9;letter-spacing:.02em;margin:0 0 12px}
+.t-hero h1 em{color:var(--accent);font-style:normal}
+.t-hero .en-sub{font-family:'Bebas Neue';font-size:clamp(22px,3vw,38px);color:rgba(255,255,255,.38);letter-spacing:.08em;margin:0 0 28px}
+.t-hero .lead{font-size:18px;color:rgba(255,255,255,.72);max-width:600px;line-height:1.72;margin:0 0 40px;text-wrap:pretty}
+.hero-pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+.hero-pill{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;padding:6px 16px;border-radius:4px;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6)}
+.hero-pill.hot{border-color:rgba(255,42,61,.4);color:var(--accent);background:rgba(255,42,61,.07)}
+.hero-kpi{display:flex;gap:40px;flex-wrap:wrap;padding-top:28px;border-top:1px solid rgba(255,255,255,.08)}
+.hero-kpi-item .num{font-family:'Bebas Neue';font-size:46px;letter-spacing:.04em;color:#fff;line-height:1}
+.hero-kpi-item .lbl{font-size:13px;color:rgba(255,255,255,.45);margin-top:4px;font-weight:500}
+
+/* ── layout shared ── */
+.sec{max-width:1260px;margin:0 auto;padding:72px 48px}
+.sec+.sec,.sec-alt+.sec,.sec+.sec-alt{border-top:1px solid var(--line)}
+.sec-alt{background:var(--bg-elev);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec-alt .inner{max-width:1260px;margin:0 auto;padding:72px 48px}
+.sec h2{font-family:'Bebas Neue';font-size:clamp(32px,3.5vw,58px);letter-spacing:.02em;margin:0 0 20px;line-height:1}
+.sec p{font-size:17px;color:var(--ink-dim);line-height:1.82;max-width:860px;margin:0 0 18px;text-wrap:pretty}
+.sec p strong{color:var(--ink)}
+
+/* ── for-who grid ── */
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+@media(max-width:860px){.who-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.who-grid{grid-template-columns:1fr}}
+.who-card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:28px 26px;display:flex;flex-direction:column;gap:10px}
+.who-card .icon{width:36px;height:36px;border-radius:8px;background:rgba(255,42,61,.1);border:1px solid rgba(255,42,61,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.who-card h3{font-size:16px;font-weight:700;color:var(--ink);margin:0;line-height:1.3}
+.who-card p{font-size:14px;color:var(--ink-dim);line-height:1.65;margin:0}
+
+/* ── curriculum timeline ── */
+.curriculum{margin-top:44px;display:flex;flex-direction:column;gap:0}
+.week-block{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:16px}
+.week-header{background:var(--bg-card);padding:20px 28px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;transition:background .2s}
+.week-header:hover{background:var(--bg-elev)}
+.week-header .week-label{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.week-header h3{font-family:'Bebas Neue';font-size:26px;letter-spacing:.03em;color:var(--ink);margin:0;line-height:1}
+.week-header .week-meta{font-size:13px;color:var(--ink-dim);font-weight:500}
+.week-header .chevron{width:18px;height:18px;flex-shrink:0;color:var(--ink-mute);transition:transform .3s}
+.week-block.open .chevron{transform:rotate(180deg)}
+.week-body{display:none;border-top:1px solid var(--line)}
+.week-block.open .week-body{display:block}
+.day-list{display:flex;flex-direction:column}
+.day-row{display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid var(--line);transition:background .18s}
+.day-row:last-child{border-bottom:none}
+.day-row:hover{background:rgba(255,255,255,.015)}
+.day-label{padding:18px 20px;font-family:'JetBrains Mono';font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500;border-right:1px solid var(--line);display:flex;align-items:center}
+.day-content{padding:18px 24px}
+.day-content h4{font-size:15px;font-weight:700;color:var(--ink);margin:0 0 6px;line-height:1.3}
+.day-content p{font-size:14px;color:var(--ink-dim);line-height:1.65;margin:0}
+.day-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.day-tag{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.1em;padding:3px 10px;border-radius:3px;border:1px solid var(--line-bright);color:var(--ink-mute)}
+.day-tag.skill{border-color:rgba(255,42,61,.3);color:var(--accent);background:rgba(255,42,61,.05)}
+
+/* ── includes grid ── */
+.includes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:36px}
+@media(max-width:720px){.includes-grid{grid-template-columns:1fr}}
+.inc-item{background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:24px 26px;display:flex;gap:16px;align-items:flex-start}
+.inc-item .inc-icon{width:40px;height:40px;border-radius:8px;background:rgba(255,42,61,.08);border:1px solid rgba(255,42,61,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.inc-item .inc-text h4{font-size:15px;font-weight:700;color:var(--ink);margin:0 0 5px}
+.inc-item .inc-text p{font-size:14px;color:var(--ink-dim);line-height:1.6;margin:0}
+
+/* ── photo strip ── */
+.photo-strip{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;margin-top:36px}
+@media(max-width:860px){.photo-strip{grid-template-columns:1fr 1fr}}
+.photo-strip img{width:100%;border-radius:12px;border:1px solid var(--line);display:block;object-fit:cover;aspect-ratio:4/3;transition:transform .4s}
+.photo-strip img:hover{transform:scale(1.02)}
+.photo-strip img:first-child{aspect-ratio:16/10}
+@media(max-width:860px){.photo-strip img:first-child{grid-column:1/-1;aspect-ratio:16/9}}
+
+/* ── outcome stats ── */
+.outcome-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:36px}
+@media(max-width:860px){.outcome-row{grid-template-columns:repeat(2,1fr)}}
+.outcome-cell{background:var(--bg-elev);padding:28px 26px;text-align:center}
+.outcome-cell .big{font-family:'Bebas Neue';font-size:52px;letter-spacing:.04em;color:var(--ink);line-height:1}
+.outcome-cell .big em{color:var(--accent);font-style:normal}
+.outcome-cell .desc{font-size:13px;color:var(--ink-dim);margin-top:6px;line-height:1.5}
+
+/* ── instructor compact ── */
+.instr-compact{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center;margin-top:36px;background:var(--bg-card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+@media(max-width:720px){.instr-compact{grid-template-columns:1fr}}
+.instr-compact img{width:100%;height:100%;object-fit:cover;display:block;min-height:220px}
+.instr-info{padding:32px 36px 32px 0}
+@media(max-width:720px){.instr-info{padding:28px}}
+.instr-info .name{font-family:'Bebas Neue';font-size:32px;letter-spacing:.04em;color:var(--ink);margin:0 0 4px;line-height:1}
+.instr-info .title{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:14px}
+.instr-info p{font-size:15px;color:var(--ink-dim);line-height:1.72;margin:0 0 14px}
+.cred-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+.cred{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.1em;padding:4px 12px;border-radius:4px;border:1px solid var(--line-bright);color:var(--ink-dim)}
+.cred.hot{border-color:rgba(255,42,61,.4);color:var(--accent);background:rgba(255,42,61,.06)}
+
+/* ── testimonial ── */
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+@media(max-width:860px){.testimonial-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.testimonial-grid{grid-template-columns:1fr}}
+.testi-card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;gap:14px;transition:border-color .25s}
+.testi-card:hover{border-color:rgba(255,42,61,.3)}
+.testi-stars{display:flex;gap:3px}
+.testi-stars svg{color:var(--gold)}
+.testi-text{font-size:15px;color:var(--ink-dim);line-height:1.72;flex:1;font-style:italic}
+.testi-author{display:flex;flex-direction:column;gap:2px;padding-top:12px;border-top:1px solid var(--line)}
+.testi-author strong{font-size:13px;font-weight:700;color:var(--ink)}
+.testi-author span{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.12em;color:var(--ink-mute)}
+
+/* ── CTA band ── */
+.cta-band{background:var(--bg-elev);border-top:1px solid var(--line);padding:72px 48px}
+.cta-inner{max-width:1260px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cta-inner h2{font-family:'Bebas Neue';font-size:clamp(32px,3.5vw,52px);letter-spacing:.02em;margin:0;line-height:1}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-accent{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:8px;font-size:15px;font-weight:600;background:var(--accent);color:#fff;text-decoration:none;transition:opacity .2s;white-space:nowrap}
+.btn-accent:hover{opacity:.82}
+.btn-line{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:8px;font-size:15px;font-weight:600;border:1px solid var(--line-bright);color:var(--ink);text-decoration:none;transition:opacity .2s}
+.btn-line:hover{opacity:.72}
+
+/* ── course nav ── */
+.course-nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px}
+.course-nav-item{display:flex;flex-direction:column;flex:1;min-width:200px;background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;text-decoration:none;transition:border-color .22s,transform .22s;gap:4px}
+.course-nav-item:hover{border-color:rgba(255,42,61,.35);transform:translateY(-3px)}
+.course-nav-item .cnav-type{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.18em;color:var(--ink-mute);text-transform:uppercase}
+.course-nav-item .cnav-name{font-family:'Bebas Neue';font-size:22px;letter-spacing:.03em;color:var(--ink);line-height:1.1}
+.course-nav-item .cnav-arr{font-size:13px;color:var(--accent);margin-top:6px}
+.course-nav-item.current{border-color:rgba(255,42,61,.4);background:rgba(24,10,13,.5)}
+.course-nav-item.current .cnav-name{color:var(--accent)}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:720px){
+  .sec,.sec-alt .inner,.cta-band{padding-left:24px;padding-right:24px}
+  .t-hero .inner{padding-left:24px;padding-right:24px}
+  .day-row{grid-template-columns:72px 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="top" id="topnav" data-current="training-2w"></nav>
+
+<!-- ── HERO ── -->
+<header class="t-hero" data-screen-label="Hero">
+  <div class="bg"></div>
+  <div class="overlay"></div>
+  <div class="grid-overlay"></div>
+  <div class="inner">
+    <div class="breadcrumb">
+      <a href="news-3.html">技術教學</a>
+      <span>›</span>
+      <span>中階技術訓練</span>
+    </div>
+    <div class="eyebrow">2 Week Training · 12 Days · Superior PDR</div>
+    <h1>中階<br><em>技術訓練</em></h1>
+    <div class="en-sub">INTERMEDIATE PDR TRAINING</div>
+    <p class="lead">從推桿認識、燈板角度判讀到連續凹痕修復，12天紮實訓練讓您建立完整的PDR技術根基。最多一對二，教官全程陪同，以學員進度為優先。</p>
+    <div class="hero-pills">
+      <span class="hero-pill hot">推薦入門課程</span>
+      <span class="hero-pill">12天・6天/週</span>
+      <span class="hero-pill">最多1:2小班</span>
+      <span class="hero-pill">實車凹痕練習</span>
+      <span class="hero-pill">含結業證書</span>
+    </div>
+    <div class="hero-kpi">
+      <div class="hero-kpi-item"><div class="num">12</div><div class="lbl">訓練天數</div></div>
+      <div class="hero-kpi-item"><div class="num">1:2</div><div class="lbl">師生比上限</div></div>
+      <div class="hero-kpi-item"><div class="num">100+</div><div class="lbl">結業學員</div></div>
+      <div class="hero-kpi-item"><div class="num">12+</div><div class="lbl">年教學經驗</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ── 課程導覽 ── -->
+<section class="sec reveal" data-screen-label="課程導覽">
+  <div class="section-eyebrow" data-en="COURSE OVERVIEW" data-zh="課程概要">課程概要</div>
+  <h2>什麼是中階技術訓練？</h2>
+  <p>如果想成為一個凹痕技師，中階課程對您來說非常重要。在這個課程裡，我們將培養您好的維修習慣——PDR需要時間與經驗的累積，養成好的觀念與習慣，是成為技師最關鍵的基礎。</p>
+  <p>我們不僅教您如何修，還會教您各種實用理論，利用<strong>原則、原理、現象</strong>三要素來處理凹痕。您將學到如何找到各種通道，使用更多工具完成凹痕，利用冷熱膠拉拔處理凹痕，最終完成困難的線條狀凹痕。80%的訓練時間，都在告訴您<strong>保持凹痕區域的清晰有多重要</strong>——沒有任何凸點與凹點，適當控制力道，讓板金平整，才是真正的修復品質。</p>
+
+  <div class="outcome-row reveal">
+    <div class="outcome-cell">
+      <div class="big">12<em>天</em></div>
+      <div class="desc">密集課程<br>每週六天</div>
+    </div>
+    <div class="outcome-cell">
+      <div class="big"><em>1:</em>2</div>
+      <div class="desc">師生比上限<br>高度個人化指導</div>
+    </div>
+    <div class="outcome-cell">
+      <div class="big">實<em>車</em></div>
+      <div class="desc">真實凹痕練習<br>模擬工作情境</div>
+    </div>
+    <div class="outcome-cell">
+      <div class="big">證<em>書</em></div>
+      <div class="desc">Taiwan PDR Art<br>結業認證</div>
+    </div>
+  </div>
+
+  <div class="photo-strip reveal" style="margin-top:36px">
+    <img src="media/training-2w-demo.jpg" alt="Jay Ma 教官示範推桿技法">
+    <img src="media/training-2w-class-1.jpg" alt="小班制教學 — 教官與學員">
+    <img src="media/training-2w-oneonone.jpg" alt="一對一深度指導">
+  </div>
+</section>
+
+<!-- ── 適合對象 ── -->
+<div class="sec-alt reveal" data-screen-label="適合對象">
+  <div class="inner">
+    <div class="section-eyebrow" data-en="WHO IS THIS FOR" data-zh="適合對象">適合對象</div>
+    <h2>這堂課是為您設計的嗎？</h2>
+    <p>無論您是計劃轉職、尋找副業收入，還是對汽車修復有熱情，中階技術訓練都能讓您在兩週內從零開始，建立真正可以賺錢的技術。</p>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3>計劃轉職的學員</h3>
+        <p>想離開朝九晚五，以PDR技術為業。12天課程讓您快速評估並建立轉職所需的基礎技術。</p>
+      </div>
+      <div class="who-card">
+        <div class="icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>尋找副業收入的人</h3>
+        <p>假日接案、小額創業，PDR技術在台灣仍屬稀缺技能，入門後即可開始服務身邊車主。</p>
+      </div>
+      <div class="who-card">
+        <div class="icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>汽車相關從業人員</h3>
+        <p>已在汽車業工作，想增加服務項目與收費能力，PDR 是最高毛利的增值技術之一。</p>
+      </div>
+      <div class="who-card">
+        <div class="icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h3>對PDR有熱情的愛好者</h3>
+        <p>自己的車自己修，或純粹對這門技藝著迷。在真實環境中學習，感受 PDR 的成就感。</p>
+      </div>
+      <div class="who-card">
+        <div class="icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>海外回台或外籍學員</h3>
+        <p>來自亞洲各地的學員皆可報名，課程以中文為主，亦可視需求提供英文補充說明。</p>
+      </div>
+      <div class="who-card">
+        <div class="icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>想測試4週課程前的學員</h3>
+        <p>先以中階訓練評估自己的適性與熱情，再決定是否升讀完整4週課程，是聰明的學習策略。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 課程內容 ── -->
+<section class="sec reveal" data-screen-label="課程內容">
+  <div class="section-eyebrow" data-en="CURRICULUM" data-zh="課程內容">課程內容</div>
+  <h2>課程學習內容</h2>
+  <p>中階課程的核心在於建立正確觀念與手感。我們強調原則、原理、現象三要素的應用，讓您遇到任何凹痕都能找到對應的處理策略。</p>
+
+  <div class="curriculum">
+    <div class="week-block open reveal">
+      <div class="week-header" onclick="toggleWeek(this)">
+        <div>
+          <div class="week-label">TWO WEEK PDR TRAINING COURSE</div>
+          <h3>中階課程 · 學習項目</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:20px">
+          <span class="week-meta">12 Days · 9 Topics</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="week-body">
+        <div class="day-list">
+          <div class="day-row">
+            <div class="day-label">01</div>
+            <div class="day-content">
+              <h4>火山口理論教學</h4>
+              <p>深入理解凹痕成因的「火山口理論」——金屬在受衝擊後的形變結構，是所有修復判斷的根本依據。</p>
+              <div class="day-tags"><span class="day-tag skill">理論基礎</span><span class="day-tag">凹痕成因</span></div>
+            </div>
+          </div>
+          <div class="day-row">
+            <div class="day-label">02</div>
+            <div class="day-content">
+              <h4>板金的收縮及連鎖效應</h4>
+              <p>了解金屬板金在修復過程中的收縮特性，以及連鎖效應對周圍板件的影響，學會預判與應對。</p>
+              <div class="day-tags"><span class="day-tag skill">板金原理</span><span class="day-tag">連鎖效應</span></div>
+            </div>
+          </div>
+          <div class="day-row">
+            <div class="day-label">03</div>
+            <div class="day-content">
+              <h4>熱膠拉拔練習</h4>
+              <p>學習冷熱膠拉拔（Glue Pull）技術，在推桿無法到達的區域利用膠頭從外部拉出凹痕，擴展修復工具的使用範圍。</p>
+              <div class="day-tags"><span class="day-tag skill">膠拉技法</span><span class="day-tag">Glue Pull</span></div>
+            </div>
+          </div>
+          <div class="day-row">
+            <div class="day-label">04</div>
+            <div class="day-content">
+              <h4>取得槓桿施力點</h4>
+              <p>精確找到各種板件結構中的槓桿施力點，善用物理原理讓修復更省力、更精準，減少二次損傷風險。</p>
+              <div class="day-tags"><span class="day-tag skill">施力原理</span><span class="day-tag">通道尋找</span></div>
+            </div>
+          </div>
+          <div class="day-row">
+            <div class="day-label">05</div>
+            <div class="day-content">
+              <h4>鋼樑上凹痕修復</h4>
+              <p>處理位於車門加強鋼樑、車頂橫樑等結構性位置的凹痕，這些位置因金屬強度高，需要特殊工具與技法應對。</p>
+              <div class="day-tags"><span class="day-tag skill">結構件修復</span><span class="day-tag">鋼樑處理</span></div>
+            </div>
+          </div>
+          <div class="day-row">
+            <div class="day-label">06</div>
+            <div class="day-content">
+              <h4>修復線條凹痕練習</h4>
+              <p>線條凹痕（creases）是PDR中難度最高的類型之一，需要精確的力道控制和正確的推敲順序，此單元大量練習奠定技法基礎。</p>
+              <div class="day-tags"><span class="day-tag skill">線條凹痕</span><span class="day-tag">Crease</span></div>
+            </div>
+          </div>
+          <div class="day-row">
+            <div class="day-label">07</div>
+            <div class="day-content">
+              <h4>控制推敲力道與練習</h4>
+              <p>力道的精準控制是PDR最核心的技能。學習如何保持凹痕修復區域的清晰，避免任何凸點或凹點，讓板金平整如初。</p>
+              <div class="day-tags"><span class="day-tag skill">力道控制</span><span class="day-tag">清晰修復</span></div>
+            </div>
+          </div>
+          <div class="day-row">
+            <div class="day-label">08</div>
+            <div class="day-content">
+              <h4>完成線條凹痕的修復</h4>
+              <p>從練習到完整完成一個線條凹痕的修復流程。掌握最後10%的精修技巧，將修復品質提升到專業技師等級。</p>
+              <div class="day-tags"><span class="day-tag skill">線條完整修復</span><span class="day-tag">精修收尾</span></div>
+            </div>
+          </div>
+          <div class="day-row">
+            <div class="day-label">09</div>
+            <div class="day-content">
+              <h4>引擎蓋凹痕修復</h4>
+              <p>引擎蓋為面積最大、最常受損的板件，綜合運用所有課程技法，以引擎蓋實車作為最終整合練習與結業評量。</p>
+              <div class="day-tags"><span class="day-tag skill">引擎蓋</span><span class="day-tag">綜合應用</span><span class="day-tag">結業練習</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 課程包含 ── -->
+<div class="sec-alt reveal" data-screen-label="課程包含">
+  <div class="inner">
+    <div class="section-eyebrow" data-en="WHAT'S INCLUDED" data-zh="課程包含">課程包含</div>
+    <h2>報名費用包含哪些？</h2>
+    <p>中階技術訓練的費用涵蓋所有訓練期間所需資源，讓您專心學習，不需另外採購任何工具或材料。</p>
+    <div class="includes-grid">
+      <div class="inc-item">
+        <div class="inc-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+        </div>
+        <div class="inc-text">
+          <h4>全程工具借用</h4>
+          <p>訓練期間免費借用卓越所有推桿、燈板、膠拉工具及輔助設備，無需自行購買。</p>
+        </div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><path d="M8 2v16M16 6v16"/></svg>
+        </div>
+        <div class="inc-text">
+          <h4>實車凹痕練習材料</h4>
+          <p>提供充足的實車面板練習材料，讓學員在接近真實的環境中反覆練習，不受時間限制。</p>
+        </div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="inc-text">
+          <h4>專屬獨立教學空間</h4>
+          <p>卓越的教學與營業空間完全分開，您有專屬的學習環境，不受門市客戶干擾。</p>
+        </div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="inc-text">
+          <h4>Taiwan PDR Art 結業證書</h4>
+          <p>完成課程並通過評量後，頒發卓越PDR國際認可的結業證書，證明您的技術資歷。</p>
+        </div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="inc-text">
+          <h4>課後問題諮詢</h4>
+          <p>結業後可透過 LINE 向教官提問，畢業生永久享有技術諮詢支援，不因課程結束而中斷。</p>
+        </div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="inc-text">
+          <h4>彈性進度安排</h4>
+          <p>課程依學員進度靈活調整，若特定技法需要更多練習時間，教官會優先確保您確實掌握後再推進。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 訓練環境 ── -->
+<section class="sec reveal" data-screen-label="訓練環境">
+  <div class="section-eyebrow" data-en="TRAINING ENVIRONMENT" data-zh="訓練環境">訓練環境</div>
+  <h2>專屬教學空間 · 純粹學習</h2>
+  <p>卓越凹痕修復的教學訓練空間與日常營業門市<strong>完全分開</strong>，您的每一天訓練都在不受外部干擾的專屬環境中進行。使用與美國、日本、歐洲頂尖訓練學校相同等級的工具，讓您學到的技術與世界接軌。</p>
+
+  <div class="photo-strip reveal">
+    <img src="media/training-2w-roof.jpg" alt="教官與學員共同在引擎蓋上作業">
+    <img src="media/training-2w-class-2.jpg" alt="Jay Ma 教官在工具牆前示範">
+    <img src="media/training-2w-knockdown.jpg" alt="精準敲擊技法特寫" style="filter:grayscale(20%)">
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px">
+    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:22px 20px">
+      <div style="font-family:'JetBrains Mono';font-size:11px;letter-spacing:.18em;color:var(--accent);margin-bottom:8px">工具</div>
+      <div style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px">美日歐頂級工具</div>
+      <p style="font-size:14px;color:var(--ink-dim);line-height:1.65;margin:0">從基礎推桿到最新進階工具，與國際訓練學校同款配備。</p>
+    </div>
+    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:22px 20px">
+      <div style="font-family:'JetBrains Mono';font-size:11px;letter-spacing:.18em;color:var(--accent);margin-bottom:8px">空間</div>
+      <div style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px">獨立教學環境</div>
+      <p style="font-size:14px;color:var(--ink-dim);line-height:1.65;margin:0">訓練空間與門市完全分離，保障每位學員不受干擾的學習品質。</p>
+    </div>
+    <div style="background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:22px 20px">
+      <div style="font-family:'JetBrains Mono';font-size:11px;letter-spacing:.18em;color:var(--accent);margin-bottom:8px">材料</div>
+      <div style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px">真實凹痕練習</div>
+      <p style="font-size:14px;color:var(--ink-dim);line-height:1.65;margin:0">以真實車輛面板作為練習素材，完整模擬客戶車輛作業情境。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 講師 ── -->
+<div class="sec-alt reveal" data-screen-label="講師介紹">
+  <div class="inner">
+    <div class="section-eyebrow" data-en="INSTRUCTORS" data-zh="講師">講師</div>
+    <h2>雙講師陣容</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px">
+      <div class="instr-compact" style="grid-template-columns:160px 1fr">
+        <img src="media/training-2w-jay-hood.jpg" alt="Jay Ma 馬承傑 — 首席講師" style="object-position:top">
+        <div class="instr-info">
+          <div class="name">Jay Ma · 馬承傑</div>
+          <div class="title">創辦人 · 首席講師 · Since 2014</div>
+          <p>台灣最具國際視野的PDR訓練師，12年教學經驗，受邀國際研討會擔任講師，IMI電動車維修二級認證。</p>
+          <div class="cred-row">
+            <span class="cred hot">IMI Level 2 EV</span>
+            <span class="cred hot">國際研討會講師</span>
+            <span class="cred">美日進修</span>
+          </div>
+        </div>
+      </div>
+      <div class="instr-compact" style="grid-template-columns:160px 1fr">
+        <video style="width:100%;height:100%;object-fit:cover;display:block;min-height:220px" autoplay loop muted playsinline src="media/instructor-shuangkou.mp4"></video>
+        <div class="instr-info">
+          <div class="name">雙口呂師傅</div>
+          <div class="title">技術經理 · VALE認證技師 · 12yr</div>
+          <p>PDR資歷12年，Vale Master Craftman認證，曾赴美國 Dent Time 及日本 Dentshop 深造，卓越訓練中心最資深駐店技術主管。</p>
+          <div class="cred-row">
+            <span class="cred hot">VALE Master Craftman</span>
+            <span class="cred">美國 Dent Time</span>
+            <span class="cred">日本 Dentshop</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 訓練現場 ── -->
+<div class="sec-alt reveal" data-screen-label="訓練現場">
+  <div class="inner">
+    <div class="section-eyebrow" data-en="IN THE STUDIO" data-zh="訓練現場">訓練現場</div>
+    <h2>真實課堂 · 身歷其境</h2>
+    <p>每一梯最多兩位學員，教官全程在旁指導。從理論板書到實車操作，卓越的每一堂課都是高強度、高品質的學習體驗。</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:12px;margin-top:32px">
+      <img src="media/training-2w-class-1.jpg" alt="教官與兩位學員共同研究燈板" style="width:100%;border-radius:12px;border:1px solid var(--line);object-fit:cover;aspect-ratio:4/3;display:block;transition:transform .4s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='none'">
+      <img src="media/training-2w-demo.jpg" alt="Jay Ma 教官示範工具操作" style="width:100%;border-radius:12px;border:1px solid var(--line);object-fit:cover;aspect-ratio:4/3;display:block;transition:transform .4s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='none'">
+      <img src="media/training-2w-oneonone.jpg" alt="一對一深度指導" style="width:100%;border-radius:12px;border:1px solid var(--line);object-fit:cover;aspect-ratio:4/3;display:block;transition:transform .4s;object-position:top" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='none'">
+      <img src="media/training-2w-class-2.jpg" alt="學員專注觀摩教官操作" style="width:100%;border-radius:12px;border:1px solid var(--line);object-fit:cover;aspect-ratio:4/3;display:block;grid-column:span 2;aspect-ratio:16/9;transition:transform .4s" onmouseover="this.style.transform='scale(1.015)'" onmouseout="this.style.transform='none'">
+      <img src="media/training-2w-roof.jpg" alt="引擎蓋訓練 — 教官現場講解" style="width:100%;border-radius:12px;border:1px solid var(--line);object-fit:cover;aspect-ratio:4/3;display:block;transition:transform .4s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='none'">
+    </div>
+    <!-- 結業工具照 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+      <img src="media/training-2w-grad-tools-1.jpg" alt="結業合照 — 學員與完整工具組" style="width:100%;border-radius:12px;border:1px solid var(--line);object-fit:cover;aspect-ratio:16/9;display:block;transition:transform .4s" onmouseover="this.style.transform='scale(1.015)'" onmouseout="this.style.transform='none'">
+      <img src="media/training-2w-grad-tools-2.jpg" alt="結業合照 — 課程結束帶走完整工具" style="width:100%;border-radius:12px;border:1px solid var(--line);object-fit:cover;aspect-ratio:16/9;display:block;transition:transform .4s" onmouseover="this.style.transform='scale(1.015)'" onmouseout="this.style.transform='none'">
+    </div>
+    <p style="font-size:14px;color:var(--ink-mute);margin-top:14px;font-family:'JetBrains Mono';letter-spacing:.08em;text-align:center">結業時帶走完整工具組，立即投入工作</p>
+  </div>
+</div>
+
+<!-- ── 學員心得 ── -->
+<section class="sec reveal" data-screen-label="學員心得">
+  <div class="section-eyebrow" data-en="TESTIMONIALS" data-zh="學員心得">學員心得</div>
+  <h2>結業學員怎麼說</h2>
+  <div class="testimonial-grid">
+    <div class="testi-card">
+      <div class="testi-stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="testi-text">「從完全不懂到能夠獨立接案，兩週改變了我的職涯方向。Jay 教官非常有耐心，每個動作都不厭其煩地指導。」</p>
+      <div class="testi-author">
+        <strong>Oscar T.</strong>
+        <span>香港 · 2023年結業</span>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="testi-text">「教學環境非常專業，工具設備齊全，練習素材充足。最讓我感動的是教官在課後仍然持續回答我的問題。」</p>
+      <div class="testi-author">
+        <strong>Andy A.</strong>
+        <span>印尼 · 2022年結業</span>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="testi-text">「原本在考慮報名其他學校，但卓越一對二的小班制真的是最大優勢。幾乎等同於私人教練，進步速度非常快。」</p>
+      <div class="testi-author">
+        <strong>Leo W.</strong>
+        <span>台灣 · 2024年結業</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 其他課程 ── -->
+<section class="sec reveal" data-screen-label="其他課程">
+  <div class="section-eyebrow" data-en="OTHER COURSES" data-zh="其他課程">其他課程</div>
+  <h2>完整課程路徑</h2>
+  <p>完成中階訓練後，可升讀完整4週課程掌握進階技法，或參加國際研討會接觸世界級技術。</p>
+  <div class="course-nav">
+    <div class="course-nav-item current">
+      <span class="cnav-type">2 Week · 現在瀏覽</span>
+      <span class="cnav-name">中階技術訓練</span>
+      <span class="cnav-arr">目前頁面</span>
+    </div>
+    <a class="course-nav-item" href="training-4week.html">
+      <span class="cnav-type">4 Week · 完整培訓</span>
+      <span class="cnav-name">完整技術訓練</span>
+      <span class="cnav-arr">查看課程 →</span>
+    </a>
+    <a class="course-nav-item" href="advancedtraining.html">
+      <span class="cnav-type">Advanced · 同業精進</span>
+      <span class="cnav-name">PDR進階技術訓練</span>
+      <span class="cnav-arr">查看課程 →</span>
+    </a>
+    <a class="course-nav-item" href="advancedevent.html">
+      <span class="cnav-type">Seminar · 世界級交流</span>
+      <span class="cnav-name">國際進階訓練研討會</span>
+      <span class="cnav-arr">查看活動 →</span>
+    </a>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<div class="cta-band reveal" data-screen-label="報名CTA">
+  <div class="cta-inner">
+    <div>
+      <h2>立即報名中階技術訓練</h2>
+      <p style="font-size:15px;color:var(--ink-dim);margin:8px 0 0;line-height:1.6">名額有限，每梯最多2位學員。歡迎透過 LINE 詢問可報名日期與課程費用。</p>
+    </div>
+    <div class="cta-btns">
+      <a class="btn-accent" href="https://line.me/R/ti/p/%40pdr.tw" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINE 報名洽詢
+      </a>
+      <a class="btn-line" href="news-3.html">← 返回技術教學</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-links">
+      <a href="Superior-PDR.html">首頁</a>
+      <a href="pdr.html">服務項目</a>
+      <a href="news-3.html">技術教學</a>
+      <a href="Superior-PDR.html#showcase">作品實績</a>
+      <a href="contact.html">據點分佈</a>
+      <a href="pricing.html">預約與估價</a>
+    </div>
+    <a href="Superior-PDR.html" class="logo">
+      <img class="logo-circle" src="media/logo-circle.png" alt="Superior PDR">
+      <div class="logo-text">
+        <div class="top-line">SUPERIOR PDR</div>
+        <div class="bot-line">© 2026 SUPERIOR PDR · ALL RIGHTS RESERVED</div>
+      </div>
+    </a>
+    <div class="foot-social">
+      <a href="https://www.instagram.com/superiorpdrtaiwan/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg></a>
+      <a href="https://www.youtube.com/channel/UC8mXr_dYrD6Or-jA91W1irw?view_as=subscriber" target="_blank" rel="noopener" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.2 5 12 5 12 5s-4.2 0-7.2.1c-.4 0-1.2.1-2 .9C2.2 6.6 2 8 2 8S1.8 9.6 1.8 11.2v1.5C1.8 14.3 2 16 2 16s.2 1.4.8 2c.8.8 1.7.8 2.1.9C6.4 19 12 19 12 19s4.2 0 7.2-.2c.4 0 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1.5C22.2 9.6 22 8 22 8zM9.8 14.5v-5.7l5.4 2.9-5.4 2.8z"/></svg></a>
+      <a href="https://www.facebook.com/PdrSuperior" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+function toggleWeek(header) {
+  var block = header.closest('.week-block');
+  block.classList.toggle('open');
+}
+</script>
+</body>
+</html>

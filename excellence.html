@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>卓越歷程 — SUPERIOR PDR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  /* ===== alternating timeline · date node on the rail ===== */
+  .atl{position:relative;max-width:1180px;margin:18px auto 0;padding:6px 0}
+  .atl::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent),var(--line-bright) 8%,var(--line-bright) 94%,transparent);transform:translateX(-50%);z-index:1}
+  .ms-row{position:relative;width:50%;box-sizing:border-box;margin-bottom:26px;padding-right:120px}
+  .ms-row.right{margin-left:50%;padding-right:0;padding-left:120px}
+  /* after the reveal animation, drop the transform so it no longer creates a
+     stacking context — keeps dots above the rail and cards above the bg image */
+  .ms-row.reveal.in{transform:none}
+  /* small red dot ON the rail */
+  .ms-row::before{content:"";position:absolute;top:26px;width:13px;height:13px;border-radius:50%;background:var(--accent);border:2px solid var(--accent);box-shadow:0 0 0 4px var(--bg);z-index:5}
+  .ms-row.left::before{right:-7px}
+  .ms-row.right::before{left:-7px}
+  .ms-row.feat::before{box-shadow:0 0 0 4px var(--bg),0 0 14px var(--accent-glow)}
+  /* leader line pulled out from the dot toward the card */
+  .ms-row::after{content:"";position:absolute;top:31px;height:2px;width:20px;background:var(--line-bright);z-index:1}
+  .ms-row.left::after{right:6px}
+  .ms-row.right::after{left:6px}
+  /* date label sitting on the pulled-out line */
+  .ms-date{position:absolute;top:19px;z-index:2;display:flex;flex-direction:row;align-items:baseline;gap:7px;background:var(--bg);padding:0 6px}
+  .ms-row.left .ms-date{right:24px}
+  .ms-row.right .ms-date{left:24px}
+  .ms-date .w-yr{font-family:'Bebas Neue';font-size:30px;line-height:1;color:var(--accent);letter-spacing:0.02em}
+  .ms-date .w-mo{font-family:'JetBrains Mono';font-size:12px;font-weight:600;letter-spacing:0.06em;color:var(--ink)}
+  .ms-row.feat .ms-date .w-mo{color:var(--ink)}
+  .ms-card{position:relative;z-index:2;display:flex;flex-direction:column;align-items:stretch;background:var(--bg-elev);border:1px solid var(--line);border-radius:11px;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s}
+  .ms-row.right .ms-card{flex-direction:column}
+  .ms-card:hover{border-color:var(--line-bright);transform:translateY(-2px)}
+  .ms-row.feat .ms-card{border-color:rgba(255,42,61,0.32)}
+  .ms-row.feat .ms-card:hover{box-shadow:0 14px 40px rgba(255,42,61,0.08)}
+  .ms-photo{position:relative;width:100%;aspect-ratio:3/2;overflow:hidden;background:repeating-linear-gradient(135deg,rgba(255,255,255,0.022) 0 11px,transparent 11px 22px),var(--bg-card);border-bottom:1px solid var(--line)}
+  .ms-row.right .ms-photo{border-bottom:1px solid var(--line)}
+  .ms-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s ease}
+  .ms-photo .ms-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px}
+  .ms-photo .ms-ph::before{content:"";position:absolute;inset:12px;border:1px dashed var(--line-bright);border-radius:5px}
+  .ms-photo .ms-ph span{position:relative;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:0.12em;color:var(--ink-mute);line-height:1.6;text-transform:uppercase}
+  .ms-photo.clickable{cursor:zoom-in}
+  .ms-photo.clickable:hover img{transform:scale(1.05)}
+  .ms-photo .zoom{position:absolute;right:9px;bottom:9px;width:24px;height:24px;border-radius:6px;background:rgba(7,8,11,.72);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+  .ms-photo.clickable:hover .zoom{opacity:1}
+  .ms-body{flex:1;min-width:0;padding:16px 20px;display:flex;flex-direction:column;justify-content:center}
+  .ms-tag{display:inline-block;align-self:flex-start;white-space:nowrap;font-family:'JetBrains Mono';font-size:9px;letter-spacing:0.16em;text-transform:uppercase;padding:4px 9px;border-radius:3px;margin-bottom:9px;border:1px solid}
+  .ms-tag.red{color:var(--accent);border-color:rgba(255,42,61,0.4);background:var(--accent-soft)}
+  .ms-tag.gold{color:var(--gold);border-color:rgba(212,164,90,0.35);background:rgba(212,164,90,0.08)}
+  .ms-title{font-size:15.5px;font-weight:600;color:var(--ink);line-height:1.38;margin:0 0 6px}
+  .ms-row.feat .ms-title{color:#fff}
+  .ms-desc{color:var(--ink-dim);font-size:13px;line-height:1.55}
+  @media(max-width:860px){
+    .atl{max-width:600px}
+    .atl::before{left:24px}
+    .ms-row,.ms-row.right{width:100%;margin-left:0;padding:0 0 0 92px}
+    .ms-row.left::before,.ms-row.right::before{left:17px;right:auto}
+    .ms-row.left::after,.ms-row.right::after{left:31px;right:auto;width:13px}
+    .ms-row.left .ms-date,.ms-row.right .ms-date{left:40px;right:auto;flex-direction:column;gap:0;align-items:flex-start;padding:0 4px}
+    .ms-date .w-yr{font-size:25px}
+    .ms-date .w-mo{font-size:11px}
+    .ms-card,.ms-row.right .ms-card{flex-direction:column;min-height:0}
+    .ms-photo{flex:none;aspect-ratio:3/2;border-right:none;border-bottom:1px solid var(--line)}
+    .ms-row.right .ms-photo{border-left:none;border-bottom:1px solid var(--line)}
+  }
+  /* ---- scroll-reveal background (per milestone) ---- */
+  /* full-bleed fixed backdrop: one milestone image at a time, crossfading */
+  html{background:var(--bg)}
+  body{background:transparent}
+  .ms-stage{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+  .ms-stage .ms-layer{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.09);transition:opacity 1s ease,transform 7s ease}
+  .ms-stage .ms-layer.on{opacity:1;transform:scale(1)}
+  .ms-stage::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,8,11,0.95),rgba(7,8,11,0.6) 44%,rgba(7,8,11,0.84));opacity:0;transition:opacity 1s ease}
+  .ms-stage.show::after{opacity:1}
+  .ms-row.has-bg .ms-card{position:relative;z-index:2}
+  .ms-row.has-bg.active .ms-card{background:rgba(13,16,20,0.5);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);border-color:rgba(255,42,61,0.4)}
+  /* intro founder photo */
+  .intro-photo{position:relative;margin:0;border-radius:9px;overflow:hidden;border:1px solid var(--line-bright);box-shadow:0 20px 50px rgba(0,0,0,0.4);cursor:zoom-in;display:block}
+  .intro-photo img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;transition:transform .55s ease}
+  .intro-photo:hover{border-color:var(--accent)}
+  .intro-photo:hover img{transform:scale(1.04)}
+  .intro-photo .zoom{position:absolute;right:10px;bottom:10px;width:26px;height:26px;border-radius:6px;background:rgba(7,8,11,.72);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+  .intro-photo:hover .zoom{opacity:1}
+  /* ---- lightbox ---- */
+  .lightbox{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;background:rgba(5,6,9,0.92);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:40px}
+  .lightbox.open{display:flex}
+  .lightbox figure{margin:0;max-width:900px;display:flex;flex-direction:column;gap:14px}
+  .lightbox img{max-width:100%;max-height:78vh;object-fit:contain;border-radius:8px;border:1px solid var(--line-bright);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .lightbox figcaption{font-family:'JetBrains Mono';font-size:12px;letter-spacing:0.1em;color:var(--ink-dim);text-align:center}
+  .lb-close{position:absolute;top:24px;right:28px;width:42px;height:42px;border:1px solid var(--line-bright);border-radius:50%;color:var(--ink);font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.03);transition:all .2s;cursor:pointer}
+  .lb-close:hover{border-color:var(--accent);color:var(--accent)}
+</style>
+</head>
+<body>
+
+<nav class="top" id="topnav">
+  <a href="index.html" class="logo">
+    <img class="logo-circle" src="media/logo-circle.png" alt="Superior PDR">
+    <div class="logo-text">
+      <div class="top-line">SUPERIOR PDR</div>
+      <div class="bot-line">自 2014 · 台北 · 台灣</div>
+    </div>
+  </a>
+  <div class="links">
+    <a class="nav-link" href="index.html">Home</a>
+    <div class="nav-item">
+      <a class="nav-link current" href="about.html">About<span class="nav-caret"></span></a>
+      <div class="dropdown">
+        <a class="ddi current" data-d="excellence" href="excellence.html">Journey of Excellence</a>
+        <a class="ddi" data-d="about" href="about.html">About Us</a>
+        <a class="ddi" data-d="quality" href="quality.html">Repair Quality</a>
+        <a class="ddi" data-d="pricing" href="pricing.html">Pricing &amp; Booking</a>
+      </div>
+    </div>
+    <a class="nav-link" href="index.html#services">Services</a>
+    <a class="nav-link" href="index.html#credentials">Credentials</a>
+    <a class="nav-link" href="index.html#showcase">Showcase</a>
+    <a class="nav-link" href="blog/index.html">Journal</a>
+    <a class="nav-link" href="index.html#training">Training</a>
+    <a class="nav-link" href="index.html#locations">Locations</a>
+    <a class="nav-link" href="index.html#contact">Contact</a>
+  </div>
+  <a class="cta" href="pricing.html"><span>Book Now</span>
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"></path></svg>
+  </a>
+  <button id="langToggle" class="lang-toggle" aria-label="Toggle language">
+    <span class="lang-opt zh active">中</span>
+    <span class="lang-sep">/</span>
+    <span class="lang-opt en">EN</span>
+  </button>
+</nav>
+
+<header class="page-hero">
+  <div class="grid-overlay"></div>
+  <div class="container">
+    <nav class="crumb">
+      <a href="index.html" data-en="Home" data-zh="首頁">首頁</a>
+      <span class="sep">/</span>
+      <a href="about.html" data-en="About" data-zh="關於我們">關於我們</a>
+      <span class="sep">/</span>
+      <span data-en="Journey of Excellence" data-zh="卓越歷程">卓越歷程</span>
+    </nav>
+    <h1 data-hero-title>卓越 <span class="accent">歷程</span></h1>
+    <p class="lead" data-hero-lead>從 2013 年赴美習藝，到站上美國、義大利、北京的世界賽場 —— 十餘年來，卓越以工藝、認證與競技，一步步把台灣 PDR 帶上國際舞台。</p>
+  </div>
+</header>
+
+<!-- ============ INTRO ============ -->
+<section class="block">
+  <div class="block-inner two-col flip">
+    <div class="col-img reveal">
+      <figure class="intro-photo clickable" data-full="media/founder-dent-time.jpg" data-cap="創辦人於美國 Dent Time 取得 PDR 訓練證書" data-cap-en="At Dent Time, USA — PDR training certificate">
+        <img src="media/founder-dent-time.jpg" alt="創辦人於美國 Dent Time 取得 PDR 訓練證書" loading="lazy">
+        <span class="zoom"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6"><path d="M6 2H2v4M10 14h4v-4"/></svg></span>
+      </figure>
+    </div>
+    <div class="col-text reveal delay-1">
+      <div class="section-eyebrow" data-en="OUR STORY" data-zh="品牌起點">品牌起點</div>
+      <h2 class="section-title" data-en="From California to the world stage." data-zh="從加州出發，走向世界舞台。">從加州出發，走向世界舞台。</h2>
+      <div class="body-copy"
+        data-en="<p>In <strong>September 2013</strong> our founder travelled to California to learn Paintless Dent Repair. In <strong>March 2014</strong>, Superior PDR was born — built on a team-based model, with teamwork and quality as its core values.</p><p>From a single studio to flagships across northern, central and southern Taiwan, every step has rested on the same obsession with detail.</p>"
+        data-zh="<p><strong>2013 年 9 月</strong>，創辦人遠赴美國加州習得 PDR 技術；<strong>2014 年 3 月</strong>，卓越汽車凹痕修復中心正式成立 —— 以團隊制精進工藝，將「團隊合作」與「品質至上」立為核心價值。</p><p>從一間工作室，到橫跨北中南的直營體系，每一步都建立在同一份對細節的執著上。</p>">
+        <p><strong>2013 年 9 月</strong>，創辦人遠赴美國加州習得 PDR 技術；<strong>2014 年 3 月</strong>，卓越汽車凹痕修復中心正式成立 —— 以團隊制精進工藝，將「團隊合作」與「品質至上」立為核心價值。</p>
+        <p>從一間工作室，到橫跨北中南的直營體系，每一步都建立在同一份對細節的執著上。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAT STRIP ============ -->
+<section class="block">
+  <div class="block-inner">
+    <div class="stat-strip reveal">
+      <div class="stat"><div class="val">2013</div><div class="lbl" data-en="SINCE" data-zh="起點">起點</div></div>
+      <div class="stat"><div class="val"><span data-counter="8">0</span></div><div class="lbl" data-en="FLAGSHIP STUDIOS" data-zh="直營旗艦店">直營旗艦店</div></div>
+      <div class="stat"><div class="val"><span data-counter="18">0</span></div><div class="lbl" data-en="MILESTONES" data-zh="關鍵里程碑">關鍵里程碑</div></div>
+      <div class="stat"><div class="val"><span data-counter="12">0</span></div><div class="lbl" data-en="VALE-CERTIFIED TECHS" data-zh="位 Vale 認證技師">位 Vale 認證技師</div></div>
+      <div class="stat"><div class="val">#3</div><div class="lbl" data-en="WORLD · MTE 2026" data-zh="世界 · MTE 2026">世界 · MTE 2026</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="block">
+  <div class="block-inner">
+    <div class="section-eyebrow reveal" data-en="MILESTONES · 2013 — 2026" data-zh="關鍵里程碑 · 2013 — 2026">關鍵里程碑 · 2013 — 2026</div>
+    <h2 class="section-title reveal" data-en="A decade, panel by panel." data-zh="十餘年，一面一面整出來。">十餘年，一面一面整出來。</h2>
+    <div class="atl">
+      <div class="ms-row left reveal">
+        <div class="ms-date"><span class="w-yr">2013</span><span class="w-mo" data-en="SEP" data-zh="9月">9月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo"><span class="ms-ph" data-en="CERTIFICATE" data-zh="結業證書">結業證書</span></div>
+          <div class="ms-body">
+            <span class="ms-tag gold" data-en="TRAINING" data-zh="技術習得">技術習得</span>
+            <h3 class="ms-title" data-en="Learning PDR in California" data-zh="赴美習得 PDR 無痕修復技術">赴美習得 PDR 無痕修復技術</h3>
+            <p class="ms-desc" data-en="Travelled to the Superior Auto Institute in California to master Paintless Dent Repair." data-zh="前往美國加州 Superior Auto Institute，習得 Paintless Dent Repair 免烤漆鈑金修復技術。">前往美國加州 Superior Auto Institute，習得 Paintless Dent Repair 免烤漆鈑金修復技術。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row right feat reveal">
+        <div class="ms-date"><span class="w-yr">2014</span><span class="w-mo" data-en="MAR" data-zh="3月">3月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo"><span class="ms-ph" data-en="TEAM PHOTO" data-zh="團隊合照">團隊合照</span></div>
+          <div class="ms-body">
+            <span class="ms-tag red" data-en="FOUNDED" data-zh="品牌成立">品牌成立</span>
+            <h3 class="ms-title" data-en="Superior PDR is founded" data-zh="成立第一家卓越汽車凹痕修復中心 - 板橋店">成立第一家卓越汽車凹痕修復中心 - 板橋店</h3>
+            <p class="ms-desc" data-en="Founded on a team-based model, with teamwork and quality set as core values." data-zh="以團隊制著力於 PDR 技術精進，將「團隊合作」與「品質至上」立為品牌核心價值。">以團隊制著力於 PDR 技術精進，將「團隊合作」與「品質至上」立為品牌核心價值。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row left reveal">
+        <div class="ms-date"><span class="w-yr">2016</span><span class="w-mo" data-en="MAR" data-zh="3月">3月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo clickable" data-full="media/tool-wall.jpg" data-cap="再赴美國加州引進進階工具" data-cap-en="Advanced tooling from California">
+            <img src="media/tool-wall.jpg" alt="再赴美國加州引進進階工具" loading="lazy">
+            <span class="zoom"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6"><path d="M6 2H2v4M10 14h4v-4"/></svg></span>
+          </div>
+          <div class="ms-body">
+            <span class="ms-tag gold" data-en="TOOLING" data-zh="工具升級">工具升級</span>
+            <h3 class="ms-title" data-en="Advanced tooling from California" data-zh="再赴美國加州引進進階工具">再赴美國加州引進進階工具</h3>
+            <p class="ms-desc" data-en="Returned to California for more advanced tools and higher repair quality." data-zh="再度遠赴加州引進更先進的修復工具，致力於給客戶更高的修復品質。">再度遠赴加州引進更先進的修復工具，致力於給客戶更高的修復品質。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row right reveal">
+        <div class="ms-date"><span class="w-yr">2016</span><span class="w-mo" data-en="AUG" data-zh="8月">8月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo"><span class="ms-ph" data-en="SHILIN STUDIO" data-zh="士林旗艦店">士林旗艦店</span></div>
+          <div class="ms-body">
+            <span class="ms-tag gold" data-en="NEW STUDIO" data-zh="展店">展店</span>
+            <h3 class="ms-title" data-en="Shilin flagship opens" data-zh="士林旗艦店開幕">士林旗艦店開幕</h3>
+            <p class="ms-desc" data-en="The Shilin flagship opens, integrating detailing and body-care services." data-zh="卓越士林旗艦店開幕，並整合汽車美容美體相關服務。">卓越士林旗艦店開幕，並整合汽車美容美體相關服務。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row left reveal">
+        <div class="ms-date"><span class="w-yr">2018</span><span class="w-mo" data-en="FEB" data-zh="2月">2月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo"><span class="ms-ph" data-en="CERTIFICATE" data-zh="進階證書">進階證書</span></div>
+          <div class="ms-body">
+            <span class="ms-tag red" data-en="CERTIFIED" data-zh="國際認證">國際認證</span>
+            <h3 class="ms-title" data-en="Ultra Dent Tools Advanced certificate" data-zh="取得 Ultra Dent Tools 進階訓練證書">取得 Ultra Dent Tools 進階訓練證書</h3>
+            <p class="ms-desc" data-en="Further training in California earns the Advanced certificate from a top-three PDR toolmaker." data-zh="再赴加州進修高階技術，取得全球前三大 PDR 工具製造廠 Ultra Dent Tools 進階證書。">再赴加州進修高階技術，取得全球前三大 PDR 工具製造廠 Ultra Dent Tools 進階證書。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row right feat reveal">
+        <div class="ms-date"><span class="w-yr">2018</span><span class="w-mo" data-en="MAR" data-zh="3月">3月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo"><span class="ms-ph" data-en="TRAINING" data-zh="訓練合影">訓練合影</span></div>
+          <div class="ms-body">
+            <span class="ms-tag red" data-en="CERTIFIED" data-zh="國際認證">國際認證</span>
+            <h3 class="ms-title" data-en="Dent Time Advanced Training" data-zh="取得 Dent Time PDR 高階訓練證書">取得 Dent Time PDR 高階訓練證書</h3>
+            <p class="ms-desc" data-en="A month at Dent Time, whose founder Myke Toledo brings 28 years of experience." data-zh="赴全美知名機構 Dent Time 受訓一個月，創辦人 Myke Toledo 擁有 28 年資歷與豐富教育經驗。">赴全美知名機構 Dent Time 受訓一個月，創辦人 Myke Toledo 擁有 28 年資歷與豐富教育經驗。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row right feat reveal">
+        <div class="ms-date"><span class="w-yr">2018</span><span class="w-mo" data-en="SEP" data-zh="9月">9月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo"><span class="ms-ph" data-en="DENTSTAGE" data-zh="Dentstage 凹痕工廠">Dentstage 凹痕工廠</span></div>
+          <div class="ms-body">
+            <span class="ms-tag red" data-en="MILESTONE" data-zh="里程碑">里程碑</span>
+            <h3 class="ms-title" data-en="Taiwan first PDR tool shop" data-zh="成立全台第一間 PDR 工具商店">成立全台第一間 PDR 工具商店</h3>
+            <p class="ms-desc" data-en="Founded Dentstage and became Ultra Dent Tools exclusive distributor in Asia." data-zh="創立 Dentstage 凹痕工廠，並取得美國最大廠 Ultra Dent Tools 亞洲區獨家代理。">創立 Dentstage 凹痕工廠，並取得美國最大廠 Ultra Dent Tools 亞洲區獨家代理。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row left reveal">
+        <div class="ms-date"><span class="w-yr">2018</span><span class="w-mo" data-en="NOV" data-zh="11月">11月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo clickable" data-full="media/seminar.jpg" data-cap="主辦台灣 PDR 進階研討會" data-cap-en="Taiwan Advanced Training">
+            <img src="media/seminar.jpg" alt="主辦台灣 PDR 進階研討會" loading="lazy">
+            <span class="zoom"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6"><path d="M6 2H2v4M10 14h4v-4"/></svg></span>
+          </div>
+          <div class="ms-body">
+            <span class="ms-tag gold" data-en="HOSTED" data-zh="主辦研討">主辦研討</span>
+            <h3 class="ms-title" data-en="Taiwan Advanced Training" data-zh="主辦台灣 PDR 進階研討會">主辦台灣 PDR 進階研討會</h3>
+            <p class="ms-desc" data-en="Gathered technicians across Asia, with master Myke Toledo teaching the latest methods." data-zh="廣邀亞洲各地技師，並邀請全球知名大師 Myke Toledo 來台指導最新工具與技術。">廣邀亞洲各地技師，並邀請全球知名大師 Myke Toledo 來台指導最新工具與技術。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row right reveal">
+        <div class="ms-date"><span class="w-yr">2018</span><span class="w-mo" data-en="DEC" data-zh="12月">12月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo"><span class="ms-ph" data-en="COMPETITION" data-zh="競賽現場">競賽現場</span></div>
+          <div class="ms-body">
+            <span class="ms-tag red" data-en="COMPETITION" data-zh="國際競賽">國際競賽</span>
+            <h3 class="ms-title" data-en="IASRE Japan Championship" data-zh="參與日本國際 IASRE 修復錦標賽">參與日本國際 IASRE 修復錦標賽</h3>
+            <p class="ms-desc" data-en="Competed against and learned from the best technicians in Japan." data-zh="觀摩來自世界各國好手的技藝與速度，持續為客戶帶來更棒的品質體驗。">觀摩來自世界各國好手的技藝與速度，持續為客戶帶來更棒的品質體驗。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row left reveal">
+        <div class="ms-date"><span class="w-yr">2019</span><span class="w-mo" data-en="MAY" data-zh="5月">5月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo"><span class="ms-ph" data-en="CERTIFICATE" data-zh="IMI 認證">IMI 認證</span></div>
+          <div class="ms-body">
+            <span class="ms-tag red" data-en="CERTIFIED" data-zh="國際認證">國際認證</span>
+            <h3 class="ms-title" data-en="IMI EV repair qualification" data-zh="取得 IMI 電動車 PDR 維修資格">取得 IMI 電動車 PDR 維修資格</h3>
+            <p class="ms-desc" data-en="Earned the IMI hybrid / EV repair qualification." data-zh="取得國際汽車權威機構 IMI 的 HYBRID／EV 電動車維修資格認可。">取得國際汽車權威機構 IMI 的 HYBRID／EV 電動車維修資格認可。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row right reveal">
+        <div class="ms-date"><span class="w-yr">2019</span><span class="w-mo" data-en="OCT" data-zh="10月">10月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo"><span class="ms-ph" data-en="CERTIFICATE" data-zh="DentShop 證書">DentShop 證書</span></div>
+          <div class="ms-body">
+            <span class="ms-tag gold" data-en="TRAINING" data-zh="技術交流">技術交流</span>
+            <h3 class="ms-title" data-en="DentShop Japan exchange" data-zh="赴日本 DentShop 學習技術">赴日本 DentShop 學習技術</h3>
+            <p class="ms-desc" data-en="A week studying under Japanese master Hiroshi Fujii at DentShop." data-zh="前往日本知名 DentShop 技術學校，向 PDR 大師 Hiroshi Fujii 進行為期一週的交流學習。">前往日本知名 DentShop 技術學校，向 PDR 大師 Hiroshi Fujii 進行為期一週的交流學習。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row left feat reveal">
+        <div class="ms-date"><span class="w-yr">2019</span><span class="w-mo" data-en="DEC" data-zh="12月">12月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo clickable" data-full="media/vale-certification.jpg" data-cap="取得 Vale 大師級 Master Craftsman 認證" data-cap-en="Vale Master Craftsman certified">
+            <img src="media/vale-certification.jpg" alt="取得 Vale 大師級 Master Craftsman 認證" loading="lazy">
+            <span class="zoom"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6"><path d="M6 2H2v4M10 14h4v-4"/></svg></span>
+          </div>
+          <div class="ms-body">
+            <span class="ms-tag red" data-en="MASTER" data-zh="最高認證">最高認證</span>
+            <h3 class="ms-title" data-en="Vale Master Craftsman certified" data-zh="取得 Vale 大師級 Master Craftsman 認證">取得 Vale 大師級 Master Craftsman 認證</h3>
+            <p class="ms-desc" data-en="Passed Vale top-tier quality assessment — the only brand in Taiwan to do so." data-zh="通過國際機構 Vale Training Solutions 最高榮譽品質檢定，為台灣業界唯一通過品牌。">通過國際機構 Vale Training Solutions 最高榮譽品質檢定，為台灣業界唯一通過品牌。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row right reveal">
+        <div class="ms-date"><span class="w-yr">2023</span><span class="w-mo" data-en="JUN" data-zh="6月">6月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo clickable" data-full="media/superior-academy.jpg" data-cap="舉辦亞洲進階研討會 AAW" data-cap-en="Asia Advanced Workshop">
+            <img src="media/superior-academy.jpg" alt="舉辦亞洲進階研討會 AAW" loading="lazy">
+            <span class="zoom"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6"><path d="M6 2H2v4M10 14h4v-4"/></svg></span>
+          </div>
+          <div class="ms-body">
+            <span class="ms-tag gold" data-en="HOSTED" data-zh="主辦研討">主辦研討</span>
+            <h3 class="ms-title" data-en="Asia Advanced Workshop" data-zh="舉辦亞洲進階研討會 AAW">舉辦亞洲進階研討會 AAW</h3>
+            <p class="ms-desc" data-en="Technicians from across Asia gathered to learn from masters Myke and Kenji." data-zh="香港、馬來西亞、越南、澳洲技師齊聚，向美國 Myke 與日本 Kenji 大師學習交流。">香港、馬來西亞、越南、澳洲技師齊聚，向美國 Myke 與日本 Kenji 大師學習交流。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row left feat reveal" data-ms-bg="media/pdr-college.jpg">
+        <div class="ms-date"><span class="w-yr">2025</span><span class="w-mo" data-en="OCT" data-zh="10月">10月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo clickable" data-full="media/pdr-college-speak.jpg" data-cap="受邀美國 PDR COLLEGE 擔任講師" data-cap-en="Instructor at PDR College, USA">
+            <img src="media/pdr-college-speak.jpg" alt="受邀美國 PDR COLLEGE 擔任講師" style="object-position:50% 44%" loading="lazy">
+            <span class="zoom"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6"><path d="M6 2H2v4M10 14h4v-4"/></svg></span>
+          </div>
+          <div class="ms-body">
+            <span class="ms-tag red" data-en="INTERNATIONAL" data-zh="國際舞台">國際舞台</span>
+            <h3 class="ms-title" data-en="Instructor at PDR College, USA" data-zh="受邀美國 PDR COLLEGE 擔任講師">受邀美國 PDR COLLEGE 擔任講師</h3>
+            <p class="ms-desc" data-en="Taught in Texas alongside technicians with 20–30 years of experience." data-zh="前往德州，與全球擁有 20–30 年資歷的技術者同台交流，讓世界看見卓越技術。">前往德州，與全球擁有 20–30 年資歷的技術者同台交流，讓世界看見卓越技術。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row right feat reveal">
+        <div class="ms-date"><span class="w-yr">2026</span><span class="w-mo" data-en="JAN" data-zh="1月">1月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo clickable" data-full="media/award-2026-dent-olympics.jpg" data-cap="美國 MTE 世界 PDR 雙人賽 第三名" data-cap-en="3rd place — Mobile Tech Expo">
+            <img src="media/award-2026-dent-olympics.jpg" alt="美國 MTE 世界 PDR 雙人賽 第三名" loading="lazy">
+            <span class="zoom"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6"><path d="M6 2H2v4M10 14h4v-4"/></svg></span>
+          </div>
+          <div class="ms-body">
+            <span class="ms-tag red" data-en="WORLD · 3RD" data-zh="世界賽事">世界賽事</span>
+            <h3 class="ms-title" data-en="3rd place — Mobile Tech Expo" data-zh="美國 MTE 世界 PDR 雙人賽 第三名">美國 MTE 世界 PDR 雙人賽 第三名</h3>
+            <p class="ms-desc" data-en="Took third at the Mobile Tech Expo world PDR pairs competition." data-zh="於美國 Mobile Tech Expo 世界 PDR 雙人比賽榮獲第三名，讓亞洲技術站穩世界舞台。">於美國 Mobile Tech Expo 世界 PDR 雙人比賽榮獲第三名，讓亞洲技術站穩世界舞台。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row left reveal">
+        <div class="ms-date"><span class="w-yr">2026</span><span class="w-mo" data-en="MAR" data-zh="3月">3月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo"><span class="ms-ph" data-en="BEIJING" data-zh="北京賽場">北京賽場</span></div>
+          <div class="ms-body">
+            <span class="ms-tag red" data-en="INTERNATIONAL" data-zh="國際評審">國際評審</span>
+            <h3 class="ms-title" data-en="Head judge, Beijing Masters" data-zh="擔任北京凹陷修復大師賽裁判長">擔任北京凹陷修復大師賽裁判長</h3>
+            <p class="ms-desc" data-en="Head judge of China first dent-repair masters tournament — 80 technicians." data-zh="受邀擔任第一屆中國凹陷修復大師賽裁判長，亞洲最大型賽事、80 位技師同場較勁。">受邀擔任第一屆中國凹陷修復大師賽裁判長，亞洲最大型賽事、80 位技師同場較勁。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row right feat reveal">
+        <div class="ms-date"><span class="w-yr">2026</span><span class="w-mo" data-en="MAR" data-zh="3月">3月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo"><span class="ms-ph" data-en="ITALY" data-zh="DB EXPO 義大利">DB EXPO 義大利</span></div>
+          <div class="ms-body">
+            <span class="ms-tag red" data-en="INTERNATIONAL" data-zh="國際評審">國際評審</span>
+            <h3 class="ms-title" data-en="Judge at Italy DB EXPO" data-zh="義大利 DB EXPO 國際大賽裁判">義大利 DB EXPO 國際大賽裁判</h3>
+            <p class="ms-desc" data-en="Judged at Italy DB EXPO, representing Taiwan and Asian PDR on the world stage." data-zh="受邀擔任義大利 DB EXPO 國際凹痕修復大賽裁判，代表台灣與亞洲 PDR 的專業形象。">受邀擔任義大利 DB EXPO 國際凹痕修復大賽裁判，代表台灣與亞洲 PDR 的專業形象。</p>
+          </div>
+        </div>
+      </div>
+      <div class="ms-row left feat reveal">
+        <div class="ms-date"><span class="w-yr">2026</span><span class="w-mo" data-en="MAY" data-zh="5月">5月</span></div>
+        <div class="ms-card">
+          <div class="ms-photo"><span class="ms-ph" data-en="SEMINAR GROUP" data-zh="國際研討會大合照">國際研討會大合照</span></div>
+          <div class="ms-body">
+            <span class="ms-tag gold" data-en="HOSTED" data-zh="主辦研討">主辦研討</span>
+            <h3 class="ms-title" data-en="Hosted the Taiwan International PDR Seminar" data-zh="主辦台灣 PDR 國際研討會">主辦台灣 PDR 國際研討會</h3>
+            <p class="ms-desc" data-en="Australian Stanliner masters Vilash Sami and Gary Cawood, US veteran Myke Toledo and Japan Kenji Oshimi joined nearly 30 technicians to share the craft of truly invisible repair." data-zh="邀請澳洲 Stanliner 團隊 Vilash Sami、Gary Cawood，美國大師 Myke Toledo 與日本 Kenji Oshimi 來台，近 30 位技師共同交流「保留橘皮紋路」的無痕修復理念。">邀請澳洲 Stanliner 團隊 Vilash Sami、Gary Cawood，美國大師 Myke Toledo 與日本 Kenji Oshimi 來台，近 30 位技師共同交流「保留橘皮紋路」的無痕修復理念。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="cta-band reveal">
+  <div class="ct">
+    <div class="s">BOOK NOW · FREE ESTIMATE</div>
+    <div class="t">Ready when you are.</div>
+  </div>
+  <div class="ct-actions">
+    <a class="cta" href="pricing.html"><span>Online Booking</span></a>
+    <a class="cta ghost" href="index.html#contact"><span>Call Us</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#showcase">Showcase</a>
+      <a href="index.html#training">Training</a>
+      <a href="index.html#locations">Locations</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="logo">
+      <img class="logo-circle" src="media/logo-circle.png" alt="Superior PDR">
+      <div class="logo-text">
+        <div class="top-line">SUPERIOR PDR</div>
+        <div class="bot-line">© 2026 SUPERIOR PDR · ALL RIGHTS RESERVED</div>
+      </div>
+    </div>
+    <div class="foot-social">
+      <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17" cy="7" r="1" fill="currentColor"></circle></svg></a>
+      <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.2 5 12 5 12 5s-4.2 0-7.2.1c-.4 0-1.2.1-2 .9C2.2 6.6 2 8 2 8s-.2 1.6-.2 3.2v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.3.9 1.7.2 7 .2 7 .2s4.2 0 7.2-.2c.4 0 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5C22.2 9.6 22 8 22 8z"></path></svg></a>
+      <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.PAGE_T = [
+    ['.page-hero h1', 'The <span class="accent">Journey</span>', '卓越 <span class="accent">歷程</span>', 'html'],
+    ['.page-hero .lead', "From learning the craft in California in 2013 to judging world competitions in Italy and Beijing — over a decade, Superior has carried Taiwan PDR onto the global stage.", "從 2013 年赴美習藝，到站上美國、義大利、北京的世界賽場 —— 十餘年來，卓越以工藝、認證與競技，一步步把台灣 PDR 帶上國際舞台。", 'text']
+  ];
+</script>
+<script src="assets/site.js"></script>
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+  <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+</div>
+<script>
+(function(){
+  var lb=document.getElementById('lightbox'),img=document.getElementById('lbImg'),cap=document.getElementById('lbCap');
+  function open(el){img.src=el.dataset.full;var en=document.documentElement.lang==='en';cap.textContent=en?(el.dataset.capEn||el.dataset.cap):el.dataset.cap;img.alt=cap.textContent;lb.classList.add('open');lb.setAttribute('aria-hidden','false');}
+  function close(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');img.removeAttribute('src');}
+  document.querySelectorAll('.clickable[data-full]').forEach(function(el){el.addEventListener('click',function(){open(el);});});
+  document.getElementById('lbClose').addEventListener('click',close);
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+</script>
+<script>
+(function(){
+  function srcFor(r){
+    if(r.dataset.msBg) return r.dataset.msBg;
+    var p=r.querySelector('.ms-photo.clickable[data-full]');
+    return p?p.getAttribute('data-full'):null;
+  }
+  var feats=[].slice.call(document.querySelectorAll('.ms-row')).filter(srcFor);
+  if(!feats.length||!('IntersectionObserver' in window))return;
+  var stage=document.createElement('div'); stage.className='ms-stage';
+  var a=document.createElement('div'), b=document.createElement('div');
+  a.className='ms-layer'; b.className='ms-layer';
+  stage.appendChild(a); stage.appendChild(b);
+  document.body.appendChild(stage);
+  var layers=[a,b], front=0, curSrc=null;
+  feats.forEach(function(r){ r.classList.add('has-bg'); });
+  function show(src){
+    if(src===curSrc) return; curSrc=src;
+    if(!src){ stage.classList.remove('show'); layers.forEach(function(l){l.classList.remove('on');}); return; }
+    var next=layers[front^1];
+    next.style.backgroundImage="url('"+src+"')";
+    next.offsetWidth; /* reflow → crossfade */
+    next.classList.add('on');
+    layers[front].classList.remove('on');
+    front^=1; stage.classList.add('show');
+  }
+  var active=new Set();
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      e.target.classList.toggle('active', e.isIntersecting);
+      if(e.isIntersecting) active.add(e.target); else active.delete(e.target);
+    });
+    var best=null,bestD=1e9,cy=window.innerHeight/2;
+    active.forEach(function(r){
+      var rc=r.getBoundingClientRect(); var d=Math.abs((rc.top+rc.bottom)/2-cy);
+      if(d<bestD){bestD=d;best=r;}
+    });
+    show(best?srcFor(best):null);
+  },{root:null,rootMargin:'-38% 0px -38% 0px',threshold:0});
+  feats.forEach(function(r){io.observe(r);});
+})();
+</script>
+</body>
+</html>

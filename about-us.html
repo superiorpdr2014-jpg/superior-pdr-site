@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>關於卓越 — SUPERIOR PDR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  /* ============ ABOUT — page-specific ============ */
+  .about-lead-sub{color:var(--ink-mute);font-family:'JetBrains Mono';font-size:12px;letter-spacing:0.18em;text-transform:uppercase;margin-top:22px;display:flex;gap:10px;align-items:center}
+  .about-lead-sub::before{content:"";width:30px;height:1px;background:var(--accent)}
+
+  /* --- brand story beats --- */
+  .story-beats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:8px}
+  @media(max-width:760px){.story-beats{grid-template-columns:1fr}}
+  .beat{background:var(--bg-elev);padding:32px 28px;position:relative;transition:background .3s}
+  .beat:hover{background:#11151b}
+  .beat .yr{font-family:'Bebas Neue';font-size:46px;line-height:.9;color:var(--accent);letter-spacing:0.02em}
+  .beat .bt{font-size:16px;font-weight:600;color:var(--ink);margin:14px 0 8px}
+  .beat .bd{color:var(--ink-dim);font-size:14px;line-height:1.7}
+  .beat .bk{position:absolute;top:24px;right:26px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.2em;color:var(--ink-mute)}
+
+  /* --- founder --- */
+  .founder-img{position:relative}
+  .founder-badge{position:absolute;left:-1px;bottom:22px;background:var(--accent);color:#fff;font-family:'JetBrains Mono';font-weight:700;font-size:11px;letter-spacing:0.16em;padding:10px 18px;text-transform:uppercase}
+  .founder-name{font-family:'Bebas Neue';font-size:clamp(40px,4.4vw,60px);line-height:1;color:var(--ink);letter-spacing:0.02em;margin:6px 0 4px}
+  .founder-role{font-family:'JetBrains Mono';font-size:12px;letter-spacing:0.18em;color:var(--accent);text-transform:uppercase;margin-bottom:20px}
+  .cred-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .cred-chips .chip{display:inline-flex;align-items:baseline;gap:9px;border:1px solid var(--line-bright);border-radius:5px;padding:9px 14px;background:var(--bg-elev);transition:border-color .25s,transform .25s}
+  .cred-chips .chip:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .cred-chips .chip .cy{font-family:'Bebas Neue';font-size:19px;color:var(--accent);letter-spacing:0.04em;line-height:1}
+  .cred-chips .chip .ct{font-size:13px;color:var(--ink-dim)}
+
+  /* --- quality promise --- */
+  .qa-block{background:radial-gradient(ellipse at 50% 0%,rgba(255,42,61,0.05),transparent 60%),var(--bg)}
+  .qa-inner{max-width:1000px;margin:0 auto;text-align:center}
+  .qa-inner .section-eyebrow{justify-content:center}
+  .qa-quote{font-family:'Bebas Neue';font-size:clamp(38px,5.6vw,68px);line-height:1.04;color:var(--ink);letter-spacing:0.02em;margin:18px 0 6px}
+  .qa-quote .accent{color:var(--accent)}
+  .qa-body{color:var(--ink-dim);font-size:17px;line-height:1.9;max-width:760px;margin:16px auto 0}
+  .qa-body p{margin:0 0 16px}
+  .qa-body strong{color:var(--ink);font-weight:600}
+  .qa-callout{font-family:'JetBrains Mono';font-size:13px;letter-spacing:0.03em;color:var(--ink-dim);max-width:760px;margin:36px auto 0;line-height:1.85}
+  .qa-callout b{color:var(--accent);font-weight:700}
+  .qa-checks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:24px auto 0;text-align:left}
+  @media(max-width:760px){.qa-checks{grid-template-columns:1fr}}
+  .qa-check{background:var(--bg-elev);border:1px solid var(--line);border-radius:9px;padding:22px 24px;display:flex;gap:14px;align-items:flex-start;transition:border-color .25s,transform .25s}
+  .qa-check:hover{border-color:var(--accent);transform:translateY(-3px)}
+  .qa-check .ck{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--accent-soft);border:1px solid rgba(255,42,61,0.4);display:flex;align-items:center;justify-content:center;color:var(--accent)}
+  .qa-check .ck svg{width:15px;height:15px}
+  .qa-check .ckt{font-size:15.5px;color:var(--ink);font-weight:600;line-height:1.4}
+  .qa-check .ckd{display:block;font-weight:400;color:var(--ink-dim);font-size:13px;margin-top:6px;line-height:1.6}
+
+  /* --- core values venn --- */
+  .venn-wrap{position:relative;width:100%;max-width:700px;margin:60px auto 8px;aspect-ratio:680/560}
+  .venn-wrap svg.venn-svg{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible}
+  .venn-wrap svg.venn-svg circle.lobe{mix-blend-mode:screen;transition:fill-opacity .35s ease}
+  .venn-wrap:hover svg.venn-svg circle.lobe{fill-opacity:.72}
+  .vlabel{position:absolute;transform:translate(-50%,-50%);text-align:center;pointer-events:none;width:max-content}
+  .vlabel .vz{font-family:'Bebas Neue';font-size:clamp(24px,3.6vw,38px);line-height:1;color:#fff;letter-spacing:0.05em;text-shadow:0 2px 16px rgba(0,0,0,0.7)}
+  .vlabel .ve{display:block;font-family:'JetBrains Mono';font-size:clamp(8.5px,1.05vw,11px);letter-spacing:0.18em;color:rgba(255,255,255,0.8);text-transform:uppercase;margin-top:6px}
+  .vlabel.core .vz{font-size:clamp(28px,4.4vw,46px);color:var(--accent);letter-spacing:0.03em;text-shadow:0 2px 22px rgba(255,42,61,0.55)}
+  .vlabel.core .ve{font-size:clamp(11px,1.5vw,15px);color:var(--accent);letter-spacing:0.2em;font-weight:700;margin-top:8px;text-shadow:0 2px 14px rgba(255,42,61,0.5)}
+  .vaud{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:9px;pointer-events:none}
+  .vaud svg{width:clamp(32px,4.6vw,46px);height:auto;color:rgba(255,255,255,0.82);filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5))}
+  .vaud .va-t{font-family:'JetBrains Mono';font-size:clamp(9.5px,1.15vw,12px);font-weight:700;letter-spacing:0.14em;color:var(--ink-dim);text-transform:uppercase;white-space:nowrap}
+  .venn-foot{max-width:600px;margin:30px auto 0;text-align:center;color:var(--ink-dim);font-size:15px;line-height:1.8}
+  .venn-foot b{color:var(--ink);font-weight:600}
+  @media(max-width:560px){.vaud .va-t{font-size:9px;letter-spacing:0.1em}.vaud{gap:6px}}
+
+  /* --- team wall --- */
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px;margin-top:48px}
+  .team-grid .ph{min-height:0;height:100%}
+  .team-grid .span2{grid-column:span 2}
+  .team-grid .row2{grid-row:span 2}
+  @media(max-width:900px){.team-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}.team-grid .span2{grid-column:span 2}}
+  @media(max-width:520px){.team-grid{grid-template-columns:1fr}.team-grid .span2,.team-grid .row2{grid-column:auto;grid-row:auto}}
+  .ph .ph-badge{position:absolute;top:12px;left:12px;font-family:'JetBrains Mono';font-size:9.5px;font-weight:700;letter-spacing:0.16em;color:var(--ink-dim);background:rgba(7,8,11,0.7);border:1px solid var(--line-bright);padding:4px 9px;border-radius:4px;text-transform:uppercase;z-index:2}
+  .ph.video::after{content:"";position:absolute;width:0;height:0;border-style:solid;border-width:13px 0 13px 22px;border-color:transparent transparent transparent rgba(255,255,255,0.55);left:50%;top:50%;transform:translate(-40%,-50%);z-index:1}
+  .ph.video::before{content:"";position:absolute;inset:auto;left:50%;top:50%;width:62px;height:62px;border:1px solid var(--line-bright);border-radius:50%;transform:translate(-50%,-50%);background:rgba(255,42,61,0.08)}
+
+  /* --- locations --- */
+  .loc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+  @media(max-width:900px){.loc-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.loc-grid{grid-template-columns:1fr}}
+  .loc-card{background:var(--bg-elev);border:1px solid var(--line);border-radius:9px;padding:24px 22px;position:relative;transition:border-color .25s,transform .25s}
+  .loc-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+  .loc-card .lc-no{font-family:'Bebas Neue';font-size:24px;color:var(--line-bright);letter-spacing:0.04em;line-height:1}
+  .loc-card .lc-region{font-family:'JetBrains Mono';font-size:14px;font-weight:700;letter-spacing:0.16em;color:var(--accent);text-transform:uppercase;margin-top:18px}
+  .loc-card .lc-name{font-size:19px;font-weight:600;color:var(--ink);margin-top:8px;letter-spacing:0.01em}
+  .loc-card .lc-pin{position:absolute;top:22px;right:22px;color:var(--line-bright);transition:color .25s}
+  .loc-card:hover .lc-pin{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<nav class="top" id="topnav" data-current="about"></nav>
+
+<!-- ============ PAGE HERO ============ -->
+<header class="page-hero">
+  <div class="grid-overlay"></div>
+  <div class="container">
+    <nav class="crumb">
+      <a href="Superior-PDR.html" data-en="Home" data-zh="首頁">首頁</a>
+      <span class="sep">/</span>
+      <span data-en="About" data-zh="關於卓越">關於卓越</span>
+    </nav>
+    <h1 data-title>關於 <span class="accent">卓越</span></h1>
+    <p class="lead" data-lead>從 2013 年赴美習藝，到成為台灣 PDR 的國際標竿 —— 卓越以世界級的免烤漆凹痕修復工藝，不噴漆、不補土、不鑽洞，完美還原原廠鈑面。</p>
+    <div class="about-lead-sub" data-en="SINCE 2014 · 8 DIRECT STUDIOS · TAIWAN" data-zh="自 2014 · 八家直營據點 · 台灣">自 2014 · 八家直營據點 · 台灣</div>
+  </div>
+</header>
+
+<!-- ============ BRAND STORY ============ -->
+<section class="block">
+  <div class="block-inner two-col">
+    <div class="col-text reveal">
+      <div class="section-eyebrow" data-en="OUR STORY" data-zh="品牌故事">品牌故事</div>
+      <h2 class="section-title" data-en="From California to a national benchmark." data-zh="從加州出發，成為全台標竿。">從加州出發，成為全台標竿。</h2>
+      <div class="body-copy" data-en="<p><strong>Superior PDR</strong> began with one conviction: a dent should be coaxed back out of the metal — never buried under filler and paint.</p><p>In 2013 our founder crossed the Pacific to study paintless dent repair at its source. A year later that craft came home to Taiwan, and over the next decade grew into eight direct studios sharing one uncompromising standard.</p>" data-zh="<p><strong>卓越</strong>始於一個信念：凹痕應該被「整」回原狀，而不是用補土與烤漆掩蓋。</p><p>2013 年，創辦人遠赴美國，從技術源頭鑽研免烤漆凹痕修復；隔年將這身工藝帶回台灣。十餘年來，逐步成長為八家直營據點，共享同一套絕不妥協的作業標準。</p>">
+        <p><strong>卓越</strong>始於一個信念：凹痕應該被「整」回原狀，而不是用補土與烤漆掩蓋。</p>
+        <p>2013 年，創辦人遠赴美國，從技術源頭鑽研免烤漆凹痕修復；隔年將這身工藝帶回台灣。十餘年來，逐步成長為八家直營據點，共享同一套絕不妥協的作業標準。</p>
+      </div>
+    </div>
+    <div class="col-img reveal delay-1">
+      <div class="ph tall">
+        <span class="ph-badge" data-en="STUDIO / TEAM" data-zh="工作室 / 團隊">工作室 / 團隊</span>
+        <span class="ph-label" data-en="DROP STUDIO PHOTO<br>portrait · approx. 720×900" data-zh="拖入工作室照片<br>直式 · 約 720×900">拖入工作室照片<br>直式 · 約 720×900</span>
+      </div>
+    </div>
+  </div>
+  <div class="block-inner" style="margin-top:44px">
+    <div class="story-beats reveal">
+      <div class="beat">
+        <div class="bk">01</div>
+        <div class="yr">2013</div>
+        <div class="bt" data-en="Learning at the source" data-zh="赴美習藝">赴美習藝</div>
+        <div class="bd" data-en="Crossed to Los Angeles to study PDR from the ground up at the Superior Auto Institute." data-zh="遠赴洛杉磯 Superior Auto Institute，從零鑽研免烤漆凹痕修復技術。">遠赴洛杉磯 Superior Auto Institute，從零鑽研免烤漆凹痕修復技術。</div>
+      </div>
+      <div class="beat">
+        <div class="bk">02</div>
+        <div class="yr">2014</div>
+        <div class="bt" data-en="Founded in Taiwan" data-zh="台灣創業">台灣創業</div>
+        <div class="bd" data-en="Brought the craft home and founded Superior — redefining body repair with no spray, no filler, no drilling." data-zh="將工藝帶回台灣創立卓越，以不噴漆、不補土、不鑽洞重新定義車體修復。">將工藝帶回台灣創立卓越，以不噴漆、不補土、不鑽洞重新定義車體修復。</div>
+      </div>
+      <div class="beat">
+        <div class="bk">03</div>
+        <div class="yr" data-en="TODAY" data-zh="今日">今日</div>
+        <div class="bt" data-en="A global benchmark" data-zh="國際標竿">國際標竿</div>
+        <div class="bd" data-en="Eight direct studios, international competition judging and training — the benchmark for PDR in Taiwan." data-zh="八家直營據點、國際賽事裁判與教學，成為台灣 PDR 的標竿。">八家直營據點、國際賽事裁判與教學，成為台灣 PDR 的標竿。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOUNDER ============ -->
+<section class="block">
+  <div class="block-inner two-col flip">
+    <div class="col-text reveal delay-1">
+      <div class="section-eyebrow" data-en="THE FOUNDER" data-zh="創辦人">創辦人</div>
+      <div class="founder-name">小馬 Jay Ma</div>
+      <div class="founder-role" data-en="MASTER PDR TECHNICIAN · FOUNDER" data-zh="PDR 技師 · 品牌創辦人">PDR 技師 · 品牌創辦人</div>
+      <div class="body-copy" data-en="<p>From a 2013 apprenticeship in California to the judging panels of the world's leading dent-repair competitions, Jay has spent over a decade carrying Taiwanese PDR onto the global stage.</p><p>He holds to a single rule — <strong>never drill</strong> — and specialises in the hardest panels on the road: Tesla, Porsche, Lexus, aluminium Mercedes-Benz and BMW, using GPR and lateral-tension technique.</p>" data-zh="<p>從 2013 年赴美習藝，到站上世界頂尖凹痕修復賽事的裁判席，小馬以十餘年的工藝，一步步把台灣 PDR 帶上國際舞台。</p><p>他堅守一條原則 —— <strong>絕不鑽洞</strong>，並專精路上最難修復的車款：Tesla、Porsche、Lexus、賓士鋁合金與 BMW，運用 GPR 與 Lateral Tension 技術完美還原。</p>">
+        <p>從 2013 年赴美習藝，到站上世界頂尖凹痕修復賽事的裁判席，小馬以十餘年的工藝，一步步把台灣 PDR 帶上國際舞台。</p>
+        <p>他堅守一條原則 —— <strong>絕不鑽洞</strong>，並專精路上最難修復的車款：Tesla、Porsche、Lexus、賓士鋁合金與 BMW，運用 GPR 與 Lateral Tension 技術完美還原。</p>
+      </div>
+      <div class="cred-chips">
+        <div class="chip"><span class="cy">2026</span><span class="ct" data-en="Judge · DB Expo Italy" data-zh="義大利 DB EXPO 國際裁判">義大利 DB EXPO 國際裁判</span></div>
+        <div class="chip"><span class="cy">2026</span><span class="ct" data-en="Judge · China PDR Masters" data-zh="中國凹痕修復大師賽國際裁判">中國凹痕修復大師賽國際裁判</span></div>
+        <div class="chip"><span class="cy">2026</span><span class="ct" data-en="3rd · MTE Tag Team (USA)" data-zh="美國 MTE Tag Team 世界第三">美國 MTE Tag Team 世界第三</span></div>
+        <div class="chip"><span class="cy">2019</span><span class="ct" data-en="Silver · WorldSkills Kazan" data-zh="俄羅斯喀山技職奧運 銀牌">俄羅斯喀山技職奧運 銀牌</span></div>
+        <div class="chip"><span class="cy">2025</span><span class="ct" data-en="PDR College · Texas" data-zh="美國德州 PDR College">美國德州 PDR College</span></div>
+      </div>
+    </div>
+    <div class="col-img reveal">
+      <div class="founder-img">
+        <div class="ph tall">
+          <span class="ph-badge" data-en="FOUNDER PORTRAIT" data-zh="創辦人形象照">創辦人形象照</span>
+          <span class="ph-label" data-en="DROP FOUNDER PHOTO<br>portrait · approx. 720×900" data-zh="拖入創辦人照片<br>直式 · 約 720×900">拖入創辦人照片<br>直式 · 約 720×900</span>
+        </div>
+        <div class="founder-badge" data-en="SINCE 2013" data-zh="自 2013">自 2013</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUALITY PROMISE ============ -->
+<section class="block qa-block">
+  <div class="block-inner qa-inner">
+    <div class="section-eyebrow reveal" data-en="QUALITY PROMISE" data-zh="品質保證">品質保證</div>
+    <blockquote class="qa-quote reveal" data-en="We are <span class='accent'>perfectionists</span>." data-zh="我們，都是<span class='accent'>完美主義者</span>。">我們，都是<span class="accent">完美主義者</span>。</blockquote>
+    <div class="qa-body reveal" data-en="<p>Repair quality isn't only our responsibility to the customer — it's the standard we hold ourselves to. We don't chase a result that merely <strong>looks</strong> fixed to the eye; we restore every car to its absolute best. Truly professional dent repair demands extraordinary patience and focus.</p>" data-zh="<p>修復品質，不只是對客人的負責，更是對自己的要求。我們追求的，從來不是『肉眼看起來修好了』，而是把每一台車都修復到極致 —— 真正專業的凹痕修復，需要極大的耐心與專注。</p>">
+      <p>修復品質，不只是對客人的負責，更是對自己的要求。我們追求的，從來不是『肉眼看起來修好了』，而是把每一台車都修復到極致 —— 真正專業的凹痕修復，需要極大的耐心與專注。</p>
+    </div>
+    <p class="qa-callout reveal" data-en="That's why, before every handover, a <b>second technician runs a panel gauge</b> across the work — verifying three things:" data-zh="正因如此，卓越在交車前，都會由<b>另一位技師以線鈑逐一確認</b> —— 檢查三件事：">正因如此，卓越在交車前，都會由<b>另一位技師以線鈑逐一確認</b> —— 檢查三件事：</p>
+    <div class="qa-checks">
+      <div class="qa-check reveal">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>
+        <span class="ckt" data-en="Body lines run smooth<span class='ckd'>Every repaired panel line flows true, with no ripple.</span>" data-zh="鈑金線條平順<span class='ckd'>修復過的每一道鈑金線條都流暢一致，毫無起伏。</span>">鈑金線條平順<span class="ckd">修復過的每一道鈑金線條都流暢一致，毫無起伏。</span></span>
+      </div>
+      <div class="qa-check reveal delay-1">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>
+        <span class="ckt" data-en="No surface distortion<span class='ckd'>The panel surface shows no abnormal twist or warping.</span>" data-zh="表面無異常扭曲<span class='ckd'>鈑面平整，沒有任何異常的扭曲或變形。</span>">表面無異常扭曲<span class="ckd">鈑面平整，沒有任何異常的扭曲或變形。</span></span>
+      </div>
+      <div class="qa-check reveal delay-2">
+        <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>
+        <span class="ckt" data-en="Even factory orange-peel<span class='ckd'>The original paint's orange-peel texture stays perfectly uniform.</span>" data-zh="原廠漆橘皮均勻<span class='ckd'>原廠漆面的橘皮紋理保持一致、自然均勻。</span>">原廠漆橘皮均勻<span class="ckd">原廠漆面的橘皮紋理保持一致、自然均勻。</span></span>
+      </div>
+    </div>
+    <div class="qa-body reveal" style="margin-top:34px" data-en="<p>This is the guarantee <strong>Superior PDR</strong> gives you. We take pride in working with the most advanced techniques and tools — and the drive to keep training overseas is what sharpens them. Today, Superior partners with leading international brands and stands among the top PDR teams in Taiwan.</p>" data-zh="<p>這，就是【<strong>卓越凹痕修復</strong>】給您最專業的保證。我們以擁有最先進的技術與工具為傲，而持續出國深造，正是我們精進技術的原動力。如今，卓越已與多家國際大廠合作，成為台灣頂尖的 PDR 技術團隊。</p>">
+      <p>這，就是【<strong>卓越凹痕修復</strong>】給您最專業的保證。我們以擁有最先進的技術與工具為傲，而持續出國深造，正是我們精進技術的原動力。如今，卓越已與多家國際大廠合作，成為台灣頂尖的 PDR 技術團隊。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CORE VALUES ============ -->
+<section class="block">
+  <div class="block-inner">
+    <div class="section-eyebrow reveal" data-en="CORE VALUES" data-zh="核心價值">核心價值</div>
+    <h2 class="section-title reveal" data-en="It's about core values." data-zh="一切，關乎核心價值。">一切，關乎核心價值。</h2>
+    <p class="section-sub reveal" data-en="Three commitments — to our customers, our peers and ourselves — that converge into one: a craft built to last." data-zh="三項承諾 —— 對客戶、對同業、對自己 —— 最終交會於同一件事：可長可久的卓越工藝。">三項承諾 —— 對客戶、對同業、對自己 —— 最終交會於同一件事：可長可久的卓越工藝。</p>
+
+    <div class="venn-wrap reveal">
+      <svg class="venn-svg" viewBox="0 0 680 560" aria-hidden="true">
+        <circle class="lobe" cx="340" cy="196" r="205" fill="#3a5aa8" fill-opacity="0.6" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"></circle>
+        <circle class="lobe" cx="228" cy="374" r="205" fill="#b58a36" fill-opacity="0.56" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"></circle>
+        <circle class="lobe" cx="452" cy="374" r="205" fill="#2c7d8d" fill-opacity="0.58" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"></circle>
+      </svg>
+
+      <div class="vlabel" style="left:50%;top:24%"><div class="vz">專業</div><span class="ve">Professionalism</span></div>
+      <div class="vlabel" style="left:28%;top:77%"><div class="vz">誠信</div><span class="ve">Integrity</span></div>
+      <div class="vlabel" style="left:72%;top:77%"><div class="vz">精進</div><span class="ve">Improvement</span></div>
+      <div class="vlabel core" style="left:50%;top:54%"><div class="vz">永續</div><span class="ve">Sustainability</span></div>
+
+      <div class="vaud" style="left:50%;top:2%">
+        <svg viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><circle cx="32" cy="22" r="12"></circle><path d="M10 58c0-12 10-21 22-21s22 9 22 21z"></path></svg>
+        <span class="va-t" data-en="CUSTOMERS" data-zh="對客戶">對客戶</span>
+      </div>
+      <div class="vaud" style="left:6%;top:56%">
+        <svg viewBox="0 0 72 64" fill="currentColor" aria-hidden="true"><circle cx="24" cy="22" r="11"></circle><circle cx="48" cy="24" r="9"></circle><path d="M6 56c0-11 8-19 18-19s18 8 18 19z"></path><path d="M38 56c0-9 7-16 16-16s16 7 16 16z" opacity="0.55"></path></svg>
+        <span class="va-t" data-en="COMPETITORS" data-zh="對同業">對同業</span>
+      </div>
+      <div class="vaud" style="left:94%;top:56%">
+        <svg viewBox="0 0 72 64" fill="currentColor" aria-hidden="true"><circle cx="30" cy="22" r="12"></circle><path d="M8 58c0-12 10-21 22-21 3 0 6 .6 9 1.8" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"></path><circle cx="54" cy="46" r="13"></circle><path d="M48 46l4 4 8-9" fill="none" stroke="#07080b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        <span class="va-t" data-en="OURSELVES" data-zh="對自己">對自己</span>
+      </div>
+    </div>
+
+    <p class="venn-foot reveal" data-en="<b>Professionalism</b> for our customers, <b>integrity</b> toward our peers, <b>improvement</b> on ourselves — where the three meet, they become <b>sustainability</b>: excellence that lasts." data-zh="對客戶的<b>專業</b>、對同業的<b>誠信</b>、對自己的<b>精進</b> —— 三者交會之處，便成就了<b>永續</b>：可長可久的卓越。">對客戶的<b>專業</b>、對同業的<b>誠信</b>、對自己的<b>精進</b> —— 三者交會之處，便成就了<b>永續</b>：可長可久的卓越。</p>
+  </div>
+</section>
+
+<!-- ============ TEAM WALL ============ -->
+<section class="block">
+  <div class="block-inner">
+    <div class="section-eyebrow reveal" data-en="THE TEAM" data-zh="卓越團隊">卓越團隊</div>
+    <h2 class="section-title reveal" data-en="The people behind the panel." data-zh="鈑面背後的每一雙手。">鈑面背後的每一雙手。</h2>
+    <p class="section-sub reveal" data-en="A team of certified technicians sharing one discipline. Drop your own team photos and video into the frames below." data-zh="一支共享同一套準則的國際認證技師團隊。可直接將你的團隊照片與影片拖入下方框格。">一支共享同一套準則的國際認證技師團隊。可直接將你的團隊照片與影片拖入下方框格。</p>
+
+    <div class="team-grid reveal">
+      <div class="ph span2 row2 video">
+        <span class="ph-badge" data-en="TEAM VIDEO" data-zh="團隊影片">團隊影片</span>
+        <span class="ph-label" data-en="DROP TEAM VIDEO<br>landscape · 16:9" data-zh="拖入團隊影片<br>橫式 · 16:9">拖入團隊影片<br>橫式 · 16:9</span>
+      </div>
+      <div class="ph"><span class="ph-badge" data-en="PHOTO" data-zh="照片">照片</span><span class="ph-label" data-en="TEAM PHOTO" data-zh="團隊照片">團隊照片</span></div>
+      <div class="ph"><span class="ph-badge" data-en="PHOTO" data-zh="照片">照片</span><span class="ph-label" data-en="AT WORK" data-zh="工作實況">工作實況</span></div>
+      <div class="ph"><span class="ph-badge" data-en="PHOTO" data-zh="照片">照片</span><span class="ph-label" data-en="TECHNICIAN" data-zh="技師">技師</span></div>
+      <div class="ph"><span class="ph-badge" data-en="PHOTO" data-zh="照片">照片</span><span class="ph-label" data-en="STUDIO" data-zh="工作室">工作室</span></div>
+    </div>
+    <p class="price-note reveal" data-en="* Send your photos and video and I'll drop them straight into these frames." data-zh="＊ 把你的照片與影片給我，我可以直接幫你放進這些框格。">＊ 把你的照片與影片給我，我可以直接幫你放進這些框格。</p>
+  </div>
+</section>
+
+<!-- ============ LOCATIONS ============ -->
+<section class="block">
+  <div class="block-inner">
+    <div class="section-eyebrow reveal" data-en="8 DIRECT STUDIOS · TAIWAN" data-zh="八家直營據點 · 全台">八家直營據點 · 全台</div>
+    <h2 class="section-title reveal" data-en="Nationwide, under one standard." data-zh="全台佈點，統一標準。">全台佈點，統一標準。</h2>
+    <p class="section-sub reveal" data-en="Every studio is directly operated with a unified process. No franchise gap — wherever you are, it's the same precise craft." data-zh="每一間皆為直營體系、流程統一。沒有加盟落差 —— 不論您在哪裡，都是同樣的精準工藝。">每一間皆為直營體系、流程統一。沒有加盟落差 —— 不論您在哪裡，都是同樣的精準工藝。</p>
+
+    <div class="loc-grid">
+      <div class="loc-card reveal"><div class="lc-no">01</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="NEW TAIPEI" data-zh="新北">新北</div><div class="lc-name" data-en="Banqiao Studio" data-zh="板橋店">板橋店</div></div>
+      <div class="loc-card reveal"><div class="lc-no">02</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="NEW TAIPEI" data-zh="新北">新北</div><div class="lc-name" data-en="Zhonghe Studio" data-zh="中和店">中和店</div></div>
+      <div class="loc-card reveal"><div class="lc-no">03</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="TAIPEI" data-zh="台北">台北</div><div class="lc-name" data-en="Shilin Studio" data-zh="士林店">士林店</div></div>
+      <div class="loc-card reveal"><div class="lc-no">04</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="TAIPEI" data-zh="台北">台北</div><div class="lc-name" data-en="Binjiang Studio" data-zh="濱江店">濱江店</div></div>
+      <div class="loc-card reveal"><div class="lc-no">05</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="TAOYUAN" data-zh="桃園">桃園</div><div class="lc-name" data-en="Pingzhen Studio" data-zh="平鎮店">平鎮店</div></div>
+      <div class="loc-card reveal"><div class="lc-no">06</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="HSINCHU" data-zh="新竹">新竹</div><div class="lc-name" data-en="Zhubei Studio" data-zh="竹北店">竹北店</div></div>
+      <div class="loc-card reveal"><div class="lc-no">07</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="TAICHUNG" data-zh="台中">台中</div><div class="lc-name" data-en="South District" data-zh="南區店">南區店</div></div>
+      <div class="loc-card reveal"><div class="lc-no">08</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="KAOHSIUNG" data-zh="高雄">高雄</div><div class="lc-name" data-en="Nanzi Studio" data-zh="楠梓店">楠梓店</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="cta-band reveal">
+  <div class="ct">
+    <div class="s">BOOK NOW · FREE ESTIMATE</div>
+    <div class="t">Ready when you are.</div>
+  </div>
+  <div class="ct-actions">
+    <a class="cta" href="pricing.html"><span>Online Booking</span></a>
+    <a class="cta ghost" href="contact.html"><span>Call Us</span></a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-links">
+      <a href="Superior-PDR.html">Home</a>
+      <a href="Superior-PDR.html#services">Services</a>
+      <a href="Superior-PDR.html#showcase">Showcase</a>
+      <a href="Superior-PDR.html#training">Training</a>
+      <a href="contact.html">Locations</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="Superior-PDR.html" class="logo">
+      <img class="logo-circle" src="media/logo-circle.png" alt="Superior PDR">
+      <div class="logo-text">
+        <div class="top-line">SUPERIOR PDR</div>
+        <div class="bot-line">© 2026 SUPERIOR PDR · ALL RIGHTS RESERVED</div>
+      </div>
+    </a>
+    <div class="foot-social">
+      <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17" cy="7" r="1" fill="currentColor"></circle></svg></a>
+      <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.2 5 12 5 12 5s-4.2 0-7.2.1c-.4 0-1.2.1-2 .9C2.2 6.6 2 8 2 8s-.2 1.6-.2 3.2v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.3.9 1.7.2 7 .2 7 .2s4.2 0 7.2-.2c.4 0 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5C22.2 9.6 22 8 22 8z"></path></svg></a>
+      <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.PAGE_T = [
+    ['.page-hero h1', 'About <span class="accent">Superior</span>', '關於 <span class="accent">卓越</span>', 'html'],
+    ['.page-hero .lead',
+      'From a 2013 apprenticeship in California to becoming Taiwan\u2019s benchmark for PDR \u2014 Superior restores the factory panel with world-class paintless dent repair: no spray, no filler, no drilling.',
+      '從 2013 年赴美習藝，到成為台灣 PDR 的國際標竿 —— 卓越以世界級的免烤漆凹痕修復工藝，不噴漆、不補土、不鑽洞，完美還原原廠鈑面。',
+      'text']
+  ];
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

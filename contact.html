@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>據點分佈 · 聯絡我們 — SUPERIOR PDR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  /* ── Hero ── */
+  .contact-hero{padding:140px 48px 72px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .contact-hero .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.022) 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(ellipse 90% 80% at 40% 50%,#000,transparent 82%)}
+  .contact-hero h1{font-family:'Bebas Neue';font-size:clamp(56px,7vw,96px);line-height:.95;letter-spacing:.02em;margin:0 0 18px}
+  .contact-hero p{color:var(--ink-dim);font-size:17px;max-width:560px;line-height:1.65;margin:0}
+  /* ── Contact strip ── */
+  .ct-strip{background:var(--bg-elev);border-bottom:1px solid var(--line);padding:0 48px}
+  .ct-strip-inner{max-width:1260px;margin:0 auto;display:flex;align-items:center;gap:0;flex-wrap:wrap}
+  .ct-item{display:flex;align-items:center;gap:10px;padding:18px 24px 18px 0;border-right:1px solid var(--line);margin-right:24px;font-size:14px;color:var(--ink-dim);white-space:nowrap}
+  .ct-item:last-child{border-right:none;margin-right:0}
+  .ct-item a{color:var(--ink);font-weight:600;text-decoration:none;transition:color .18s}
+  .ct-item a:hover{color:var(--accent)}
+  .ct-item svg{flex:none;opacity:.6}
+  .ct-line-btn{display:inline-flex;align-items:center;gap:8px;background:#06c755;color:#fff;font-weight:700;font-size:13px;padding:8px 18px;border-radius:7px;text-decoration:none;transition:opacity .2s}
+  .ct-line-btn:hover{opacity:.85}
+  .ct-social{display:flex;align-items:center;gap:10px;margin-left:auto;padding:14px 0}
+  .ct-social a{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;transition:opacity .2s;text-decoration:none}
+  .ct-social a:hover{opacity:.75}
+  /* ── Studios ── */
+  .studio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
+  @media(max-width:1100px){.studio-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.studio-grid{grid-template-columns:1fr}}
+  .sc{background:var(--bg-elev);border:1px solid var(--line);border-radius:13px;display:flex;flex-direction:column;overflow:hidden;transition:border-color .2s,transform .2s}
+  .sc:hover{border-color:var(--line-bright);transform:translateY(-3px)}
+  .sc-head{padding:16px 18px 12px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+  .sc-no{font-family:'Bebas Neue';font-size:34px;line-height:.9;color:rgba(255,255,255,0.1);flex:none}
+  .sc-meta{flex:1;min-width:0}
+  .sc-region{font-family:'JetBrains Mono';font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+  .sc-name{font-size:18px;font-weight:700;color:var(--ink);line-height:1.2}
+  .sc-name-en{font-family:'JetBrains Mono';font-size:9.5px;letter-spacing:.1em;color:var(--ink-mute);text-transform:uppercase;margin-top:2px}
+  .sc-call-badge{background:rgba(255,42,61,0.1);border:1px solid rgba(255,42,61,0.35);border-radius:5px;padding:3px 8px;font-family:'JetBrains Mono';font-size:8.5px;letter-spacing:.1em;color:var(--accent);white-space:nowrap;flex:none;align-self:flex-start}
+  .sc-body{padding:15px 18px;flex:1;display:flex;flex-direction:column;gap:9px}
+  .sc-row{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--ink-dim);line-height:1.5}
+  .sc-row svg{flex:none;opacity:.5;margin-top:2px}
+  .sc-row a{color:var(--ink-dim);text-decoration:none;transition:color .18s}
+  .sc-row a:hover{color:var(--ink)}
+  .sc-hours{display:grid;grid-template-columns:auto 1fr;gap:2px 8px;font-family:'JetBrains Mono';font-size:11px;color:var(--ink-mute)}
+  .sc-hours .day{color:var(--ink-dim)}
+  .sc-foot{padding:13px 18px;border-top:1px solid var(--line);display:flex;gap:8px}
+  .sc-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:9px 10px;border-radius:7px;font-size:12px;font-weight:600;text-decoration:none;transition:opacity .2s;letter-spacing:.02em}
+  .sc-btn:hover{opacity:.8}
+  .sc-btn.nav{background:rgba(255,255,255,0.06);border:1px solid var(--line-bright);color:var(--ink)}
+  .sc-btn.tech{background:rgba(255,255,255,0.04);border:1px solid var(--line-bright);color:var(--ink-dim);flex:none;padding:9px 12px}
+  .sc-btn.book{background:#06c755;color:#fff}
+  /* ── Note ── */
+  .call-note{margin-top:28px;padding:16px 22px;background:rgba(255,42,61,0.04);border:1px dashed rgba(255,42,61,0.3);border-radius:9px;display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--ink-dim);line-height:1.7}
+  .call-note svg{flex:none;color:var(--accent);margin-top:2px}
+  .call-note strong{color:var(--ink)}
+  /* ── CTA band ── */
+  .line-band{background:var(--bg-elev);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:52px 48px;text-align:center;margin-top:60px}
+  .line-band .lt{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;margin-bottom:12px}
+  .line-band h3{font-family:'Bebas Neue';font-size:clamp(36px,4vw,52px);line-height:1;letter-spacing:.02em;margin:0 0 8px}
+  .line-band p{color:var(--ink-dim);font-size:15px;margin:0 auto 28px;max-width:480px;line-height:1.65}
+  .line-band-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+  .line-id{font-family:'JetBrains Mono';font-size:13px;color:var(--ink-mute);margin-top:14px;letter-spacing:.06em}
+  /* ── Reveal ── */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(max-width:640px){.ct-strip{padding:0 20px}.ct-item{padding:14px 14px 14px 0;margin-right:14px;font-size:12.5px}.contact-hero{padding:120px 24px 56px}.line-band{padding:40px 24px}}
+</style>
+</head>
+<body>
+
+<nav class="top" id="topnav" data-current="contact"></nav>
+
+<!-- Hero -->
+<header class="contact-hero">
+  <div class="grid-overlay"></div>
+  <div style="max-width:1260px;margin:0 auto;position:relative;z-index:1">
+    <div class="section-eyebrow" style="margin-bottom:16px" data-en="LOCATIONS · 8 DIRECT STUDIOS" data-zh="據點分佈 · 8 家直營">據點分佈 · 8 家直營</div>
+    <h1 data-hero-title>找到 <span class="accent">卓越</span></h1>
+    <p data-en="8 direct studios across Taiwan. Walk-ins welcome for free estimates — no appointment needed. Hsinchu and Taichung studios please call ahead to confirm." data-zh="8 家直營工作室，遍佈全台北中南。估車免預約，歡迎直接前來。新竹與台中店請先致電確認可否前往評估。">8 家直營工作室，遍佈全台北中南。估車免預約，歡迎直接前來。新竹與台中店請先致電確認。</p>
+  </div>
+</header>
+
+<!-- Contact strip -->
+<div class="ct-strip">
+  <div class="ct-strip-inner">
+    <div class="ct-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+      <span>LINE 即時諮詢</span>
+      <a class="ct-line-btn" href="https://line.me/R/ti/p/%40pdr.tw" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        @pdr.tw
+      </a>
+    </div>
+    <div class="ct-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      <span data-en="Repairs by appointment" data-zh="維修採預約制">維修採預約制</span>
+    </div>
+    <div class="ct-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span data-en="Free walk-in estimate" data-zh="估車免預約">估車免預約</span>
+    </div>
+    <div class="ct-social">
+      <a href="https://www.facebook.com/PdrSuperior" target="_blank" rel="noopener" style="background:#1877f2" aria-label="Facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/superiorpdrtaiwan/" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7)" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>
+      </a>
+      <a href="https://www.youtube.com/channel/UC8mXr_dYrD6Or-jA91W1irw?view_as=subscriber" target="_blank" rel="noopener" style="background:#ff0000" aria-label="YouTube">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#ff0000"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Studios -->
+<section class="block">
+  <div class="block-inner">
+    <div class="section-eyebrow reveal" data-en="8 DIRECT STUDIOS · TAIWAN" data-zh="8 家直營工作室 · 全台據點">8 家直營工作室 · 全台據點</div>
+    <h2 class="section-title reveal" data-en="Every studio, one standard." data-zh="每間工作室，同一套標準。">每間工作室，同一套標準。</h2>
+
+    <div class="studio-grid">
+
+      <!-- 01 板橋總店 -->
+      <div class="sc reveal">
+        <div class="sc-head">
+          <div class="sc-meta">
+            <div class="sc-region" data-en="NEW TAIPEI" data-zh="新北">新北</div>
+            <div class="sc-name" data-en="Banqiao Studio" data-zh="板橋總店">板橋總店</div>
+            <div class="sc-name-en">Banqiao · Head Studio</div>
+          </div>
+          <div class="sc-no">01</div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <a href="https://maps.app.goo.gl/L2kEg5gfUvEoiCye9" target="_blank" rel="noopener">新北市板橋區民生路三段153號</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.24 2 2 0 012 .06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:+886966732865">0966-732-865</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div class="sc-hours">
+              <span class="day" data-en="Mon – Fri" data-zh="一 ～ 五">一 ～ 五</span><span>11:00 – 20:00</span>
+              <span class="day" data-en="Sat" data-zh="六">六</span><span>12:00 – 18:00</span>
+              <span class="day" data-en="Sun" data-zh="日">日</span><span data-en="Closed" data-zh="店休">店休</span>
+            </div>
+          </div>
+        </div>
+        <div class="sc-foot">
+          <a class="sc-btn tech" href="technicians.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span data-en="Technicians" data-zh="駐店技師">駐店技師</span>
+          </a>
+          <a class="sc-btn nav" href="https://maps.app.goo.gl/L2kEg5gfUvEoiCye9" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/></svg>
+            <span data-en="Navigate" data-zh="導航">導航</span>
+          </a>
+          <a class="sc-btn book" href="https://line.me/R/ti/p/%40pdr.tw" target="_blank" rel="noopener">
+            <span data-en="Book via LINE" data-zh="LINE 預約">LINE 預約</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 02 中和旗艦店 -->
+      <div class="sc reveal delay-1">
+        <div class="sc-head">
+          <div class="sc-meta">
+            <div class="sc-region" data-en="NEW TAIPEI" data-zh="新北">新北</div>
+            <div class="sc-name" data-en="Zhonghe Studio" data-zh="中和旗艦店">中和旗艦店</div>
+            <div class="sc-name-en">Zhonghe Flagship</div>
+          </div>
+          <div class="sc-no">02</div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <a href="https://maps.app.goo.gl/tRgwK" target="_blank" rel="noopener">新北市中和區橋安街25號</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.24 2 2 0 012 .06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:+8860903310894">0903-310-894</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div class="sc-hours">
+              <span class="day" data-en="Mon – Fri" data-zh="一 ～ 五">一 ～ 五</span><span>10:00 – 19:30</span>
+              <span class="day" data-en="Sat" data-zh="六">六</span><span>10:00 – 19:30</span>
+              <span class="day" data-en="Sun" data-zh="日">日</span><span>10:00 – 17:30</span>
+            </div>
+          </div>
+        </div>
+        <div class="sc-foot">
+          <a class="sc-btn tech" href="technicians.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span data-en="Technicians" data-zh="駐店技師">駐店技師</span>
+          </a>
+          <a class="sc-btn nav" href="https://maps.app.goo.gl/tRgwK" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/></svg>
+            <span data-en="Navigate" data-zh="導航">導航</span>
+          </a>
+          <a class="sc-btn book" href="https://line.me/R/ti/p/%40pdr.tw" target="_blank" rel="noopener">
+            <span data-en="Book via LINE" data-zh="LINE 預約">LINE 預約</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 03 士林旗艦店 -->
+      <div class="sc reveal delay-2">
+        <div class="sc-head">
+          <div class="sc-meta">
+            <div class="sc-region" data-en="TAIPEI" data-zh="台北">台北</div>
+            <div class="sc-name" data-en="Shilin Studio" data-zh="士林旗艦店">士林旗艦店</div>
+            <div class="sc-name-en">Shilin Flagship</div>
+          </div>
+          <div class="sc-no">03</div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <a href="https://goo.gl/maps/KvDnStzhfHQ2" target="_blank" rel="noopener">台北市士林區承德路四段300號</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.24 2 2 0 012 .06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:+886978016802">0978-016-802</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div class="sc-hours">
+              <span class="day" data-en="Mon – Fri" data-zh="一 ～ 五">一 ～ 五</span><span>11:00 – 20:00</span>
+              <span class="day" data-en="Sat" data-zh="六">六</span><span>12:00 – 18:00</span>
+              <span class="day" data-en="Sun" data-zh="日">日</span><span data-en="Closed" data-zh="店休">店休</span>
+            </div>
+          </div>
+        </div>
+        <div class="sc-foot">
+          <a class="sc-btn tech" href="technicians.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span data-en="Technicians" data-zh="駐店技師">駐店技師</span>
+          </a>
+          <a class="sc-btn nav" href="https://goo.gl/maps/KvDnStzhfHQ2" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/></svg>
+            <span data-en="Navigate" data-zh="導航">導航</span>
+          </a>
+          <a class="sc-btn book" href="https://line.me/R/ti/p/%40pdr.tw" target="_blank" rel="noopener">
+            <span data-en="Book via LINE" data-zh="LINE 預約">LINE 預約</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 04 台北濱江店 -->
+      <div class="sc reveal delay-3">
+        <div class="sc-head">
+          <div class="sc-meta">
+            <div class="sc-region" data-en="TAIPEI" data-zh="台北">台北</div>
+            <div class="sc-name" data-en="Binjiang Studio" data-zh="台北濱江店">台北濱江店</div>
+            <div class="sc-name-en">Binjiang Studio</div>
+          </div>
+          <div class="sc-no">04</div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <a href="https://maps.app.goo.gl/mU6PPD2ng81bgox2A" target="_blank" rel="noopener">台北市中山區濱江街332-1號</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.24 2 2 0 012 .06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:+886901242511">0901-242-511</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div class="sc-hours">
+              <span class="day" data-en="Mon – Fri" data-zh="一 ～ 五">一 ～ 五</span><span>09:00 – 19:00</span>
+              <span class="day" data-en="Sat" data-zh="六">六</span><span>09:00 – 18:00</span>
+              <span class="day" data-en="Sun" data-zh="日">日</span><span data-en="Closed" data-zh="店休">店休</span>
+            </div>
+          </div>
+        </div>
+        <div class="sc-foot">
+          <a class="sc-btn tech" href="technicians.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span data-en="Technicians" data-zh="駐店技師">駐店技師</span>
+          </a>
+          <a class="sc-btn nav" href="https://maps.app.goo.gl/mU6PPD2ng81bgox2A" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/></svg>
+            <span data-en="Navigate" data-zh="導航">導航</span>
+          </a>
+          <a class="sc-btn book" href="https://line.me/R/ti/p/%40pdr.tw" target="_blank" rel="noopener">
+            <span data-en="Book via LINE" data-zh="LINE 預約">LINE 預約</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 05 桃園旗艦店 -->
+      <div class="sc reveal">
+        <div class="sc-head">
+          <div class="sc-meta">
+            <div class="sc-region" data-en="TAOYUAN" data-zh="桃園">桃園</div>
+            <div class="sc-name" data-en="Pingzhen Studio" data-zh="桃園旗艦店">桃園旗艦店</div>
+            <div class="sc-name-en">Pingzhen Flagship</div>
+          </div>
+          <div class="sc-no">05</div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <a href="https://maps.app.goo.gl/P4qdLgSGyfu1FiYD8" target="_blank" rel="noopener">桃園市平鎮區興隆路230號</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.24 2 2 0 012 .06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:+886972706679">0972-706-679</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div class="sc-hours">
+              <span class="day" data-en="Mon – Fri" data-zh="一 ～ 五">一 ～ 五</span><span>09:00 – 18:00</span>
+              <span class="day" data-en="Sat" data-zh="六">六</span><span>09:00 – 17:00</span>
+              <span class="day" data-en="Sun" data-zh="日">日</span><span data-en="Closed" data-zh="店休">店休</span>
+            </div>
+          </div>
+        </div>
+        <div class="sc-foot">
+          <a class="sc-btn tech" href="technicians.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span data-en="Technicians" data-zh="駐店技師">駐店技師</span>
+          </a>
+          <a class="sc-btn nav" href="https://maps.app.goo.gl/P4qdLgSGyfu1FiYD8" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/></svg>
+            <span data-en="Navigate" data-zh="導航">導航</span>
+          </a>
+          <a class="sc-btn book" href="https://line.me/R/ti/p/%40pdr.tw" target="_blank" rel="noopener">
+            <span data-en="Book via LINE" data-zh="LINE 預約">LINE 預約</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 06 竹北旗艦店 -->
+      <div class="sc reveal delay-1">
+        <div class="sc-head">
+          <div class="sc-meta">
+            <div class="sc-region" data-en="HSINCHU" data-zh="新竹">新竹</div>
+            <div class="sc-name" data-en="Zhubei Studio" data-zh="竹北旗艦店">竹北旗艦店</div>
+            <div class="sc-name-en">Zhubei Flagship</div>
+          </div>
+          <div class="sc-no">06</div>
+          <span class="sc-call-badge" data-en="Call ahead" data-zh="請先致電">請先致電</span>
+        </div>
+        <div class="sc-body">
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <a href="https://maps.app.goo.gl/HWtKzLq2X3j3aZAf7" target="_blank" rel="noopener">新竹縣竹北市台科路132號</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.24 2 2 0 012 .06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:+886972937993">0972-937-993</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div class="sc-hours">
+              <span class="day" data-en="Mon – Fri" data-zh="一 ～ 五">一 ～ 五</span><span>10:00 – 19:00</span>
+              <span class="day" data-en="Sat" data-zh="六">六</span><span>11:00 – 17:00</span>
+              <span class="day" data-en="Sun" data-zh="日">日</span><span data-en="Closed" data-zh="店休">店休</span>
+            </div>
+          </div>
+        </div>
+        <div class="sc-foot">
+          <a class="sc-btn tech" href="technicians.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span data-en="Technicians" data-zh="駐店技師">駐店技師</span>
+          </a>
+          <a class="sc-btn nav" href="https://maps.app.goo.gl/HWtKzLq2X3j3aZAf7" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/></svg>
+            <span data-en="Navigate" data-zh="導航">導航</span>
+          </a>
+          <a class="sc-btn book" href="https://line.me/R/ti/p/%40pdr.tw" target="_blank" rel="noopener">
+            <span data-en="Book via LINE" data-zh="LINE 預約">LINE 預約</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 07 台中旗艦店 -->
+      <div class="sc reveal delay-2">
+        <div class="sc-head">
+          <div class="sc-meta">
+            <div class="sc-region" data-en="TAICHUNG" data-zh="台中">台中</div>
+            <div class="sc-name" data-en="Taichung Studio" data-zh="台中旗艦店">台中旗艦店</div>
+            <div class="sc-name-en">South District Flagship</div>
+          </div>
+          <div class="sc-no">07</div>
+          <span class="sc-call-badge" data-en="Call ahead" data-zh="請先致電">請先致電</span>
+        </div>
+        <div class="sc-body">
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <a href="https://maps.app.goo.gl/z68treUCmJd7fNDA9" target="_blank" rel="noopener">台中市南屯區文昌街468號</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.24 2 2 0 012 .06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:+886900787210">0900-787-210</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div class="sc-hours">
+              <span class="day" data-en="Mon – Fri" data-zh="一 ～ 五">一 ～ 五</span><span>10:00 – 19:00</span>
+              <span class="day" data-en="Sat" data-zh="六">六</span><span>11:00 – 17:00</span>
+              <span class="day" data-en="Sun" data-zh="日">日</span><span data-en="Closed" data-zh="店休">店休</span>
+            </div>
+          </div>
+        </div>
+        <div class="sc-foot">
+          <a class="sc-btn tech" href="technicians.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span data-en="Technicians" data-zh="駐店技師">駐店技師</span>
+          </a>
+          <a class="sc-btn nav" href="https://maps.app.goo.gl/z68treUCmJd7fNDA9" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/></svg>
+            <span data-en="Navigate" data-zh="導航">導航</span>
+          </a>
+          <a class="sc-btn book" href="https://line.me/R/ti/p/%40pdr.tw" target="_blank" rel="noopener">
+            <span data-en="Book via LINE" data-zh="LINE 預約">LINE 預約</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 08 高雄旗艦店 -->
+      <div class="sc reveal delay-3">
+        <div class="sc-head">
+          <div class="sc-meta">
+            <div class="sc-region" data-en="KAOHSIUNG" data-zh="高雄">高雄</div>
+            <div class="sc-name" data-en="Nanzi Studio" data-zh="高雄旗艦店">高雄旗艦店</div>
+            <div class="sc-name-en">Nanzi Flagship</div>
+          </div>
+          <div class="sc-no">08</div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <a href="https://maps.app.goo.gl/JgkN4eK7cgFuJyJU8" target="_blank" rel="noopener">高雄市楠梓區惠誠街82-1號</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.24 2 2 0 012 .06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:+886978860558">0978-860-558</a>
+          </div>
+          <div class="sc-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div class="sc-hours">
+              <span class="day" data-en="Mon – Fri" data-zh="一 ～ 五">一 ～ 五</span><span>09:00 – 19:30</span>
+              <span class="day" data-en="Sat" data-zh="六">六</span><span>09:00 – 17:00</span>
+              <span class="day" data-en="Sun" data-zh="日">日</span><span data-en="Closed" data-zh="店休">店休</span>
+            </div>
+          </div>
+        </div>
+        <div class="sc-foot">
+          <a class="sc-btn tech" href="technicians.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span data-en="Technicians" data-zh="駐店技師">駐店技師</span>
+          </a>
+          <a class="sc-btn nav" href="https://maps.app.goo.gl/JgkN4eK7cgFuJyJU8" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/></svg>
+            <span data-en="Navigate" data-zh="導航">導航</span>
+          </a>
+          <a class="sc-btn book" href="https://line.me/R/ti/p/%40pdr.tw" target="_blank" rel="noopener">
+            <span data-en="Book via LINE" data-zh="LINE 預約">LINE 預約</span>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /studio-grid -->
+
+    <!-- Call-ahead note -->
+    <div class="call-note reveal">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <p data-html data-en="<strong>Hsinchu &amp; Taichung studios:</strong> Please call ahead to confirm availability before visiting. Other studios welcome walk-ins for free estimates during business hours." data-zh="<strong>新竹竹北店與台中旗艦店</strong>前往評估前請先致電確認可否前往，感謝配合。其餘各店歡迎在營業時間內直接前來進行免費現場估價。"><strong>新竹竹北店與台中旗艦店</strong>前往評估前請先致電確認可否前往，感謝配合。其餘各店歡迎在營業時間內直接前來進行免費現場估價。</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- LINE CTA band -->
+<div class="line-band reveal">
+  <div class="lt" data-en="GET IN TOUCH" data-zh="立即聯絡">立即聯絡</div>
+  <h3 data-en="Start with a photo." data-zh="傳一張照片給我們。">傳一張照片給我們。</h3>
+  <p data-en="Send photos via LINE for a free online pre-assessment. Our technicians will respond quickly." data-zh="透過 LINE 傳送照片，即可獲得免費網路初步評估。我們的技師將盡快回覆您。">透過 LINE 傳送照片，即可獲得免費網路初步評估。我們的技師將盡快回覆您。</p>
+  <div class="line-band-btns">
+    <a href="https://line.me/R/ti/p/%40pdr.tw" target="_blank" rel="noopener" class="cta" style="background:#06c755;border:none">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      <span data-en="LINE @pdr.tw" data-zh="LINE @pdr.tw">LINE @pdr.tw</span>
+    </a>
+    <a href="pricing.html" class="cta ghost">
+      <span data-en="Pricing &amp; Booking" data-zh="參考價目與流程">參考價目與流程</span>
+    </a>
+  </div>
+  <div class="line-id" data-en="LINE Official Account · @pdr.tw" data-zh="LINE 官方帳號 · @pdr.tw">LINE 官方帳號 · @pdr.tw</div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-links">
+      <a href="Superior-PDR.html" data-en="Home" data-zh="首頁">首頁</a>
+      <a href="Superior-PDR.html#services" data-en="Services" data-zh="服務項目">服務項目</a>
+      <a href="Superior-PDR.html#showcase" data-en="Showcase" data-zh="修復案例">修復案例</a>
+      <a href="Superior-PDR.html#training" data-en="Training" data-zh="技術教學">技術教學</a>
+      <a href="contact.html" data-en="Locations" data-zh="據點分佈">據點分佈</a>
+      <a href="pricing.html" data-en="Pricing" data-zh="預約與估價">預約與估價</a>
+    </div>
+    <a href="Superior-PDR.html" class="logo">
+      <img class="logo-circle" src="media/logo-circle.png" alt="Superior PDR">
+      <div class="logo-text">
+        <div class="top-line">SUPERIOR PDR</div>
+        <div class="bot-line">© 2026 SUPERIOR PDR · ALL RIGHTS RESERVED</div>
+      </div>
+    </a>
+    <div class="foot-social">
+      <a href="https://www.instagram.com/superiorpdrtaiwan/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg></a>
+      <a href="https://www.youtube.com/channel/UC8mXr_dYrD6Or-jA91W1irw?view_as=subscriber" target="_blank" rel="noopener" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.2 5 12 5 12 5s-4.2 0-7.2.1c-.4 0-1.2.1-2 .9C2.2 6.6 2 8 2 8S1.8 9.6 1.8 11.2v1.5C1.8 14.3 2 16 2 16s.2 1.4.8 2c.8.8 1.7.8 2.1.9C6.4 19 12 19 12 19s4.2 0 7.2-.2c.4 0 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1.5C22.2 9.6 22 8 22 8zM9.8 14.5v-5.7l5.4 2.9-5.4 2.8z"/></svg></a>
+      <a href="https://www.facebook.com/PdrSuperior" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+/* Nav scroll */
+const nav = document.getElementById('topnav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 30); });
+
+/* Reveal on scroll */
+const reveals = document.querySelectorAll('.reveal');
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } });
+}, {threshold: 0.12});
+reveals.forEach(el => ro.observe(el));
+
+/* Language toggle */
+window.PAGE_T = [
+  ['nav.top .links a[data-key="home"]', 'Home', '首頁', 'text'],
+];
+</script>
+</body>
+</html>

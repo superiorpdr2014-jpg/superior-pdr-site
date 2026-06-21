@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>關於修復品質 — SUPERIOR PDR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  /* --- custom repair levels --- */
+  .cr-case{max-width:760px;margin:50px auto 0}
+  .cr-case .ph.wide{min-height:0}
+  .cr-case-cap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:16px}
+  .cr-case-cap .cc-eng{font-family:'JetBrains Mono';font-size:12px;letter-spacing:0.14em;color:var(--ink-mute);text-transform:uppercase}
+  .cr-case-cap .cc-dmg{display:inline-flex;align-items:center;gap:9px;font-size:15px;color:var(--ink);font-weight:600}
+  .cr-case-cap .cc-dmg::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+  .cr-flow{display:flex;align-items:center;gap:14px;justify-content:center;margin:40px 0 6px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.22em;color:var(--ink-mute);text-transform:uppercase}
+  .cr-flow::before,.cr-flow::after{content:"";height:1px;width:70px;background:linear-gradient(90deg,transparent,var(--line-bright))}
+  .cr-flow::after{transform:scaleX(-1)}
+  .cr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+  @media(max-width:860px){.cr-grid{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto}}
+  .cr-tier{position:relative;background:var(--bg-elev);border:1px solid var(--line);border-radius:11px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .3s,transform .3s}
+  .cr-tier:hover{border-color:var(--line-bright);transform:translateY(-4px)}
+  .cr-tier.feat{border-color:rgba(255,42,61,0.45)}
+  .cr-tier.feat:hover{box-shadow:0 18px 50px rgba(255,42,61,0.1)}
+  .cr-tier .ph.wide{border:none;border-radius:0;border-bottom:1px solid var(--line)}
+  .cr-tier-body{padding:22px 24px 26px}
+  .cr-tier-tags{display:flex;align-items:center;gap:9px;margin-bottom:13px}
+  .cr-step{font-family:'Bebas Neue';font-size:22px;line-height:1;color:var(--line-bright);letter-spacing:0.05em}
+  .cr-save{font-family:'JetBrains Mono';font-size:10.5px;font-weight:700;letter-spacing:0.08em;padding:4px 9px;border-radius:4px;text-transform:uppercase;white-space:nowrap}
+  .cr-save.s50{background:rgba(31,138,91,0.16);color:#46c98a;border:1px solid rgba(31,138,91,0.4)}
+  .cr-save.s30{background:rgba(31,138,91,0.16);color:#46c98a;border:1px solid rgba(31,138,91,0.4)}
+  .cr-save.best{background:var(--accent-soft);color:var(--accent);border:1px solid rgba(255,42,61,0.45)}
+  .cr-tier-name{font-size:23px;font-weight:700;color:var(--ink);letter-spacing:0.01em;line-height:1.2}
+  .cr-tier-name .en{display:block;font-family:'JetBrains Mono';font-size:11px;font-weight:500;letter-spacing:0.16em;color:var(--ink-mute);text-transform:uppercase;margin-top:6px}
+  .cr-tier-desc{color:var(--ink-dim);font-size:14px;line-height:1.7;margin-top:13px}
+  .cr-note-line{text-align:center;color:var(--ink-dim);font-size:14.5px;line-height:1.8;max-width:680px;margin:34px auto 0}
+  .cr-note-line b{color:var(--ink);font-weight:600}
+  /* --- quality philosophy --- */
+  .ql-lead{max-width:880px;margin:26px 0 0}
+  .ql-lead p{font-size:18px;line-height:1.85;color:var(--ink-dim);margin:0 0 16px;text-wrap:pretty}
+  .ql-lead p.big{font-size:clamp(22px,2.6vw,30px);line-height:1.45;color:var(--ink);font-weight:500}
+  .ql-lead p strong{color:var(--ink);font-weight:600}
+  .ql-lead p .accent{color:var(--accent)}
+  /* philosophy full-bleed hero */
+  .ql-hero{position:relative;min-height:640px;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
+  .ql-hero .ql-bg{position:absolute;inset:0;background-image:url('media/quality-philosophy.jpg');background-size:cover;background-position:center 38%;transform:scale(1.04)}
+  .ql-hero .ql-grad{position:absolute;inset:0;background:
+    linear-gradient(90deg,rgba(7,8,11,0.96) 0%,rgba(7,8,11,0.86) 38%,rgba(7,8,11,0.35) 70%,rgba(7,8,11,0.55) 100%),
+    linear-gradient(0deg,rgba(7,8,11,0.92) 0%,rgba(7,8,11,0.15) 45%,rgba(7,8,11,0.45) 100%),
+    radial-gradient(ellipse at 14% 60%,rgba(255,42,61,0.18),transparent 55%)}
+  .ql-hero .container{position:relative;z-index:2;width:100%}
+  .ql-hero .ql-inner{max-width:760px;padding:90px 0}
+  .ql-hero .section-eyebrow{justify-content:flex-start}
+  .ql-hero .section-title{margin-top:6px}
+  @media(max-width:760px){.ql-hero{min-height:0}.ql-hero .ql-inner{padding:64px 0}.ql-hero .ql-grad{background:linear-gradient(0deg,rgba(7,8,11,0.95),rgba(7,8,11,0.55) 60%,rgba(7,8,11,0.85)),radial-gradient(ellipse at 20% 30%,rgba(255,42,61,0.16),transparent 60%)}.ql-hero .ql-bg{background-position:center 30%}}
+
+  /* --- repair-level tiers over image --- */
+  .tier-section{position:relative;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .tier-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:#0c0f14 repeating-linear-gradient(135deg,rgba(255,255,255,0.018) 0 12px,transparent 12px 24px)}
+  .tier-bg img{width:100%;height:100%;object-fit:cover}
+  .tier-bg-hint{font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.18em;color:rgba(255,255,255,0.32);text-transform:uppercase;border:1px dashed rgba(255,255,255,0.18);padding:11px 20px;border-radius:6px;text-align:center;line-height:1.7}
+  .tier-grad{position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(90deg,rgba(7,8,11,0.96) 0%,rgba(7,8,11,0.82) 48%,rgba(7,8,11,0.5) 100%),linear-gradient(0deg,rgba(7,8,11,0.88),rgba(7,8,11,0.32))}
+  .tier-content{position:relative;z-index:2}
+  .tier-rows{display:flex;flex-direction:column;gap:16px;margin-top:44px;max-width:940px}
+  .tier-row{display:grid;grid-template-columns:225px 1fr;gap:32px;align-items:center;padding:25px 32px;border-radius:13px;
+    background:rgba(11,14,19,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line-bright);transition:border-color .3s,transform .3s}
+  .tier-row:hover{transform:translateY(-3px)}
+  .tier-row.feat{border-color:rgba(255,42,61,0.5);background:rgba(24,10,13,0.6)}
+  .tier-name{display:flex;flex-direction:column}
+  .tier-name .step{font-family:'JetBrains Mono';font-size:11px;font-weight:700;letter-spacing:0.16em;color:var(--ink-mute);text-transform:uppercase;margin-bottom:9px}
+  .tier-row.feat .tier-name .step{color:var(--accent)}
+  .tier-name .nm{font-size:25px;font-weight:700;color:#fff;letter-spacing:0.01em;line-height:1.1}
+  .tier-name .en{font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.14em;color:var(--ink-mute);text-transform:uppercase;margin-top:7px}
+  .tier-meter .mrow{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:11px}
+  .tier-meter .ml{font-family:'JetBrains Mono';font-size:10.5px;font-weight:700;letter-spacing:0.16em;color:var(--ink-mute);text-transform:uppercase;white-space:nowrap}
+  .tier-meter .pct{font-family:'Bebas Neue';font-size:34px;line-height:1;color:#fff;letter-spacing:0.03em}
+  .tier-row.feat .tier-meter .pct{color:var(--accent)}
+  .tier-track{height:8px;border-radius:99px;background:rgba(255,255,255,0.09);overflow:hidden}
+  .tier-fill{height:100%;border-radius:99px;width:0;background:linear-gradient(90deg,#465168,#7f8da9);transition:width 1.15s cubic-bezier(.4,0,.2,1)}
+  .tier-row.feat .tier-fill{background:linear-gradient(90deg,#a81e2d,var(--accent))}
+  .tier-row.in .tier-fill{width:var(--w)}
+  .tier-meter .md{color:var(--ink-dim);font-size:13.5px;line-height:1.7;margin:14px 0 0;max-width:560px;text-wrap:pretty}
+  .tier-close{position:relative;z-index:2;margin:40px 0 0;max-width:780px;font-size:16px;line-height:1.8;color:var(--ink-dim)}
+  .tier-close b{color:var(--ink);font-weight:600}
+  .tier-close .accent{color:var(--accent)}
+  @media(max-width:760px){.tier-row{grid-template-columns:1fr;gap:18px;padding:22px 24px}.tier-grad{background:linear-gradient(0deg,rgba(7,8,11,0.92),rgba(7,8,11,0.55) 60%,rgba(7,8,11,0.85))}}
+
+  /* --- light boards --- */
+  .board-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:46px}
+  @media(max-width:760px){.board-grid{grid-template-columns:1fr}}
+  .board-card{position:relative;background:var(--bg-elev);border:1px solid var(--line);border-radius:11px;padding:30px 30px 28px;transition:border-color .3s,transform .3s}
+  .board-card:hover{border-color:var(--line-bright);transform:translateY(-4px)}
+  .board-card.main{border-color:rgba(255,42,61,0.4)}
+  .board-card .bc-no{font-family:'Bebas Neue';font-size:30px;color:var(--line-bright);letter-spacing:0.04em;line-height:1}
+  .board-card .bc-zh{font-size:25px;font-weight:700;color:var(--ink);margin-top:14px;letter-spacing:0.01em}
+  .board-card .bc-en{font-family:'JetBrains Mono';font-size:12px;letter-spacing:0.16em;color:var(--ink-mute);text-transform:uppercase;margin-top:6px}
+  .board-card .bc-tag{display:inline-block;font-family:'JetBrains Mono';font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-top:16px;white-space:nowrap}
+  .board-card.early .bc-tag{background:var(--line);color:var(--ink-dim)}
+  .board-card.main .bc-tag{background:var(--accent-soft);color:var(--accent);border:1px solid rgba(255,42,61,0.45)}
+  .board-card .bc-d{font-size:14.5px;line-height:1.75;color:var(--ink-dim);margin-top:16px}
+  .ql-closing{text-align:center;font-size:clamp(20px,2.4vw,26px);font-weight:600;color:var(--ink);letter-spacing:0.01em;margin:48px auto 0;max-width:720px;line-height:1.5}
+  .ql-closing .accent{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<nav class="top" id="topnav" data-current="quality"></nav>
+
+<header class="page-hero">
+  <div class="grid-overlay"></div>
+  <div class="container">
+    <nav class="crumb">
+      <a href="Superior-PDR.html" data-en="Home" data-zh="首頁">首頁</a>
+      <span class="sep">/</span>
+      <a href="about-us.html" data-en="About" data-zh="關於我們">關於我們</a>
+      <span class="sep">/</span>
+      <span data-en="Repair Quality" data-zh="關於修復品質">關於修復品質</span>
+    </nav>
+    <h1 data-hero-title>修復 <span class="accent">品質</span></h1>
+    <p class="lead" data-hero-lead>不噴漆、不補土、不破壞原廠防鏽。真正的無痕修復，是讓鈑面回到出廠那一刻 —— 連光線都看不出曾經受損。</p>
+  </div>
+</header>
+
+<!-- ============ PHILOSOPHY ============ -->
+<section class="block ql-hero">
+  <div class="ql-bg"></div>
+  <div class="ql-grad"></div>
+  <div class="container">
+    <div class="ql-inner">
+      <div class="section-eyebrow reveal" data-en="ABOUT OUR QUALITY" data-zh="卓越品質">卓越品質</div>
+      <h2 class="section-title reveal" data-en="It already looks fixed — so why keep going?" data-zh="修到看不出來了，為什麼還要繼續修？">修到看不出來了，為什麼還要繼續修？</h2>
+      <div class="ql-lead reveal">
+        <p data-html data-en="The pursuit of repair quality has always been what drives Superior to keep improving." data-zh="修復品質的追求，一直以來都是卓越精進努力的目標。">修復品質的追求，一直以來都是卓越精進努力的目標。</p>
+        <p data-html data-en="Many customers have asked us: it already looks completely fixed — so why do you keep on repairing?" data-zh="很多消費者曾經問我們：明明已經修到看不出來了，為什麼你們還要繼續修呢？">很多消費者曾經問我們：明明已經修到看不出來了，為什麼你們還要繼續修呢？</p>
+        <p class="big" data-html data-en="To the naked eye it may look perfectly repaired — but under a professional <strong>line board</strong>, the panel still shows slight unevenness. The customer can't see it. We can. And we hold ourselves to one standard: <span class='accent'>every car, repaired to its absolute best.</span>" data-zh="肉眼看起來好像完全修復好了，但透過專業的<strong>線板</strong>照射，鈑件其實還有些許不平整。消費者看不出來，但我們對自己的期許 —— 是把手上的<span class='accent'>每一台車都修復到極致</span>。這，就是卓越所追求的修復品質。">肉眼看起來好像完全修復好了，但透過專業的<strong>線板</strong>照射，鈑件其實還有些許不平整。消費者看不出來，但我們對自己的期許 —— 是把手上的<span class="accent">每一台車都修復到極致</span>。這，就是卓越所追求的修復品質。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 90/10 ============ -->
+<section class="block tier-section">
+  <div class="tier-bg">
+    <span class="tier-bg-hint" data-en="DROP BACKGROUND PHOTO<br>repair in progress · landscape" data-zh="拖入背景圖片<br>修復實況 · 橫式">拖入背景圖片<br>修復實況 · 橫式</span>
+  </div>
+  <div class="tier-grad"></div>
+  <div class="block-inner tier-content">
+    <div class="section-eyebrow reveal" data-en="RESTORATION LEVELS" data-zh="還原程度">還原程度</div>
+    <h2 class="section-title reveal" data-en="The three levels every dent passes through." data-zh="每一道傷，會經過的三種修復程度。">每一道傷，會經過的三種修復程度。</h2>
+    <p class="section-sub reveal" data-en="The same damage, repaired three ways — each reaching a different degree of restoration. From the fastest sheet-metal shaping to the final refined repair, every level is yours to choose as part of a custom repair." data-zh="同一道損傷，三種修復程度對應不同的還原境界。從最快的板金塑形，到最後的精緻修復，都是你客製化修復的選擇。">同一道損傷，三種修復程度對應不同的還原境界。從最快的板金塑形，到最後的精緻修復，都是你客製化修復的選擇。</p>
+
+    <div class="tier-rows">
+      <div class="tier-row reveal">
+        <div class="tier-name">
+          <div class="step" data-en="LEVEL 01 · ROUGH" data-zh="第一級 · 大概修復">第一級 · 大概修復</div>
+          <div class="nm" data-en="Rough Repair" data-zh="大概修復">大概修復</div>
+          <div class="en">Rough Repair</div>
+        </div>
+        <div class="tier-meter">
+          <div class="mrow"><span class="ml" data-en="RESTORATION" data-zh="還原程度">還原程度</span><span class="pct">50%</span></div>
+          <div class="tier-track"><div class="tier-fill" style="--w:50%"></div></div>
+          <p class="md" data-en="The first 50% of restoration — the fastest, simplest stage of sheet-metal shaping. The dent's appearance is greatly improved." data-zh="前 50% 的還原程度，是板金塑形最快、最簡單的過程，凹痕外觀已大幅改善。">前 50% 的還原程度，是板金塑形最快、最簡單的過程，凹痕外觀已大幅改善。</p>
+        </div>
+      </div>
+
+      <div class="tier-row reveal">
+        <div class="tier-name">
+          <div class="step" data-en="LEVEL 02 · LEVEL" data-zh="第二級 · 平整修復">第二級 · 平整修復</div>
+          <div class="nm" data-en="Level Repair" data-zh="平整修復">平整修復</div>
+          <div class="en">Level Repair</div>
+        </div>
+        <div class="tier-meter">
+          <div class="mrow"><span class="ml" data-en="RESTORATION" data-zh="還原程度">還原程度</span><span class="pct">80%</span></div>
+          <div class="tier-track"><div class="tier-fill" style="--w:80%"></div></div>
+          <p class="md" data-en="A further 30% in the middle — the key stage that brings the panel truly flat. It takes a bit more time. For dents with paint loss, we bring the panel to this level of flatness first, then it goes to paint." data-zh="再進一步的中間 30%，是讓板金真正「平」的關鍵步驟，需要花點時間。若是掉漆的凹痕，我們會先修整到這個平整程度，再進行烤漆。">再進一步的中間 30%，是讓板金真正「平」的關鍵步驟，需要花點時間。若是掉漆的凹痕，我們會先修整到這個平整程度，再進行烤漆。</p>
+        </div>
+      </div>
+
+      <div class="tier-row feat reveal">
+        <div class="tier-name">
+          <div class="step" data-en="LEVEL 03 · REFINED" data-zh="第三級 · 精緻修復">第三級 · 精緻修復</div>
+          <div class="nm" data-en="Refined Repair" data-zh="精緻修復">精緻修復</div>
+          <div class="en">Refined · Superior Standard</div>
+        </div>
+        <div class="tier-meter">
+          <div class="mrow"><span class="ml" data-en="THE FINAL 20% · NEAR-PERFECT" data-zh="最後 20% · 趨近完美">最後 20% · 趨近完美</span><span class="pct">98%</span></div>
+          <div class="tier-track"><div class="tier-fill" style="--w:98%"></div></div>
+          <p class="md" data-en="This final 20% is the hardest stretch and the most time-consuming of all, the threshold most technicians never cross. Refined repair is the craft of bringing it infinitely close to perfect — though no repair is ever a true 100% factory state; there's always a faint trace left in the metal." data-zh="最後的 20% 是最困難、也是最花時間的一個過程，更是多數技師跨不過的門檻；精緻修復，就是把它做到無限趨近完美，但沒有任何一種修復能做到 100% 原廠狀態 —— 鈑面總會留下些微瑕疵。">最後的 20% 是最困難、也是最花時間的一個過程，更是多數技師跨不過的門檻；精緻修復，就是把它做到無限趨近完美，但沒有任何一種修復能做到 100% 原廠狀態 —— 鈑面總會留下些微瑕疵。</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="tier-close reveal" data-html data-en="Every level is solid work — there's no wrong choice. But Superior's commitment never changes: <b>to repair every car as close to perfect as it can possibly get.</b> <span class='accent'>That final 20% is who we are.</span>" data-zh="每一種程度都是紮實的成果，沒有錯誤的選擇。但卓越的堅持始終如一：<b>把每一台車都修復到無限趨近完美。</b><span class='accent'>那最後的 20%，正是卓越之所以為卓越。</span>">每一種程度都是紮實的成果，沒有錯誤的選擇。但卓越的堅持始終如一：<b>把每一台車都修復到無限趨近完美。</b><span class="accent">那最後的 20%，正是卓越之所以為卓越。</span></p>
+  </div>
+</section>
+
+<!-- ============ CUSTOM REPAIR LEVELS ============ -->
+<section class="block">
+  <div class="block-inner">
+    <div class="section-eyebrow reveal" data-en="CUSTOM REPAIR" data-zh="客製化修復">客製化修復</div>
+    <h2 class="section-title reveal" data-en="One dent. Three levels of repair." data-zh="一道傷，三種修復程度。">一道傷，三種修復程度。</h2>
+    <p class="section-sub reveal" data-en="We're committed to chasing the very best result — every overseas training trip and self-challenge exists to give you the best repair experience. For the same damage we offer three levels — Rough, Level and Refined — so you choose by need and budget. Here's one engine-hood 10cm dent, repaired three ways." data-zh="我們致力於挑戰最好的修復程度 —— 每一次出國精進與自我挑戰，都是為了讓客戶體驗最好的修復過程與結果。同一道損傷，我們提供大概、平整、精緻三種修復程度，讓您依需求與預算自由選擇。以下以一道引擎蓋 10cm 凹痕為例。">我們致力於挑戰最好的修復程度 —— 每一次出國精進與自我挑戰，都是為了讓客戶體驗最好的修復過程與結果。同一道損傷，我們提供大概、平整、精緻三種修復程度，讓您依需求與預算自由選擇。以下以一道引擎蓋 10cm 凹痕為例。</p>
+
+    <div class="cr-case reveal">
+      <div class="ph wide">
+        <span class="ph-badge" data-en="ORIGINAL DAMAGE" data-zh="原始損傷">原始損傷</span>
+        <span class="ph-label" data-en="DROP MAIN DAMAGE PHOTO<br>landscape · 16:9 · the original dent" data-zh="拖入主要損傷照片<br>橫式 · 16:9 · 修復前的大傷">拖入主要損傷照片<br>橫式 · 16:9 · 修復前的大傷</span>
+      </div>
+      <div class="cr-case-cap">
+        <span class="cc-dmg" data-en="This case · Engine hood — 10cm dent" data-zh="本案例 · 引擎蓋 10cm 損傷">本案例 · 引擎蓋 10cm 損傷</span>
+        <span class="cc-eng" data-en="SAME DAMAGE · 3 RESULTS" data-zh="同一道傷 · 三種結果">同一道傷 · 三種結果</span>
+      </div>
+    </div>
+
+    <div class="cr-flow reveal" data-en="REPAIRED THREE WAYS" data-zh="三種修復結果">三種修復結果</div>
+
+    <div class="cr-grid">
+      <div class="cr-tier reveal">
+        <div class="ph wide video">
+          <span class="ph-badge" data-en="RESULT VIDEO" data-zh="修復影片">修復影片</span>
+          <span class="ph-label" data-en="DROP VIDEO<br>Rough repair result" data-zh="拖入影片<br>大概修復結果">拖入影片<br>大概修復結果</span>
+        </div>
+        <div class="cr-tier-body">
+          <div class="cr-tier-tags">
+            <span class="cr-step">01</span>
+          </div>
+          <div class="cr-tier-name" data-en="Rough Repair<span class='en'>Rough Repair</span>" data-zh="大概修復<span class='en'>Rough Repair</span>">大概修復<span class="en">Rough Repair</span></div>
+          <p class="cr-tier-desc" data-en="At 50% of the Refined cost, the damaged area is noticeably improved. It won't reach Refined-level perfection, but the panel's condition is substantially better." data-zh="以精緻修復 5 折的費用，顯著改善受損區域的外觀。雖無法達到精緻修復的完美程度，但能大幅提升鈑件狀態。">以精緻修復 5 折的費用，顯著改善受損區域的外觀。雖無法達到精緻修復的完美程度，但能大幅提升鈑件狀態。</p>
+        </div>
+      </div>
+
+      <div class="cr-tier reveal delay-1">
+        <div class="ph wide video">
+          <span class="ph-badge" data-en="RESULT VIDEO" data-zh="修復影片">修復影片</span>
+          <span class="ph-label" data-en="DROP VIDEO<br>Level repair result" data-zh="拖入影片<br>平整修復結果">拖入影片<br>平整修復結果</span>
+        </div>
+        <div class="cr-tier-body">
+          <div class="cr-tier-tags">
+            <span class="cr-step">02</span>
+          </div>
+          <div class="cr-tier-name" data-en="Level Repair<span class='en'>Level Repair</span>" data-zh="平整修復<span class='en'>Level Repair</span>">平整修復<span class="en">Level Repair</span></div>
+          <p class="cr-tier-desc" data-en="Clean, solid results at normal viewing distance and common angles — natural and tidy. Reduced cost by 30%, matching the market's average repair quality." data-zh="在正常觀看距離與常見角度下呈現乾淨、良好的修復效果，外觀自然且整潔；降低 30% 費用，符合市場平均修復品質。">在正常觀看距離與常見角度下呈現乾淨、良好的修復效果，外觀自然且整潔；降低 30% 費用，符合市場平均修復品質。</p>
+        </div>
+      </div>
+
+      <div class="cr-tier feat reveal delay-2">
+        <div class="ph wide video">
+          <span class="ph-badge" data-en="RESULT VIDEO" data-zh="修復影片">修復影片</span>
+          <span class="ph-label" data-en="DROP VIDEO<br>Refined repair result" data-zh="拖入影片<br>精緻修復結果">拖入影片<br>精緻修復結果</span>
+        </div>
+        <div class="cr-tier-body">
+          <div class="cr-tier-tags">
+            <span class="cr-step">03</span>
+            <span class="cr-save best" data-en="SIGNATURE" data-zh="卓越標準">卓越標準</span>
+          </div>
+          <div class="cr-tier-name" data-en="Refined Repair<span class='en'>Refined Repair</span>" data-zh="精緻修復<span class='en'>Refined Repair</span>">精緻修復<span class="en">Refined Repair</span></div>
+          <p class="cr-tier-desc" data-en="Restored to near-perfection. Extra time and precision on the final details ensure a correct appearance from any angle and under any light — our signature standard." data-zh="修復至近乎完美的狀態。在最終細節投入額外時間與精準度，確保在任何角度與光線下都呈現正確外觀 —— 卓越的招牌標準。">修復至近乎完美的狀態。在最終細節投入額外時間與精準度，確保在任何角度與光線下都呈現正確外觀 —— 卓越的招牌標準。</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="cr-note-line reveal" data-en="Every level delivers solid results — there's no wrong choice. Many customers start with Rough or Level and can <b>upgrade within the same session</b>. The decision is always yours." data-zh="每一種程度都能交付優質成果，沒有錯誤的選擇。許多客戶從大概或平整修復開始，並可在<b>同一次施工中升級</b>。決定權，始終在您手中。">每一種程度都能交付優質成果，沒有錯誤的選擇。許多客戶從大概或平整修復開始，並可在<b>同一次施工中升級</b>。決定權，始終在您手中。</p>
+  </div>
+</section>
+
+<!-- ============ QUALITY POINTS ============ -->
+<section class="block">
+  <div class="block-inner two-col">
+    <div class="col-img reveal">
+      <div class="ph tall"><span class="ph-label" data-en="BEFORE / AFTER COMPARISON<br>portrait · approx. 720×900" data-zh="修復前 / 後對比照<br>直式 · 約 720×900">修復前 / 後對比照<br>直式 · 約 720×900</span></div>
+    </div>
+    <div class="col-text reveal delay-1">
+      <div class="section-eyebrow" data-en="WHAT YOU GET" data-zh="您獲得的保障">您獲得的保障</div>
+      <h2 class="section-title" data-en="Five guarantees." data-zh="五項品質承諾。">五項品質承諾。</h2>
+      <ul class="feature-list">
+        <li data-html data-en="<b>Original paint preserved</b> — zero spray, zero filler." data-zh="<b>原廠烤漆完整保留</b> —— 零噴漆、零補土。"><b>原廠烤漆完整保留</b> —— 零噴漆、零補土。</li>
+        <li data-html data-en="<b>No depreciation</b> — repair history stays invisible." data-zh="<b>不影響殘值</b> —— 修復不留紀錄、不被察覺。"><b>不影響殘值</b> —— 修復不留紀錄、不被察覺。</li>
+        <li data-html data-en="<b>Anti-corrosion intact</b> — factory protection untouched." data-zh="<b>原廠防鏽不受損</b> —— 出廠防護層完整保留。"><b>原廠防鏽不受損</b> —— 出廠防護層完整保留。</li>
+        <li data-html data-en="<b>Faster turnaround</b> — most repairs done same day." data-zh="<b>工時更短</b> —— 多數案件當日即可完工。"><b>工時更短</b> —— 多數案件當日即可完工。</li>
+        <li data-html data-en="<b>Trained at the source</b> — skills sharpened through ongoing overseas study." data-zh="<b>技術源自國際</b> —— 持續出國深造，不斷精進。"><b>技術源自國際</b> —— 持續出國深造，不斷精進。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="block">
+  <div class="block-inner">
+    <div class="section-eyebrow reveal" data-en="THE PROCESS" data-zh="修復流程">修復流程</div>
+    <h2 class="section-title reveal" data-en="How a panel is brought back." data-zh="一面鈑件，如何被整回原狀。">一面鈑件，如何被整回原狀。</h2>
+    <div class="steps">
+      <div class="step reveal"><div class="num">01</div><div class="s-title" data-en="Assess" data-zh="檢測評估">檢測評估</div><div class="s-body" data-en="Map every dent under controlled light." data-zh="在標準鈑面燈下定位每一處凹痕。">在標準鈑面燈下定位每一處凹痕。</div></div>
+      <div class="step reveal delay-1"><div class="num">02</div><div class="s-title" data-en="Access" data-zh="進入鈑件">進入鈑件</div><div class="s-body" data-en="Reach the panel back with precision tools." data-zh="以精密工具進入鈑件背面。">以精密工具進入鈑件背面。</div></div>
+      <div class="step reveal delay-2"><div class="num">03</div><div class="s-title" data-en="Massage" data-zh="推整復位">推整復位</div><div class="s-body" data-en="Coax the metal back, millimetre by millimetre." data-zh="一毫米一毫米將金屬推回原位。">一毫米一毫米將金屬推回原位。</div></div>
+      <div class="step reveal delay-3"><div class="num">04</div><div class="s-title" data-en="Verify" data-zh="驗收交車">驗收交車</div><div class="s-body" data-en="Inspect under reflection until invisible." data-zh="於反光下檢視，直到完全無痕。">於反光下檢視，直到完全無痕。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="cta-band reveal">
+  <div class="ct">
+    <div class="s">BOOK NOW · FREE ESTIMATE</div>
+    <div class="t">Ready when you are.</div>
+  </div>
+  <div class="ct-actions">
+    <a class="cta" href="pricing.html"><span>Online Booking</span></a>
+    <a class="cta ghost" href="contact.html"><span>Call Us</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-links">
+      <a href="Superior-PDR.html">Home</a>
+      <a href="Superior-PDR.html#services">Services</a>
+      <a href="Superior-PDR.html#showcase">Showcase</a>
+      <a href="Superior-PDR.html#training">Training</a>
+      <a href="contact.html">Locations</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="Superior-PDR.html" class="logo">
+      <img class="logo-circle" src="media/logo-circle.png" alt="Superior PDR">
+      <div class="logo-text">
+        <div class="top-line">SUPERIOR PDR</div>
+        <div class="bot-line">© 2026 SUPERIOR PDR · ALL RIGHTS RESERVED</div>
+      </div>
+    </a>
+    <div class="foot-social">
+      <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17" cy="7" r="1" fill="currentColor"></circle></svg></a>
+      <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.2 5 12 5 12 5s-4.2 0-7.2.1c-.4 0-1.2.1-2 .9C2.2 6.6 2 8 2 8s-.2 1.6-.2 3.2v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.3.9 1.7.2 7 .2 7 .2s4.2 0 7.2-.2c.4 0 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5C22.2 9.6 22 8 22 8z"></path></svg></a>
+      <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.PAGE_T = [
+    ['.page-hero h1', 'Repair <span class="accent">Quality</span>', '修復 <span class="accent">品質</span>', 'html'],
+    ['.page-hero .lead',
+      'No spray, no filler, no compromise to the factory anti-rust layer. True paintless repair returns the panel to the moment it left the line \u2014 invisible even under light.',
+      '不噴漆、不補土、不破壞原廠防鏽。真正的無痕修復，是讓鈑面回到出廠那一刻 —— 連光線都看不出曾經受損。',
+      'text']
+  ];
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

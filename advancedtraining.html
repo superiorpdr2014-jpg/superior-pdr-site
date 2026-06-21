@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDR進階技術訓練 · 同業精進 — SUPERIOR PDR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* ── hero ── */
+.t-hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden;border-bottom:1px solid var(--line)}
+.t-hero .bg{position:absolute;inset:0;background:url('media/adv-hero-seminar.jpg') center/cover no-repeat;background-position:center 40%;z-index:0;transition:transform 8s ease}
+.t-hero:hover .bg{transform:scale(1.03)}
+.t-hero .overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,8,11,.97) 0%,rgba(7,8,11,.62) 50%,rgba(7,8,11,.15) 100%);z-index:1}
+.t-hero .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:54px 54px;z-index:1}
+.t-hero .inner{position:relative;z-index:2;max-width:1260px;margin:0 auto;padding:0 48px 72px;width:100%}
+.t-hero .breadcrumb{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:20px}
+.t-hero .breadcrumb a{color:var(--ink-mute);transition:color .2s}
+.t-hero .breadcrumb a:hover{color:var(--ink-dim)}
+.t-hero .breadcrumb span{color:var(--accent)}
+.t-hero .eyebrow{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.t-hero h1{font-family:'Bebas Neue';font-size:clamp(56px,8vw,110px);line-height:.9;letter-spacing:.02em;margin:0 0 12px}
+.t-hero h1 em{color:var(--accent);font-style:normal}
+.t-hero .en-sub{font-family:'Bebas Neue';font-size:clamp(20px,2.8vw,34px);color:rgba(255,255,255,.35);letter-spacing:.08em;margin:0 0 26px}
+.t-hero .lead{font-size:18px;color:rgba(255,255,255,.72);max-width:620px;line-height:1.72;margin:0 0 36px;text-wrap:pretty}
+.hero-pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.hero-pill{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;padding:6px 16px;border-radius:4px;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6)}
+.hero-pill.hot{border-color:rgba(255,42,61,.4);color:var(--accent);background:rgba(255,42,61,.07)}
+
+/* ── layout ── */
+.sec{max-width:1260px;margin:0 auto;padding:72px 48px}
+.sec+.sec,.sec-alt+.sec,.sec+.sec-alt{border-top:1px solid var(--line)}
+.sec-alt{background:var(--bg-elev);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec-alt .inner{max-width:1260px;margin:0 auto;padding:72px 48px}
+.sec h2{font-family:'Bebas Neue';font-size:clamp(32px,3.5vw,58px);letter-spacing:.02em;margin:0 0 20px;line-height:1}
+.sec p{font-size:17px;color:var(--ink-dim);line-height:1.82;max-width:860px;margin:0 0 18px;text-wrap:pretty}
+.sec p strong{color:var(--ink)}
+
+/* ── audience banner ── */
+.audience-banner{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+@media(max-width:720px){.audience-banner{grid-template-columns:1fr}}
+.aud-card{border-radius:14px;padding:28px 28px;border:1px solid var(--line);background:var(--bg-card)}
+.aud-card.yes{border-color:rgba(70,201,138,.3);background:rgba(70,201,138,.04)}
+.aud-card.no{border-color:rgba(255,42,61,.2);background:rgba(255,42,61,.03)}
+.aud-card-label{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px}
+.aud-card.yes .aud-card-label{color:#46c98a}
+.aud-card.no .aud-card-label{color:var(--accent)}
+.aud-card h3{font-family:'Bebas Neue';font-size:24px;letter-spacing:.03em;color:var(--ink);margin:0 0 14px;line-height:1}
+.aud-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.aud-icon{font-size:13px;width:16px;flex-shrink:0;padding-top:2px}
+.aud-text{font-size:14px;color:var(--ink-dim);line-height:1.55}
+
+/* ── topic grid ── */
+.topic-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+@media(max-width:960px){.topic-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.topic-grid{grid-template-columns:1fr}}
+.topic-card{background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:22px 20px;transition:border-color .22s,transform .22s}
+.topic-card:hover{border-color:rgba(255,42,61,.35);transform:translateY(-3px)}
+.topic-num{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.18em;color:var(--accent);margin-bottom:10px}
+.topic-card h3{font-size:15px;font-weight:700;color:var(--ink);margin:0 0 8px;line-height:1.3}
+.topic-card p{font-size:13px;color:var(--ink-dim);line-height:1.62;margin:0}
+
+/* ── video duo (16:9) ── */
+.video-duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px}
+@media(max-width:720px){.video-duo{grid-template-columns:1fr}}
+.video-wrap{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--bg-card)}
+.video-label{padding:14px 20px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--line)}
+.video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+.video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
+
+/* ── photo mosaic ── */
+.photo-mosaic{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:36px}
+@media(max-width:860px){.photo-mosaic{grid-template-columns:1fr 1fr}}
+.photo-mosaic img{width:100%;border-radius:12px;border:1px solid var(--line);display:block;object-fit:cover;aspect-ratio:4/3;transition:transform .4s}
+.photo-mosaic img:hover{transform:scale(1.02)}
+.photo-mosaic img.wide{grid-column:span 2;aspect-ratio:16/9}
+@media(max-width:860px){.photo-mosaic img.wide{grid-column:span 1;aspect-ratio:4/3}}
+
+/* ── benefits ── */
+.benefit-list{display:flex;flex-direction:column;gap:0;margin-top:36px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.benefit-row{display:grid;grid-template-columns:56px 1fr;border-bottom:1px solid var(--line);transition:background .18s}
+.benefit-row:last-child{border-bottom:none}
+.benefit-row:hover{background:rgba(255,255,255,.015)}
+.benefit-num{display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono';font-size:13px;font-weight:700;color:var(--accent);border-right:1px solid var(--line);background:var(--bg-card)}
+.benefit-content{padding:20px 24px}
+.benefit-content h4{font-size:15px;font-weight:700;color:var(--ink);margin:0 0 5px}
+.benefit-content p{font-size:14px;color:var(--ink-dim);line-height:1.65;margin:0}
+
+/* ── instructor ── */
+.instr-compact{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center;margin-top:36px;background:var(--bg-card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+@media(max-width:720px){.instr-compact{grid-template-columns:1fr}}
+.instr-compact img{width:100%;height:100%;object-fit:cover;display:block;min-height:220px}
+.instr-info{padding:32px 36px 32px 0}
+@media(max-width:720px){.instr-info{padding:28px}}
+.instr-info .name{font-family:'Bebas Neue';font-size:32px;letter-spacing:.04em;color:var(--ink);margin:0 0 4px;line-height:1}
+.instr-info .title{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:14px}
+.instr-info p{font-size:15px;color:var(--ink-dim);line-height:1.72;margin:0 0 14px}
+.cred-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+.cred{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.1em;padding:4px 12px;border-radius:4px;border:1px solid var(--line-bright);color:var(--ink-dim)}
+.cred.hot{border-color:rgba(255,42,61,.4);color:var(--accent);background:rgba(255,42,61,.06)}
+
+/* ── course nav ── */
+.course-nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px}
+.course-nav-item{display:flex;flex-direction:column;flex:1;min-width:180px;background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;text-decoration:none;transition:border-color .22s,transform .22s;gap:4px}
+.course-nav-item:hover{border-color:rgba(255,42,61,.35);transform:translateY(-3px)}
+.course-nav-item .cnav-type{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.18em;color:var(--ink-mute);text-transform:uppercase}
+.course-nav-item .cnav-name{font-family:'Bebas Neue';font-size:22px;letter-spacing:.03em;color:var(--ink);line-height:1.1}
+.course-nav-item .cnav-arr{font-size:13px;color:var(--accent);margin-top:6px}
+.course-nav-item.current{border-color:rgba(255,42,61,.4);background:rgba(24,10,13,.5)}
+.course-nav-item.current .cnav-name{color:var(--accent)}
+
+/* ── cta ── */
+.cta-band{background:var(--bg-elev);border-top:1px solid var(--line);padding:72px 48px}
+.cta-inner{max-width:1260px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cta-inner h2{font-family:'Bebas Neue';font-size:clamp(32px,3.5vw,52px);letter-spacing:.02em;margin:0;line-height:1}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-accent{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:8px;font-size:15px;font-weight:600;background:var(--accent);color:#fff;text-decoration:none;transition:opacity .2s;white-space:nowrap}
+.btn-accent:hover{opacity:.82}
+.btn-line{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:8px;font-size:15px;font-weight:600;border:1px solid var(--line-bright);color:var(--ink);text-decoration:none;transition:opacity .2s}
+.btn-line:hover{opacity:.72}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:720px){
+  .sec,.sec-alt .inner,.cta-band{padding-left:24px;padding-right:24px}
+  .t-hero .inner{padding-left:24px;padding-right:24px}
+}
+</style>
+</head>
+<body>
+
+<nav class="top" id="topnav" data-current="training-adv"></nav>
+
+<!-- ── HERO ── -->
+<header class="t-hero" data-screen-label="Hero">
+  <div class="bg"></div>
+  <div class="overlay"></div>
+  <div class="grid-overlay"></div>
+  <div class="inner">
+    <div class="breadcrumb">
+      <a href="news-3.html">技術教學</a>
+      <span>›</span>
+      <span>PDR進階技術訓練</span>
+    </div>
+    <div class="eyebrow">Advanced Training · 同業精進 · Superior PDR</div>
+    <h1>PDR<br><em>進階技術訓練</em></h1>
+    <div class="en-sub">ADVANCED TECHNICIAN TRAINING</div>
+    <p class="lead">專為已有PDR工作經驗的技師設計。突破技術瓶頸、糾正錯誤習慣、掌握VALE認證技巧，卓越將12年積累的核心技術毫無保留地轉移給您。</p>
+    <div class="hero-pills">
+      <span class="hero-pill hot">需具備PDR基礎</span>
+      <span class="hero-pill">個人化客製訓練</span>
+      <span class="hero-pill">終身技術支援</span>
+      <span class="hero-pill">工具採購折扣</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── 課程介紹 ── -->
+<section class="sec reveal" data-screen-label="課程介紹">
+  <div class="section-eyebrow" data-en="ABOUT THIS COURSE" data-zh="課程介紹">課程介紹</div>
+  <h2>為技師而生的精進課程</h2>
+  <p>進階技術訓練是卓越針對<strong>已具備PDR技術經驗的技師</strong>所設計的特殊課程。許多PDR技師因為最初接受的訓練並非正規體系，導致形成了錯誤的技術習慣，進而在修復品質上停滯不前，甚至無法接受更高難度的案件。</p>
+  <p>卓越曾多次赴美國與日本取經，累積多年實戰與教學團隊經驗，我們有足夠的信心<strong>對症下藥</strong>——找出每位技師的弱點，針對性地提升技術水準。完成課程後，您不只會修得更好，更會對PDR這門技藝重燃熱忱。</p>
+
+  <div class="audience-banner">
+    <div class="aud-card yes">
+      <div class="aud-card-label">✓ 適合報名</div>
+      <h3>這個課程是為您設計的</h3>
+      <div class="aud-row"><span class="aud-icon" style="color:#46c98a">✓</span><span class="aud-text">已在從事PDR工作，想突破技術瓶頸</span></div>
+      <div class="aud-row"><span class="aud-icon" style="color:#46c98a">✓</span><span class="aud-text">修復品質不穩定，想找出問題根源</span></div>
+      <div class="aud-row"><span class="aud-icon" style="color:#46c98a">✓</span><span class="aud-text">想學習 VALE 認證考試技巧</span></div>
+      <div class="aud-row"><span class="aud-icon" style="color:#46c98a">✓</span><span class="aud-text">想掌握 Blending、鋁合金等進階技法</span></div>
+      <div class="aud-row"><span class="aud-icon" style="color:#46c98a">✓</span><span class="aud-text">想了解最新進階工具的正確使用方式</span></div>
+    </div>
+    <div class="aud-card no">
+      <div class="aud-card-label">→ 建議改報其他課程</div>
+      <h3>以下學員請先選基礎課程</h3>
+      <div class="aud-row"><span class="aud-icon" style="color:var(--accent)">→</span><span class="aud-text">完全沒有PDR修復經驗</span></div>
+      <div class="aud-row"><span class="aud-icon" style="color:var(--accent)">→</span><span class="aud-text">只看過影片或線上課程，尚未實際操作</span></div>
+      <div class="aud-row"><span class="aud-icon" style="color:var(--accent)">→</span><span class="aud-text">想從零開始系統學習PDR</span></div>
+      <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+        <a href="training-2week.html" style="font-family:'JetBrains Mono';font-size:12px;letter-spacing:.1em;padding:8px 16px;border-radius:6px;border:1px solid var(--line-bright);color:var(--ink-dim);text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,42,61,.4)'" onmouseout="this.style.borderColor=''">中階訓練 (2週) →</a>
+        <a href="training-4week.html" style="font-family:'JetBrains Mono';font-size:12px;letter-spacing:.1em;padding:8px 16px;border-radius:6px;border:1px solid var(--line-bright);color:var(--ink-dim);text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,42,61,.4)'" onmouseout="this.style.borderColor=''">完整訓練 (4週) →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 課程內容 ── -->
+<div class="sec-alt reveal" data-screen-label="課程內容">
+  <div class="inner">
+    <div class="section-eyebrow" data-en="CURRICULUM" data-zh="課程內容">課程內容</div>
+    <h2>8大進階訓練項目</h2>
+    <p>進階課程依學員個別技術狀況量身調整，以下為核心訓練項目，實際課程比重由教官在評估後決定。</p>
+    <div class="topic-grid">
+      <div class="topic-card">
+        <div class="topic-num">01</div>
+        <h3>翼子板／車門／尾門邊緣凹痕修復</h3>
+        <p>處理板件邊緣（Edge）的凹痕需要特殊角度與工具選擇，是高難度但高頻率的案件類型。</p>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">02</div>
+        <h3>Stainliner工具滾壓深折線</h3>
+        <p>使用Stainliner專業工具組，以滾壓方式處理深度折線凹痕，效率與精度兼具的進階技法。</p>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">03</div>
+        <h3>車頂導槽邊緣膠拉技法</h3>
+        <p>車頂導軌（Rail Edge）的膠拉操作空間受限，學習特殊膠頭配置與施力方向，有效處理此高難度區域。</p>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">04</div>
+        <h3>車身折線膠拉技法</h3>
+        <p>折線（Body Line）上的凹痕是PDR最複雜的類型之一，結合膠拉與推桿的混合作業流程讓修復更完整。</p>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">05</div>
+        <h3>應力釋放與張力拉拔技術</h3>
+        <p>Tension Release 與 Tension Pull 是精準控制板金應力的核心技術，避免過修並確保板金恢復自然狀態。</p>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">06</div>
+        <h3>橫向張力處理複雜凹痕</h3>
+        <p>利用橫向張力（Lateral Tension）應對多方向形變的複雜凹痕，拓展單一推壓方式無法解決的修復困境。</p>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">07</div>
+        <h3>特殊形狀工具頭應用技巧</h3>
+        <p>不同曲率、材質與形狀的工具頭各有其最佳應用情境，掌握正確配對讓每一次操作都發揮最大效益。</p>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">08</div>
+        <h3>墊鐵與鐵鎚技法</h3>
+        <p>Dolly &amp; Hammer 是傳統鈑金技法與PDR的交界，應用在特定邊緣位置或輔助推桿進行精確整形。</p>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">09</div>
+        <h3>熱箱／感應工具處理油桶效應</h3>
+        <p>Oil Canning（油桶效應）指板金在受力後產生的彈性變形，使用熱箱或感應加熱工具協助恢復板金記憶性。</p>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">10</div>
+        <h3>無熱源工具處理油桶效應</h3>
+        <p>在鋼樑下方或無法加熱的區域，學習純機械式應對油桶效應的技巧，考驗手感與判斷力的進階訓練。</p>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">11</div>
+        <h3>線板與霧板的比較與選用</h3>
+        <p>深度了解線板（Line Board）與霧板（Fog Light）各自的優勢與盲點，在不同凹痕類型下做出最佳觀察工具選擇。</p>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">12</div>
+        <h3>補漆與拋光技法</h3>
+        <p>PDR完成後的微細漆面處理，包含石頭彈痕補漆（Touch-up）與局部拋光，讓最終交車品質達到頂級水準。</p>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">13</div>
+        <h3>戶外修復 · 自然光反射應用</h3>
+        <p>室外作業時如何利用自然光源進行精確的凹痕判讀，擺脫燈板設備限制，在任何環境下都能高品質完工。</p>
+      </div>
+      <div class="topic-card">
+        <div class="topic-num">14</div>
+        <h3>收縮工具頭修復深凹痕</h3>
+        <p>使用Shrinking Tips（收縮工具頭）處理金屬被過度拉伸的深凹痕，是恢復板金原始形態的關鍵進階技法。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 影片 ── -->
+<section class="sec reveal" data-screen-label="技術影片">
+  <div class="section-eyebrow" data-en="TECHNIQUE VIDEOS" data-zh="技術影片">技術影片</div>
+  <h2>進階技法實錄</h2>
+  <p>以下為卓越訓練中心拍攝的進階技術示範影片，展示課程中實際訓練的技法細節與手感要求。</p>
+  <div class="video-duo">
+    <div class="video-wrap">
+      <div class="video-label">Advanced Technique · Vol.1</div>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/1Zky6mfl1Xg?si=0lldYVXqI3CMBBMB" title="PDR 進階技術訓練 Vol.1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="video-wrap">
+      <div class="video-label">Advanced Technique · Vol.2</div>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/osr0N8sayfw?si=Uy-rAXsX598Y2jNU" title="PDR 進階技術訓練 Vol.2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 訓練現場 ── -->
+<div class="sec-alt reveal" data-screen-label="訓練現場">
+  <div class="inner">
+    <div class="section-eyebrow" data-en="IN THE STUDIO" data-zh="訓練現場">訓練現場</div>
+    <h2>個人化 · 高強度 · 針對性</h2>
+    <p>進階課程沒有制式化的課表，每一天的訓練都是依您的技術弱點量身設計。教官在課程開始前會先進行全面評估，找出問題所在，再制定最有效的訓練計劃。</p>
+    <div class="photo-mosaic">
+      <img class="wide" src="media/adv-group-overseas.png" alt="Jay Ma 帶領多位同業技師共同切磋進階技法">
+      <img src="media/adv-dark-lineboard.jpg" alt="線板精密凹痕判讀 — 高難度作業">
+      <img src="media/adv-jay-speaking-1.jpg" alt="Jay Ma 在卓越教學中心講解進階技法">
+      <img src="media/adv-hood-lesson.jpg" alt="引擎蓋板件進階折線修復指導">
+      <img src="media/adv-engine-lesson.jpg" alt="深入引擎艙通道作業實訓">
+      <img src="media/adv-keco-work.jpg" alt="KECO 大面積拉拔工具操作">
+    </div>
+  </div>
+</div>
+
+<!-- ── 結業合照 ── -->
+<section class="sec reveal" data-screen-label="結業合照">
+  <div class="section-eyebrow" data-en="ALUMNI" data-zh="結業合照">結業合照</div>
+  <h2>完成進階訓練 · 帶走證書與技術</h2>
+  <p>完成進階技術訓練的同業技師，將獲頒卓越「Paintless Dent Repair Advanced Training Certificate」，代表您的技術已達進階認證水準。</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px">
+    <img src="media/adv-cert-ceremony.jpg" alt="Taiwan PDR Art Technologies 結業證書頒發典禮" style="width:100%;border-radius:14px;border:1px solid var(--line);object-fit:cover;aspect-ratio:4/3;display:block;transition:transform .4s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='none'">
+    <img src="media/adv-cert-group.jpg" alt="進階訓練結業合照 — 持證書全員合影" style="width:100%;border-radius:14px;border:1px solid var(--line);object-fit:cover;aspect-ratio:4/3;display:block;transition:transform .4s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='none'">
+  </div>
+</section>
+
+<!-- ── 課程後福利 ── -->
+<section class="sec reveal" data-screen-label="課程福利">
+  <div class="section-eyebrow" data-en="AFTER THE COURSE" data-zh="課程後福利">課程後福利</div>
+  <h2>結業不是結束，是開始</h2>
+  <div class="benefit-list">
+    <div class="benefit-row">
+      <div class="benefit-num">01</div>
+      <div class="benefit-content">
+        <h4>終身技術支援</h4>
+        <p>課程結束後，可隨時透過 LINE 聯繫教官提問。遇到難度凹痕、特殊案件或工具選擇問題，卓越永遠是您背後的技術後盾。</p>
+      </div>
+    </div>
+    <div class="benefit-row">
+      <div class="benefit-num">02</div>
+      <div class="benefit-content">
+        <h4>凹痕工廠工具採購折扣</h4>
+        <p>完成進階課程的學員，享有卓越合作夥伴「凹痕工廠 Dentstage PDR Tools」的專屬工具採購折扣，讓您以最優惠的價格升級裝備。</p>
+      </div>
+    </div>
+    <div class="benefit-row">
+      <div class="benefit-num">03</div>
+      <div class="benefit-content">
+        <h4>加入卓越技師網絡</h4>
+        <p>與來自亞洲各地的卓越結業技師建立聯繫，互相轉介客戶、分享案例、交流最新工具資訊，是業界最有價值的人脈資產。</p>
+      </div>
+    </div>
+    <div class="benefit-row">
+      <div class="benefit-num">04</div>
+      <div class="benefit-content">
+        <h4>個人化訓練報告</h4>
+        <p>課程結束後，教官提供書面的個人技術評估報告，記錄您的強項、改善幅度與未來精進方向，成為職涯發展的重要參考。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 講師 ── -->
+<div class="sec-alt reveal" data-screen-label="講師介紹">
+  <div class="inner">
+    <div class="section-eyebrow" data-en="INSTRUCTOR" data-zh="講師">講師</div>
+    <h2>Jay Ma · 馬承傑</h2>
+    <div class="instr-compact">
+      <img src="media/adv-jay-speaking-2.jpg" alt="Jay Ma 馬承傑 — Superior PDR 創辦人暨首席講師" style="object-position:center top">
+      <div class="instr-info">
+        <div class="name">Jay Ma · 馬承傑</div>
+        <div class="title">Superior PDR 創辦人 · 首席講師 · Since 2014</div>
+        <p>Jay 是台灣少數能夠以「技術轉移」方式進行同業進階訓練的PDR教官。多年來往返美國、日本取經，親眼見識並吸收了世界最頂尖的PDR技法，再以有系統的方式傳授給每一位來訪的技師。</p>
+        <p>進階課程不是制式教學，而是一對一的技術診斷與精進。Jay 的目標是讓每位結業的技師，都能帶著全新的信心與能力回到自己的工作崗位。</p>
+        <div class="cred-row">
+          <span class="cred hot">IMI Level 2 EV 認證</span>
+          <span class="cred hot">國際研討會講師</span>
+          <span class="cred">美國 PDR 進修</span>
+          <span class="cred">日本 PDR 進修</span>
+          <span class="cred">全台 7 間分店</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 其他課程 ── -->
+<section class="sec reveal" data-screen-label="其他課程">
+  <div class="section-eyebrow" data-en="OTHER COURSES" data-zh="其他課程">其他課程</div>
+  <h2>完整課程路徑</h2>
+  <div class="course-nav">
+    <a class="course-nav-item" href="training-2week.html">
+      <span class="cnav-type">2 Week · 入門首選</span>
+      <span class="cnav-name">中階技術訓練</span>
+      <span class="cnav-arr">查看課程 →</span>
+    </a>
+    <a class="course-nav-item" href="training-4week.html">
+      <span class="cnav-type">4 Week · 完整培訓</span>
+      <span class="cnav-name">完整技術訓練</span>
+      <span class="cnav-arr">查看課程 →</span>
+    </a>
+    <div class="course-nav-item current">
+      <span class="cnav-type">Advanced · 現在瀏覽</span>
+      <span class="cnav-name">PDR進階技術訓練</span>
+      <span class="cnav-arr">目前頁面</span>
+    </div>
+    <a class="course-nav-item" href="advancedevent.html">
+      <span class="cnav-type">Seminar · 世界級交流</span>
+      <span class="cnav-name">國際進階訓練研討會</span>
+      <span class="cnav-arr">查看活動 →</span>
+    </a>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<div class="cta-band reveal" data-screen-label="報名CTA">
+  <div class="cta-inner">
+    <div>
+      <h2>準備好突破瓶頸了嗎？</h2>
+      <p style="font-size:15px;color:var(--ink-dim);margin:8px 0 0;line-height:1.6">進階課程採個人化設計，請先透過 LINE 說明您的技術背景與訓練需求，教官將為您規劃最適合的課程內容。</p>
+    </div>
+    <div class="cta-btns">
+      <a class="btn-accent" href="https://line.me/R/ti/p/%40pdr.tw" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINE 洽詢課程
+      </a>
+      <a class="btn-line" href="news-3.html">← 返回技術教學</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-links">
+      <a href="Superior-PDR.html">首頁</a>
+      <a href="pdr.html">服務項目</a>
+      <a href="news-3.html">技術教學</a>
+      <a href="Superior-PDR.html#showcase">作品實績</a>
+      <a href="contact.html">據點分佈</a>
+      <a href="pricing.html">預約與估價</a>
+    </div>
+    <a href="Superior-PDR.html" class="logo">
+      <img class="logo-circle" src="media/logo-circle.png" alt="Superior PDR">
+      <div class="logo-text">
+        <div class="top-line">SUPERIOR PDR</div>
+        <div class="bot-line">© 2026 SUPERIOR PDR · ALL RIGHTS RESERVED</div>
+      </div>
+    </a>
+    <div class="foot-social">
+      <a href="https://www.instagram.com/superiorpdrtaiwan/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg></a>
+      <a href="https://www.youtube.com/channel/UC8mXr_dYrD6Or-jA91W1irw?view_as=subscriber" target="_blank" rel="noopener" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.2 5 12 5 12 5s-4.2 0-7.2.1c-.4 0-1.2.1-2 .9C2.2 6.6 2 8 2 8S1.8 9.6 1.8 11.2v1.5C1.8 14.3 2 16 2 16s.2 1.4.8 2c.8.8 1.7.8 2.1.9C6.4 19 12 19 12 19s4.2 0 7.2-.2c.4 0 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1.5C22.2 9.6 22 8 22 8zM9.8 14.5v-5.7l5.4 2.9-5.4 2.8z"/></svg></a>
+      <a href="https://www.facebook.com/PdrSuperior" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
