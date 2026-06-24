@@ -1521,6 +1521,20 @@ svg.leaflet-image-layer.leaflet-interactive path {
   @media(max-width:820px){
     nav.top .links,nav.top .cta,nav.top .lang-toggle,.nav-social{display:none !important}
     .ham{display:flex}
+    /* Hero mobile */
+    .hero{padding:110px 24px 64px}
+    .hero-inner{grid-template-columns:1fr;gap:0}
+    .hero-photo{display:none}
+    .hero-stats{grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px}
+    .hero-stat .ic{width:40px;height:40px}
+    .hero-tag{font-size:13px;max-width:100%}
+    .hero-ctas{flex-wrap:wrap;gap:10px}
+    .hero-ctas .cta{flex:1;min-width:140px;justify-content:center;text-align:center}
+  }
+  @media(max-width:480px){
+    .hero{padding:96px 20px 56px}
+    .hero-stats{grid-template-columns:repeat(2,1fr);gap:12px}
+    .hero-stat .ic{display:none}
   }
 </style>
 
