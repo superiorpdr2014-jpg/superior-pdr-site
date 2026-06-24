@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    SUPERIOR PDR — shared subpage behaviour
    - bilingual (zh default) via a [selector, en, zh, mode] table
    - hover dropdown is CSS-only; JS only assigns data-key + lang
@@ -62,13 +62,13 @@
     function cc(k)  { return cur === k ? ' current' : ''; }
     function ddc(d) { return cur === d ? ' current' : ''; }
     return [
-      '<a href="Superior-PDR.html" class="logo">',
+      '<a href="index.html" class="logo">',
       '  <img class="logo-circle" src="media/logo-circle.png" alt="Superior PDR">',
       '  <div class="logo-text"><div class="top-line">SUPERIOR PDR</div>',
       '  <div class="bot-line">自 2014 · 台北 · 台灣</div></div>',
       '</a>',
       '<div class="links">',
-      '  <a class="nav-link'+cc('home')+'" href="Superior-PDR.html" data-key="home">首頁</a>',
+      '  <a class="nav-link'+cc('home')+'" href="index.html" data-key="home">首頁</a>',
       '  <div class="nav-item">',
       '    <a class="nav-link'+(aboutOn?' current':'')+'" href="about-us.html" data-key="about">關於我們<span class="nav-caret"></span></a>',
       '    <div class="dropdown">',
@@ -89,8 +89,8 @@
       '      <a class="ddi'+ddc('svc-moto')+'" data-d="svc-moto" href="motortank.html">重機油箱凹痕修復</a>',
       '    </div>',
       '  </div>',
-      '  <a class="nav-link" href="Superior-PDR.html#credentials" data-key="credentials">國際認證</a>',
-      '  <a class="nav-link" href="Superior-PDR.html#showcase" data-key="showcase">作品實績</a>',
+      '  <a class="nav-link" href="index.html#credentials" data-key="credentials">國際認證</a>',
+      '  <a class="nav-link" href="index.html#showcase" data-key="showcase">作品實績</a>',
       '  <a class="nav-link'+cc('blog')+'" href="blog.html" data-key="studio">工作日誌</a>',
       '  <div class="nav-item">',
       '    <a class="nav-link'+(trainOn?' current':'')+' " href="news-3.html" data-key="training">技術教學<span class="nav-caret"></span></a>',
@@ -166,7 +166,7 @@
     var mobNavEl = document.createElement('div');
     mobNavEl.className = 'mob-nav';
     mobNavEl.innerHTML = [
-      '<div class="mob-group"><a href="Superior-PDR.html">首頁</a></div>',
+      '<div class="mob-group"><a href="index.html">首頁</a></div>',
       '<div class="mob-group">',
       '  <div class="mob-toggle">關於我們<span class="nav-caret"></span></div>',
       '  <div class="mob-sub">',
@@ -187,8 +187,8 @@
       '    <a href="motortank.html">重機油箱凹痕修復</a>',
       '  </div>',
       '</div>',
-      '<div class="mob-group"><a href="Superior-PDR.html#credentials">國際認證</a></div>',
-      '<div class="mob-group"><a href="Superior-PDR.html#showcase">作品實績</a></div>',
+      '<div class="mob-group"><a href="index.html#credentials">國際認證</a></div>',
+      '<div class="mob-group"><a href="index.html#showcase">作品實績</a></div>',
       '<div class="mob-group"><a href="blog.html">工作日誌</a></div>',
       '<div class="mob-group">',
       '  <div class="mob-toggle">技術教學<span class="nav-caret"></span></div>',
