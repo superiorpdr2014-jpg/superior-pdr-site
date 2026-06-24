@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <style>
 @font-face {
   font-family: 'Bebas Neue';
@@ -905,26 +906,6 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 /* ── INIT ── */
 render();
 </script>
-<script>
-(function(){
-  var nav = document.getElementById('topnav');
-  if(nav){
-    var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 30); };
-    window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
-  }
-  var btn = document.getElementById('langToggle');
-  var lang = 'zh';
-  function apply(l){
-    lang = l;
-    document.querySelectorAll('#topnav [data-zh]').forEach(function(el){
-      var v = el.getAttribute('data-'+l); if(v!=null) el.textContent = v;
-    });
-    document.querySelectorAll('#langToggle .lang-opt').forEach(function(o){ o.classList.remove('active'); });
-    var act = document.querySelector('#langToggle .lang-opt.'+l); if(act) act.classList.add('active');
-    document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
-  }
-  if(btn){ btn.addEventListener('click', function(){ apply(lang==='zh'?'en':'zh'); }); }
-})();
-</script>
+<script src="assets/site.js"></script>
 </body>
 </html>
