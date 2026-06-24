@@ -11,9 +11,9 @@
     ['nav.top .links a[data-key="home"]',        'Home',        '首頁',     'text'],
     ['nav.top .links a[data-key="about"]',       'About',       '關於我們', 'text'],
     ['nav.top .links a[data-key="services"]',    'Services',    '服務項目', 'text'],
-    ['nav.top .links a[data-key="credentials"]', 'Credentials', '國際認證', 'text'],
-    ['nav.top .links a[data-key="showcase"]',    'Showcase',    '作品實績', 'text'],
+    ['nav.top .links a[data-key="tools"]',       '凹痕工廠Tools', '凹痕工廠Tools', 'text'],
     ['nav.top .links a[data-key="studio"]',      'Journal',     '工作日誌', 'text'],
+    ['nav.top .links a[data-key="case"]',        'Case Study',  '案例實績', 'text'],
     ['nav.top .links a[data-key="training"]',    'Training',    '技術教學', 'text'],
     ['nav.top .links a[data-key="locations"]',   'Locations',   '據點分佈', 'text'],
     ['nav.top .links a[data-key="contact"]',     'Contact',     '聯絡我們', 'text'],
@@ -89,9 +89,8 @@
       '      <a class="ddi'+ddc('svc-moto')+'" data-d="svc-moto" href="motortank.html">重機油箱凹痕修復</a>',
       '    </div>',
       '  </div>',
-      '  <a class="nav-link" href="index.html#credentials" data-key="credentials">國際認證</a>',
-      '  <a class="nav-link" href="index.html#showcase" data-key="showcase">作品實績</a>',
       '  <a class="nav-link'+cc('blog')+'" href="blog.html" data-key="studio">工作日誌</a>',
+      '  <a class="nav-link'+cc('case-video')+'" href="case-video.html" data-key="case">案例實績</a>',
       '  <div class="nav-item">',
       '    <a class="nav-link'+(trainOn?' current':'')+' " href="news-3.html" data-key="training">技術教學<span class="nav-caret"></span></a>',
       '    <div class="dropdown">',
@@ -104,6 +103,7 @@
       '    </div>',
       '  </div>',
       '  <a class="nav-link'+cc('contact')+'" href="contact.html" data-key="locations">據點分佈</a>',
+      '  <a class="nav-link" href="https://www.dentstagetools.com.tw/" data-key="tools" target="_blank" rel="noopener">凹痕工廠Tools</a>',
       '</div>',
       '<div class="nav-social" style="display:flex;align-items:center;gap:8px;margin-left:10px">',
       '  <a href="https://www.facebook.com/PdrSuperior" target="_blank" rel="noopener" aria-label="Facebook" style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#1877f2;text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=\'.8\'" onmouseout="this.style.opacity=\'1\'"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>',
@@ -187,9 +187,8 @@
       '    <a href="motortank.html">重機油箱凹痕修復</a>',
       '  </div>',
       '</div>',
-      '<div class="mob-group"><a href="index.html#credentials">國際認證</a></div>',
-      '<div class="mob-group"><a href="index.html#showcase">作品實績</a></div>',
       '<div class="mob-group"><a href="blog.html">工作日誌</a></div>',
+      '<div class="mob-group"><a href="case-video.html">案例實績</a></div>',
       '<div class="mob-group">',
       '  <div class="mob-toggle">技術教學<span class="nav-caret"></span></div>',
       '  <div class="mob-sub">',
@@ -202,6 +201,7 @@
       '  </div>',
       '</div>',
       '<div class="mob-group"><a href="contact.html">據點分佈</a></div>',
+      '<div class="mob-group"><a href="https://www.dentstagetools.com.tw/" target="_blank" rel="noopener">凹痕工廠Tools</a></div>',
       '<div class="mob-cta-wrap">',
       '  <a class="mob-cta" href="https://lin.ee/7ijf0fu" target="_blank" rel="noopener">',
       '    LINE 預約',
@@ -233,7 +233,7 @@
     });
 
     // assign stable nav keys to the 9 top-level links (skip dropdown items)
-    var navKeys = ['home', 'about', 'services', 'credentials', 'showcase', 'studio', 'training', 'locations', 'contact'];
+    var navKeys = ['home', 'about', 'services', 'studio', 'case', 'training', 'locations', 'tools'];
     document.querySelectorAll('nav.top .links .nav-link').forEach(function (a, i) {
       if (navKeys[i]) a.setAttribute('data-key', navKeys[i]);
     });
