@@ -83,9 +83,17 @@
     .ss-header{flex-direction:column;align-items:flex-start}
   }
   @media(max-width:520px){
-    .tech-grid{grid-template-columns:1fr !important}
-    .tc-tag{white-space:nowrap}
-    .tc-creds li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .tech-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+    .tech-hero,.store-section{padding-left:12px;padding-right:12px}
+    .region-bar{padding-left:12px;padding-right:12px}
+    .gif-note{margin-left:12px;margin-right:12px}
+    .tc-body{padding:10px 10px 12px;gap:5px}
+    .tc-name{font-size:18px}
+    .tc-title{font-size:13px}
+    .tc-tag{font-size:10px;padding:2px 6px}
+    .tc-creds li{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .tc-store{font-size:11px}
+    .tc-name-en{font-size:8px}
   }
 </style>
 </head>
@@ -177,7 +185,7 @@
       <!-- 柏淵 -->
       <div class="tc reveal delay-1">
         <div class="tc-photo">
-          <video style="width:100%;height:100%;object-fit:cover;display:block" autoplay loop muted playsinline preload="none" data-src="media/tech-boyuan.mp4" poster="media/tech-boyuan.png" ontimeupdate="if(this.currentTime<0.5)this.currentTime=0.5" onloadedmetadata="this.currentTime=0.5"></video>
+          <video style="width:100%;height:100%;object-fit:cover;display:block" autoplay loop muted playsinline preload="none" data-src="media/tech-boyuan.mp4" ontimeupdate="if(this.currentTime<0.5)this.currentTime=0.5" onloadedmetadata="this.currentTime=0.5"></video>
                   </div>
         <div class="tc-body">
                     <div class="tc-name">柏淵</div>
@@ -705,27 +713,35 @@ regionBtns.forEach(btn => {
 
 <script>
 (function() {
-  // Lazy-load videos: set src only when card enters viewport
+  function loadVideo(v) {
+    if (!v.dataset.src || v.src) return;
+    v.src = v.dataset.src;
+    v.preload = 'auto';
+    v.load();
+    v.addEventListener('canplay', function() { v.play().catch(function(){}); }, { once: true });
+    v.play().catch(function(){});
+  }
+
+  // Immediately load first 4 cards (visible on page load)
+  function eagerLoadFirst() {
+    var all = document.querySelectorAll('video[data-src]');
+    for (var i = 0; i < Math.min(4, all.length); i++) { loadVideo(all[i]); }
+  }
+
+  // Lazy-load the rest: start 1000px before entering viewport
   var vidObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (!entry.isIntersecting) return;
-      var v = entry.target;
-      if (v.dataset.src && !v.src) {
-        v.src = v.dataset.src;
-        v.load();
-        // re-attach the timeupdate trim once metadata is ready
-        v.addEventListener('loadedmetadata', function() {
-          if (v.currentTime < 0.5) v.currentTime = 0.5;
-        }, { once: true });
-        v.play().catch(function(){});
-      }
-      vidObserver.unobserve(v);
+      loadVideo(entry.target);
+      vidObserver.unobserve(entry.target);
     });
-  }, { rootMargin: '200px', threshold: 0.1 });
+  }, { rootMargin: '1000px', threshold: 0 });
 
   function initVideos() {
-    document.querySelectorAll('video[data-src]').forEach(function(v) {
-      vidObserver.observe(v);
+    eagerLoadFirst();
+    var all = document.querySelectorAll('video[data-src]');
+    all.forEach(function(v, i) {
+      if (i >= 4) vidObserver.observe(v);
     });
   }
 
