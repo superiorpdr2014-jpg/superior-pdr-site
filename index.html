@@ -1216,6 +1216,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   }
   .video-thumb svg{width:100%;height:100%;object-fit:cover;opacity:.85}
   .video-grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px}
+  @media(max-width:560px){.videos{padding:60px 20px !important}.video-grid{grid-template-columns:1fr 1fr !important;gap:10px}.ytcard .phone{border-radius:20px;padding:5px}.ytcard .yt-meta .title{font-size:15px}.ytcard{gap:10px}}
   .ytcard{display:flex;flex-direction:column;align-items:center;gap:16px}
   .ytcard .phone{position:relative;width:100%;max-width:228px;aspect-ratio:9/19;margin:0 auto;background:linear-gradient(160deg,#23262e,#0b0d12);border-radius:30px;padding:7px;box-shadow:0 26px 54px rgba(0,0,0,0.6),inset 0 0 0 1.5px rgba(255,255,255,0.07);cursor:pointer;transition:transform .35s}
   .ytcard:hover .phone{transform:translateY(-6px)}
