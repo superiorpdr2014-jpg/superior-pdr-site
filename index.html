@@ -2814,7 +2814,7 @@ function hideTweaks(){
           var ctx=canvas.getContext('2d');
           var land=topojson.feature(world,world.objects.land);
           var borders=topojson.mesh(world,world.objects.countries,function(a,b){return a!==b;});
-          var rot=[-105,-20,0];
+          var rot=[-121.5,-25,0];
           var proj=d3.geoOrthographic().scale(130).translate([W/2,H/2]).clipAngle(90).rotate(rot);
           var path=d3.geoPath(proj,ctx);
           var drag=false,lastXY=null,userInt=false,intTimer=null;
