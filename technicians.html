@@ -21,7 +21,7 @@
   .h-stat-l{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
 
   /* ─── Region filter ─── */
-  .region-bar{display:flex;align-items:center;gap:8px;padding:18px 48px;border-bottom:1px solid var(--line);background:var(--bg-elev);overflow-x:auto;flex-wrap:wrap}
+  .region-bar{display:flex;align-items:center;gap:8px;padding:18px 48px;border-bottom:1px solid var(--line);background:rgba(13,16,20,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);overflow-x:auto;flex-wrap:wrap;position:sticky;top:60px;z-index:90}
   .rg-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:999px;font-size:16px;font-weight:600;letter-spacing:.04em;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--ink-dim);font-family:'Space Grotesk',sans-serif;transition:all .18s;white-space:nowrap}
   .rg-btn:hover{border-color:var(--line-bright);color:var(--ink)}
   .rg-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
