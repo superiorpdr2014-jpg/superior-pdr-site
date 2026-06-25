@@ -1141,7 +1141,23 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .section-sub{color:var(--ink-dim);font-size:15px;max-width:520px;line-height:1.6}
 
   .cert-row{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:42px;grid-column:1/-1}
-  @media(max-width:560px){.certs{padding:60px 20px !important}.cert-row{grid-template-columns:repeat(3,1fr);gap:10px}.cert-card{padding:12px 8px}.cert-card .nm{font-size:13px;letter-spacing:0.08em}.cert-card .desc{font-size:10px;letter-spacing:0.08em}.worldmap-frame{height:220px}}
+  .globe-mobile{display:none;position:relative;padding:0}
+  .gm-wrap{position:relative;width:240px;height:240px;margin:0 auto}
+  .gm-svg{width:100%;height:100%;display:block}
+  .gm-ring{position:absolute;inset:-7%;border-radius:50%;border:1px dashed rgba(255,255,255,0.12);animation:spin 60s linear infinite;pointer-events:none}
+  @media(max-width:560px){
+    .certs{padding:60px 20px !important}
+    .worldmap-frame{display:none !important}
+    .globe-mobile{display:block}
+    .worldmap-cap{text-align:center;margin-top:12px}
+    .cert-row{grid-template-columns:repeat(3,1fr);gap:10px}
+    .cert-card{padding:12px 8px;aspect-ratio:auto !important}
+    .cert-card .nm{font-size:13px;letter-spacing:0.06em}
+    .cert-card .desc{font-size:10px;letter-spacing:0.06em}
+    .cert-card .nm,.cert-card .desc{white-space:normal !important}
+    .cert-row .cert-card:nth-of-type(4) .nm,.cert-row .cert-card:nth-of-type(5) .nm{font-size:12px !important;white-space:normal !important}
+    .cert-row .cert-card:first-child .desc,.cert-row .cert-card:nth-of-type(2) .desc{white-space:normal !important}
+  }
   .cert-card{
     aspect-ratio:1/0.9;
     background:linear-gradient(180deg,var(--bg-card),#0a0d12);
@@ -1680,6 +1696,55 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <p class="section-sub">Partnering with the foremost institutions in paintless dent repair — keeping our craft synchronized with the global frontier of the discipline.</p>
     </div>
     <div class="worldmap reveal delay-2">
+  <div class="globe-mobile">
+    <div class="wm-badge" style="position:relative;top:auto;left:auto;margin-bottom:14px;display:inline-flex"><span class="wm-dot"></span>GLOBAL TRAINING NETWORK</div>
+    <div class="gm-wrap">
+      <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" class="gm-svg">
+        <defs>
+          <radialGradient id="gm-bg" cx="35%" cy="28%" r="72%">
+            <stop offset="0%" stop-color="#1a2535"/>
+            <stop offset="60%" stop-color="#080b14"/>
+            <stop offset="100%" stop-color="#050710"/>
+          </radialGradient>
+          <clipPath id="gm-clip"><circle cx="140" cy="140" r="128"/></clipPath>
+        </defs>
+        <circle cx="140" cy="140" r="135" fill="rgba(40,80,180,0.08)"/>
+        <circle cx="140" cy="140" r="128" fill="url(#gm-bg)" stroke="rgba(255,42,61,0.22)" stroke-width="1"/>
+        <g clip-path="url(#gm-clip)" stroke="rgba(255,255,255,0.1)" stroke-width="0.6" fill="none">
+          <ellipse cx="140" cy="80" rx="108" ry="17"/>
+          <ellipse cx="140" cy="110" rx="124" ry="24"/>
+          <ellipse cx="140" cy="140" rx="128" ry="29"/>
+          <ellipse cx="140" cy="170" rx="124" ry="24"/>
+          <ellipse cx="140" cy="200" rx="108" ry="17"/>
+          <ellipse cx="140" cy="140" rx="17" ry="128"/>
+          <ellipse cx="140" cy="140" rx="52" ry="128"/>
+          <ellipse cx="140" cy="140" rx="90" ry="128"/>
+          <ellipse cx="140" cy="140" rx="122" ry="128"/>
+        </g>
+        <g clip-path="url(#gm-clip)" stroke="#ff2a3d" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.65">
+          <path d="M 158 148 Q 95 75 45 68"/>
+          <path d="M 158 148 Q 130 95 110 82"/>
+          <path d="M 158 148 Q 178 108 205 98"/>
+          <path d="M 158 148 Q 105 132 72 128"/>
+          <path d="M 158 148 Q 148 175 138 192"/>
+        </g>
+        <circle cx="158" cy="148" r="4.5" fill="#ff2a3d"/>
+        <circle cx="158" cy="148" r="9" fill="rgba(255,42,61,0.22)"/>
+        <circle cx="45" cy="68" r="2.2" fill="rgba(255,100,120,0.85)"/>
+        <circle cx="110" cy="82" r="2.2" fill="rgba(255,100,120,0.85)"/>
+        <circle cx="205" cy="98" r="2.2" fill="rgba(255,100,120,0.85)"/>
+        <circle cx="72" cy="128" r="2.2" fill="rgba(255,100,120,0.85)"/>
+        <circle cx="138" cy="192" r="2.2" fill="rgba(255,100,120,0.85)"/>
+        <text x="164" y="145" font-size="8.5" fill="#ff2a3d" font-weight="700" font-family="monospace">台灣</text>
+        <text x="48" y="65" font-size="7" fill="rgba(255,255,255,0.5)" font-family="monospace">歐洲</text>
+        <text x="112" y="79" font-size="7" fill="rgba(255,255,255,0.5)" font-family="monospace">北京</text>
+        <text x="207" y="95" font-size="7" fill="rgba(255,255,255,0.5)" font-family="monospace">日本</text>
+        <text x="55" y="135" font-size="7" fill="rgba(255,255,255,0.5)" font-family="monospace">杜拜</text>
+        <text x="122" y="200" font-size="7" fill="rgba(255,255,255,0.5)" font-family="monospace">澳洲</text>
+      </svg>
+      <div class="gm-ring"></div>
+    </div>
+  </div>
   <div class="worldmap-frame">
     <div id="worldMap"></div>
     <div class="wm-corner tl"></div><div class="wm-corner tr"></div><div class="wm-corner bl"></div><div class="wm-corner br"></div>
