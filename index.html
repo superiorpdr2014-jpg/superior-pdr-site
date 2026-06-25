@@ -1280,6 +1280,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   /* ------- BEFORE/AFTER ------- */
   .ba{padding:96px 48px;background:linear-gradient(180deg,transparent,#080a10 50%,transparent);position:relative}
   .ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:42px}
+  @media(max-width:560px){.ba{padding:60px 16px !important}.ba-grid{grid-template-columns:1fr !important;gap:32px}}
   .ba-col h3{font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.3em;color:var(--accent);text-transform:uppercase;margin:0 0 14px;display:flex;align-items:center;gap:10px}
   .ba-col h3::before{content:"";width:6px;height:6px;background:var(--accent);border-radius:50%;box-shadow:0 0 10px var(--accent)}
   .ba-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
