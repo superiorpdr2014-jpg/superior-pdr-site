@@ -9,8 +9,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="PDR凹痕修復產業 3小時趨勢體驗課 — 卓越 SUPERIOR PDR">
 <meta property="og:description" content="卓越 Superior PDR 凹痕修復產業趨勢體驗課，3小時帶你了解PDR產業現況與未來。">
-<meta property="og:url" content="https://www.tar-tw.com/pdrindentation">
-<meta property="og:image" content="https://www.tar-tw.com/media/logo-circle.png">
+<meta property="og:url" content="https://tar-tw.com/pdrindentation">
+<meta property="og:image" content="https://tar-tw.com/media/logo-circle.png">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:site_name" content="卓越凹痕修復 Superior PDR">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,6 +49,40 @@
     .sales-form{padding:0 16px 60px}
   }
 </style>
+<!-- Facebook Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}
+(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '996099057659946');
+fbq('track', 'PageView');
+fbq('track', 'Lead');
+(function() {
+  let triggered = false;
+  window.addEventListener('scroll', function() {
+    if (triggered) return;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+    const scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+    if (scrollPercent >= 70) {
+      fbq('track', 'ViewContent');
+      triggered = true;
+    }
+  });
+})();
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=996099057659946&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Facebook Pixel -->
 </head>
 <body>
 
