@@ -1320,6 +1320,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .locs-stat .val{font-family:'Bebas Neue';font-size:64px;color:var(--accent);line-height:0.9;letter-spacing:0.02em;text-shadow:0 0 30px rgba(255,42,61,0.3)}
   .locs-stat .lbl{font-family:'JetBrains Mono';font-size:10px;letter-spacing:0.22em;color:var(--ink-mute);text-transform:uppercase}
   .loc-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:24px}
+  @media(max-width:560px){
+    .locs{padding:60px 16px !important}
+    .locs-inner{grid-template-columns:1fr !important;gap:32px}
+    .locs-stats{gap:20px}
+    .locs-stat .val{font-size:44px}
+    .loc-list{grid-template-columns:1fr !important}
+    .loc-pill{transform:none !important}
+  }
   .loc-pill{
     padding:14px 18px;background:rgba(255,255,255,0.02);
     border:1px solid var(--line);border-radius:4px;
@@ -1370,6 +1378,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .tools{padding:96px 48px;border-top:1px solid var(--line)}
   .tools-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:42px;gap:24px}
   .tools-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:18px}
+  @media(max-width:560px){.tools{padding:60px 16px !important}.tools-grid{grid-template-columns:1fr 1fr !important;gap:12px}}
   .training-card{
     position:relative;border-radius:6px;overflow:hidden;
     aspect-ratio:1/1.15;
@@ -1418,6 +1427,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .cta-row .meta .t{font-family:'Bebas Neue';font-size:42px;letter-spacing:0.02em;line-height:1;color:var(--ink)}
   .cta-row .meta .s{font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-top:8px}
   .cta-row .channels{display:flex;gap:14px;align-items:center;position:relative;z-index:2;justify-self:end}
+  @media(max-width:560px){
+    .cta-row{margin:0 16px !important;padding:36px 24px !important;grid-template-columns:1fr !important;gap:24px}
+    .cta-row .car{display:none}
+    .cta-row .channels{justify-self:start;flex-wrap:wrap;gap:10px}
+    .cta-row .meta .t{font-size:32px}
+  }
   .channel{
     display:flex;align-items:center;gap:10px;padding:12px 18px;
     background:rgba(255,255,255,0.03);border:1px solid var(--line);border-radius:4px;
