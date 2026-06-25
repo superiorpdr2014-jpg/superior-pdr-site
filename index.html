@@ -1699,49 +1699,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <div class="globe-mobile">
     <div class="wm-badge" style="position:relative;top:auto;left:auto;margin-bottom:14px;display:inline-flex"><span class="wm-dot"></span>GLOBAL TRAINING NETWORK</div>
     <div class="gm-wrap">
-      <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" class="gm-svg">
-        <defs>
-          <radialGradient id="gm-bg" cx="35%" cy="28%" r="72%">
-            <stop offset="0%" stop-color="#1a2535"/>
-            <stop offset="60%" stop-color="#080b14"/>
-            <stop offset="100%" stop-color="#050710"/>
-          </radialGradient>
-          <clipPath id="gm-clip"><circle cx="140" cy="140" r="128"/></clipPath>
-        </defs>
-        <circle cx="140" cy="140" r="135" fill="rgba(40,80,180,0.08)"/>
-        <circle cx="140" cy="140" r="128" fill="url(#gm-bg)" stroke="rgba(255,42,61,0.22)" stroke-width="1"/>
-        <g clip-path="url(#gm-clip)" stroke="rgba(255,255,255,0.1)" stroke-width="0.6" fill="none">
-          <ellipse cx="140" cy="80" rx="108" ry="17"/>
-          <ellipse cx="140" cy="110" rx="124" ry="24"/>
-          <ellipse cx="140" cy="140" rx="128" ry="29"/>
-          <ellipse cx="140" cy="170" rx="124" ry="24"/>
-          <ellipse cx="140" cy="200" rx="108" ry="17"/>
-          <ellipse cx="140" cy="140" rx="17" ry="128"/>
-          <ellipse cx="140" cy="140" rx="52" ry="128"/>
-          <ellipse cx="140" cy="140" rx="90" ry="128"/>
-          <ellipse cx="140" cy="140" rx="122" ry="128"/>
-        </g>
-        <g clip-path="url(#gm-clip)" stroke="#ff2a3d" stroke-width="1.1" fill="none" stroke-linecap="round" opacity="0.65">
-          <path d="M 158 148 Q 95 75 45 68"/>
-          <path d="M 158 148 Q 130 95 110 82"/>
-          <path d="M 158 148 Q 178 108 205 98"/>
-          <path d="M 158 148 Q 105 132 72 128"/>
-          <path d="M 158 148 Q 148 175 138 192"/>
-        </g>
-        <circle cx="158" cy="148" r="4.5" fill="#ff2a3d"/>
-        <circle cx="158" cy="148" r="9" fill="rgba(255,42,61,0.22)"/>
-        <circle cx="45" cy="68" r="2.2" fill="rgba(255,100,120,0.85)"/>
-        <circle cx="110" cy="82" r="2.2" fill="rgba(255,100,120,0.85)"/>
-        <circle cx="205" cy="98" r="2.2" fill="rgba(255,100,120,0.85)"/>
-        <circle cx="72" cy="128" r="2.2" fill="rgba(255,100,120,0.85)"/>
-        <circle cx="138" cy="192" r="2.2" fill="rgba(255,100,120,0.85)"/>
-        <text x="164" y="145" font-size="8.5" fill="#ff2a3d" font-weight="700" font-family="monospace">台灣</text>
-        <text x="48" y="65" font-size="7" fill="rgba(255,255,255,0.5)" font-family="monospace">歐洲</text>
-        <text x="112" y="79" font-size="7" fill="rgba(255,255,255,0.5)" font-family="monospace">北京</text>
-        <text x="207" y="95" font-size="7" fill="rgba(255,255,255,0.5)" font-family="monospace">日本</text>
-        <text x="55" y="135" font-size="7" fill="rgba(255,255,255,0.5)" font-family="monospace">杜拜</text>
-        <text x="122" y="200" font-size="7" fill="rgba(255,255,255,0.5)" font-family="monospace">澳洲</text>
-      </svg>
+      <canvas id="globeCanvas" style="display:block;width:100%;height:100%;cursor:grab;touch-action:none;border-radius:50%"></canvas>
       <div class="gm-ring"></div>
     </div>
   </div>
@@ -2827,6 +2785,92 @@ function hideTweaks(){
 })();
 </script>
 <script src="assets/site.js"></script>
+<script>
+(function(){
+  function initGlobe(){
+    var canvas=document.getElementById('globeCanvas');
+    if(!canvas||window.innerWidth>560)return;
+    var W=280,H=280;
+    canvas.width=W;canvas.height=H;
+    var CITIES=[
+      {zh:'台灣',lng:121.5,lat:25.03,home:true},
+      {zh:'北京',lng:116.4,lat:39.9},
+      {zh:'上海',lng:121.47,lat:31.2},
+      {zh:'香港',lng:114.17,lat:22.3},
+      {zh:'東京',lng:139.77,lat:35.68},
+      {zh:'大阪',lng:135.5,lat:34.69},
+      {zh:'曼谷',lng:100.5,lat:13.76},
+      {zh:'莫斯科',lng:37.62,lat:55.75},
+      {zh:'羅馬',lng:12.5,lat:41.9},
+      {zh:'杜拜',lng:55.27,lat:25.2},
+      {zh:'洛杉磯',lng:-118.24,lat:34.05},
+      {zh:'達拉斯',lng:-96.8,lat:32.78},
+      {zh:'邁阿密',lng:-80.19,lat:25.76}
+    ];
+    function loadScript(src,cb){var s=document.createElement('script');s.src=src;s.onload=cb;document.head.appendChild(s);}
+    loadScript('https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js',function(){
+      loadScript('https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js',function(){
+        d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(function(world){
+          var ctx=canvas.getContext('2d');
+          var land=topojson.feature(world,world.objects.land);
+          var borders=topojson.mesh(world,world.objects.countries,function(a,b){return a!==b;});
+          var rot=[-105,-20,0];
+          var proj=d3.geoOrthographic().scale(130).translate([W/2,H/2]).clipAngle(90).rotate(rot);
+          var path=d3.geoPath(proj,ctx);
+          var drag=false,lastXY=null,userInt=false,intTimer=null;
+          function draw(){
+            ctx.clearRect(0,0,W,H);
+            proj.rotate(rot);
+            // Sphere
+            ctx.beginPath();path({type:'Sphere'});
+            var g=ctx.createRadialGradient(W*0.38,H*0.28,0,W/2,H/2,132);
+            g.addColorStop(0,'#1e2e48');g.addColorStop(0.55,'#090d1a');g.addColorStop(1,'#060810');
+            ctx.fillStyle=g;ctx.fill();
+            ctx.beginPath();path({type:'Sphere'});ctx.strokeStyle='rgba(255,42,61,0.28)';ctx.lineWidth=1;ctx.stroke();
+            // Grid
+            ctx.beginPath();path(d3.geoGraticule()());ctx.strokeStyle='rgba(255,255,255,0.07)';ctx.lineWidth=0.5;ctx.stroke();
+            // Land
+            ctx.beginPath();path(land);ctx.fillStyle='rgba(38,62,100,0.9)';ctx.fill();
+            // Borders
+            ctx.beginPath();path(borders);ctx.strokeStyle='rgba(90,150,230,0.2)';ctx.lineWidth=0.5;ctx.stroke();
+            // Arcs
+            var tw=CITIES[0];
+            CITIES.slice(1).forEach(function(c){
+              ctx.beginPath();path({type:'LineString',coordinates:[[tw.lng,tw.lat],[c.lng,c.lat]]});
+              ctx.strokeStyle='rgba(255,42,61,0.6)';ctx.lineWidth=1.4;ctx.stroke();
+            });
+            // Dots + labels
+            CITIES.forEach(function(c){
+              var pt=proj([c.lng,c.lat]);if(!pt)return;
+              var x=pt[0],y=pt[1];
+              if(c.home){
+                ctx.beginPath();ctx.arc(x,y,10,0,Math.PI*2);ctx.fillStyle='rgba(255,42,61,0.15)';ctx.fill();
+                ctx.beginPath();ctx.arc(x,y,4.5,0,Math.PI*2);ctx.fillStyle='#ff2a3d';ctx.fill();
+                ctx.font='bold 9px monospace';ctx.fillStyle='#ff7080';ctx.fillText(c.zh,x+7,y+3);
+              } else {
+                ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);ctx.fillStyle='rgba(255,130,150,0.9)';ctx.fill();
+                ctx.font='7px monospace';ctx.fillStyle='rgba(255,255,255,0.55)';ctx.fillText(c.zh,x+5,y+3);
+              }
+            });
+          }
+          function loop(){if(!userInt)rot[0]+=0.12;draw();requestAnimationFrame(loop);}
+          loop();
+          function startDrag(x,y){drag=true;userInt=true;lastXY=[x,y];canvas.style.cursor='grabbing';if(intTimer)clearTimeout(intTimer);}
+          function moveDrag(x,y){if(!drag)return;rot[0]+=(x-lastXY[0])*0.38;rot[1]=Math.max(-80,Math.min(80,rot[1]-(y-lastXY[1])*0.38));lastXY=[x,y];}
+          function endDrag(){drag=false;canvas.style.cursor='grab';intTimer=setTimeout(function(){userInt=false;},2000);}
+          canvas.addEventListener('mousedown',function(e){startDrag(e.clientX,e.clientY);});
+          window.addEventListener('mousemove',function(e){moveDrag(e.clientX,e.clientY);});
+          window.addEventListener('mouseup',endDrag);
+          canvas.addEventListener('touchstart',function(e){startDrag(e.touches[0].clientX,e.touches[0].clientY);e.preventDefault();},{passive:false});
+          canvas.addEventListener('touchmove',function(e){moveDrag(e.touches[0].clientX,e.touches[0].clientY);e.preventDefault();},{passive:false});
+          canvas.addEventListener('touchend',endDrag);
+        });
+      });
+    });
+  }
+  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',initGlobe):initGlobe();
+})();
+</script>
 </body></html>
 <style id="__om-edit-overrides">
 .hero-sub span:nth-child(1) { border-style: dashed !important }
