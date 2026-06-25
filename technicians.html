@@ -21,7 +21,7 @@
   .h-stat-l{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
 
   /* ─── Region filter ─── */
-  .region-bar{display:flex;align-items:center;gap:8px;padding:18px 48px;border-bottom:1px solid var(--line);background:rgba(13,16,20,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);overflow-x:auto;flex-wrap:wrap;position:sticky;top:75px;z-index:90}
+  .region-bar{display:flex;align-items:center;gap:8px;padding:18px 48px;border-bottom:1px solid var(--line);background:rgba(13,16,20,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);overflow-x:auto;flex-wrap:wrap;z-index:90}
   .rg-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:999px;font-size:16px;font-weight:600;letter-spacing:.04em;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--ink-dim);font-family:'Space Grotesk',sans-serif;transition:all .18s;white-space:nowrap}
   .rg-btn:hover{border-color:var(--line-bright);color:var(--ink)}
   .rg-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -750,6 +750,54 @@ regionBtns.forEach(btn => {
   } else {
     initVideos();
   }
+})();
+</script>
+
+<script>
+(function(){
+  var bar = document.getElementById('regionBar');
+  if (!bar) return;
+  var NAV_H = 75;
+  var placeholder = null;
+  var naturalTop = 0;
+  var isFixed = false;
+
+  function getTop() {
+    // measure natural position (bar must not be fixed)
+    bar.style.cssText = '';
+    if (placeholder) { placeholder.style.display = 'none'; }
+    naturalTop = bar.getBoundingClientRect().top + window.scrollY;
+    if (placeholder) { placeholder.style.display = ''; }
+  }
+
+  function onScroll() {
+    var past = window.scrollY >= naturalTop - NAV_H;
+    if (past && !isFixed) {
+      isFixed = true;
+      if (!placeholder) {
+        placeholder = document.createElement('div');
+        placeholder.style.height = bar.offsetHeight + 'px';
+        bar.parentNode.insertBefore(placeholder, bar);
+      }
+      bar.style.position = 'fixed';
+      bar.style.top = NAV_H + 'px';
+      bar.style.left = '0';
+      bar.style.right = '0';
+      bar.style.width = '100%';
+    } else if (!past && isFixed) {
+      isFixed = false;
+      placeholder && placeholder.remove();
+      placeholder = null;
+      bar.style.cssText = '';
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', function() {
+    getTop();
+    onScroll();
+  });
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', function() { getTop(); onScroll(); });
 })();
 </script>
 
