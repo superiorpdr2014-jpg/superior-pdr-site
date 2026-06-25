@@ -1152,11 +1152,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
     .worldmap-cap{text-align:center;margin-top:12px}
     .cert-row{grid-template-columns:repeat(3,1fr);gap:10px}
     .cert-card{padding:12px 8px;aspect-ratio:auto !important}
-    .cert-card .nm{font-size:13px;letter-spacing:0.06em}
-    .cert-card .desc{font-size:10px;letter-spacing:0.06em}
-    .cert-card .nm,.cert-card .desc{white-space:normal !important}
-    .cert-row .cert-card:nth-of-type(4) .nm,.cert-row .cert-card:nth-of-type(5) .nm{font-size:12px !important;white-space:normal !important}
-    .cert-row .cert-card:first-child .desc,.cert-row .cert-card:nth-of-type(2) .desc{white-space:normal !important}
+    .cert-card .nm{font-size:11px;letter-spacing:0.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .cert-card .desc{font-size:10px;letter-spacing:0.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .cert-row .cert-card:nth-of-type(4) .nm,.cert-row .cert-card:nth-of-type(5) .nm{font-size:11px !important}
   }
   .cert-card{
     aspect-ratio:1/0.9;
