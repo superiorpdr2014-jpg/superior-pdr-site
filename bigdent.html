@@ -168,6 +168,24 @@
   .ba-pair img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
   .ba-pair figcaption{position:absolute;top:12px;left:12px;font-family:'JetBrains Mono';font-size:11px;font-weight:700;letter-spacing:.16em;padding:5px 11px;border-radius:4px;background:rgba(7,8,11,.72);border:1px solid var(--line-bright);color:#fff}
   .ba-pair figure.after figcaption{color:var(--accent)}
+  /* IG Reels 短影音 */
+  .reels-row{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:36px}
+  .reel-card{cursor:pointer;display:flex;flex-direction:column;gap:10px}
+  @media(max-width:900px){.reels-row{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:560px){.reels-row{grid-template-columns:repeat(2,1fr)}}  /* 手機 2 欄 */
+  .reel-phone{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;border:1px solid var(--line-bright);background:linear-gradient(160deg,#1a1f27,#0b0e12)}
+  .reel-phone img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s,opacity .3s;opacity:.92}
+  .reel-card:hover .reel-phone img{transform:scale(1.04);opacity:1}
+  .reel-phone .ig-tag{position:absolute;top:10px;left:10px;z-index:2;font-family:'JetBrains Mono';font-size:9px;font-weight:700;letter-spacing:.12em;padding:4px 8px;border-radius:4px;background:rgba(7,8,11,.6);color:#fff;display:flex;align-items:center;gap:5px}
+  .reel-phone .play-btn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:48px;height:48px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(255,42,61,.5);transition:transform .2s}
+  .reel-card:hover .reel-phone .play-btn{transform:translate(-50%,-50%) scale(1.12)}
+  .reel-phone .ph-fb{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--ink-mute);font-family:'JetBrains Mono';font-size:10px;letter-spacing:.1em}
+  .reel-label{font-size:13px;color:var(--ink);font-weight:600;line-height:1.4;text-align:center}
+  .reel-lb{position:fixed;inset:0;z-index:9999;background:rgba(7,8,11,.93);display:none;align-items:center;justify-content:center;padding:24px}
+  .reel-lb.open{display:flex}
+  .reel-lb-inner{position:relative;width:min(400px,94vw);height:min(88vh,712px)}
+  .reel-lb iframe{width:100%;height:100%;border:0;border-radius:12px;background:#000}
+  .reel-lb-close{position:absolute;top:-46px;right:0;width:38px;height:38px;border-radius:50%;border:1px solid var(--line-bright);background:rgba(7,8,11,.7);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center}
 
   @media(max-width:720px){.sec,.svc-hero{padding-left:24px;padding-right:24px}.svc-hero{padding-top:120px;padding-bottom:80px}}
 </style>
@@ -234,6 +252,22 @@
     </div>
   </div>
 </section>
+
+<!-- IG Reels 短影音 -->
+<section class="sec reveal" aria-labelledby="reels-heading">
+  <div class="section-eyebrow" data-en="IG REELS" data-zh="短影音">短影音</div>
+  <h2 id="reels-heading">Instagram<br>修復實錄短影音</h2>
+  <p>追蹤 <a href="https://www.instagram.com/superiorpdrtaiwan" target="_blank" rel="noopener" style="color:var(--accent)">@superiorpdrtaiwan</a>，每一支 Reel 都是真實的大面積凹痕修復現場。點擊即可觀看。</p>
+  <div class="reels-row" id="reelsRow"><!-- JS 產生 --></div>
+</section>
+
+<!-- IG Reel 燈箱 -->
+<div class="reel-lb" id="reelLb">
+  <div class="reel-lb-inner">
+    <button class="reel-lb-close" id="reelLbClose" aria-label="關閉">✕</button>
+    <iframe id="reelLbFrame" src="" allow="autoplay; encrypted-media; fullscreen" allowfullscreen scrolling="no"></iframe>
+  </div>
+</div>
 
 <!-- Before / After 滑動比較 -->
 <section class="sec reveal" aria-labelledby="ba-heading">
@@ -530,6 +564,45 @@
     document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
   }
+
+  /* ===== IG Reels 短影音 =====
+     填法：把下面陣列換成你的 Reel，url=Reel連結, cover=封面圖路徑, title=標題
+     例：{url:'https://www.instagram.com/reel/Cxxxxxxx/', cover:'media/reel-1.jpg', title:'大面積凹痕修復'} */
+  const IG_REELS = [
+    {url:'https://www.instagram.com/reel/DO5vDYjiEX6/', cover:'media/reel-1.jpg', title:'大面積凹痕修復'},
+    {url:'https://www.instagram.com/reel/C6xzc9GSgfG/', cover:'media/reel-2.jpg', title:'免烤漆凹痕修復'},
+    {url:'https://www.instagram.com/reel/C_iIE0ASqGM/', cover:'media/reel-3.jpg', title:'凹痕修復實錄'},
+    {url:'https://www.instagram.com/reel/DXwUNE1zn54/', cover:'media/reel-4.jpg', title:'凹痕修復工藝'},
+    {url:'https://www.instagram.com/reel/DVyJQY_E8NT/', cover:'media/reel-5.jpg', title:'鈑面平整還原'},
+    {url:'https://www.instagram.com/reel/DUk5mn3E8j6/', cover:'media/reel-6.jpg', title:'精準凹痕修復'}
+  ];
+  (function(){
+    const row = document.getElementById('reelsRow');
+    if(!row) return;
+    const codeOf = u => { const m=(u||'').match(/\/reels?\/([^\/?#]+)/); return m?m[1]:''; };
+    const data = IG_REELS.length ? IG_REELS : Array.from({length:6},()=>({}));
+    data.forEach((r,i)=>{
+      const card=document.createElement('div'); card.className='reel-card reveal';
+      const cover = r.cover
+        ? `<img loading="lazy" src="${r.cover}" alt="${(r.title||'IG Reel')}">`
+        : `<div class="ph-fb"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg>封面待補</div>`;
+      card.innerHTML = `
+        <div class="reel-phone">
+          ${cover}
+          <span class="ig-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg>REELS</span>
+          <div class="play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M6 4l14 8-14 8V4z"></path></svg></div>
+        </div>
+        <div class="reel-label">${r.title||('修復實錄 '+(i+1))}</div>`;
+      if(r.url) card.addEventListener('click',()=>openReel(codeOf(r.url)));
+      row.appendChild(card);
+    });
+    const lb=document.getElementById('reelLb'), frame=document.getElementById('reelLbFrame');
+    window.openReel=function(c){ if(!c)return; frame.src='https://www.instagram.com/reel/'+c+'/embed/'; lb.classList.add('open'); document.body.style.overflow='hidden'; };
+    function closeLb(){ lb.classList.remove('open'); frame.src=''; document.body.style.overflow=''; }
+    document.getElementById('reelLbClose').addEventListener('click',closeLb);
+    lb.addEventListener('click',e=>{ if(e.target===lb) closeLb(); });
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLb(); });
+  })();
 </script>
 </body>
 </html>
