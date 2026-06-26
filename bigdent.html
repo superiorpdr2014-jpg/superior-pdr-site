@@ -244,7 +244,7 @@
 
 <!-- Hero -->
 <header class="svc-hero">
-  <video class="svc-hero-video" autoplay muted loop playsinline preload="metadata" poster="media/bigdent-hero-poster.jpg" src="media/bigdent-hero.mp4"></video>
+  <video class="svc-hero-video" muted loop playsinline preload="none" poster="media/bigdent-hero-poster.jpg" data-src="media/bigdent-hero.mp4"></video>
   <div class="grid-overlay"></div>
   <div class="inner">
     <div class="section-eyebrow" data-en="LARGE DENT REPAIR" data-zh="大面積修復">大面積修復</div>
@@ -575,6 +575,18 @@
   // nav scroll
   const nav = document.getElementById('topnav');
   window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 30); });
+
+  // hero 背景影片：只在桌機(>760px)且非省流量模式才載入，手機只顯示封面圖（省 2.6MB）
+  (function(){
+    const v = document.querySelector('.svc-hero-video');
+    if(!v || !v.dataset.src) return;
+    const conn = navigator.connection || {};
+    if (window.innerWidth > 760 && !conn.saveData) {
+      v.src = v.dataset.src;
+      v.load();
+      const p = v.play(); if (p && p.catch) p.catch(()=>{});
+    }
+  })();
 
   // reveal on scroll
   const reveals = document.querySelectorAll('.reveal');
