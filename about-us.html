@@ -10,6 +10,22 @@
 <link rel="stylesheet" href="assets/site.css">
 <style>
   /* ============ ABOUT — page-specific ============ */
+  /* --- banner background photo --- */
+  .page-hero{
+    background:
+      linear-gradient(90deg, var(--bg) 0%, rgba(8,10,13,.86) 34%, rgba(8,10,13,.55) 62%, rgba(8,10,13,.62) 100%),
+      url("media/about-hero.png") right top / cover no-repeat,
+      var(--bg);
+  }
+  @media(max-width:760px){
+    .page-hero{
+      background:
+        linear-gradient(180deg, rgba(8,10,13,.72) 0%, rgba(8,10,13,.8) 60%, var(--bg) 100%),
+        url("media/about-hero.png") center top / cover no-repeat,
+        var(--bg);
+    }
+  }
+  .ph:has(img)::before,.ph:has(video)::before{display:none}
   .about-lead-sub{color:var(--ink-mute);font-family:'JetBrains Mono';font-size:12px;letter-spacing:0.18em;text-transform:uppercase;margin-top:22px;display:flex;gap:10px;align-items:center}
   .about-lead-sub::before{content:"";width:30px;height:1px;background:var(--accent)}
 
@@ -93,6 +109,33 @@
   .loc-card .lc-name{font-size:19px;font-weight:600;color:var(--ink);margin-top:8px;letter-spacing:0.01em}
   .loc-card .lc-pin{position:absolute;top:22px;right:22px;color:var(--line-bright);transition:color .25s}
   .loc-card:hover .lc-pin{color:var(--accent)}
+
+  /* --- 各分店電話下拉選單 --- */
+  .phone-dropdown{
+    position:fixed;
+    background:rgba(11,14,18,0.97);border:1px solid var(--line-bright);
+    border-radius:6px;padding:8px 0;min-width:210px;
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .2s,visibility .2s;
+    box-shadow:0 12px 36px rgba(0,0,0,0.6);
+    z-index:9999;
+  }
+  .phone-dropdown::after{
+    content:"";position:absolute;bottom:-5px;left:50%;
+    width:9px;height:9px;transform:translateX(-50%) rotate(45deg);
+    background:rgba(11,14,18,0.97);border-right:1px solid var(--line-bright);border-bottom:1px solid var(--line-bright);
+  }
+  .phone-dropdown.visible{opacity:1;visibility:visible;pointer-events:auto}
+  .phone-dropdown-title{
+    font-family:'JetBrains Mono';font-size:9px;letter-spacing:0.22em;
+    color:var(--accent);text-transform:uppercase;
+    padding:6px 16px 8px;border-bottom:1px solid var(--line);margin-bottom:4px;
+  }
+  .phone-row{display:flex;justify-content:space-between;align-items:center;padding:7px 16px;gap:16px;transition:background .15s}
+  .phone-row:hover{background:var(--accent-soft)}
+  .phone-row .ph-nm{font-size:12px;color:var(--ink-dim);white-space:nowrap}
+  .phone-row .ph-num{font-family:'JetBrains Mono';font-size:11px;color:var(--ink);letter-spacing:0.06em;text-decoration:none}
+  .phone-row .ph-num:hover{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -126,9 +169,8 @@
       </div>
     </div>
     <div class="col-img reveal delay-1">
-      <div class="ph tall">
-        <span class="ph-badge" data-en="STUDIO / TEAM" data-zh="工作室 / 團隊">工作室 / 團隊</span>
-        <span class="ph-label" data-en="DROP STUDIO PHOTO<br>portrait · approx. 720×900" data-zh="拖入工作室照片<br>直式 · 約 720×900">拖入工作室照片<br>直式 · 約 720×900</span>
+      <div class="ph tall" style="background:none;border-color:var(--line)">
+        <img src="media/training-2w-knockdown.jpg" alt="卓越工作室 — 精準敲擊技法" style="width:100%;height:100%;min-height:440px;object-fit:cover;display:block">
       </div>
     </div>
   </div>
@@ -149,8 +191,8 @@
       <div class="beat">
         <div class="bk">03</div>
         <div class="yr" data-en="TODAY" data-zh="今日">今日</div>
-        <div class="bt" data-en="A global benchmark" data-zh="國際標竿">國際標竿</div>
-        <div class="bd" data-en="Eight direct studios, international competition judging and training — the benchmark for PDR in Taiwan." data-zh="八家直營據點、國際賽事裁判與教學，成為台灣 PDR 的標竿。">八家直營據點、國際賽事裁判與教學，成為台灣 PDR 的標竿。</div>
+        <div class="bt" data-en="Globalized technique" data-zh="國際化技術">國際化技術</div>
+        <div class="bd" data-en="Eight direct studios, international competition judging and training — a well-known name in Taiwan's PDR scene." data-zh="八家直營據點、國際賽事裁判與教學，成為台灣 PDR 的知名人物。">八家直營據點、國際賽事裁判與教學，成為台灣 PDR 的知名人物。</div>
       </div>
     </div>
   </div>
@@ -171,8 +213,8 @@
         <div class="chip"><span class="cy">2026</span><span class="ct" data-en="Judge · DB Expo Italy" data-zh="義大利 DB EXPO 國際裁判">義大利 DB EXPO 國際裁判</span></div>
         <div class="chip"><span class="cy">2026</span><span class="ct" data-en="Judge · China PDR Masters" data-zh="中國凹痕修復大師賽國際裁判">中國凹痕修復大師賽國際裁判</span></div>
         <div class="chip"><span class="cy">2026</span><span class="ct" data-en="3rd · MTE Tag Team (USA)" data-zh="美國 MTE Tag Team 世界第三">美國 MTE Tag Team 世界第三</span></div>
-        <div class="chip"><span class="cy">2019</span><span class="ct" data-en="Silver · WorldSkills Kazan" data-zh="俄羅斯喀山技職奧運 銀牌">俄羅斯喀山技職奧運 銀牌</span></div>
-        <div class="chip"><span class="cy">2025</span><span class="ct" data-en="PDR College · Texas" data-zh="美國德州 PDR College">美國德州 PDR College</span></div>
+        <div class="chip"><span class="cy">2019</span><span class="ct" data-en="Taiwan's 1st PDR Master Certification" data-zh="台灣第一位取得 PDR MASTER 大師證照">台灣第一位取得 PDR MASTER 大師證照</span></div>
+        <div class="chip"><span class="cy">2025</span><span class="ct" data-en="Instructor · PDR College, Texas" data-zh="美國德州 PDR College 講師">美國德州 PDR College 講師</span></div>
       </div>
     </div>
     <div class="col-img reveal">
@@ -258,16 +300,15 @@
     <p class="section-sub reveal" data-en="A team of certified technicians sharing one discipline. Drop your own team photos and video into the frames below." data-zh="一支共享同一套準則的國際認證技師團隊。可直接將你的團隊照片與影片拖入下方框格。">一支共享同一套準則的國際認證技師團隊。可直接將你的團隊照片與影片拖入下方框格。</p>
 
     <div class="team-grid reveal">
-      <div class="ph span2 row2 video">
+      <div class="ph span2 row2">
         <span class="ph-badge" data-en="TEAM VIDEO" data-zh="團隊影片">團隊影片</span>
-        <span class="ph-label" data-en="DROP TEAM VIDEO<br>landscape · 16:9" data-zh="拖入團隊影片<br>橫式 · 16:9">拖入團隊影片<br>橫式 · 16:9</span>
+        <video src="media/team-video.mp4" poster="media/team-video-poster.jpg" controls playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video>
       </div>
-      <div class="ph"><span class="ph-badge" data-en="PHOTO" data-zh="照片">照片</span><span class="ph-label" data-en="TEAM PHOTO" data-zh="團隊照片">團隊照片</span></div>
-      <div class="ph"><span class="ph-badge" data-en="PHOTO" data-zh="照片">照片</span><span class="ph-label" data-en="AT WORK" data-zh="工作實況">工作實況</span></div>
-      <div class="ph"><span class="ph-badge" data-en="PHOTO" data-zh="照片">照片</span><span class="ph-label" data-en="TECHNICIAN" data-zh="技師">技師</span></div>
-      <div class="ph"><span class="ph-badge" data-en="PHOTO" data-zh="照片">照片</span><span class="ph-label" data-en="STUDIO" data-zh="工作室">工作室</span></div>
+      <div class="ph"><span class="ph-badge" data-en="TEAM" data-zh="團隊照片">團隊照片</span><img src="media/team-1.jpg" alt="卓越團隊合影" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="ph"><span class="ph-badge" data-en="AT WORK" data-zh="工作實況">工作實況</span><img src="media/team-2.jpg" alt="技師工作實況" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="ph"><span class="ph-badge" data-en="TECHNICIAN" data-zh="技師">技師</span><img src="media/team-3.jpg" alt="卓越認證技師" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="ph"><span class="ph-badge" data-en="STUDIO" data-zh="工作室">工作室</span><img src="media/team-4.jpg" alt="卓越工作室" style="width:100%;height:100%;object-fit:cover;display:block"></div>
     </div>
-    <p class="price-note reveal" data-en="* Send your photos and video and I'll drop them straight into these frames." data-zh="＊ 把你的照片與影片給我，我可以直接幫你放進這些框格。">＊ 把你的照片與影片給我，我可以直接幫你放進這些框格。</p>
   </div>
 </section>
 
@@ -299,7 +340,18 @@
   </div>
   <div class="ct-actions">
     <a class="cta" href="https://lin.ee/7ijf0fu" target="_blank" rel="noopener"><span>Online Booking</span></a>
-    <a class="cta ghost" href="https://lin.ee/7ijf0fu" target="_blank" rel="noopener"><span>Call Us</span></a>
+    <a class="cta ghost" id="callTrigger" href="javascript:void(0)" role="button"><span>Call Us</span></a>
+  </div>
+  <div class="phone-dropdown" id="phoneDropdown">
+    <div class="phone-dropdown-title">各分店電話</div>
+    <div class="phone-row"><span class="ph-nm">板橋總店</span><a class="ph-num" href="tel:+886966732865">0966-732-865</a></div>
+    <div class="phone-row"><span class="ph-nm">中和旗艦店</span><a class="ph-num" href="tel:+886903310894">0903-310-894</a></div>
+    <div class="phone-row"><span class="ph-nm">士林旗艦店</span><a class="ph-num" href="tel:+886978016802">0978-016-802</a></div>
+    <div class="phone-row"><span class="ph-nm">台北濱江店</span><a class="ph-num" href="tel:+886901242511">0901-242-511</a></div>
+    <div class="phone-row"><span class="ph-nm">桃園旗艦店</span><a class="ph-num" href="tel:+886972706679">0972-706-679</a></div>
+    <div class="phone-row"><span class="ph-nm">竹北旗艦店</span><a class="ph-num" href="tel:+886972937993">0972-937-993</a></div>
+    <div class="phone-row"><span class="ph-nm">台中旗艦店</span><a class="ph-num" href="tel:+886900787210">0900-787-210</a></div>
+    <div class="phone-row"><span class="ph-nm">高雄旗艦店</span><a class="ph-num" href="tel:+886978860558">0978-860-558</a></div>
   </div>
 </section>
 
@@ -339,5 +391,36 @@
   ];
 </script>
 <script src="assets/site.js"></script>
+<script>
+(function(){
+  var trigger = document.getElementById('callTrigger');
+  var dd = document.getElementById('phoneDropdown');
+  if(!trigger || !dd) return;
+  document.body.appendChild(dd); // 移到 body 避免被 overflow 裁切
+  function position(){
+    var r = trigger.getBoundingClientRect();
+    var ddW = 210;
+    var left = r.left + r.width/2 - ddW/2;
+    left = Math.max(8, Math.min(left, window.innerWidth - ddW - 8));
+    dd.style.left = left + 'px';
+    dd.style.top = 'auto';
+    dd.style.bottom = (window.innerHeight - r.top + 12) + 'px';
+  }
+  function toggle(e){
+    if(e){ e.preventDefault(); e.stopPropagation(); }
+    if(dd.classList.contains('visible')){ dd.classList.remove('visible'); return; }
+    position();
+    dd.classList.add('visible');
+  }
+  trigger.addEventListener('click', toggle);
+  document.addEventListener('click', function(e){
+    if(dd.classList.contains('visible') && !dd.contains(e.target) && e.target !== trigger){
+      dd.classList.remove('visible');
+    }
+  });
+  window.addEventListener('scroll', function(){ dd.classList.remove('visible'); }, {passive:true});
+  window.addEventListener('resize', function(){ dd.classList.remove('visible'); }, {passive:true});
+})();
+</script>
 </body>
 </html>
