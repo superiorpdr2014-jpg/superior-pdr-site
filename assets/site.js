@@ -364,6 +364,23 @@
     var history = [];
     var busy = false;
 
+    // 訊息提示音（Web Audio，免音檔）
+    var _ac = null;
+    function beep(freq, dur, delay, vol) {
+      try {
+        _ac = _ac || new (window.AudioContext || window.webkitAudioContext)();
+        var o = _ac.createOscillator(), g = _ac.createGain();
+        o.type = 'sine'; o.frequency.value = freq;
+        o.connect(g); g.connect(_ac.destination);
+        var t = _ac.currentTime + (delay || 0);
+        g.gain.setValueAtTime(vol || 0.05, t);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + (dur || 0.12));
+        o.start(t); o.stop(t + (dur || 0.12));
+      } catch (e) {}
+    }
+    function soundSend() { beep(620, 0.09); }                          // 傳出：單音
+    function soundReceive() { beep(880, 0.10); beep(1170, 0.12, 0.10); } // 收到：雙音
+
     function esc(s) { return s.replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }); }
     function linkify(s) {
       return esc(s).replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener" style="color:#ff6b78;text-decoration:underline">$1</a>').replace(/\n/g, '<br>');
@@ -381,18 +398,20 @@
       if (!text || busy) return;
       busy = true; sendBtn.disabled = true;
       bubble('user', esc(text));
+      soundSend();
       history.push({ role: 'user', content: text });
       var typing = bubble('echo', '<span class="echo-typing">ECHO 輸入中…</span>');
       fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: history }) })
         .then(function (r) { return r.json(); })
         .then(function (d) {
           typing.remove();
-          if (d && d.reply) { history.push({ role: 'assistant', content: d.reply }); bubble('echo', linkify(d.reply)); }
+          if (d && d.reply) { history.push({ role: 'assistant', content: d.reply }); bubble('echo', linkify(d.reply)); soundReceive(); }
           else { throw new Error('no reply'); }
         })
         .catch(function () {
           typing.remove();
           bubble('echo', '不好意思，我這邊忙線中。估價或預約最快的方式是加官方 LINE，傳照片讓技師免費評估喔。<br><a href="' + LINE + '" target="_blank" rel="noopener" style="color:#06C755;font-weight:700">點我加官方 LINE</a>');
+          soundReceive();
         })
         .finally(function () { busy = false; sendBtn.disabled = false; if (input) input.focus(); });
     }
