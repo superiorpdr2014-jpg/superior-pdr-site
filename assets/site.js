@@ -337,7 +337,6 @@
       + '<div class="echo-chips" id="echoChips"></div>'
       + '<div class="echo-quick">'
       + '<a href="' + LINE + '" target="_blank" rel="noopener">📷 傳照片免費估價</a>'
-      + '<a href="/price-2.html">💰 參考價目與流程</a>'
       + '<a href="/contact.html">📍 找最近的據點</a>'
       + '</div></div>'
       + '<div class="echo-input-row"><input class="echo-input" id="echoInput" type="text" placeholder="輸入問題，ECHO 為您解答…" maxlength="300" autocomplete="off"><button class="echo-send" id="echoSend" aria-label="送出">➤</button></div>'
@@ -356,7 +355,7 @@
 
     // 真・ECHO 網頁對話：常見問題與輸入框都呼叫 web-chat API
     var API = 'https://echo.pdrsuperior.com/echo/web-chat';
-    var STARTERS = ['凹痕修復要多少錢？', '修完會留痕跡嗎？', '要修多久？', '會影響原廠保固嗎？', '哪些車款能修？'];
+    var STARTERS = ['凹痕修復要多少錢？', '修完會留痕跡嗎？', '要修多久？', '哪些車款能修？'];
     var body = w.querySelector('#echoBody');
     var chips = w.querySelector('#echoChips');
     var quick = w.querySelector('.echo-quick');
