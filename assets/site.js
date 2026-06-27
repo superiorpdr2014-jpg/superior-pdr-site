@@ -355,7 +355,7 @@
 
     // 真・ECHO 網頁對話：常見問題與輸入框都呼叫 web-chat API
     var API = 'https://echo.pdrsuperior.com/echo/web-chat';
-    var STARTERS = ['凹痕修復要多少錢？', '修完會留痕跡嗎？', '要修多久？', '哪些車款能修？', '關於開課資訊'];
+    var STARTERS = ['關於PDR開課資訊', '凹痕修復要多少錢？', '修完會留痕跡嗎？', '要修多久？', '哪些車款能修？'];
     var body = w.querySelector('#echoBody');
     var chips = w.querySelector('#echoChips');
     var quick = w.querySelector('.echo-quick');
