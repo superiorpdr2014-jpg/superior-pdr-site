@@ -255,13 +255,21 @@
       nav.classList.toggle('scrolled', window.scrollY > 30);
     });
 
-    // reveal on scroll
+    // reveal on scroll（threshold 改小，避免很高的區塊永遠達不到門檻而不顯示）
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.02, rootMargin: '0px 0px -8% 0px' });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    // 安全網：載入後 1.5 秒，將仍卡在隱藏、且已進入或接近視窗的 reveal 一律補顯示
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        document.querySelectorAll('.reveal:not(.in)').forEach(function (el) {
+          if (el.getBoundingClientRect().top < window.innerHeight * 1.2) el.classList.add('in');
+        });
+      }, 1500);
+    });
 
     // counters
     var cio = new IntersectionObserver(function (entries) {
