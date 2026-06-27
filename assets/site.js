@@ -405,7 +405,14 @@
         .then(function (r) { return r.json(); })
         .then(function (d) {
           typing.remove();
-          if (d && d.reply) { history.push({ role: 'assistant', content: d.reply }); bubble('echo', linkify(d.reply)); soundReceive(); }
+          if (d && d.reply) {
+            history.push({ role: 'assistant', content: d.reply });
+            var out = linkify(d.reply);
+            if (d.reply.indexOf('lin.ee/56xjQEm') !== -1) {
+              out += '<br><img src="https://qr-official.line.me/gs/M_876hlotl_GW.png?oat_content=qr" alt="趨勢課 LINE QR" style="width:150px;height:auto;border-radius:8px;margin-top:8px;display:block">';
+            }
+            bubble('echo', out); soundReceive();
+          }
           else { throw new Error('no reply'); }
         })
         .catch(function () {
