@@ -279,4 +279,133 @@
     }, { threshold: 0.4 });
     document.querySelectorAll('[data-counter]').forEach(function (el) { cio.observe(el); });
   });
+
+  /* ============ ECHO 線上諮詢浮動視窗（引導加 LINE 傳照片評估）============ */
+  function buildEchoWidget() {
+    if (!document.body || document.getElementById('echoWidget')) return;
+    // CSS 用 JS 注入（首頁等未載入 site.css 的頁面也能正常顯示）
+    if (!document.getElementById('echoStyle')) {
+      var st = document.createElement('style'); st.id = 'echoStyle';
+      st.textContent =
+        '#echoWidget{position:fixed;right:22px;bottom:22px;z-index:99998;font-family:"Space Grotesk","Noto Sans TC",sans-serif}'
+      + '.echo-fab{position:relative;width:62px;height:62px;border-radius:50%;border:none;cursor:pointer;background:#ff2a3d;color:#fff;box-shadow:0 6px 24px rgba(255,42,61,.45);display:flex;align-items:center;justify-content:center;transition:transform .2s}'
+      + '.echo-fab:hover{transform:scale(1.07)}.echo-fab svg{width:28px;height:28px}'
+      + '.echo-fab::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #ff2a3d;animation:echoPulse 2.2s ease-out infinite}'
+      + '@keyframes echoPulse{0%{opacity:.6;transform:scale(1)}100%{opacity:0;transform:scale(1.6)}}'
+      + '.echo-fab .echo-dot{position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;background:#2ecc71;border:2px solid #fff}'
+      + '.echo-panel{position:absolute;right:0;bottom:78px;width:330px;max-width:calc(100vw - 32px);background:#0d1014;border:1px solid rgba(255,255,255,.13);border-radius:16px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(12px) scale(.98);transform-origin:bottom right;transition:opacity .22s,transform .22s,visibility .22s}'
+      + '#echoWidget.open .echo-panel{opacity:1;visibility:visible;transform:translateY(0) scale(1)}'
+      + '.echo-head{display:flex;align-items:center;gap:11px;padding:15px 16px;background:linear-gradient(135deg,#1a1f27,#11151b);border-bottom:1px solid rgba(255,255,255,.08)}'
+      + '.echo-avatar{width:40px;height:40px;border-radius:50%;background:#ff2a3d;color:#fff;font-family:"Bebas Neue";font-size:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0}'
+      + '.echo-name{font-size:15px;font-weight:600;color:#f3f5f8;line-height:1.2}'
+      + '.echo-status{font-family:"JetBrains Mono";font-size:10px;color:#2ecc71;letter-spacing:.08em;margin-top:2px}'
+      + '.echo-close{margin-left:auto;background:none;border:none;color:#9aa3b2;font-size:18px;cursor:pointer;width:28px;height:28px;border-radius:6px}'
+      + '.echo-close:hover{background:rgba(255,255,255,.06);color:#fff}'
+      + '.echo-body{padding:18px 16px;background:#0d1014}'
+      + '.echo-body{max-height:62vh;overflow-y:auto}'
+      + '.echo-msg{background:#11151b;border:1px solid rgba(255,255,255,.07);border-radius:4px 14px 14px 14px;padding:13px 15px;font-size:13.5px;line-height:1.7;color:#d3d8e0;margin-top:10px}'
+      + '.echo-msg:first-child{margin-top:0}'
+      + '.echo-msg.user{background:#ff2a3d;border-color:#ff2a3d;color:#fff;border-radius:14px 4px 14px 14px;margin-left:auto;max-width:80%}'
+      + '.echo-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}'
+      + '.echo-chip{font-size:12.5px;padding:8px 12px;border-radius:16px;border:1px solid rgba(255,42,61,.4);background:rgba(255,42,61,.08);color:#f3f5f8;cursor:pointer;transition:background .2s}'
+      + '.echo-chip:hover{background:rgba(255,42,61,.18)}'
+      + '.echo-quick{display:flex;flex-direction:column;gap:8px;margin-top:14px;border-top:1px solid rgba(255,255,255,.07);padding-top:14px}'
+      + '.echo-quick a{display:flex;align-items:center;gap:9px;padding:11px 14px;border-radius:9px;border:1px solid rgba(255,255,255,.12);background:#11151b;color:#f3f5f8;font-size:13.5px;text-decoration:none;transition:border-color .2s,background .2s}'
+      + '.echo-quick a:hover{border-color:#ff2a3d;background:#161b22}'
+      + '.echo-cta{display:flex;align-items:center;justify-content:center;gap:9px;margin:4px 16px 16px;padding:14px;border-radius:11px;background:#06C755;color:#fff;font-size:14.5px;font-weight:700;text-decoration:none}'
+      + '.echo-cta:hover{filter:brightness(1.08)}.echo-cta svg{width:20px;height:20px}'
+      + '.echo-input-row{display:flex;gap:8px;padding:12px 16px;border-top:1px solid rgba(255,255,255,.08)}'
+      + '.echo-input{flex:1;background:#11151b;border:1px solid rgba(255,255,255,.12);border-radius:10px;color:#f3f5f8;font-size:13.5px;padding:10px 12px;outline:none;font-family:inherit}'
+      + '.echo-input:focus{border-color:#ff2a3d}'
+      + '.echo-send{background:#ff2a3d;border:none;color:#fff;border-radius:10px;width:44px;cursor:pointer;font-size:16px;flex-shrink:0}'
+      + '.echo-send:disabled{opacity:.5;cursor:default}'
+      + '.echo-typing{font-size:12px;color:#9aa3b2;margin-top:10px;font-style:italic}'
+      + '@media(max-width:560px){#echoWidget{right:16px;bottom:16px}.echo-fab{width:56px;height:56px}.echo-panel{bottom:70px}}';
+      document.head.appendChild(st);
+    }
+    var LINE = 'https://lin.ee/7ijf0fu';
+    var lineSvg = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 5.7 2 10.2c0 4 3.6 7.4 8.5 8.05.33.07.78.22.9.5.1.26.07.66.03.92l-.14.87c-.04.26-.2 1.02.9.56s5.96-3.5 8.13-6h0C21.5 13.6 22 12 22 10.2 22 5.7 17.5 2 12 2z"/></svg>';
+    var w = document.createElement('div');
+    w.id = 'echoWidget';
+    w.innerHTML =
+      '<div class="echo-panel" role="dialog" aria-label="ECHO 線上諮詢">'
+      + '<div class="echo-head"><div class="echo-avatar">E</div>'
+      + '<div><div class="echo-name">ECHO 智能客服</div><div class="echo-status">● 線上中</div></div>'
+      + '<button class="echo-close" aria-label="關閉">✕</button></div>'
+      + '<div class="echo-body" id="echoBody">'
+      + '<div class="echo-msg">嗨，我是卓越 PDR 的 AI 助理 <b>ECHO</b> 👋<br>有什麼想了解的都可以問我。想估價或預約，加官方 LINE 傳照片讓技師<b>免費評估</b>最快喔。</div>'
+      + '<div class="echo-chips" id="echoChips"></div>'
+      + '<div class="echo-quick">'
+      + '<a href="' + LINE + '" target="_blank" rel="noopener">📷 傳照片免費估價</a>'
+      + '<a href="/price-2.html">💰 參考價目與流程</a>'
+      + '<a href="/contact.html">📍 找最近的據點</a>'
+      + '</div></div>'
+      + '<div class="echo-input-row"><input class="echo-input" id="echoInput" type="text" placeholder="輸入問題，ECHO 為您解答…" maxlength="300" autocomplete="off"><button class="echo-send" id="echoSend" aria-label="送出">➤</button></div>'
+      + '<a class="echo-cta" href="' + LINE + '" target="_blank" rel="noopener">' + lineSvg + '加官方 LINE 傳照片評估</a>'
+      + '</div>'
+      + '<button class="echo-fab" aria-label="線上諮詢 ECHO"><span class="echo-dot"></span>'
+      + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>'
+      + '</button>';
+    document.body.appendChild(w);
+    var fab = w.querySelector('.echo-fab');
+    var closeBtn = w.querySelector('.echo-close');
+    function toggle(open) { w.classList[open ? 'add' : 'remove']('open'); }
+    fab.addEventListener('click', function () { toggle(!w.classList.contains('open')); });
+    closeBtn.addEventListener('click', function () { toggle(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') toggle(false); });
+
+    // 真・ECHO 網頁對話：常見問題與輸入框都呼叫 web-chat API
+    var API = 'https://echo.pdrsuperior.com/echo/web-chat';
+    var STARTERS = ['凹痕修復要多少錢？', '修完會留痕跡嗎？', '要修多久？', '會影響原廠保固嗎？', '哪些車款能修？'];
+    var body = w.querySelector('#echoBody');
+    var chips = w.querySelector('#echoChips');
+    var quick = w.querySelector('.echo-quick');
+    var input = w.querySelector('#echoInput');
+    var sendBtn = w.querySelector('#echoSend');
+    var history = [];
+    var busy = false;
+
+    function esc(s) { return s.replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }); }
+    function linkify(s) {
+      return esc(s).replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener" style="color:#ff6b78;text-decoration:underline">$1</a>').replace(/\n/g, '<br>');
+    }
+    function bubble(role, htmlStr) {
+      var d = document.createElement('div');
+      d.className = 'echo-msg' + (role === 'user' ? ' user' : '');
+      d.innerHTML = htmlStr;
+      body.insertBefore(d, quick);
+      body.scrollTop = body.scrollHeight;
+      return d;
+    }
+    function sendMessage(text) {
+      text = (text || '').trim();
+      if (!text || busy) return;
+      busy = true; sendBtn.disabled = true;
+      bubble('user', esc(text));
+      history.push({ role: 'user', content: text });
+      var typing = bubble('echo', '<span class="echo-typing">ECHO 輸入中…</span>');
+      fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: history }) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          typing.remove();
+          if (d && d.reply) { history.push({ role: 'assistant', content: d.reply }); bubble('echo', linkify(d.reply)); }
+          else { throw new Error('no reply'); }
+        })
+        .catch(function () {
+          typing.remove();
+          bubble('echo', '不好意思，我這邊忙線中。估價或預約最快的方式是加官方 LINE，傳照片讓技師免費評估喔。<br><a href="' + LINE + '" target="_blank" rel="noopener" style="color:#06C755;font-weight:700">點我加官方 LINE</a>');
+        })
+        .finally(function () { busy = false; sendBtn.disabled = false; if (input) input.focus(); });
+    }
+    STARTERS.forEach(function (q) {
+      var b = document.createElement('button');
+      b.className = 'echo-chip'; b.type = 'button'; b.textContent = q;
+      b.addEventListener('click', function () { sendMessage(q); });
+      chips.appendChild(b);
+    });
+    sendBtn.addEventListener('click', function () { var v = input.value; input.value = ''; sendMessage(v); });
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { var v = input.value; input.value = ''; sendMessage(v); } });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildEchoWidget);
+  else buildEchoWidget();
 })();
