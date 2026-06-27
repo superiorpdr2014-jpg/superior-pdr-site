@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en"><head>
+<html lang="zh-Hant"><head>
 <meta charset="utf-8">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
@@ -1656,6 +1656,35 @@ svg.leaflet-image-layer.leaflet-interactive path {
 </head>
 <body>
 
+<!-- =============== LOADING SPLASH =============== -->
+<div id="siteSplash" aria-hidden="true">
+  <img src="favicon-512.png" alt="SUPERIOR PDR" class="splash-logo">
+  <div class="splash-text">SUPERIOR PDR</div>
+</div>
+<style>
+  #siteSplash{position:fixed;inset:0;z-index:100000;background:#07080b;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .5s ease,visibility .5s ease}
+  #siteSplash.hide{opacity:0;visibility:hidden;pointer-events:none}
+  #siteSplash .splash-logo{width:clamp(110px,16vw,160px);height:auto;filter:drop-shadow(0 0 26px rgba(255,42,61,.45));animation:splashPulse 1.6s ease-in-out infinite}
+  #siteSplash .splash-text{font-family:'Bebas Neue','Space Grotesk',sans-serif;font-size:clamp(22px,3vw,34px);letter-spacing:.42em;padding-left:.42em;color:#5e6675;font-weight:700}
+  @keyframes splashPulse{0%,100%{transform:scale(1);opacity:.92}50%{transform:scale(1.06);opacity:1}}
+</style>
+<script>
+  // splash 移除：頁面載入完成 + 最少顯示 700ms（語言已先套中文，故不會閃英文）
+  (function(){
+    var splash=document.getElementById('siteSplash');
+    if(!splash) return;
+    var start=Date.now();
+    function done(){
+      var wait=Math.max(0, 700-(Date.now()-start));
+      setTimeout(function(){ splash.classList.add('hide'); setTimeout(function(){ splash.remove(); },550); }, wait);
+    }
+    if(document.readyState==='complete') done();
+    else window.addEventListener('load', done);
+    // 保險：最多 5 秒一定移除，避免卡住
+    setTimeout(function(){ if(document.getElementById('siteSplash')){ splash.classList.add('hide'); setTimeout(function(){ splash.remove&&splash.remove(); },550);} }, 5000);
+  })();
+</script>
+
 <!-- =============== NAV =============== -->
 <nav class="top" id="topnav" data-current="home"></nav>
 
@@ -2768,9 +2797,11 @@ function hideTweaks(){
     });
   }
 
-  // Wait for video grid to be populated, then init
+  // 立刻套用語言（不等影片卡），避免首頁先閃英文
+  init();
+  // 影片卡載入後再套一次，確保動態卡片也翻譯
   function whenReady(){
-    if(document.querySelectorAll('.ytcard').length >= 6) init();
+    if(document.querySelectorAll('.ytcard').length >= 6) applyLang(localStorage.getItem('superior-lang')||'zh');
     else setTimeout(whenReady, 60);
   }
   whenReady();
