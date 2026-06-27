@@ -371,6 +371,7 @@
     var sendBtn = w.querySelector('#echoSend');
     var history = [];
     var busy = false;
+    var session = (function () { try { var s = sessionStorage.getItem('echo_sid'); if (!s) { s = Math.random().toString(36).slice(2) + Date.now().toString(36); sessionStorage.setItem('echo_sid', s); } return s; } catch (e) { return ''; } })();
 
     // 訊息提示音（Web Audio，免音檔）
     var _ac = null;
@@ -409,7 +410,7 @@
       soundSend();
       history.push({ role: 'user', content: text });
       var typing = bubble('echo', '<span class="echo-typing">ECHO 輸入中…</span>');
-      fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: history }) })
+      fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: history, session: session }) })
         .then(function (r) { return r.json(); })
         .then(function (d) {
           typing.remove();
