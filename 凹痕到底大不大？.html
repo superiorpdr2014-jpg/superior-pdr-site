@@ -31,6 +31,10 @@
   .article-body{max-width:820px;margin:0 auto;padding:48px 24px 40px;font-size:16.5px;line-height:1.9;color:var(--ink-dim)}
   .article-body p{margin:0 0 1.3em}
   .article-body img{max-width:100%;height:auto;border-radius:6px;display:block;margin:1.6em auto}
+  .article-body img[src*=".png"]{background:#fff}
+  .article-body .img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:1.6em 0}
+  .article-body .img-grid img{width:100%;height:100%;margin:0;aspect-ratio:4/3;object-fit:cover;border-radius:6px}
+  @media(max-width:520px){.article-body .img-grid{grid-template-columns:1fr 1fr}}
   .article-body .wp-caption{width:auto!important;max-width:100%!important;margin:1.6em auto;float:none!important}
   .article-body .wp-caption-text{font-size:13.5px;color:var(--ink-mute);text-align:center;margin:.5em 0 0;line-height:1.6}
   .article-body figure{max-width:100%;margin:1.6em 0}
@@ -73,8 +77,8 @@
 </header>
 
 <article class="article-body">
-<p><img loading="lazy" decoding="async" class="alignnone  wp-image-5141" src="/blog-img/2019_08_07_HRV-01-1024x768.jpg" alt="" /></p>
-<p><img loading="lazy" decoding="async" class="alignnone size-large wp-image-5140" src="/blog-img/2019_08_07_HRV-02-683x1024.jpg" alt="" /></p>
+<img loading="lazy" decoding="async" class="alignnone  wp-image-5141" src="/blog-img/2019_08_07_HRV-01-1024x768.jpg" alt="" />
+<img loading="lazy" decoding="async" class="alignnone size-large wp-image-5140" src="/blog-img/2019_08_07_HRV-02-683x1024.jpg" alt="" />
 <p>有些案件我們只能先透過車主提供的照片來瞭解傷痕的等級，<br />
 這時候卓越就常碰到一種狀況，就是凹痕大小與實際狀況不一樣～～<br />
 而且嚴重程度多半是比照片來得更大&#8230;</p>

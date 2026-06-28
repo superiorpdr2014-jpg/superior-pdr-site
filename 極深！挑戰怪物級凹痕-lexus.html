@@ -31,6 +31,10 @@
   .article-body{max-width:820px;margin:0 auto;padding:48px 24px 40px;font-size:16.5px;line-height:1.9;color:var(--ink-dim)}
   .article-body p{margin:0 0 1.3em}
   .article-body img{max-width:100%;height:auto;border-radius:6px;display:block;margin:1.6em auto}
+  .article-body img[src*=".png"]{background:#fff}
+  .article-body .img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:1.6em 0}
+  .article-body .img-grid img{width:100%;height:100%;margin:0;aspect-ratio:4/3;object-fit:cover;border-radius:6px}
+  @media(max-width:520px){.article-body .img-grid{grid-template-columns:1fr 1fr}}
   .article-body .wp-caption{width:auto!important;max-width:100%!important;margin:1.6em auto;float:none!important}
   .article-body .wp-caption-text{font-size:13.5px;color:var(--ink-mute);text-align:center;margin:.5em 0 0;line-height:1.6}
   .article-body figure{max-width:100%;margin:1.6em 0}
@@ -74,7 +78,7 @@
 
 <article class="article-body">
 <p>極深！挑戰怪物級凹痕 LEXUS</p>
-<p><img loading="lazy" decoding="async" class="alignnone size-large wp-image-5293" src="/blog-img/2019_12_Lexus-CT200h-04-957x1024.jpg" alt="" /> <img loading="lazy" decoding="async" class="alignnone size-large wp-image-5292" src="/blog-img/2019_12_Lexus-CT200h-03-957x1024.jpg" alt="" /> <img loading="lazy" decoding="async" class="alignnone size-large wp-image-5291" src="/blog-img/2019_12_Lexus-CT200h-02-957x1024.jpg" alt="" /></p>
+<p><div class="img-grid"><img loading="lazy" decoding="async" class="alignnone size-large wp-image-5293" src="/blog-img/2019_12_Lexus-CT200h-04-957x1024.jpg" alt="" /><img loading="lazy" decoding="async" class="alignnone size-large wp-image-5292" src="/blog-img/2019_12_Lexus-CT200h-03-957x1024.jpg" alt="" /><img loading="lazy" decoding="async" class="alignnone size-large wp-image-5291" src="/blog-img/2019_12_Lexus-CT200h-02-957x1024.jpg" alt="" /></div></p>
 <p>今天出現了一台可以算是怪物等級的大凹，真是結結實實地把車身撞了一個不要不要@!%$</p>
 <p>比起牽回原厰或鈑烤，都是要等待至少三至五天的時間<span class="text_exposed_show"><br />
 但是以卓越目前的實力，完全不需要三天的時間，還不會動到寶貴的烤漆！是不是很賺阿～？</span></p>
