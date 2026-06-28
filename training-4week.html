@@ -122,6 +122,17 @@
 .instr-compact{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center;margin-top:36px;background:var(--bg-card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
 @media(max-width:720px){.instr-compact{grid-template-columns:1fr}}
 .instr-compact img{width:100%;height:100%;object-fit:cover;display:block;min-height:220px}
+/* 雙講師（2-up）— 手機改為圖在上方全寬，避免直條 */
+.dual-instr{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+.dual-instr .instr-compact{grid-template-columns:150px 1fr;gap:24px;margin-top:0}
+.dual-instr .instr-compact img,.dual-instr .instr-compact video{width:100%;height:100%;object-fit:cover;display:block;min-height:220px}
+.dual-instr .instr-info{padding:28px 30px 28px 0}
+@media(max-width:860px){
+  .dual-instr{grid-template-columns:1fr;gap:28px}
+  .dual-instr .instr-compact{grid-template-columns:1fr}
+  .dual-instr .instr-compact img,.dual-instr .instr-compact video{min-height:0;width:100%;aspect-ratio:16/9;object-position:center top}
+  .dual-instr .instr-info{padding:26px 26px 30px}
+}
 .instr-info{padding:32px 36px 32px 0}
 @media(max-width:720px){.instr-info{padding:28px}}
 .instr-info .name{font-family:'Bebas Neue';font-size:32px;letter-spacing:.04em;color:var(--ink);margin:0 0 4px;line-height:1}
@@ -622,31 +633,30 @@
   <div class="inner">
     <div class="section-eyebrow" data-en="INSTRUCTORS" data-zh="講師">講師</div>
     <h2>雙講師陣容</h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px">
-      <div class="instr-compact" style="grid-template-columns:160px 1fr">
-        <img loading="lazy" decoding="async" src="media/training-4w-jay-fender.jpg" alt="Jay Ma 馬承傑 — 首席講師" style="object-position:center top">
-        <div class="instr-info">
-          <div class="name">Jay Ma · 馬承傑</div>
-          <div class="title">創辦人 · 首席講師 · Since 2014</div>
-          <p>12年教學經驗，IMI電動車維修二級認證，受邀國際研討會講師，進修經歷正長亞洲百位學員。</p>
-          <div class="cred-row">
-            <span class="cred hot">IMI Level 2 EV</span>
-            <span class="cred hot">國際研討會講師</span>
-            <span class="cred">美日進修</span>
-            <span class="cred">全台 7 間分店</span>
-          </div>
-        </div>
-      </div>
-      <div class="instr-compact" style="grid-template-columns:160px 1fr">
-        <video style="width:100%;height:100%;object-fit:cover;display:block;min-height:220px" autoplay loop muted playsinline src="media/instructor-shuangkou.mp4"></video>
+    <div class="dual-instr">
+      <div class="instr-compact">
+        <video autoplay loop muted playsinline preload="none" src="media/instructor-shuangkou.mp4"></video>
         <div class="instr-info">
           <div class="name">雙口呂師傅</div>
           <div class="title">技術經理 · VALE認證技師 · 12yr</div>
-          <p>PDR資歷12年，Vale Master Craftman認證，曾赴美國 Dent Time 及日本 Dentshop 深造，是卓越訓練中心最資深的駐店技術主管。</p>
+          <p>PDR資歷12年，Vale Master Craftman認證，曾赴美國 Dent Time 及日本 Dentshop 深造，卓越訓練中心最資深駐店技術主管。</p>
           <div class="cred-row">
             <span class="cred hot">VALE Master Craftman</span>
             <span class="cred">美國 Dent Time</span>
             <span class="cred">日本 Dentshop</span>
+          </div>
+        </div>
+      </div>
+      <div class="instr-compact">
+        <video autoplay loop muted playsinline preload="none" poster="media/tech-16-card.jpg" src="media/tech-16.mp4" style="object-position:center top"></video>
+        <div class="instr-info">
+          <div class="name">16</div>
+          <div class="title">桃園旗艦店 · 技師 · PDR 6 年</div>
+          <p>前台灣板金國手——全國技能競賽汽車鈑金金牌、45 屆國際技能競賽汽車鈑金銀牌，VALE Master Craftman 認證，學習速度極快。</p>
+          <div class="cred-row">
+            <span class="cred hot">鈑金金牌國手</span>
+            <span class="cred hot">VALE 認證技師</span>
+            <span class="cred">PDR 6 年</span>
           </div>
         </div>
       </div>
