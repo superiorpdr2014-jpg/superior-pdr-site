@@ -1333,12 +1333,23 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .loc-pill{
     padding:14px 18px;background:rgba(255,255,255,0.02);
     border:1px solid var(--line);border-radius:4px;
-    display:flex;justify-content:space-between;align-items:center;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;
     transition:all .25s;cursor:pointer;
   }
   .loc-pill:hover{border-color:var(--accent);background:var(--accent-soft);transform:translateX(4px)}
   .loc-pill .nm{font-size:14px;font-weight:500}
   .loc-pill .ar{font-family:'JetBrains Mono';font-size:10px;color:var(--accent);letter-spacing:0.1em}
+  .loc-meta{flex-basis:100%;max-height:0;opacity:0;overflow:hidden;display:flex;flex-direction:column;gap:6px;transition:max-height .3s ease,opacity .25s,margin-top .3s,padding-top .3s}
+  .loc-pill:hover .loc-meta{max-height:120px;opacity:1;margin-top:11px;padding-top:11px;border-top:1px solid rgba(255,255,255,0.14)}
+  .loc-meta .lz{font-size:15px;font-weight:700;color:#fff}
+  .loc-meta a{font-size:13px;color:rgba(255,255,255,0.9);text-decoration:none;font-family:'JetBrains Mono',monospace;letter-spacing:.02em}
+  .loc-meta a:hover{color:var(--accent)}
+  /* 地圖標記 hover tooltip（中文店名/電話/地址，明顯）*/
+  .leaflet-tooltip.apex-tip{background:#0d1014;border:1px solid var(--accent);border-radius:9px;padding:11px 15px;box-shadow:0 8px 28px rgba(0,0,0,0.55);font-family:'Space Grotesk',sans-serif;white-space:nowrap}
+  .leaflet-tooltip.apex-tip.leaflet-tooltip-top::before{border-top-color:var(--accent)}
+  .apex-tip-name{font-size:15.5px;font-weight:700;color:#fff;margin-bottom:7px}
+  .apex-tip-row{font-size:13px;color:rgba(255,255,255,0.88);line-height:1.8}
+  .apex-tip-row .ic{color:var(--accent);margin-right:7px}
 
   .map-wrap{position:relative;aspect-ratio:0.72/1;background:#0c1420;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
   #leafletMap{position:absolute;inset:0;width:100%;height:100%;background:#0c1420;z-index:1}
@@ -1978,14 +1989,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
     </div>
 
     <div class="loc-list" style="grid-column:1/-1;margin-top:24px">
-      <div class="loc-pill reveal"><span class="nm">New Taipei · Banqiao Studio</span><span class="ar">N · 01</span></div>
-      <div class="loc-pill reveal delay-1"><span class="nm">New Taipei · Zhonghe Studio</span><span class="ar">N · 02</span></div>
-      <div class="loc-pill reveal delay-2"><span class="nm">Taipei · Shilin Studio</span><span class="ar">N · 03</span></div>
-      <div class="loc-pill reveal delay-3"><span class="nm">Taipei · Binjiang Studio</span><span class="ar">N · 04</span></div>
-      <div class="loc-pill reveal delay-1"><span class="nm">Taoyuan · Pingzhen Studio</span><span class="ar">C · 05</span></div>
-      <div class="loc-pill reveal delay-2"><span class="nm">Hsinchu · Zhubei Studio</span><span class="ar">C · 06</span></div>
-      <div class="loc-pill reveal delay-3"><span class="nm">Taichung · South District</span><span class="ar">S · 07</span></div>
-      <div class="loc-pill reveal delay-4"><span class="nm">Kaohsiung · Nanzi Studio</span><span class="ar">S · 08</span></div>
+      <div class="loc-pill reveal"><span class="nm">New Taipei · Banqiao Studio</span><span class="ar">N · 01</span><div class="loc-meta"><span class="lz">板橋總店</span><a href="tel:0966732865">☎ 0966-732-865</a><a href="https://www.google.com/maps/search/?api=1&query=新北市板橋區民生路三段153號" target="_blank" rel="noopener">◉ 新北市板橋區民生路三段153號</a></div></div>
+      <div class="loc-pill reveal delay-1"><span class="nm">New Taipei · Zhonghe Studio</span><span class="ar">N · 02</span><div class="loc-meta"><span class="lz">中和旗艦店</span><a href="tel:0903310894">☎ 0903-310-894</a><a href="https://www.google.com/maps/search/?api=1&query=新北市中和區橋安街25號" target="_blank" rel="noopener">◉ 新北市中和區橋安街25號</a></div></div>
+      <div class="loc-pill reveal delay-2"><span class="nm">Taipei · Shilin Studio</span><span class="ar">N · 03</span><div class="loc-meta"><span class="lz">士林旗艦店</span><a href="tel:0978016802">☎ 0978-016-802</a><a href="https://www.google.com/maps/search/?api=1&query=台北市士林區承德路四段300號" target="_blank" rel="noopener">◉ 台北市士林區承德路四段300號</a></div></div>
+      <div class="loc-pill reveal delay-3"><span class="nm">Taipei · Binjiang Studio</span><span class="ar">N · 04</span><div class="loc-meta"><span class="lz">台北濱江店</span><a href="tel:0901242511">☎ 0901-242-511</a><a href="https://www.google.com/maps/search/?api=1&query=台北市中山區濱江街332-1號" target="_blank" rel="noopener">◉ 台北市中山區濱江街332-1號</a></div></div>
+      <div class="loc-pill reveal delay-1"><span class="nm">Taoyuan · Pingzhen Studio</span><span class="ar">C · 05</span><div class="loc-meta"><span class="lz">桃園旗艦店</span><a href="tel:0972706679">☎ 0972-706-679</a><a href="https://www.google.com/maps/search/?api=1&query=桃園市平鎮區興隆路230號" target="_blank" rel="noopener">◉ 桃園市平鎮區興隆路230號</a></div></div>
+      <div class="loc-pill reveal delay-2"><span class="nm">Hsinchu · Zhubei Studio</span><span class="ar">C · 06</span><div class="loc-meta"><span class="lz">竹北旗艦店</span><a href="tel:0972937993">☎ 0972-937-993</a><a href="https://www.google.com/maps/search/?api=1&query=新竹縣竹北市台科路132號" target="_blank" rel="noopener">◉ 新竹縣竹北市台科路132號</a></div></div>
+      <div class="loc-pill reveal delay-3"><span class="nm">Taichung · South District</span><span class="ar">S · 07</span><div class="loc-meta"><span class="lz">台中旗艦店</span><a href="tel:0900787210">☎ 0900-787-210</a><a href="https://www.google.com/maps/search/?api=1&query=台中市南屯區文昌街468號" target="_blank" rel="noopener">◉ 台中市南屯區文昌街468號</a></div></div>
+      <div class="loc-pill reveal delay-4"><span class="nm">Kaohsiung · Nanzi Studio</span><span class="ar">S · 08</span><div class="loc-meta"><span class="lz">高雄旗艦店</span><a href="tel:0978860558">☎ 0978-860-558</a><a href="https://www.google.com/maps/search/?api=1&query=高雄市楠梓區惠誠街82-1號" target="_blank" rel="noopener">◉ 高雄市楠梓區惠誠街82-1號</a></div></div>
     </div>
   </div>
 </section>
@@ -2470,14 +2481,14 @@ function hideTweaks(){
   }).addTo(map);
 
   const studios = [
-    {coords:[25.0093, 121.4593], city:'NEW TAIPEI', name:'Banqiao Studio',  ar:'N · 01', cluster:true, cnt:4},
-    {coords:[25.0418, 121.5667], city:'NEW TAIPEI', name:'Zhonghe Studio', ar:'N · 02'},
-    {coords:[25.0876, 121.5249], city:'TAIPEI', name:'Shilin Studio',    ar:'N · 03'},
-    {coords:[25.0588, 121.5328], city:'TAIPEI', name:'Binjiang Studio', ar:'N · 04'},
-    {coords:[24.9462, 121.2186], city:'TAOYUAN',  name:'Pingzhen Studio',ar:'C · 05'},
-    {coords:[24.8315, 121.0114], city:'HSINCHU',  name:'Zhubei Studio',  ar:'C · 06'},
-    {coords:[24.1228, 120.6651], city:'TAICHUNG', name:'South District', ar:'S · 07'},
-    {coords:[22.7322, 120.3229], city:'KAOHSIUNG',name:'Nanzi Studio',   ar:'S · 08'},
+    {coords:[25.0093, 121.4593], city:'NEW TAIPEI', name:'Banqiao Studio',  ar:'N · 01', cluster:true, cnt:4, zh:'板橋總店',   tel:'0966-732-865', addr:'新北市板橋區民生路三段153號'},
+    {coords:[25.0418, 121.5667], city:'NEW TAIPEI', name:'Zhonghe Studio', ar:'N · 02', zh:'中和旗艦店', tel:'0903-310-894', addr:'新北市中和區橋安街25號'},
+    {coords:[25.0876, 121.5249], city:'TAIPEI', name:'Shilin Studio',    ar:'N · 03', zh:'士林旗艦店', tel:'0978-016-802', addr:'台北市士林區承德路四段300號'},
+    {coords:[25.0588, 121.5328], city:'TAIPEI', name:'Binjiang Studio', ar:'N · 04', zh:'台北濱江店', tel:'0901-242-511', addr:'台北市中山區濱江街332-1號'},
+    {coords:[24.9462, 121.2186], city:'TAOYUAN',  name:'Pingzhen Studio',ar:'C · 05', zh:'桃園旗艦店', tel:'0972-706-679', addr:'桃園市平鎮區興隆路230號'},
+    {coords:[24.8315, 121.0114], city:'HSINCHU',  name:'Zhubei Studio',  ar:'C · 06', zh:'竹北旗艦店', tel:'0972-937-993', addr:'新竹縣竹北市台科路132號'},
+    {coords:[24.1228, 120.6651], city:'TAICHUNG', name:'South District', ar:'S · 07', zh:'台中旗艦店', tel:'0900-787-210', addr:'台中市南屯區文昌街468號'},
+    {coords:[22.7322, 120.3229], city:'KAOHSIUNG',name:'Nanzi Studio',   ar:'S · 08', zh:'高雄旗艦店', tel:'0978-860-558', addr:'高雄市楠梓區惠誠街82-1號'},
   ];
 
   const allMarkers = [];
@@ -2494,7 +2505,8 @@ function hideTweaks(){
       <div class="apex-popup-s">${s.city.charAt(0)+s.city.slice(1).toLowerCase()} \u2014 預約制</div>
       <div class="apex-popup-meta"><span>週一\u2013週六</span><span>10:00\u201320:00</span></div>
     `;
-    const marker = L.marker(s.coords, {icon}).addTo(map).bindPopup(popupContent, {closeButton:true, offset:[0,-4]});
+    const tipContent = `<div class="apex-tip-name">${s.zh}</div><div class="apex-tip-row"><span class="ic">☎</span>${s.tel}</div><div class="apex-tip-row"><span class="ic">◉</span>${s.addr}</div>`;
+    const marker = L.marker(s.coords, {icon}).addTo(map).bindPopup(popupContent, {closeButton:true, offset:[0,-4]}).bindTooltip(tipContent, {direction:'top', className:'apex-tip', offset:[0,-10], opacity:1});
     allMarkers.push(marker);
   });
 
