@@ -2509,7 +2509,7 @@ function hideTweaks(){
     `;
     const tipContent = `<div class="apex-tip-name">${s.zh}</div><div class="apex-tip-row"><span class="ic">☎</span>${s.tel}</div><div class="apex-tip-row"><span class="ic">◉</span>${s.addr}</div><div class="apex-tip-row hrs"><span class="ic">🕘</span>${s.hrs}</div>`;
     const marker = L.marker(s.coords, {icon}).addTo(map).bindTooltip(tipContent, {direction:'top', className:'apex-tip', offset:[0,-10], opacity:1});
-    marker.on('click', function(){ this.toggleTooltip(); });   // 手機點擊也能顯示
+    marker.on('click', function(e){ L.DomEvent.stop(e); allMarkers.forEach(function(mm){ if(mm!==marker) mm.closeTooltip(); }); this.openTooltip(); });   // 手機點擊顯示(只開不關，避免與 mouseover 互相抵消)
     allMarkers.push(marker);
   });
 
@@ -2520,6 +2520,7 @@ function hideTweaks(){
   // Re-enable wheel zoom when user clicks into the map
   map.on('focus', () => map.scrollWheelZoom.enable());
   map.on('blur',  () => map.scrollWheelZoom.disable());
+  map.on('click', () => allMarkers.forEach(m => m.closeTooltip()));  // 點地圖空白處收起
 
   // 店卡點擊展開（手機無 hover，點一下顯示中文店名/電話/地址/營業時間）
   document.querySelectorAll('.loc-pill').forEach(function(p){
