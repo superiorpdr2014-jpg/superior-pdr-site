@@ -48,6 +48,15 @@
   .art-nav .an-dir{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent)}
   .art-nav .an-t{font-size:14.5px;color:var(--ink);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .art-nav .an-next{text-align:right}
+  .float-nav a{position:fixed;top:50%;transform:translateY(-50%);z-index:60;display:flex;align-items:center;height:50px;background:rgba(18,20,24,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:28px;text-decoration:none;overflow:hidden;max-width:50px;transition:max-width .3s ease,border-color .2s}
+  .float-nav .fn-prev{left:14px}
+  .float-nav .fn-next{right:14px;flex-direction:row-reverse}
+  .float-nav a:hover{max-width:330px;border-color:rgba(255,42,61,.55)}
+  .float-nav .fn-arrow{min-width:50px;height:50px;display:flex;align-items:center;justify-content:center;font-size:26px;color:var(--accent);flex-shrink:0}
+  .float-nav .fn-tip{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px;font-size:13px;color:var(--ink);opacity:0;transition:opacity .25s;padding-right:18px}
+  .float-nav .fn-next .fn-tip{padding:0 0 0 18px}
+  .float-nav a:hover .fn-tip{opacity:1}
+  @media(max-width:680px){.float-nav a{height:40px;max-width:40px;border-radius:22px;background:rgba(18,20,24,.7)}.float-nav .fn-arrow{min-width:40px;height:40px;font-size:21px}.float-nav a:active{max-width:220px}.float-nav .fn-prev{left:8px}.float-nav .fn-next{right:8px}}
   .art-foot{max-width:820px;margin:0 auto;padding:8px 24px 70px;display:flex;gap:14px;flex-wrap:wrap}
 </style>
 </head>
@@ -115,6 +124,7 @@
 
 </article>
 
+<div class="float-nav"><a class="fn-prev" href="/%e4%bd%a0%e5%80%91%e6%83%b3%e7%9f%a5%e9%81%93%e9%80%99%e6%a8%a3%e7%9a%84%e5%87%b9%e7%97%95%e5%9c%a8%e5%90%8c%e9%83%a8%e4%bd%8d%e5%90%8c%e9%88%91%e4%bb%b6%e7%9a%84%e4%bf%ae%e5%be%a9%e5%83%b9%e6%a0%bc" aria-label="上一篇"><span class="fn-arrow">‹</span><span class="fn-tip">你們想知道這樣的凹痕在同部位同鈑件的修復價格嗎？</span></a><a class="fn-next" href="/tesla-model3%e5%85%a7%e9%83%a8%e7%b5%90%e6%a7%8b%e6%95%b4%e5%bd%a2%e3%80%81%e5%a4%96%e7%9a%ae%e5%87%b9%e7%97%95%e6%95%b4%e5%b9%b3%e4%bd%9c%e5%93%81%ef%bd%9c%e5%be%8c%e8%91%89%e8%b6%85%e5%a4%a7" aria-label="下一篇"><span class="fn-arrow">›</span><span class="fn-tip">TESLA MODEL3內部結構整形、外皮凹痕整平作品｜後葉超大扭曲凹痕修復紀錄｜卓越微板金修復中心</span></a></div>
 <nav class="art-nav"><a class="an-prev" href="/%e4%bd%a0%e5%80%91%e6%83%b3%e7%9f%a5%e9%81%93%e9%80%99%e6%a8%a3%e7%9a%84%e5%87%b9%e7%97%95%e5%9c%a8%e5%90%8c%e9%83%a8%e4%bd%8d%e5%90%8c%e9%88%91%e4%bb%b6%e7%9a%84%e4%bf%ae%e5%be%a9%e5%83%b9%e6%a0%bc"><span class="an-dir">← 上一篇</span><span class="an-t">你們想知道這樣的凹痕在同部位同鈑件的修復價格嗎？</span></a><a class="an-next" href="/tesla-model3%e5%85%a7%e9%83%a8%e7%b5%90%e6%a7%8b%e6%95%b4%e5%bd%a2%e3%80%81%e5%a4%96%e7%9a%ae%e5%87%b9%e7%97%95%e6%95%b4%e5%b9%b3%e4%bd%9c%e5%93%81%ef%bd%9c%e5%be%8c%e8%91%89%e8%b6%85%e5%a4%a7"><span class="an-dir">下一篇 →</span><span class="an-t">TESLA MODEL3內部結構整形、外皮凹痕整平作品｜後葉超大扭曲凹痕修復紀錄｜卓越微板金修復中心</span></a></nav>
 <div class="art-foot">
   <a class="cta ghost" href="/blog.html"><span>← 返回技術部落格</span></a>
