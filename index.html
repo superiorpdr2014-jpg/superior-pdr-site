@@ -2521,7 +2521,6 @@ function hideTweaks(){
   map.on('focus', () => map.scrollWheelZoom.enable());
   map.on('blur',  () => map.scrollWheelZoom.disable());
   map.on('click', () => allMarkers.forEach(m => m.closeTooltip()));  // 點地圖空白處收起
-  window._smap = map; window._smk = allMarkers;  // TEMP debug
 
   // 店卡點擊展開（手機無 hover，點一下顯示中文店名/電話/地址/營業時間）
   document.querySelectorAll('.loc-pill').forEach(function(p){
