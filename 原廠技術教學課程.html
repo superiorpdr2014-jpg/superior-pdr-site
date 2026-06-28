@@ -41,6 +41,13 @@
   .article-body iframe{max-width:100%;width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:6px;margin:1.4em 0}
   .article-body ul,.article-body ol{margin:0 0 1.3em 1.4em}
   .article-body strong{color:var(--ink)}
+  .art-nav{max-width:820px;margin:0 auto;padding:28px 24px 4px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:640px){.art-nav{grid-template-columns:1fr}}
+  .art-nav a{display:flex;flex-direction:column;gap:5px;padding:16px 18px;border:1px solid var(--line);border-radius:10px;background:var(--bg-elev);text-decoration:none;transition:border-color .2s,transform .2s}
+  .art-nav a:hover{border-color:rgba(255,42,61,.4);transform:translateY(-2px)}
+  .art-nav .an-dir{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent)}
+  .art-nav .an-t{font-size:14.5px;color:var(--ink);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .art-nav .an-next{text-align:right}
   .art-foot{max-width:820px;margin:0 auto;padding:8px 24px 70px;display:flex;gap:14px;flex-wrap:wrap}
 </style>
 </head>
@@ -82,6 +89,7 @@
 
 </article>
 
+<nav class="art-nav"><a class="an-prev" href="/%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9%e6%95%99%e5%ad%b8%e8%aa%b2%e7%a8%8b-2"><span class="an-dir">← 上一篇</span><span class="an-t">2020凹痕修復教學的第一批學生畢業啦！</span></a><a class="an-next" href="/%e6%ad%a1%e8%bf%8e%e5%85%89%e8%87%a8superior%e5%87%b9%e7%97%95%e4%bf%ae%e5%be%a9-2"><span class="an-dir">下一篇 →</span><span class="an-t">Mecedes E63S 汽車清潔打蠟紀錄外加全車高溫蒸氣殺菌消毒｜修完凹痕也不忘了幫車車洗乾淨</span></a></nav>
 <div class="art-foot">
   <a class="cta ghost" href="/blog.html"><span>← 返回技術部落格</span></a>
   <a class="cta" href="/price-2.html"><span>免費估價預約</span></a>
