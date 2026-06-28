@@ -1340,7 +1340,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .loc-pill .nm{font-size:14px;font-weight:500}
   .loc-pill .ar{font-family:'JetBrains Mono';font-size:10px;color:var(--accent);letter-spacing:0.1em}
   .loc-meta{flex-basis:100%;max-height:0;opacity:0;overflow:hidden;display:flex;flex-direction:column;gap:6px;transition:max-height .3s ease,opacity .25s,margin-top .3s,padding-top .3s}
-  .loc-pill:hover .loc-meta{max-height:170px;opacity:1;margin-top:11px;padding-top:11px;border-top:1px solid rgba(255,255,255,0.14)}
+  .loc-pill:hover .loc-meta,.loc-pill.open .loc-meta{max-height:170px;opacity:1;margin-top:11px;padding-top:11px;border-top:1px solid rgba(255,255,255,0.14)}
   .loc-meta .lz{font-size:15px;font-weight:700;color:#fff}
   .loc-meta a{font-size:13px;color:rgba(255,255,255,0.9);text-decoration:none;font-family:'JetBrains Mono',monospace;letter-spacing:.02em}
   .loc-meta a:hover{color:var(--accent)}
@@ -2509,6 +2509,7 @@ function hideTweaks(){
     `;
     const tipContent = `<div class="apex-tip-name">${s.zh}</div><div class="apex-tip-row"><span class="ic">☎</span>${s.tel}</div><div class="apex-tip-row"><span class="ic">◉</span>${s.addr}</div><div class="apex-tip-row hrs"><span class="ic">🕘</span>${s.hrs}</div>`;
     const marker = L.marker(s.coords, {icon}).addTo(map).bindTooltip(tipContent, {direction:'top', className:'apex-tip', offset:[0,-10], opacity:1});
+    marker.on('click', function(){ this.toggleTooltip(); });   // 手機點擊也能顯示
     allMarkers.push(marker);
   });
 
@@ -2519,6 +2520,16 @@ function hideTweaks(){
   // Re-enable wheel zoom when user clicks into the map
   map.on('focus', () => map.scrollWheelZoom.enable());
   map.on('blur',  () => map.scrollWheelZoom.disable());
+
+  // 店卡點擊展開（手機無 hover，點一下顯示中文店名/電話/地址/營業時間）
+  document.querySelectorAll('.loc-pill').forEach(function(p){
+    p.addEventListener('click', function(e){
+      if (e.target.closest('a')) return;          // 點電話/地圖連結時不收合
+      const wasOpen = p.classList.contains('open');
+      document.querySelectorAll('.loc-pill.open').forEach(function(o){ o.classList.remove('open'); });
+      if (!wasOpen) p.classList.add('open');
+    });
+  });
 })();
 
 
