@@ -21,20 +21,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="preload" as="image" href="media/campus-hero.webp" fetchpriority="high">
 <style>
   /* ============ VOCATIONAL SCHOOL TRAINING — page-specific ============ */
   /* --- banner background photo --- */
   .page-hero{
     background:
       linear-gradient(90deg, var(--bg) 0%, rgba(8,10,13,.86) 34%, rgba(8,10,13,.5) 64%, rgba(8,10,13,.6) 100%),
-      url("media/campus-hero.jpg") right 35% / cover no-repeat,
+      url("media/campus-hero.webp") right 35% / cover no-repeat,
       var(--bg);
   }
   @media(max-width:760px){
     .page-hero{
       background:
         linear-gradient(180deg, rgba(8,10,13,.7) 0%, rgba(8,10,13,.8) 60%, var(--bg) 100%),
-        url("media/campus-hero.jpg") center 30% / cover no-repeat,
+        url("media/campus-hero.webp") center 30% / cover no-repeat,
         var(--bg);
     }
   }
@@ -128,7 +129,7 @@
     </div>
     <div class="col-img reveal delay-1">
       <div class="ph tall" style="background:none;border-color:var(--line)">
-        <img src="media/campus-intro-1.jpg" alt="卓越走進校園 — 凹痕修復實務講習" style="width:100%;height:100%;min-height:440px;object-fit:cover;display:block">
+        <img loading="lazy" decoding="async" src="media/campus-intro-1.webp" alt="卓越走進校園 — 凹痕修復實務講習" style="width:100%;height:100%;min-height:440px;object-fit:cover;display:block">
       </div>
     </div>
   </div>
@@ -207,7 +208,7 @@
       </div>
     </div>
     <div class="demo-ph reveal delay-1">
-      <img src="media/campus-demo-vertical.jpg" alt="校園技術講習 — 現場實作示範">
+      <img loading="lazy" decoding="async" src="media/campus-demo-vertical.webp" alt="校園技術講習 — 現場實作示範">
     </div>
   </div>
 </section>
@@ -221,55 +222,55 @@
 
     <div class="school-grid">
       <a class="school-card reveal" href="https://youtube.com/shorts/xvpHRcFPKEQ" target="_blank" rel="noopener">
-        <img src="media/campus-school-taishan.jpg" alt="新北市立泰山高級中學 汽車科 — 卓越校園講習">
+        <img loading="lazy" decoding="async" src="media/campus-school-taishan.webp" alt="新北市立泰山高級中學 汽車科 — 卓越校園講習">
         <span class="sc-scrim"></span>
         <span class="sc-play"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 2l7 4-7 4z"/></svg>WATCH</span>
         <span class="sc-meta"><span class="sc-dept" data-en="Auto Dept" data-zh="汽車科">汽車科</span><span class="sc-name" data-en="Taishan Senior High, New Taipei" data-zh="新北市立泰山高級中學">新北市立泰山高級中學</span></span>
       </a>
       <a class="school-card reveal delay-1" href="https://youtu.be/3ierXMdykgI" target="_blank" rel="noopener">
-        <img src="media/campus-school-nanqiang.jpg" alt="南強高級工商職業學校 汽車科 — 卓越校園講習">
+        <img loading="lazy" decoding="async" src="media/campus-school-nanqiang.webp" alt="南強高級工商職業學校 汽車科 — 卓越校園講習">
         <span class="sc-scrim"></span>
         <span class="sc-play"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 2l7 4-7 4z"/></svg>WATCH</span>
         <span class="sc-meta"><span class="sc-dept" data-en="Auto Dept" data-zh="汽車科">汽車科</span><span class="sc-name" data-en="Nan Chiang Vocational High" data-zh="南強高級工商職業學校">南強高級工商職業學校</span></span>
       </a>
       <a class="school-card reveal delay-2" href="https://youtube.com/shorts/S2KuMWML24k" target="_blank" rel="noopener">
-        <img src="media/campus-school-liming.jpg" alt="黎明技術學院 車輛工程系 — 卓越校園講習">
+        <img loading="lazy" decoding="async" src="media/campus-school-liming.webp" alt="黎明技術學院 車輛工程系 — 卓越校園講習">
         <span class="sc-scrim"></span>
         <span class="sc-play"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 2l7 4-7 4z"/></svg>WATCH</span>
         <span class="sc-meta"><span class="sc-dept" data-en="Vehicle Engineering" data-zh="車輛工程系">車輛工程系</span><span class="sc-name" data-en="Lee-Ming Institute of Technology" data-zh="黎明技術學院">黎明技術學院</span></span>
       </a>
       <a class="school-card reveal" href="https://www.facebook.com/reel/841532242161777" target="_blank" rel="noopener">
-        <img src="media/campus-school-ntnu.jpg" alt="國立臺灣師範大學 車輛工程學系 — 卓越校園講習">
+        <img loading="lazy" decoding="async" src="media/campus-school-ntnu.webp" alt="國立臺灣師範大學 車輛工程學系 — 卓越校園講習">
         <span class="sc-scrim"></span>
         <span class="sc-play"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 2l7 4-7 4z"/></svg>WATCH</span>
         <span class="sc-meta"><span class="sc-dept" data-en="Vehicle Engineering" data-zh="車輛工程學系">車輛工程學系</span><span class="sc-name" data-en="National Taiwan Normal University" data-zh="國立臺灣師範大學">國立臺灣師範大學</span></span>
       </a>
       <a class="school-card reveal delay-1" href="https://youtube.com/shorts/qegsHiqtsCI" target="_blank" rel="noopener">
-        <img src="media/campus-school-neipu.jpg" alt="國立內埔農工 汽車科 — 卓越校園講習">
+        <img loading="lazy" decoding="async" src="media/campus-school-neipu.webp" alt="國立內埔農工 汽車科 — 卓越校園講習">
         <span class="sc-scrim"></span>
         <span class="sc-play"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 2l7 4-7 4z"/></svg>WATCH</span>
         <span class="sc-meta"><span class="sc-dept" data-en="Auto Dept" data-zh="汽車科">汽車科</span><span class="sc-name" data-en="National Neipu Agri-Industrial High" data-zh="國立內埔農工">國立內埔農工</span></span>
       </a>
       <a class="school-card reveal delay-2" href="https://youtube.com/shorts/-2UOoYvFtuU" target="_blank" rel="noopener">
-        <img src="media/campus-school-xinxing.jpg" alt="新興高級中等學校 汽車科 — 卓越校園講習">
+        <img loading="lazy" decoding="async" src="media/campus-school-xinxing.webp" alt="新興高級中等學校 汽車科 — 卓越校園講習">
         <span class="sc-scrim"></span>
         <span class="sc-play"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 2l7 4-7 4z"/></svg>WATCH</span>
         <span class="sc-meta"><span class="sc-dept" data-en="Auto Dept" data-zh="汽車科">汽車科</span><span class="sc-name" data-en="Hsin Hsing High School" data-zh="新興高級中等學校">新興高級中等學校</span></span>
       </a>
       <a class="school-card reveal" href="https://youtube.com/shorts/zRNoZC2E1hs" target="_blank" rel="noopener">
-        <img src="media/campus-school-tungnan.jpg" alt="東南科技大學 機械工程系 — 卓越校園講習">
+        <img loading="lazy" decoding="async" src="media/campus-school-tungnan.webp" alt="東南科技大學 機械工程系 — 卓越校園講習">
         <span class="sc-scrim"></span>
         <span class="sc-play"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 2l7 4-7 4z"/></svg>WATCH</span>
         <span class="sc-meta"><span class="sc-dept" data-en="Mechanical Engineering" data-zh="機械工程系">機械工程系</span><span class="sc-name" data-en="Tungnan University of Technology" data-zh="東南科技大學">東南科技大學</span></span>
       </a>
       <a class="school-card reveal delay-1" href="https://www.youtube.com/shorts/MhgdTcgdPX4" target="_blank" rel="noopener">
-        <img src="media/campus-school-dongtai.jpg" alt="東泰高中 汽車科 — 卓越校園講習">
+        <img loading="lazy" decoding="async" src="media/campus-school-dongtai.webp" alt="東泰高中 汽車科 — 卓越校園講習">
         <span class="sc-scrim"></span>
         <span class="sc-play"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 2l7 4-7 4z"/></svg>WATCH</span>
         <span class="sc-meta"><span class="sc-dept" data-en="Auto Dept" data-zh="汽車科">汽車科</span><span class="sc-name" data-en="Tung Tai High School, Hsinchu" data-zh="東泰高中">東泰高中</span></span>
       </a>
       <div class="school-card reveal delay-2">
-        <img src="media/campus-school-dunxu.jpg" alt="惇敘工商 汽車科 — 卓越校園講習">
+        <img loading="lazy" decoding="async" src="media/campus-school-dunxu.webp" alt="惇敘工商 汽車科 — 卓越校園講習">
         <span class="sc-scrim"></span>
         <span class="sc-meta"><span class="sc-dept" data-en="Auto Dept" data-zh="汽車科">汽車科</span><span class="sc-name" data-en="Tun Hsu Vocational High School" data-zh="惇敘工商">惇敘工商</span></span>
       </div>
@@ -312,7 +313,7 @@
       <a href="contact.html">Contact</a>
     </div>
     <a href="index.html" class="logo">
-      <img class="logo-circle" src="media/logo-circle.png" alt="Superior PDR">
+      <img class="logo-circle" src="media/logo-circle.png" alt="Superior PDR" loading="lazy" decoding="async">
       <div class="logo-text">
         <div class="top-line">SUPERIOR PDR</div>
         <div class="bot-line">© 2026 SUPERIOR PDR · ALL RIGHTS RESERVED</div>
