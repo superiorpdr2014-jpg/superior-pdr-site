@@ -2571,8 +2571,11 @@ function hideTweaks(){
 
 
   window.parent.postMessage({type:'__edit_mode_available'}, '*');
+</script>
 
+<script>
 /* ===== I18N — Traditional Chinese / English toggle ===== */
+/* 獨立 script：與上方 Leaflet 地圖隔離，地圖在手機報錯也不會中斷翻譯，避免停在英文 */
 (function i18n(){
   // Translation table keyed by stable selector. First match per selector list.
   // Each entry: [selector, en, zh, mode] where mode = 'text' (default) or 'html'
