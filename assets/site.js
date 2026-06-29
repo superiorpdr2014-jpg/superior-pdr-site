@@ -55,7 +55,7 @@
   function buildNavHTML(cur) {
     var aboutKeys = ['excellence','about','quality','pricing','technicians'];
     var svcKeys   = ['svc-pdr','svc-ev','svc-large','svc-alloy','svc-moto'];
-    var trainKeys = ['training','training-2w','training-4w','training-adv','training-event'];
+    var trainKeys = ['training','training-2w','training-4w','training-adv','training-event','training-school'];
     var aboutOn = aboutKeys.indexOf(cur) > -1;
     var svcOn   = svcKeys.indexOf(cur) > -1;
     var trainOn = trainKeys.indexOf(cur) > -1;
@@ -100,6 +100,7 @@
       '      <a class="ddi'+ddc('training-4w')+'" data-d="training-4w" href="training-4week.html">完整技術訓練 <small style="opacity:.6;font-size:11px">4 Week</small></a>',
       '      <a class="ddi'+ddc('training-adv')+'" data-d="training-adv" href="advancedtraining.html">PDR進階技術訓練</a>',
       '      <a class="ddi'+ddc('training-event')+'" data-d="training-event" href="advancedevent.html">國際進階訓練研討會</a>',
+      '      <a class="ddi'+ddc('training-school')+'" data-d="training-school" href="vocational-school-training.html">前進校園｜技職扎根</a>',
       '    </div>',
       '  </div>',
       '  <a class="nav-link'+cc('contact')+'" href="contact.html" data-key="locations">據點分佈</a>',
@@ -198,6 +199,7 @@
       '    <a href="training-4week.html">完整技術訓練 (4 Week)</a>',
       '    <a href="advancedtraining.html">PDR進階技術訓練</a>',
       '    <a href="advancedevent.html">國際進階訓練研討會</a>',
+      '    <a href="vocational-school-training.html">前進校園｜技職扎根</a>',
       '  </div>',
       '</div>',
       '<div class="mob-group"><a href="contact.html">據點分佈</a></div>',
