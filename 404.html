@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>找不到頁面 — SUPERIOR PDR 卓越凹痕修復</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#07080b;--ink:#eef1f5;--ink-dim:#c5cad3;--ink-mute:#7a818c;--accent:#ff2a3d;--line:#1d2128;--elev:#0e1116}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:
+        radial-gradient(ellipse at 50% 0%,rgba(255,42,61,.08),transparent 55%),
+        linear-gradient(180deg,#090a0e,#07080b) ,var(--bg);
+       color:var(--ink-dim);font-family:'Space Grotesk','Noto Sans TC',sans-serif;
+       display:flex;flex-direction:column;align-items:center;justify-content:center;
+       min-height:100vh;text-align:center;padding:32px}
+  .code{font-family:'Bebas Neue',sans-serif;font-size:clamp(96px,22vw,210px);line-height:.9;
+        letter-spacing:.04em;color:#fff;
+        background:linear-gradient(180deg,#fff 38%,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+        text-shadow:0 0 60px rgba(255,42,61,.25);margin:0}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.32em;color:var(--accent);
+           text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:12px;justify-content:center}
+  .eyebrow::before,.eyebrow::after{content:"";width:34px;height:1px;background:var(--accent);opacity:.6}
+  h1{color:var(--ink);font-size:clamp(20px,4vw,28px);font-weight:600;margin:14px 0 8px;letter-spacing:.01em}
+  p{margin:0 auto;max-width:520px;font-size:15.5px;line-height:1.9}
+  .count{color:var(--accent);font-family:'JetBrains Mono',monospace}
+  .links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:30px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:6px;font-size:14.5px;
+       text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s}
+  .btn.primary{background:var(--accent);color:#fff;font-weight:600}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 0 24px rgba(255,42,61,.45)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--accent);color:#fff}
+  .quick{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;
+         font-family:'JetBrains Mono',monospace;font-size:12.5px}
+  .quick a{color:var(--ink-mute);text-decoration:none;transition:color .2s}
+  .quick a:hover{color:var(--accent)}
+  .logo{margin-bottom:26px;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.18em;color:#fff}
+  .logo b{color:var(--accent)}
+</style>
+</head>
+<body>
+  <div class="logo">SUPERIOR <b>PDR</b></div>
+  <div class="eyebrow">PAGE NOT FOUND</div>
+  <p class="code">404</p>
+  <h1>找不到這個頁面</h1>
+  <p>你要找的頁面可能已搬移或不存在。<br><span class="count" id="count">3</span> 秒後自動帶你回首頁。</p>
+  <div class="links">
+    <a class="btn primary" href="/">回到首頁
+      <svg width="13" height="13" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+    </a>
+    <a class="btn ghost" href="/contact.html">分店據點</a>
+  </div>
+  <nav class="quick">
+    <a href="/">首頁</a>
+    <a href="/about-us.html">關於我們</a>
+    <a href="/pdr.html">服務項目</a>
+    <a href="/case-video.html">案例實績</a>
+    <a href="/blog.html">技術部落格</a>
+    <a href="/news-3.html">技術教學</a>
+    <a href="/contact.html">聯絡我們</a>
+  </nav>
+<script>
+  (function(){
+    var n=3, el=document.getElementById('count');
+    var t=setInterval(function(){
+      n--; if(el) el.textContent=n;
+      if(n<=0){ clearInterval(t); window.location.replace('/'); }
+    },1000);
+  })();
+</script>
+</body>
+</html>
