@@ -1242,6 +1242,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .ytcard .phone:before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:44px;height:7px;border-radius:5px;background:#000;z-index:5}
   .phone-screen{position:absolute;inset:7px;border-radius:24px;overflow:hidden;background:#000}
   .phone-screen img{width:100%;height:100%;object-fit:cover;display:block}
+  .phone-screen video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
   .phone-screen:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.28),transparent 28%,transparent 72%,rgba(0,0,0,0.4));pointer-events:none}
   .yt-tag{position:absolute;top:12px;right:12px;z-index:4;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.14em;color:#fff;background:rgba(255,42,61,0.92);padding:3px 7px;border-radius:3px}
   .yt-meta{text-align:center}
@@ -2349,7 +2350,7 @@ videos.forEach((v,i) => {
   card.innerHTML = `
     <div class="phone">
       <div class="phone-screen">
-        <img loading="lazy" data-vid="${v.id}" src="https://i.ytimg.com/vi/${v.id}/oardefault.jpg" onload="if(this.naturalWidth<200&&this.dataset.fb!=='1'){this.dataset.fb='1';this.src='https://i.ytimg.com/vi/'+this.dataset.vid+'/hqdefault.jpg';}" onerror="if(this.dataset.fb!=='1'){this.dataset.fb='1';this.src='https://i.ytimg.com/vi/'+this.dataset.vid+'/hqdefault.jpg';}" alt="${v.title}">
+        <video class="preview-vid" src="media/preview-${v.id}.mp4" poster="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" autoplay muted loop playsinline preload="metadata" aria-label="${v.title}"></video>
         <span class="yt-tag">SHORTS</span>
         <div class="play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M6 4l14 8-14 8V4z"></path></svg></div>
       </div>
@@ -2368,6 +2369,13 @@ videos.forEach((v,i) => {
   grid.appendChild(card);
   io.observe(card);
 });
+// 預覽影片只在進入畫面時播放，離開暫停（省電/省流量）
+try{
+  var pvIO=new IntersectionObserver(function(es){es.forEach(function(e){var vd=e.target;
+    if(e.isIntersecting){var p=vd.play&&vd.play();if(p&&p.catch)p.catch(function(){});}
+    else if(vd.pause){vd.pause();}});},{threshold:0.2});
+  document.querySelectorAll('.preview-vid').forEach(function(vd){pvIO.observe(vd);});
+}catch(e){}
 
 /* Hero photo subtle parallax */
 const hp = document.querySelector('.hero-photo');
