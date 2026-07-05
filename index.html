@@ -1909,15 +1909,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <style>
   .photo-band{position:relative;width:100%;line-height:0;background:var(--bg);overflow:hidden}
   .photo-band .pb-img{width:100%;height:clamp(320px,50vw,680px);object-fit:cover;object-position:center 45%;display:block}
-  .photo-band::before,.photo-band::after{content:"";position:absolute;left:0;right:0;height:90px;z-index:1;pointer-events:none}
-  .photo-band::before{top:0;background:linear-gradient(var(--bg),transparent)}
-  .photo-band::after{bottom:0;background:linear-gradient(transparent,var(--bg))}
+  .photo-band::before{content:"";position:absolute;left:0;right:0;top:0;height:90px;z-index:1;pointer-events:none;background:linear-gradient(var(--bg),transparent)}
+  .photo-band::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:190px;z-index:1;pointer-events:none;background:linear-gradient(transparent,var(--bg) 92%)}
 </style>
 <section class="photo-band" aria-label="卓越 SUPERIOR PDR 施作實況">
   <img class="pb-img" loading="lazy" decoding="async" src="media/band-work.webp" alt="卓越技師為 Porsche 718 GT4 RS 施作免烤漆凹痕修復 PDR">
 </section>
 <!-- =============== WHY SUPERIOR =============== -->
-<section class="why-sup" data-screen-label="02b Why Superior" style="padding:96px 48px;position:relative;border-top:1px solid var(--line)">
+<section class="why-sup" data-screen-label="02b Why Superior" style="padding:40px 48px 96px;position:relative;margin-top:-1px">
   <style>
     .why-sup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:40px}
     @media(max-width:860px){.why-sup-grid{grid-template-columns:1fr 1fr}}
