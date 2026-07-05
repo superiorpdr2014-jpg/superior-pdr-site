@@ -1859,10 +1859,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
   @media(max-width:480px){.oneway .ow-photos{grid-template-columns:1fr 1fr;gap:10px}}
   .oneway figure{margin:0;border-radius:10px;overflow:hidden;border:1px solid var(--line);position:relative;background:var(--bg-elev)}
   .oneway figure img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+  .oneway figure.ow-zoom img{transform:scale(1.4);transform-origin:46% 26%}
   .oneway figure figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 12px;background:linear-gradient(transparent,rgba(7,8,11,.92));color:#fff;font-size:12.5px;font-family:'JetBrains Mono';letter-spacing:.03em}
   .oneway figure figcaption b{color:var(--accent);font-weight:700;display:block;font-size:10px;letter-spacing:.16em;margin-bottom:4px}
-  .oneway .ow-ba{grid-column:span 2;position:relative;display:grid;grid-template-columns:1fr 1fr;gap:5px;border:1px solid var(--accent);border-radius:10px;overflow:hidden;background:var(--bg-elev)}
-  .oneway .ow-ba-im{position:relative;min-width:0;aspect-ratio:1/1;overflow:hidden}
+  .oneway .ow-ba{grid-column:span 2;position:relative;display:flex;gap:5px;border:1px solid var(--accent);border-radius:10px;overflow:hidden;background:var(--bg-elev)}
+  .oneway .ow-ba-im{position:relative;flex:1 1 0;min-width:0;overflow:hidden}
   .oneway .ow-ba-im img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
   .oneway .ow-ba-tag{position:absolute;top:0;left:0;right:0;z-index:3;text-align:center;font-family:'JetBrains Mono';font-size:11px;font-weight:700;letter-spacing:.14em;color:#fff;background:linear-gradient(rgba(7,8,11,.88),transparent);padding:11px 8px 18px}
   .oneway .ba-lb{position:absolute;bottom:10px;left:10px;z-index:2;font-family:'JetBrains Mono';font-size:11px;font-weight:700;letter-spacing:.08em;padding:5px 10px;border-radius:4px;color:#fff}
@@ -1890,10 +1891,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
   </div>
   <div class="ow-below">
     <div class="ow-photos reveal">
-      <figure><img loading="lazy" decoding="async" src="media/badrepair-1.webp" alt="鈑面被推過頭隆起變形的失敗修復"><figcaption><b>推過頭</b>鈑面隆起變形</figcaption></figure>
-      <figure><img loading="lazy" decoding="async" src="media/badrepair-2.webp" alt="過度敲擊造成的凹點與爆漆"><figcaption><b>過度敲擊</b>爆漆凹點</figcaption></figure>
+      <figure class="ow-zoom"><img loading="lazy" decoding="async" src="media/badrepair-1.webp" alt="修復不當造成板金凹凸不平"><figcaption><b>修復不當</b>板金凹凸不平</figcaption></figure>
+      <figure><img loading="lazy" decoding="async" src="media/badrepair-2.webp" alt="過度出力造成金屬疲乏爆漆"><figcaption><b>過度出力</b>金屬疲乏爆漆</figcaption></figure>
       <figure><img loading="lazy" decoding="async" src="media/badrepair-3.webp" alt="施作不當造成鈑面波浪反光扭曲"><figcaption><b>施作不當</b>鈑面波浪</figcaption></figure>
-      <figure><img loading="lazy" decoding="async" src="media/badrepair-4.webp" alt="膠拉施工失敗造成漆面剝離"><figcaption><b>膠拉失敗</b>漆面剝離</figcaption></figure>
+      <figure><img loading="lazy" decoding="async" src="media/badrepair-4.webp" alt="施力不當造成漆面尖點與波浪"><figcaption><b>施力不當</b>漆面尖點與波浪</figcaption></figure>
       <div class="ow-ba">
         <div class="ow-ba-tag">失敗案例 · 修復前後對比</div>
         <div class="ow-ba-im"><img loading="lazy" decoding="async" src="media/badrepair-5.webp" alt="修復前的凹痕"><span class="ba-lb before">修復前</span></div>
@@ -2882,10 +2883,10 @@ function hideTweaks(){
       '「凹痕修復是一條單行道。第一個技師，要嘛把它修對，要嘛就毀了它 —— 讓後面每一個人，都再也沒有機會。」',
       'text'],
     ['.ow-role', 'SUPERIOR PDR · Taiwan PDR Leader', '卓越凹痕修復 SUPERIOR PDR · 台灣 PDR 領導者', 'text'],
-    ['.ow-photos figure:nth-child(1) figcaption', '<b>OVER-PUSHED</b>Panel bulged and warped', '<b>推過頭</b>鈑面隆起變形', 'html'],
-    ['.ow-photos figure:nth-child(2) figcaption', '<b>OVER-TAPPED</b>Cracked paint and pitting', '<b>過度敲擊</b>爆漆凹點', 'html'],
+    ['.ow-photos figure:nth-child(1) figcaption', '<b>BAD REPAIR</b>Uneven, lumpy panel', '<b>修復不當</b>板金凹凸不平', 'html'],
+    ['.ow-photos figure:nth-child(2) figcaption', '<b>OVER-FORCED</b>Metal fatigue and paint burst', '<b>過度出力</b>金屬疲乏爆漆', 'html'],
     ['.ow-photos figure:nth-child(3) figcaption', '<b>BAD TECHNIQUE</b>Wavy panel surface', '<b>施作不當</b>鈑面波浪', 'html'],
-    ['.ow-photos figure:nth-child(4) figcaption', '<b>GLUE-PULL FAIL</b>Paint peeled off', '<b>膠拉失敗</b>漆面剝離', 'html'],
+    ['.ow-photos figure:nth-child(4) figcaption', '<b>WRONG FORCE</b>Sharp points and waves', '<b>施力不當</b>漆面尖點與波浪', 'html'],
     ['.ow-ba-tag', 'FAILED CASE · BEFORE / AFTER', '失敗案例 · 修復前後對比', 'text'],
     ['.ow-ba .ba-lb.before', 'BEFORE', '修復前', 'text'],
     ['.ow-ba .ba-lb.after', 'AFTER · FAILED', '修復後 · 失敗', 'text'],
