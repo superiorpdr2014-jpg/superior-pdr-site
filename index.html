@@ -1849,9 +1849,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .oneway .ow-title .accent{color:var(--accent)}
   .oneway .ow-body p{color:var(--ink-dim);font-size:15px;line-height:1.9;margin:0 0 16px}
   .oneway .ow-body p strong{color:#fff;font-weight:600}
-  .oneway .ow-quote{border-left:3px solid var(--accent);margin:28px 0 22px;padding:6px 0 6px 22px;font-family:'Space Grotesk',sans-serif;font-style:italic;font-weight:500;font-size:clamp(15.5px,1.6vw,20px);line-height:1.55;color:#fff}
+  .oneway .ow-cite{border-left:3px solid var(--accent);margin:28px 0 22px;padding:6px 0 4px 22px}
+  .oneway .ow-quote{border:0;margin:0 0 18px;padding:0;font-family:'Space Grotesk',sans-serif;font-style:italic;font-weight:500;font-size:clamp(15.5px,1.6vw,20px);line-height:1.55;color:#fff}
   .oneway .ow-author{display:flex;align-items:center;gap:14px}
-  .oneway .ow-author img{width:68px;height:90px;border-radius:9px;object-fit:cover;object-position:center top;border:2px solid var(--accent);flex:0 0 auto}
+  .oneway .ow-author .ow-who{flex:1 1 auto;min-width:0}
+  .oneway .ow-author img{width:80px;height:80px;border-radius:10px;object-fit:cover;object-position:center top;border:2px solid var(--accent);flex:0 0 auto;margin-left:auto}
   .oneway .ow-name{font-family:'JetBrains Mono';font-weight:700;letter-spacing:.14em;color:#fff;font-size:14px}
   .oneway .ow-role{font-family:'JetBrains Mono';font-size:11px;color:var(--ink-mute);margin-top:3px;letter-spacing:.04em}
   .oneway .ow-below{max-width:1200px;margin:0 auto;padding:0 48px}
@@ -1883,10 +1885,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <h2 class="ow-title">凹痕修復，是一條<span class="accent">單行道</span>。</h2>
         <p class="ow-p1">一個凹痕能不能完美修復，往往決定在「第一個修它的人」。一旦被推過頭、亂敲、推錯、拉錯位置 —— 鈑金結構被破壞、原廠漆被弄裂，後面再厲害的技師，也救不回它原本的樣子。</p>
         <p class="ow-p2">這就是為什麼卓越堅持使用<strong>進口工具、與國際接軌</strong>、不小看每一個凹痕，交車前還要由另一位技師以光板逐一覆核鈑面。因為我們很清楚：修凹痕，<strong>沒有「再來一次」</strong>。</p>
-        <blockquote class="ow-quote">「凹痕修復是一條單行道。第一個技師，要嘛把它修對，要嘛就毀了它 —— 讓後面每一個人，都再也沒有機會。」</blockquote>
-        <div class="ow-author">
-          <img src="media/jay-avatar.webp" alt="小馬 Jay Ma">
-          <div><div class="ow-name">小馬 JAY MA</div><div class="ow-role">卓越凹痕修復 SUPERIOR PDR · 台灣 PDR 領導者</div></div>
+        <div class="ow-cite">
+          <blockquote class="ow-quote">「凹痕修復是一條單行道。第一個技師，要嘛把它修對，要嘛就毀了它 —— 讓後面每一個人，都再也沒有機會。」</blockquote>
+          <div class="ow-author">
+            <div class="ow-who"><div class="ow-name">小馬 JAY MA</div><div class="ow-role">卓越凹痕修復 SUPERIOR PDR · 台灣 PDR 領導者</div></div>
+            <img src="media/jay-avatar.webp" alt="小馬 Jay Ma">
+          </div>
         </div>
       </div>
     </div>
