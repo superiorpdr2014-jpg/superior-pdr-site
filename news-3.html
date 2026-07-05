@@ -346,6 +346,17 @@
   </div>
 </section>
 
+<!-- 施作實況 PHOTO BAND -->
+<style>
+  .photo-band{position:relative;width:100%;line-height:0;background:var(--bg);overflow:hidden}
+  .photo-band .pb-img{width:100%;height:clamp(240px,34vw,460px);object-fit:cover;object-position:center 42%;display:block}
+  .photo-band::before{content:"";position:absolute;left:0;right:0;top:0;height:90px;z-index:1;pointer-events:none;background:linear-gradient(var(--bg),transparent)}
+  .photo-band::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:130px;z-index:1;pointer-events:none;background:linear-gradient(transparent,var(--bg) 92%)}
+</style>
+<section class="photo-band" aria-label="卓越 PDR 教學實況">
+  <img class="pb-img" loading="lazy" decoding="async" src="media/band-training.webp" alt="卓越 PDR 訓練中心教學實況">
+</section>
+
 <!-- 訓練影片 -->
 <section class="sec reveal">
   <div class="section-eyebrow" data-en="TRAINING VIDEO" data-zh="訓練影片">訓練影片</div>
