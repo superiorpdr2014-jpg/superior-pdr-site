@@ -51,11 +51,20 @@
 /* ── Shorts grid (9:16) ── */
 .shorts-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 
-/* ── IG Reels grid (official embed) ── */
-.reels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;align-items:start}
-.reels-grid .instagram-media{margin:0!important;min-width:0!important;width:100%!important;max-width:100%!important}
-@media(max-width:1100px){.reels-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:680px){.reels-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}}
+/* ── IG Reels grid (self-hosted, click-to-play) ── */
+.reels-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:8px;align-items:start}
+.reel-embed{display:block;cursor:pointer}
+.reel-ph{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--bg-elev);box-shadow:0 14px 40px rgba(0,0,0,.45);transition:transform .3s,border-color .3s}
+.reel-embed:hover .reel-ph{transform:translateY(-4px);border-color:var(--accent)}
+.reel-ph img,.reel-ph video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:#000}
+.reel-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;background:rgba(0,0,0,.5);border:2px solid rgba(255,255,255,.92);color:#fff;font-size:19px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding-left:4px;transition:background .2s,transform .2s;z-index:2}
+.reel-embed:hover .reel-play{background:var(--accent);border-color:var(--accent);transform:translate(-50%,-50%) scale(1.06)}
+.reel-ig{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:8px;padding:26px 12px 11px;background:linear-gradient(transparent,rgba(6,7,10,.92));color:#fff;text-decoration:none;font-size:11.5px;z-index:3}
+.reel-ig .ig-ico{width:22px;height:22px;flex:0 0 auto;border-radius:6px;background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);display:flex;align-items:center;justify-content:center}
+.reel-ig .ig-nm{font-weight:600;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reel-ig .ig-go{margin-left:auto;color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:10.5px;white-space:nowrap}
+@media(max-width:1100px){.reels-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:680px){.reels-grid{grid-template-columns:repeat(2,1fr);gap:10px}.reel-ig .ig-go{display:none}}
 
 /* ── Video card ── */
 .vc,.sc{position:relative;background:var(--bg-elev);border:1px solid var(--line);border-radius:6px;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .2s}
@@ -146,25 +155,174 @@
       <a href="https://www.instagram.com/superiorpdrtaiwan/reels/" target="_blank" rel="noopener" class="vg-link">全部 REELS ↗</a>
     </div>
     <div class="reels-grid reveal delay-1" id="reelsGrid">
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DO5vDYjiEX6/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C6xzc9GSgfG/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C_iIE0ASqGM/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXwUNE1zn54/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXrK8vAE9Eo/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DVyJQY_E8NT/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DUk5mn3E8j6/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DSr35KqE3dt/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DSCoVX1k8Q-/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DRMkr9KE_-e/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DQ3-byGE-f3/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DQEgsnkk90t/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DH51yoBT2e8/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DCEF3TCyVAq/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C4xag47ysA9/" data-instgrm-version="14"></blockquote>
+      <div class="reel-embed" data-src="media/reels/reel-01.mp4">
+        <div class="reel-ph">
+          <img class="reel-poster" src="media/reels/reel-01.webp" loading="lazy" decoding="async" alt="卓越 SUPERIOR PDR IG Reel">
+          <button class="reel-play" type="button" aria-label="播放影片">▶</button>
+          <a class="reel-ig" href="https://www.instagram.com/reel/DO5vDYjiEX6/" target="_blank" rel="noopener">
+            <span class="ig-ico"><svg width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2'><rect x='2' y='2' width='20' height='20' rx='5'/><circle cx='12' cy='12' r='4.2'/><circle cx='17.5' cy='6.5' r='1.2' fill='#fff' stroke='none'/></svg></span>
+            <span class="ig-nm">@superiorpdrtaiwan</span>
+            <span class="ig-go">看更多 →</span>
+          </a>
+        </div>
+      </div>
+      <div class="reel-embed" data-src="media/reels/reel-02.mp4">
+        <div class="reel-ph">
+          <img class="reel-poster" src="media/reels/reel-02.webp" loading="lazy" decoding="async" alt="卓越 SUPERIOR PDR IG Reel">
+          <button class="reel-play" type="button" aria-label="播放影片">▶</button>
+          <a class="reel-ig" href="https://www.instagram.com/reel/C6xzc9GSgfG/" target="_blank" rel="noopener">
+            <span class="ig-ico"><svg width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2'><rect x='2' y='2' width='20' height='20' rx='5'/><circle cx='12' cy='12' r='4.2'/><circle cx='17.5' cy='6.5' r='1.2' fill='#fff' stroke='none'/></svg></span>
+            <span class="ig-nm">@superiorpdrtaiwan</span>
+            <span class="ig-go">看更多 →</span>
+          </a>
+        </div>
+      </div>
+      <div class="reel-embed" data-src="media/reels/reel-03.mp4">
+        <div class="reel-ph">
+          <img class="reel-poster" src="media/reels/reel-03.webp" loading="lazy" decoding="async" alt="卓越 SUPERIOR PDR IG Reel">
+          <button class="reel-play" type="button" aria-label="播放影片">▶</button>
+          <a class="reel-ig" href="https://www.instagram.com/reel/C_iIE0ASqGM/" target="_blank" rel="noopener">
+            <span class="ig-ico"><svg width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2'><rect x='2' y='2' width='20' height='20' rx='5'/><circle cx='12' cy='12' r='4.2'/><circle cx='17.5' cy='6.5' r='1.2' fill='#fff' stroke='none'/></svg></span>
+            <span class="ig-nm">@superiorpdrtaiwan</span>
+            <span class="ig-go">看更多 →</span>
+          </a>
+        </div>
+      </div>
+      <div class="reel-embed" data-src="media/reels/reel-04.mp4">
+        <div class="reel-ph">
+          <img class="reel-poster" src="media/reels/reel-04.webp" loading="lazy" decoding="async" alt="卓越 SUPERIOR PDR IG Reel">
+          <button class="reel-play" type="button" aria-label="播放影片">▶</button>
+          <a class="reel-ig" href="https://www.instagram.com/reel/DXwUNE1zn54/" target="_blank" rel="noopener">
+            <span class="ig-ico"><svg width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2'><rect x='2' y='2' width='20' height='20' rx='5'/><circle cx='12' cy='12' r='4.2'/><circle cx='17.5' cy='6.5' r='1.2' fill='#fff' stroke='none'/></svg></span>
+            <span class="ig-nm">@superiorpdrtaiwan</span>
+            <span class="ig-go">看更多 →</span>
+          </a>
+        </div>
+      </div>
+      <div class="reel-embed" data-src="media/reels/reel-05.mp4">
+        <div class="reel-ph">
+          <img class="reel-poster" src="media/reels/reel-05.webp" loading="lazy" decoding="async" alt="卓越 SUPERIOR PDR IG Reel">
+          <button class="reel-play" type="button" aria-label="播放影片">▶</button>
+          <a class="reel-ig" href="https://www.instagram.com/reel/DXrK8vAE9Eo/" target="_blank" rel="noopener">
+            <span class="ig-ico"><svg width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2'><rect x='2' y='2' width='20' height='20' rx='5'/><circle cx='12' cy='12' r='4.2'/><circle cx='17.5' cy='6.5' r='1.2' fill='#fff' stroke='none'/></svg></span>
+            <span class="ig-nm">@superiorpdrtaiwan</span>
+            <span class="ig-go">看更多 →</span>
+          </a>
+        </div>
+      </div>
+      <div class="reel-embed" data-src="media/reels/reel-06.mp4">
+        <div class="reel-ph">
+          <img class="reel-poster" src="media/reels/reel-06.webp" loading="lazy" decoding="async" alt="卓越 SUPERIOR PDR IG Reel">
+          <button class="reel-play" type="button" aria-label="播放影片">▶</button>
+          <a class="reel-ig" href="https://www.instagram.com/reel/DVyJQY_E8NT/" target="_blank" rel="noopener">
+            <span class="ig-ico"><svg width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2'><rect x='2' y='2' width='20' height='20' rx='5'/><circle cx='12' cy='12' r='4.2'/><circle cx='17.5' cy='6.5' r='1.2' fill='#fff' stroke='none'/></svg></span>
+            <span class="ig-nm">@superiorpdrtaiwan</span>
+            <span class="ig-go">看更多 →</span>
+          </a>
+        </div>
+      </div>
+      <div class="reel-embed" data-src="media/reels/reel-07.mp4">
+        <div class="reel-ph">
+          <img class="reel-poster" src="media/reels/reel-07.webp" loading="lazy" decoding="async" alt="卓越 SUPERIOR PDR IG Reel">
+          <button class="reel-play" type="button" aria-label="播放影片">▶</button>
+          <a class="reel-ig" href="https://www.instagram.com/reel/DUk5mn3E8j6/" target="_blank" rel="noopener">
+            <span class="ig-ico"><svg width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2'><rect x='2' y='2' width='20' height='20' rx='5'/><circle cx='12' cy='12' r='4.2'/><circle cx='17.5' cy='6.5' r='1.2' fill='#fff' stroke='none'/></svg></span>
+            <span class="ig-nm">@superiorpdrtaiwan</span>
+            <span class="ig-go">看更多 →</span>
+          </a>
+        </div>
+      </div>
+      <div class="reel-embed" data-src="media/reels/reel-08.mp4">
+        <div class="reel-ph">
+          <img class="reel-poster" src="media/reels/reel-08.webp" loading="lazy" decoding="async" alt="卓越 SUPERIOR PDR IG Reel">
+          <button class="reel-play" type="button" aria-label="播放影片">▶</button>
+          <a class="reel-ig" href="https://www.instagram.com/reel/DSr35KqE3dt/" target="_blank" rel="noopener">
+            <span class="ig-ico"><svg width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2'><rect x='2' y='2' width='20' height='20' rx='5'/><circle cx='12' cy='12' r='4.2'/><circle cx='17.5' cy='6.5' r='1.2' fill='#fff' stroke='none'/></svg></span>
+            <span class="ig-nm">@superiorpdrtaiwan</span>
+            <span class="ig-go">看更多 →</span>
+          </a>
+        </div>
+      </div>
+      <div class="reel-embed" data-src="media/reels/reel-09.mp4">
+        <div class="reel-ph">
+          <img class="reel-poster" src="media/reels/reel-09.webp" loading="lazy" decoding="async" alt="卓越 SUPERIOR PDR IG Reel">
+          <button class="reel-play" type="button" aria-label="播放影片">▶</button>
+          <a class="reel-ig" href="https://www.instagram.com/reel/DSCoVX1k8Q-/" target="_blank" rel="noopener">
+            <span class="ig-ico"><svg width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2'><rect x='2' y='2' width='20' height='20' rx='5'/><circle cx='12' cy='12' r='4.2'/><circle cx='17.5' cy='6.5' r='1.2' fill='#fff' stroke='none'/></svg></span>
+            <span class="ig-nm">@superiorpdrtaiwan</span>
+            <span class="ig-go">看更多 →</span>
+          </a>
+        </div>
+      </div>
+      <div class="reel-embed" data-src="media/reels/reel-10.mp4">
+        <div class="reel-ph">
+          <img class="reel-poster" src="media/reels/reel-10.webp" loading="lazy" decoding="async" alt="卓越 SUPERIOR PDR IG Reel">
+          <button class="reel-play" type="button" aria-label="播放影片">▶</button>
+          <a class="reel-ig" href="https://www.instagram.com/reel/DRMkr9KE_-e/" target="_blank" rel="noopener">
+            <span class="ig-ico"><svg width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2'><rect x='2' y='2' width='20' height='20' rx='5'/><circle cx='12' cy='12' r='4.2'/><circle cx='17.5' cy='6.5' r='1.2' fill='#fff' stroke='none'/></svg></span>
+            <span class="ig-nm">@superiorpdrtaiwan</span>
+            <span class="ig-go">看更多 →</span>
+          </a>
+        </div>
+      </div>
+      <div class="reel-embed" data-src="media/reels/reel-11.mp4">
+        <div class="reel-ph">
+          <img class="reel-poster" src="media/reels/reel-11.webp" loading="lazy" decoding="async" alt="卓越 SUPERIOR PDR IG Reel">
+          <button class="reel-play" type="button" aria-label="播放影片">▶</button>
+          <a class="reel-ig" href="https://www.instagram.com/reel/DQ3-byGE-f3/" target="_blank" rel="noopener">
+            <span class="ig-ico"><svg width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2'><rect x='2' y='2' width='20' height='20' rx='5'/><circle cx='12' cy='12' r='4.2'/><circle cx='17.5' cy='6.5' r='1.2' fill='#fff' stroke='none'/></svg></span>
+            <span class="ig-nm">@superiorpdrtaiwan</span>
+            <span class="ig-go">看更多 →</span>
+          </a>
+        </div>
+      </div>
+      <div class="reel-embed" data-src="media/reels/reel-12.mp4">
+        <div class="reel-ph">
+          <img class="reel-poster" src="media/reels/reel-12.webp" loading="lazy" decoding="async" alt="卓越 SUPERIOR PDR IG Reel">
+          <button class="reel-play" type="button" aria-label="播放影片">▶</button>
+          <a class="reel-ig" href="https://www.instagram.com/reel/DQEgsnkk90t/" target="_blank" rel="noopener">
+            <span class="ig-ico"><svg width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2'><rect x='2' y='2' width='20' height='20' rx='5'/><circle cx='12' cy='12' r='4.2'/><circle cx='17.5' cy='6.5' r='1.2' fill='#fff' stroke='none'/></svg></span>
+            <span class="ig-nm">@superiorpdrtaiwan</span>
+            <span class="ig-go">看更多 →</span>
+          </a>
+        </div>
+      </div>
+      <div class="reel-embed" data-src="media/reels/reel-13.mp4">
+        <div class="reel-ph">
+          <img class="reel-poster" src="media/reels/reel-13.webp" loading="lazy" decoding="async" alt="卓越 SUPERIOR PDR IG Reel">
+          <button class="reel-play" type="button" aria-label="播放影片">▶</button>
+          <a class="reel-ig" href="https://www.instagram.com/reel/DH51yoBT2e8/" target="_blank" rel="noopener">
+            <span class="ig-ico"><svg width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2'><rect x='2' y='2' width='20' height='20' rx='5'/><circle cx='12' cy='12' r='4.2'/><circle cx='17.5' cy='6.5' r='1.2' fill='#fff' stroke='none'/></svg></span>
+            <span class="ig-nm">@superiorpdrtaiwan</span>
+            <span class="ig-go">看更多 →</span>
+          </a>
+        </div>
+      </div>
+      <div class="reel-embed" data-src="media/reels/reel-14.mp4">
+        <div class="reel-ph">
+          <img class="reel-poster" src="media/reels/reel-14.webp" loading="lazy" decoding="async" alt="卓越 SUPERIOR PDR IG Reel">
+          <button class="reel-play" type="button" aria-label="播放影片">▶</button>
+          <a class="reel-ig" href="https://www.instagram.com/reel/DCEF3TCyVAq/" target="_blank" rel="noopener">
+            <span class="ig-ico"><svg width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2'><rect x='2' y='2' width='20' height='20' rx='5'/><circle cx='12' cy='12' r='4.2'/><circle cx='17.5' cy='6.5' r='1.2' fill='#fff' stroke='none'/></svg></span>
+            <span class="ig-nm">@superiorpdrtaiwan</span>
+            <span class="ig-go">看更多 →</span>
+          </a>
+        </div>
+      </div>
+      <div class="reel-embed" data-src="media/reels/reel-15.mp4">
+        <div class="reel-ph">
+          <img class="reel-poster" src="media/reels/reel-15.webp" loading="lazy" decoding="async" alt="卓越 SUPERIOR PDR IG Reel">
+          <button class="reel-play" type="button" aria-label="播放影片">▶</button>
+          <a class="reel-ig" href="https://www.instagram.com/reel/C4xag47ysA9/" target="_blank" rel="noopener">
+            <span class="ig-ico"><svg width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#fff' stroke-width='2'><rect x='2' y='2' width='20' height='20' rx='5'/><circle cx='12' cy='12' r='4.2'/><circle cx='17.5' cy='6.5' r='1.2' fill='#fff' stroke='none'/></svg></span>
+            <span class="ig-nm">@superiorpdrtaiwan</span>
+            <span class="ig-go">看更多 →</span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-<script async src="https://www.instagram.com/embed.js"></script>
 
 <!-- Modal -->
 <div class="modal-bg" id="modalBg" role="dialog" aria-modal="true">
@@ -343,8 +501,30 @@ const io = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 /* ── Init ── */
-/* IG Reels 由 embed.js 靜態渲染，無需 loadShorts() */
-if (window.instgrm && window.instgrm.Embeds) { window.instgrm.Embeds.process(); }
+/* IG Reels：點擊海報 -> 內嵌播放 (含聲音) */
+document.querySelectorAll('.reel-embed').forEach(function(card){
+  var ph = card.querySelector('.reel-ph');
+  var playBtn = card.querySelector('.reel-play');
+  function play(e){
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    if (card.dataset.playing) return;
+    card.dataset.playing = '1';
+    var v = document.createElement('video');
+    v.src = card.dataset.src;
+    v.controls = true; v.autoplay = true; v.playsInline = true; v.setAttribute('playsinline','');
+    v.preload = 'metadata';
+    var poster = card.querySelector('.reel-poster');
+    if (poster) v.poster = poster.getAttribute('src');
+    ph.insertBefore(v, ph.firstChild);
+    var img = card.querySelector('.reel-poster'); if (img) img.style.display='none';
+    if (playBtn) playBtn.style.display='none';
+    v.play().catch(function(){});
+  }
+  ph.addEventListener('click', function(e){
+    if (e.target.closest('.reel-ig')) return; // 讓 IG 連結正常運作
+    play(e);
+  });
+});
 </script>
 </body>
 </html>
