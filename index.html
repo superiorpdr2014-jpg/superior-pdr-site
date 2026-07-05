@@ -1923,6 +1923,60 @@ svg.leaflet-image-layer.leaflet-interactive path {
   </div>
 </section>
 
+<!-- =============== ONE-WAY STREET / 找對人 =============== -->
+<style>
+  .oneway{position:relative;padding:112px 48px;overflow:hidden;background:var(--bg)}
+  .oneway::before{content:"";position:absolute;inset:0;z-index:0;
+    background:
+      linear-gradient(180deg,var(--bg) 0%,rgba(7,8,11,.7) 15%,rgba(7,8,11,.7) 85%,var(--bg) 100%),
+      linear-gradient(90deg,rgba(7,8,11,.92),rgba(7,8,11,.5) 70%,rgba(7,8,11,.62)),
+      url("media/oneway-bg.webp") center/cover no-repeat;}
+  .oneway .container{position:relative;z-index:1}
+  .oneway .ow-title{font-family:'Bebas Neue';font-size:clamp(40px,6.4vw,88px);line-height:.98;color:#fff;letter-spacing:.02em;margin:14px 0 22px}
+  .oneway .ow-title .accent{color:var(--accent)}
+  .oneway .ow-body{max-width:770px}
+  .oneway .ow-body p{color:var(--ink-dim);font-size:16.5px;line-height:1.95;margin:0 0 18px}
+  .oneway .ow-body p strong{color:#fff;font-weight:600}
+  .oneway .ow-quote{border-left:3px solid var(--accent);margin:32px 0 24px;padding:6px 0 6px 24px;font-family:'Space Grotesk',sans-serif;font-style:italic;font-weight:500;font-size:clamp(19px,2.3vw,27px);line-height:1.5;color:#fff;max-width:770px}
+  .oneway .ow-author{display:flex;align-items:center;gap:14px}
+  .oneway .ow-author img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center 18%;border:2px solid var(--accent);flex:0 0 auto}
+  .oneway .ow-name{font-family:'JetBrains Mono';font-weight:700;letter-spacing:.14em;color:#fff;font-size:14px}
+  .oneway .ow-role{font-family:'JetBrains Mono';font-size:11px;color:var(--ink-mute);margin-top:3px;letter-spacing:.04em}
+  .oneway .ow-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:54px}
+  @media(max-width:760px){.oneway .ow-photos{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.oneway .ow-photos{grid-template-columns:1fr}}
+  .oneway figure{margin:0;border-radius:10px;overflow:hidden;border:1px solid var(--line);position:relative;background:var(--bg-elev)}
+  .oneway figure img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+  .oneway figure figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 12px;background:linear-gradient(transparent,rgba(7,8,11,.92));color:#fff;font-size:12.5px;font-family:'JetBrains Mono';letter-spacing:.03em}
+  .oneway figure figcaption b{color:var(--accent);font-weight:700;display:block;font-size:10px;letter-spacing:.16em;margin-bottom:4px}
+  .oneway .ow-cap{margin:26px 0 0;color:var(--ink-dim);font-size:14.5px;line-height:1.8;display:flex;align-items:flex-start;gap:9px;max-width:820px}
+  .oneway .ow-cap .warn{color:var(--accent);flex:0 0 auto;font-size:16px;line-height:1.6}
+  @media(max-width:560px){.oneway{padding:72px 20px !important}}
+</style>
+<section class="oneway" data-screen-label="找對人">
+  <div class="container">
+    <div class="ow-body reveal">
+      <div class="section-eyebrow ow-eyebrow">WHY THE FIRST REPAIR MATTERS</div>
+      <h2 class="ow-title">凹痕修復，是一條<span class="accent">單行道</span>。</h2>
+      <p class="ow-p1">一個凹痕能不能完美修復，往往取決於「第一個碰它的人」。一旦被推過頭、亂敲、鑽洞、上補土 —— 鈑金結構被破壞、原廠漆被弄裂，後面再厲害的技師，也救不回它原本的樣子。</p>
+      <p class="ow-p2">這就是為什麼卓越堅持<strong>不鑽洞、不烤漆、不補土</strong>，交車前還要由另一位技師以線鈑逐一覆核鈑面。因為我們很清楚：修凹痕，<strong>沒有「重來一次」</strong>。</p>
+      <blockquote class="ow-quote">「凹痕修復是一條單行道。第一個技師，要嘛把它修對，要嘛就毀了它 —— 讓後面每一個人，都再也沒有機會。」</blockquote>
+      <div class="ow-author">
+        <img src="media/adv-jay-speaking-1.jpg" alt="小馬 Jay Ma">
+        <div><div class="ow-name">小馬 JAY MA</div><div class="ow-role">卓越凹痕修復 SUPERIOR PDR · 自 2013 赴美習藝</div></div>
+      </div>
+    </div>
+
+    <div class="ow-photos reveal">
+      <figure><img loading="lazy" decoding="async" src="media/badrepair-1.webp" alt="鈑面被推過頭隆起變形的失敗修復"><figcaption><b>推過頭</b>鈑面隆起變形</figcaption></figure>
+      <figure><img loading="lazy" decoding="async" src="media/badrepair-2.webp" alt="過度敲擊造成的凹點與爆漆"><figcaption><b>過度敲擊</b>爆漆凹點</figcaption></figure>
+      <figure><img loading="lazy" decoding="async" src="media/badrepair-3.webp" alt="施作不當造成鈑面波浪反光扭曲"><figcaption><b>施作不當</b>鈑面波浪</figcaption></figure>
+    </div>
+
+    <p class="ow-cap reveal"><span class="warn">⚠</span><span>這些，都是在別家推壞後、送到卓越時的真實狀況。找對人，第一次就把它修對。</span></p>
+  </div>
+</section>
+
 <!-- =============== SEMINAR / TEAM =============== -->
 <section class="seminar" data-screen-label="05 Team">
   <div class="container">
@@ -2770,6 +2824,28 @@ function hideTweaks(){
     ['footer .logo-text .bot-line',
       '© 2026 SUPERIOR PDR · ALL RIGHTS RESERVED',
       '© 2026 SUPERIOR PDR · 版權所有',
+      'text'],
+    ['.ow-eyebrow', 'WHY THE FIRST REPAIR MATTERS', '為什麼第一次就要找對人', 'text'],
+    ['.ow-title', 'Dent repair is a <span class="accent">one-way street</span>.', '凹痕修復，是一條<span class="accent">單行道</span>。', 'html'],
+    ['.ow-p1',
+      'Whether a dent can be perfectly repaired often comes down to the first person who touches it. Once it has been over-pushed, wrongly tapped, drilled or filled, the metal is damaged and the factory paint cracked, and no technician after that can bring it back to original.',
+      '一個凹痕能不能完美修復，往往取決於「第一個碰它的人」。一旦被推過頭、亂敲、鑽洞、上補土 —— 鈑金結構被破壞、原廠漆被弄裂，後面再厲害的技師，也救不回它原本的樣子。',
+      'text'],
+    ['.ow-p2',
+      'That is why Superior never drills, never repaints and never uses filler, and why a second technician re-checks every panel with a board before handover. Because a dent repair has <strong>no second take</strong>.',
+      '這就是為什麼卓越堅持<strong>不鑽洞、不烤漆、不補土</strong>，交車前還要由另一位技師以線鈑逐一覆核鈑面。因為我們很清楚：修凹痕，<strong>沒有「重來一次」</strong>。',
+      'html'],
+    ['.ow-quote',
+      '「Paintless dent repair is a one-way street. The first tech either fixes it right, or ruins it and takes the chance away from everyone who comes after.」',
+      '「凹痕修復是一條單行道。第一個技師，要嘛把它修對，要嘛就毀了它 —— 讓後面每一個人，都再也沒有機會。」',
+      'text'],
+    ['.ow-role', 'SUPERIOR PDR · Learning PDR in the USA since 2013', '卓越凹痕修復 SUPERIOR PDR · 自 2013 赴美習藝', 'text'],
+    ['.ow-photos figure:nth-child(1) figcaption', '<b>OVER-PUSHED</b>Panel bulged and warped', '<b>推過頭</b>鈑面隆起變形', 'html'],
+    ['.ow-photos figure:nth-child(2) figcaption', '<b>OVER-TAPPED</b>Cracked paint and pitting', '<b>過度敲擊</b>爆漆凹點', 'html'],
+    ['.ow-photos figure:nth-child(3) figcaption', '<b>BAD TECHNIQUE</b>Wavy panel surface', '<b>施作不當</b>鈑面波浪', 'html'],
+    ['.ow-cap span:last-child',
+      'These are real cars, over-pushed elsewhere and then brought to Superior. Find the right hands and get it right the first time.',
+      '這些，都是在別家推壞後、送到卓越時的真實狀況。找對人，第一次就把它修對。',
       'text'],
   ];
 
