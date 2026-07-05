@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# 表單送出後的感謝頁不需收錄
+Disallow: /pdrindentationthx.html
+
+Sitemap: https://tar-tw.com/sitemap.xml
