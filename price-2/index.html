@@ -695,6 +695,60 @@
         </div>
       </div>
     </div>
+
+    <!-- ============ 修復變因加成對照表 ============ -->
+    <style>
+      .factor-pct{margin-top:46px;border-top:1px solid var(--line);padding-top:42px}
+      .factor-pct .fp-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+      .factor-pct .fp-title{font-size:clamp(20px,2.6vw,30px);color:var(--ink);margin:0 0 14px;font-weight:700;line-height:1.32}
+      .factor-pct .fp-sub{color:var(--ink-dim);font-size:14.5px;line-height:1.85;max-width:800px;margin:0 0 30px}
+      .fp-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+      @media(max-width:820px){.fp-groups{grid-template-columns:1fr}}
+      .fp-col{background:var(--bg-elev);border:1px solid var(--line);border-radius:13px;padding:22px 22px 10px}
+      .fp-gtitle{font-size:14.5px;font-weight:700;color:var(--ink);letter-spacing:.04em;padding-bottom:13px;margin-bottom:6px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:9px}
+      .fp-gtitle::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);flex:0 0 auto}
+      .fp-item{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,.07);font-size:14px}
+      .fp-item:last-child{border-bottom:0}
+      .fp-item .fp-name{color:var(--ink-dim);line-height:1.4}
+      .fp-item .fp-val{color:var(--accent);font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14.5px;white-space:nowrap}
+      .fp-item .fp-val.base{color:var(--ink-mute)}
+      .fp-note{margin-top:20px;font-size:12.5px;color:var(--ink-mute);line-height:1.75;max-width:840px}
+    </style>
+    <div class="factor-pct reveal">
+      <div class="fp-eyebrow" data-en="REPAIR FACTOR SURCHARGES" data-zh="修復變因加成對照">修復變因加成對照</div>
+      <h2 class="fp-title" data-en="How each repair factor affects the base price." data-zh="每一項修復變因，如何影響基礎價格。">每一項修復變因，如何影響基礎價格。</h2>
+      <p class="fp-sub" data-en="The prices above are the base starting point for a single dent. In practice the dent's position, severity and the panel's material all add to that base by difficulty. Below is the surcharge for each factor — the final quote is always confirmed on site." data-zh="上方為單一基礎凹痕的參考起價。實際修復時，凹痕的「位置」、「損傷程度」與鈑件「材質特性」等變因，都會在基礎價格上依難度加成。以下為各變因對基礎價格的加成幅度參考，最終仍以現場評估為準。">上方為單一基礎凹痕的參考起價。實際修復時，凹痕的「位置」、「損傷程度」與鈑件「材質特性」等變因，都會在基礎價格上依難度加成。以下為各變因對基礎價格的加成幅度參考，最終仍以現場評估為準。</p>
+      <div class="fp-groups">
+        <div class="fp-col">
+          <div class="fp-gtitle" data-en="① Location &amp; Access" data-zh="① 位置與通道">① 位置與通道</div>
+          <div class="fp-item"><span class="fp-name" data-en="Braced Panel" data-zh="加固鈑件">加固鈑件</span><span class="fp-val">+25%</span></div>
+          <div class="fp-item"><span class="fp-name" data-en="Panel Edge" data-zh="鈑件邊緣">鈑件邊緣</span><span class="fp-val">+25%</span></div>
+          <div class="fp-item"><span class="fp-name" data-en="Obstructed Access" data-zh="受阻通道">受阻通道</span><span class="fp-val">+25%</span></div>
+          <div class="fp-item"><span class="fp-name" data-en="On Body Line" data-zh="車身折線上">車身折線上</span><span class="fp-val">+50%</span></div>
+          <div class="fp-item"><span class="fp-name" data-en="Concave Curvature Layering" data-zh="內凹弧度加層">內凹弧度加層</span><span class="fp-val">+10%</span></div>
+        </div>
+        <div class="fp-col">
+          <div class="fp-gtitle" data-en="② Damage Severity" data-zh="② 損傷程度">② 損傷程度</div>
+          <div class="fp-item"><span class="fp-name" data-en="Shallow Depth" data-zh="淺層凹痕">淺層凹痕</span><span class="fp-val base" data-en="Base +0%" data-zh="基礎 +0%">基礎 +0%</span></div>
+          <div class="fp-item"><span class="fp-name" data-en="Medium Depth" data-zh="中度凹痕">中度凹痕</span><span class="fp-val">+15%</span></div>
+          <div class="fp-item"><span class="fp-name" data-en="Deep Depth" data-zh="深層凹痕">深層凹痕</span><span class="fp-val">+30%</span></div>
+          <div class="fp-item"><span class="fp-name" data-en="Crease" data-zh="摺痕">摺痕</span><span class="fp-val">+25%</span></div>
+        </div>
+        <div class="fp-col">
+          <div class="fp-gtitle" data-en="③ Material &amp; Special" data-zh="③ 材質與特殊">③ 材質與特殊</div>
+          <div class="fp-item"><span class="fp-name" data-en="Aluminum / HSS" data-zh="鋁合金／高強度鋼">鋁合金／高強度鋼</span><span class="fp-val">+50%</span></div>
+          <div class="fp-item"><span class="fp-name" data-en="Classic / Vintage Metal" data-zh="經典／古董車金屬">經典／古董車金屬</span><span class="fp-val">+30%</span></div>
+          <div class="fp-item"><span class="fp-name" data-en="Exotic Vehicle" data-zh="稀有車款">稀有車款</span><span class="fp-val">+40%</span></div>
+          <div class="fp-item"><span class="fp-name" data-en="Glue Pull Required" data-zh="需膠拉修復">需膠拉修復</span><span class="fp-val">+50%</span></div>
+          <div class="fp-item"><span class="fp-name" data-en="Structural Panel Conditioning" data-zh="結構鈑件調整">結構鈑件調整</span><span class="fp-val">+35%</span></div>
+          <div class="fp-item"><span class="fp-name" data-en="Lateral Tension" data-zh="側向張力">側向張力</span><span class="fp-val">+25%</span></div>
+          <div class="fp-item"><span class="fp-name" data-en="Laminated Glass (No R&amp;I)" data-zh="膠合玻璃（免R&amp;I）">膠合玻璃（免R&amp;I）</span><span class="fp-val">+25%</span></div>
+          <div class="fp-item"><span class="fp-name" data-en="Sound Deadener" data-zh="隔音材">隔音材</span><span class="fp-val">+25%</span></div>
+        </div>
+      </div>
+      <p class="fp-note" data-en="Surcharges reflect the added labour, difficulty and technique required (e.g. glue-pull, lateral tension). More than one factor can apply to the same dent. All percentages are a reference guide only — the final quote is confirmed after a free on-site inspection." data-zh="加成反映的是額外工時、修復難度與所需技術（例如膠拉、側向張力等）。同一個凹痕可能同時適用多項變因。以上百分比僅供參考，實際報價一律以免費現場評估為準。">加成反映的是額外工時、修復難度與所需技術（例如膠拉、側向張力等）。同一個凹痕可能同時適用多項變因。以上百分比僅供參考，實際報價一律以免費現場評估為準。</p>
+    </div>
+
     <div class="pc-disclaimer reveal">
       ＊ 以上價格為單一基礎凹痕（直徑約 2 cm 以下）之參考起價，實際報價依凹痕深度、位置、數量及車款鈑件特性而定。最終以現場評估為準。
     </div>
