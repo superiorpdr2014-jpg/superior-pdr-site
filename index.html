@@ -1905,7 +1905,17 @@ svg.leaflet-image-layer.leaflet-interactive path {
   </div>
 </section>
 
-<hr class="fx-divider" style="margin:8px auto">
+<!-- =============== 施作實況 PHOTO BAND =============== -->
+<style>
+  .photo-band{position:relative;width:100%;line-height:0;background:var(--bg);overflow:hidden}
+  .photo-band .pb-img{width:100%;height:clamp(320px,50vw,680px);object-fit:cover;object-position:center 45%;display:block}
+  .photo-band::before,.photo-band::after{content:"";position:absolute;left:0;right:0;height:90px;z-index:1;pointer-events:none}
+  .photo-band::before{top:0;background:linear-gradient(var(--bg),transparent)}
+  .photo-band::after{bottom:0;background:linear-gradient(transparent,var(--bg))}
+</style>
+<section class="photo-band" aria-label="卓越 SUPERIOR PDR 施作實況">
+  <img class="pb-img" loading="lazy" decoding="async" src="media/band-work.webp" alt="卓越技師為 Porsche 718 GT4 RS 施作免烤漆凹痕修復 PDR">
+</section>
 <!-- =============== WHY SUPERIOR =============== -->
 <section class="why-sup" data-screen-label="02b Why Superior" style="padding:96px 48px;position:relative;border-top:1px solid var(--line)">
   <style>
