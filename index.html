@@ -1836,6 +1836,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .oneway figure img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
   .oneway figure figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 12px;background:linear-gradient(transparent,rgba(7,8,11,.92));color:#fff;font-size:12.5px;font-family:'JetBrains Mono';letter-spacing:.03em}
   .oneway figure figcaption b{color:var(--accent);font-weight:700;display:block;font-size:10px;letter-spacing:.16em;margin-bottom:4px}
+  .oneway .ow-ba{grid-column:span 2;position:relative;display:grid;grid-template-columns:1fr 1fr;gap:5px;border:1px solid var(--accent);border-radius:10px;overflow:hidden;background:var(--bg-elev)}
+  .oneway .ow-ba-im{position:relative;min-width:0}
+  .oneway .ow-ba-im img{width:100%;height:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+  .oneway .ow-ba-tag{position:absolute;top:0;left:0;right:0;z-index:3;text-align:center;font-family:'JetBrains Mono';font-size:11px;font-weight:700;letter-spacing:.14em;color:#fff;background:linear-gradient(rgba(7,8,11,.88),transparent);padding:11px 8px 18px}
+  .oneway .ba-lb{position:absolute;bottom:10px;left:10px;z-index:2;font-family:'JetBrains Mono';font-size:11px;font-weight:700;letter-spacing:.08em;padding:5px 10px;border-radius:4px;color:#fff}
+  .oneway .ba-lb.before{background:rgba(7,8,11,.78);border:1px solid var(--line-bright)}
+  .oneway .ba-lb.after{background:var(--accent)}
   .oneway .ow-cap{margin:24px 0 0;color:var(--ink-dim);font-size:14.5px;line-height:1.8;display:flex;align-items:flex-start;gap:9px;max-width:820px}
   .oneway .ow-cap .warn{color:var(--accent);flex:0 0 auto;font-size:16px}
 </style>
@@ -1862,8 +1869,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <figure><img loading="lazy" decoding="async" src="media/badrepair-2.webp" alt="過度敲擊造成的凹點與爆漆"><figcaption><b>過度敲擊</b>爆漆凹點</figcaption></figure>
       <figure><img loading="lazy" decoding="async" src="media/badrepair-3.webp" alt="施作不當造成鈑面波浪反光扭曲"><figcaption><b>施作不當</b>鈑面波浪</figcaption></figure>
       <figure><img loading="lazy" decoding="async" src="media/badrepair-4.webp" alt="膠拉施工失敗造成漆面剝離"><figcaption><b>膠拉失敗</b>漆面剝離</figcaption></figure>
-      <figure><img loading="lazy" decoding="async" src="media/badrepair-5.webp" alt="修復後鈑面高低不平反光扭曲"><figcaption><b>高低不平</b>反光扭曲</figcaption></figure>
-      <figure><img loading="lazy" decoding="async" src="media/badrepair-6.webp" alt="推出高點造成鈑面凸起"><figcaption><b>推出高點</b>鈑面凸起</figcaption></figure>
+      <div class="ow-ba">
+        <div class="ow-ba-tag">失敗案例 · 修復前後對比</div>
+        <div class="ow-ba-im"><img loading="lazy" decoding="async" src="media/badrepair-5.webp" alt="修復前的凹痕"><span class="ba-lb before">修復前</span></div>
+        <div class="ow-ba-im"><img loading="lazy" decoding="async" src="media/badrepair-6.webp" alt="別家修復後鈑面凸起失敗"><span class="ba-lb after">修復後 · 失敗</span></div>
+      </div>
     </div>
     <p class="ow-cap reveal"><span class="warn">⚠</span><span>這些，都是在別家推壞後、送到卓越時的真實狀況。找對人，第一次就把它修對。</span></p>
   </div>
@@ -2850,8 +2860,9 @@ function hideTweaks(){
     ['.ow-photos figure:nth-child(2) figcaption', '<b>OVER-TAPPED</b>Cracked paint and pitting', '<b>過度敲擊</b>爆漆凹點', 'html'],
     ['.ow-photos figure:nth-child(3) figcaption', '<b>BAD TECHNIQUE</b>Wavy panel surface', '<b>施作不當</b>鈑面波浪', 'html'],
     ['.ow-photos figure:nth-child(4) figcaption', '<b>GLUE-PULL FAIL</b>Paint peeled off', '<b>膠拉失敗</b>漆面剝離', 'html'],
-    ['.ow-photos figure:nth-child(5) figcaption', '<b>UNEVEN</b>Distorted reflection', '<b>高低不平</b>反光扭曲', 'html'],
-    ['.ow-photos figure:nth-child(6) figcaption', '<b>PUSHED TOO FAR</b>High spots', '<b>推出高點</b>鈑面凸起', 'html'],
+    ['.ow-ba-tag', 'FAILED CASE · BEFORE / AFTER', '失敗案例 · 修復前後對比', 'text'],
+    ['.ow-ba .ba-lb.before', 'BEFORE', '修復前', 'text'],
+    ['.ow-ba .ba-lb.after', 'AFTER · FAILED', '修復後 · 失敗', 'text'],
     ['.ow-cap span:last-child',
       'These are real cars, over-pushed elsewhere and then brought to Superior. Find the right hands and get it right the first time.',
       '這些，都是在別家推壞後、送到卓越時的真實狀況。找對人，第一次就把它修對。',
