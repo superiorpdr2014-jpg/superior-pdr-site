@@ -51,6 +51,12 @@
 /* ── Shorts grid (9:16) ── */
 .shorts-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 
+/* ── IG Reels grid (official embed) ── */
+.reels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;align-items:start}
+.reels-grid .instagram-media{margin:0!important;min-width:0!important;width:100%!important;max-width:100%!important}
+@media(max-width:1100px){.reels-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.reels-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}}
+
 /* ── Video card ── */
 .vc,.sc{position:relative;background:var(--bg-elev);border:1px solid var(--line);border-radius:6px;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .2s}
 .vc{aspect-ratio:16/9}
@@ -132,16 +138,33 @@
   </div>
 </section>
 
-<!-- Section 2: Shorts -->
-<section class="vg-sec" data-screen-label="03 Shorts" id="secShorts">
+<!-- Section 2: IG Reels -->
+<section class="vg-sec" data-screen-label="03 Reels" id="secReels">
   <div class="vg-inner">
     <div class="vg-hd reveal">
-      <div class="section-eyebrow" style="margin:0">短影音 · SHORTS</div>
-      <a href="https://www.youtube.com/@superiorpdrart/shorts" target="_blank" rel="noopener" class="vg-link">全部短影音 ↗</a>
+      <div class="section-eyebrow" style="margin:0">IG 短影音 · REELS</div>
+      <a href="https://www.instagram.com/superiorpdrtaiwan/reels/" target="_blank" rel="noopener" class="vg-link">全部 REELS ↗</a>
     </div>
-    <div class="shorts-grid reveal delay-1" id="shortsGrid"></div>
+    <div class="reels-grid reveal delay-1" id="reelsGrid">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DO5vDYjiEX6/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C6xzc9GSgfG/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C_iIE0ASqGM/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXwUNE1zn54/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXrK8vAE9Eo/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DVyJQY_E8NT/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DUk5mn3E8j6/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DSr35KqE3dt/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DSCoVX1k8Q-/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DRMkr9KE_-e/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DQ3-byGE-f3/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DQEgsnkk90t/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DH51yoBT2e8/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DCEF3TCyVAq/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/C4xag47ysA9/" data-instgrm-version="14"></blockquote>
+    </div>
   </div>
 </section>
+<script async src="https://www.instagram.com/embed.js"></script>
 
 <!-- Modal -->
 <div class="modal-bg" id="modalBg" role="dialog" aria-modal="true">
@@ -320,7 +343,8 @@ const io = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 /* ── Init ── */
-loadShorts();
+/* IG Reels 由 embed.js 靜態渲染，無需 loadShorts() */
+if (window.instgrm && window.instgrm.Embeds) { window.instgrm.Embeds.process(); }
 </script>
 </body>
 </html>
