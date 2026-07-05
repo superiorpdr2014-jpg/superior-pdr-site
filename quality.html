@@ -156,6 +156,99 @@
   </div>
 </section>
 
+<!-- ============ 找對人 / 單行道（quality 版，含後果流程） ============ -->
+<style>
+  .oneway{position:relative;background:var(--bg);padding:0 0 96px;overflow:hidden;border-top:1px solid var(--line)}
+  .oneway .ow-hero{position:relative;padding:96px 48px;overflow:hidden}
+  .oneway .ow-hero-img{position:absolute;left:0;top:0;bottom:0;width:56%;z-index:0;background:url("media/repair-live.webp") center center/cover no-repeat;-webkit-mask-image:linear-gradient(90deg,#000 0,#000 42%,transparent 94%);mask-image:linear-gradient(90deg,#000 0,#000 42%,transparent 94%)}
+  .oneway .ow-hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg),transparent 22%,transparent 78%,var(--bg))}
+  .oneway .ow-hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;display:flex;justify-content:flex-end}
+  .oneway .ow-body{width:52%;min-width:0;max-width:600px}
+  @media(max-width:860px){.oneway .ow-hero{padding:70px 20px}.oneway .ow-hero-img{width:100%;opacity:.22;-webkit-mask-image:none;mask-image:none}.oneway .ow-hero-inner{justify-content:stretch}.oneway .ow-body{width:100%;max-width:none}}
+  .oneway .ow-title{font-family:'Bebas Neue';font-size:clamp(40px,5.4vw,80px);line-height:.98;color:#fff;letter-spacing:.02em;margin:14px 0 22px}
+  .oneway .ow-title .accent{color:var(--accent)}
+  .oneway .ow-body p{color:var(--ink-dim);font-size:15px;line-height:1.9;margin:0 0 16px}
+  .oneway .ow-body p strong{color:#fff;font-weight:600}
+  .oneway .ow-quote{border-left:3px solid var(--accent);margin:28px 0 22px;padding:6px 0 6px 22px;font-family:'Space Grotesk',sans-serif;font-style:italic;font-weight:500;font-size:clamp(15.5px,1.6vw,20px);line-height:1.55;color:#fff}
+  .oneway .ow-author{display:flex;align-items:center;gap:14px}
+  .oneway .ow-author img{width:68px;height:90px;border-radius:9px;object-fit:cover;object-position:center top;border:2px solid var(--accent);flex:0 0 auto}
+  .oneway .ow-name{font-family:'JetBrains Mono';font-weight:700;letter-spacing:.14em;color:#fff;font-size:14px}
+  .oneway .ow-role{font-family:'JetBrains Mono';font-size:11px;color:var(--ink-mute);margin-top:3px;letter-spacing:.04em}
+  .oneway .ow-below{max-width:1200px;margin:0 auto;padding:0 48px}
+  @media(max-width:560px){.oneway .ow-below{padding:0 20px}}
+  /* 後果流程 callout（quality 版設計變更） */
+  .oneway .ow-cons{border:1px solid rgba(255,42,61,.35);background:linear-gradient(180deg,rgba(255,42,61,.06),transparent);border-radius:12px;padding:26px 28px;margin:0 0 28px}
+  .oneway .ow-cons-head{font-family:'Bebas Neue';font-size:clamp(22px,3.2vw,34px);color:#fff;letter-spacing:.02em;margin-bottom:16px;line-height:1.06}
+  .oneway .ow-cons-head .accent{color:var(--accent)}
+  .oneway .ow-cons-flow{display:flex;flex-wrap:wrap;align-items:center;gap:9px;font-family:'JetBrains Mono';font-size:13px;color:var(--ink-dim)}
+  .oneway .ow-cons-flow .step{border:1px solid var(--line-bright);border-radius:6px;padding:8px 13px;background:var(--bg-elev)}
+  .oneway .ow-cons-flow .arw{color:var(--accent);font-weight:700}
+  .oneway .ow-cons-flow .bad{border-color:var(--accent);color:#fff;background:var(--accent-soft)}
+  .oneway .ow-cons-note{margin:16px 0 0;color:var(--ink-dim);font-size:14.5px;line-height:1.85;max-width:880px}
+  .oneway .ow-cons-note b{color:#fff}
+  @media(max-width:560px){.oneway .ow-cons-flow{font-size:12px;gap:7px}.oneway .ow-cons{padding:20px}}
+  .oneway .ow-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:760px){.oneway .ow-photos{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.oneway .ow-photos{grid-template-columns:1fr 1fr;gap:10px}}
+  .oneway figure{margin:0;border-radius:10px;overflow:hidden;border:1px solid var(--line);position:relative;background:var(--bg-elev)}
+  .oneway figure img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+  .oneway figure.ow-zoom img{transform:scale(1.4);transform-origin:46% 26%}
+  .oneway figure figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 12px;background:linear-gradient(transparent,rgba(7,8,11,.92));color:#fff;font-size:12.5px;font-family:'JetBrains Mono';letter-spacing:.03em}
+  .oneway figure figcaption b{color:var(--accent);font-weight:700;display:block;font-size:10px;letter-spacing:.16em;margin-bottom:4px}
+  .oneway .ow-ba{grid-column:span 2;position:relative;display:flex;gap:5px;border:1px solid var(--accent);border-radius:10px;overflow:hidden;background:var(--bg-elev)}
+  .oneway .ow-ba-im{position:relative;flex:1 1 0;min-width:0;overflow:hidden}
+  .oneway .ow-ba-im img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+  .oneway .ow-ba-tag{position:absolute;top:0;left:0;right:0;z-index:3;text-align:center;font-family:'JetBrains Mono';font-size:11px;font-weight:700;letter-spacing:.14em;color:#fff;background:linear-gradient(rgba(7,8,11,.88),transparent);padding:11px 8px 18px}
+  .oneway .ba-lb{position:absolute;bottom:10px;left:10px;z-index:2;font-family:'JetBrains Mono';font-size:11px;font-weight:700;letter-spacing:.08em;padding:5px 10px;border-radius:4px;color:#fff}
+  .oneway .ba-lb.before{background:rgba(7,8,11,.78);border:1px solid var(--line-bright)}
+  .oneway .ba-lb.after{background:var(--accent)}
+  .oneway .ow-cap{margin:24px 0 0;color:var(--ink-dim);font-size:14.5px;line-height:1.8;display:flex;align-items:flex-start;gap:9px;max-width:820px}
+  .oneway .ow-cap .warn{color:var(--accent);flex:0 0 auto;font-size:16px}
+</style>
+<section class="oneway">
+  <div class="ow-hero">
+    <div class="ow-hero-img"></div>
+    <div class="ow-hero-inner">
+      <div class="ow-body reveal">
+        <div class="section-eyebrow" data-en="QUALITY IS DECIDED ON THE FIRST REPAIR" data-zh="修復品質，從「第一次」就決定">修復品質，從「第一次」就決定</div>
+        <h2 class="ow-title" data-en="Dent repair is a <span class='accent'>one-way street</span>." data-zh="凹痕修復，是一條<span class='accent'>單行道</span>。">凹痕修復，是一條<span class="accent">單行道</span>。</h2>
+        <p data-en="Whether a dent can be perfectly repaired often comes down to the first person who works on it. An inexperienced technician cannot read the metal's tension precisely; once the panel is over-pushed, pulled in the wrong spot, or the factory paint is cracked, no technician after that can bring it back to original." data-zh="一個凹痕能不能完美修復，往往決定在「第一個修它的人」。經驗不足的技師無法精準拿捏鈑金的張力，一旦推過頭、拉錯位置、把原廠漆弄裂，後面再厲害的技師，也救不回它原本的樣子。">一個凹痕能不能完美修復，往往決定在「第一個修它的人」。經驗不足的技師無法精準拿捏鈑金的張力，一旦推過頭、拉錯位置、把原廠漆弄裂，後面再厲害的技師，也救不回它原本的樣子。</p>
+        <p data-en="That is why Superior insists on <strong>imported tools and international standards</strong>, taking every single dent seriously, and has a second technician re-check every panel with a reflector board before handover. Because a dent repair has <strong>no second take</strong>." data-zh="這就是為什麼卓越堅持使用<strong>進口工具、與國際接軌</strong>、不小看每一個凹痕，交車前還要由另一位技師以光板逐一覆核鈑面。因為我們很清楚：修凹痕，<strong>沒有「再來一次」</strong>。">這就是為什麼卓越堅持使用<strong>進口工具、與國際接軌</strong>、不小看每一個凹痕，交車前還要由另一位技師以光板逐一覆核鈑面。因為我們很清楚：修凹痕，<strong>沒有「再來一次」</strong>。</p>
+        <blockquote class="ow-quote" data-en="&#8220;Paintless dent repair is a one-way street. The first tech either fixes it right, or ruins it and takes the chance away from everyone who comes after.&#8221;" data-zh="「凹痕修復是一條單行道。第一個技師，要嘛把它修對，要嘛就毀了它 —— 讓後面每一個人，都再也沒有機會。」">「凹痕修復是一條單行道。第一個技師，要嘛把它修對，要嘛就毀了它 —— 讓後面每一個人，都再也沒有機會。」</blockquote>
+        <div class="ow-author">
+          <img src="media/jay-avatar.webp" alt="小馬 Jay Ma">
+          <div><div class="ow-name">小馬 JAY MA</div><div class="ow-role" data-en="SUPERIOR PDR · Taiwan PDR Leader" data-zh="卓越凹痕修復 SUPERIOR PDR · 台灣 PDR 領導者">卓越凹痕修復 SUPERIOR PDR · 台灣 PDR 領導者</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ow-below">
+    <div class="ow-cons reveal">
+      <div class="ow-cons-head" data-en="Once the factory paint <span class='accent'>cracks</span>, PDR is off the table." data-zh="一旦原廠漆被<span class='accent'>弄裂</span>，就回不去 PDR 了。">一旦原廠漆被<span class="accent">弄裂</span>，就回不去 PDR 了。</div>
+      <div class="ow-cons-flow">
+        <span class="step" data-en="Cracked paint" data-zh="弄裂原廠漆">弄裂原廠漆</span><span class="arw">&rarr;</span>
+        <span class="step" data-en="Grind panel" data-zh="磨平鈑面">磨平鈑面</span><span class="arw">&rarr;</span>
+        <span class="step" data-en="Body filler" data-zh="上補土">上補土</span><span class="arw">&rarr;</span>
+        <span class="step" data-en="Repaint" data-zh="重新烤漆">重新烤漆</span><span class="arw">&rarr;</span>
+        <span class="step bad" data-en="Longer downtime &amp; lost resale value" data-zh="工時拉長・原漆價值折損">工時拉長・原漆價值折損</span>
+      </div>
+      <p class="ow-cons-note" data-en="The whole value of PDR is that it <b>never touches the factory paint</b>. Once the paint cracks, the only path left is a traditional body shop &mdash; grinding, filler and repaint. Not only does the downtime grow, the car also loses its original-paint value at resale or trade-in. That is exactly why the first repair has to be done by the right hands." data-zh="PDR 最大的價值，就是「<b>完全不動原廠漆</b>」。一旦爆漆，就只能走傳統鈑烤 —— 磨掉、補土、烤漆；不只工時大幅拉長，車輛在賣出或換車時，原漆價值也一起被折損。這，就是為什麼第一次一定要找對人。">PDR 最大的價值，就是「<b>完全不動原廠漆</b>」。一旦爆漆，就只能走傳統鈑烤 —— 磨掉、補土、烤漆；不只工時大幅拉長，車輛在賣出或換車時，原漆價值也一起被折損。這，就是為什麼第一次一定要找對人。</p>
+    </div>
+    <div class="ow-photos reveal">
+      <figure class="ow-zoom"><img loading="lazy" decoding="async" src="media/badrepair-1.webp" alt="修復不當造成板金凹凸不平"><figcaption data-en="<b>BAD REPAIR</b>Uneven, lumpy panel" data-zh="<b>修復不當</b>板金凹凸不平"><b>修復不當</b>板金凹凸不平</figcaption></figure>
+      <figure><img loading="lazy" decoding="async" src="media/badrepair-2.webp" alt="過度出力造成金屬疲乏爆漆"><figcaption data-en="<b>OVER-FORCED</b>Metal fatigue and paint burst" data-zh="<b>過度出力</b>金屬疲乏爆漆"><b>過度出力</b>金屬疲乏爆漆</figcaption></figure>
+      <figure><img loading="lazy" decoding="async" src="media/badrepair-3.webp" alt="施作不當造成鈑面波浪反光扭曲"><figcaption data-en="<b>BAD TECHNIQUE</b>Wavy panel surface" data-zh="<b>施作不當</b>鈑面波浪"><b>施作不當</b>鈑面波浪</figcaption></figure>
+      <figure><img loading="lazy" decoding="async" src="media/badrepair-4.webp" alt="施力不當造成漆面尖點與波浪"><figcaption data-en="<b>WRONG FORCE</b>Sharp points and waves" data-zh="<b>施力不當</b>漆面尖點與波浪"><b>施力不當</b>漆面尖點與波浪</figcaption></figure>
+      <div class="ow-ba">
+        <div class="ow-ba-tag" data-en="FAILED CASE · BEFORE / AFTER" data-zh="失敗案例 · 修復前後對比">失敗案例 · 修復前後對比</div>
+        <div class="ow-ba-im"><img loading="lazy" decoding="async" src="media/badrepair-5.webp" alt="修復前的凹痕"><span class="ba-lb before" data-en="BEFORE" data-zh="修復前">修復前</span></div>
+        <div class="ow-ba-im"><img loading="lazy" decoding="async" src="media/badrepair-6.webp" alt="別家修復後鈑面凸起失敗"><span class="ba-lb after" data-en="AFTER · FAILED" data-zh="修復後 · 失敗">修復後 · 失敗</span></div>
+      </div>
+    </div>
+    <p class="ow-cap reveal"><span class="warn">&#9888;</span><span data-en="These are real cars, over-pushed elsewhere and then brought to Superior. Find the right hands and get it right the first time." data-zh="這些，都是在別家推壞後、送到卓越時的真實狀況。找對人，第一次就把它修對。">這些，都是在別家推壞後、送到卓越時的真實狀況。找對人，第一次就把它修對。</span></p>
+  </div>
+</section>
+
 <!-- ============ 90/10 ============ -->
 <section class="block tier-section">
   <div class="tier-bg">
@@ -312,99 +405,6 @@
       <div class="step reveal delay-2"><div class="num">03</div><div class="s-title" data-en="Massage" data-zh="推整復位">推整復位</div><div class="s-body" data-en="Coax the metal back, millimetre by millimetre." data-zh="一毫米一毫米將金屬推回原位。">一毫米一毫米將金屬推回原位。</div></div>
       <div class="step reveal delay-3"><div class="num">04</div><div class="s-title" data-en="Verify" data-zh="驗收交車">驗收交車</div><div class="s-body" data-en="Inspect under reflection until invisible." data-zh="於反光下檢視，直到完全無痕。">於反光下檢視，直到完全無痕。</div></div>
     </div>
-  </div>
-</section>
-
-<!-- ============ 找對人 / 單行道（quality 版，含後果流程） ============ -->
-<style>
-  .oneway{position:relative;background:var(--bg);padding:0 0 96px;overflow:hidden;border-top:1px solid var(--line)}
-  .oneway .ow-hero{position:relative;padding:96px 48px;overflow:hidden}
-  .oneway .ow-hero-img{position:absolute;left:0;top:0;bottom:0;width:56%;z-index:0;background:url("media/oneway-bg.webp") center center/cover no-repeat;-webkit-mask-image:linear-gradient(90deg,#000 0,#000 42%,transparent 94%);mask-image:linear-gradient(90deg,#000 0,#000 42%,transparent 94%)}
-  .oneway .ow-hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg),transparent 22%,transparent 78%,var(--bg))}
-  .oneway .ow-hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;display:flex;justify-content:flex-end}
-  .oneway .ow-body{width:52%;min-width:0;max-width:600px}
-  @media(max-width:860px){.oneway .ow-hero{padding:70px 20px}.oneway .ow-hero-img{width:100%;opacity:.22;-webkit-mask-image:none;mask-image:none}.oneway .ow-hero-inner{justify-content:stretch}.oneway .ow-body{width:100%;max-width:none}}
-  .oneway .ow-title{font-family:'Bebas Neue';font-size:clamp(40px,5.4vw,80px);line-height:.98;color:#fff;letter-spacing:.02em;margin:14px 0 22px}
-  .oneway .ow-title .accent{color:var(--accent)}
-  .oneway .ow-body p{color:var(--ink-dim);font-size:15px;line-height:1.9;margin:0 0 16px}
-  .oneway .ow-body p strong{color:#fff;font-weight:600}
-  .oneway .ow-quote{border-left:3px solid var(--accent);margin:28px 0 22px;padding:6px 0 6px 22px;font-family:'Space Grotesk',sans-serif;font-style:italic;font-weight:500;font-size:clamp(15.5px,1.6vw,20px);line-height:1.55;color:#fff}
-  .oneway .ow-author{display:flex;align-items:center;gap:14px}
-  .oneway .ow-author img{width:68px;height:90px;border-radius:9px;object-fit:cover;object-position:center top;border:2px solid var(--accent);flex:0 0 auto}
-  .oneway .ow-name{font-family:'JetBrains Mono';font-weight:700;letter-spacing:.14em;color:#fff;font-size:14px}
-  .oneway .ow-role{font-family:'JetBrains Mono';font-size:11px;color:var(--ink-mute);margin-top:3px;letter-spacing:.04em}
-  .oneway .ow-below{max-width:1200px;margin:0 auto;padding:0 48px}
-  @media(max-width:560px){.oneway .ow-below{padding:0 20px}}
-  /* 後果流程 callout（quality 版設計變更） */
-  .oneway .ow-cons{border:1px solid rgba(255,42,61,.35);background:linear-gradient(180deg,rgba(255,42,61,.06),transparent);border-radius:12px;padding:26px 28px;margin:0 0 28px}
-  .oneway .ow-cons-head{font-family:'Bebas Neue';font-size:clamp(22px,3.2vw,34px);color:#fff;letter-spacing:.02em;margin-bottom:16px;line-height:1.06}
-  .oneway .ow-cons-head .accent{color:var(--accent)}
-  .oneway .ow-cons-flow{display:flex;flex-wrap:wrap;align-items:center;gap:9px;font-family:'JetBrains Mono';font-size:13px;color:var(--ink-dim)}
-  .oneway .ow-cons-flow .step{border:1px solid var(--line-bright);border-radius:6px;padding:8px 13px;background:var(--bg-elev)}
-  .oneway .ow-cons-flow .arw{color:var(--accent);font-weight:700}
-  .oneway .ow-cons-flow .bad{border-color:var(--accent);color:#fff;background:var(--accent-soft)}
-  .oneway .ow-cons-note{margin:16px 0 0;color:var(--ink-dim);font-size:14.5px;line-height:1.85;max-width:880px}
-  .oneway .ow-cons-note b{color:#fff}
-  @media(max-width:560px){.oneway .ow-cons-flow{font-size:12px;gap:7px}.oneway .ow-cons{padding:20px}}
-  .oneway .ow-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  @media(max-width:760px){.oneway .ow-photos{grid-template-columns:1fr 1fr}}
-  @media(max-width:480px){.oneway .ow-photos{grid-template-columns:1fr 1fr;gap:10px}}
-  .oneway figure{margin:0;border-radius:10px;overflow:hidden;border:1px solid var(--line);position:relative;background:var(--bg-elev)}
-  .oneway figure img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
-  .oneway figure.ow-zoom img{transform:scale(1.4);transform-origin:46% 26%}
-  .oneway figure figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 12px;background:linear-gradient(transparent,rgba(7,8,11,.92));color:#fff;font-size:12.5px;font-family:'JetBrains Mono';letter-spacing:.03em}
-  .oneway figure figcaption b{color:var(--accent);font-weight:700;display:block;font-size:10px;letter-spacing:.16em;margin-bottom:4px}
-  .oneway .ow-ba{grid-column:span 2;position:relative;display:flex;gap:5px;border:1px solid var(--accent);border-radius:10px;overflow:hidden;background:var(--bg-elev)}
-  .oneway .ow-ba-im{position:relative;flex:1 1 0;min-width:0;overflow:hidden}
-  .oneway .ow-ba-im img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-  .oneway .ow-ba-tag{position:absolute;top:0;left:0;right:0;z-index:3;text-align:center;font-family:'JetBrains Mono';font-size:11px;font-weight:700;letter-spacing:.14em;color:#fff;background:linear-gradient(rgba(7,8,11,.88),transparent);padding:11px 8px 18px}
-  .oneway .ba-lb{position:absolute;bottom:10px;left:10px;z-index:2;font-family:'JetBrains Mono';font-size:11px;font-weight:700;letter-spacing:.08em;padding:5px 10px;border-radius:4px;color:#fff}
-  .oneway .ba-lb.before{background:rgba(7,8,11,.78);border:1px solid var(--line-bright)}
-  .oneway .ba-lb.after{background:var(--accent)}
-  .oneway .ow-cap{margin:24px 0 0;color:var(--ink-dim);font-size:14.5px;line-height:1.8;display:flex;align-items:flex-start;gap:9px;max-width:820px}
-  .oneway .ow-cap .warn{color:var(--accent);flex:0 0 auto;font-size:16px}
-</style>
-<section class="oneway">
-  <div class="ow-hero">
-    <div class="ow-hero-img"></div>
-    <div class="ow-hero-inner">
-      <div class="ow-body reveal">
-        <div class="section-eyebrow" data-en="QUALITY IS DECIDED ON THE FIRST REPAIR" data-zh="修復品質，從「第一次」就決定">修復品質，從「第一次」就決定</div>
-        <h2 class="ow-title" data-en="Dent repair is a <span class='accent'>one-way street</span>." data-zh="凹痕修復，是一條<span class='accent'>單行道</span>。">凹痕修復，是一條<span class="accent">單行道</span>。</h2>
-        <p data-en="Whether a dent can be perfectly repaired often comes down to the first person who works on it. Once it has been over-pushed, wrongly tapped, or pulled in the wrong spot, the metal structure is damaged and the factory paint cracked, and no technician after that can bring it back to original." data-zh="一個凹痕能不能完美修復，往往決定在「第一個修它的人」。一旦被推過頭、亂敲、推錯、拉錯位置 —— 鈑金結構被破壞、原廠漆被弄裂，後面再厲害的技師，也救不回它原本的樣子。">一個凹痕能不能完美修復，往往決定在「第一個修它的人」。一旦被推過頭、亂敲、推錯、拉錯位置 —— 鈑金結構被破壞、原廠漆被弄裂，後面再厲害的技師，也救不回它原本的樣子。</p>
-        <p data-en="That is why Superior insists on <strong>imported tools and international standards</strong>, taking every single dent seriously, and has a second technician re-check every panel with a reflector board before handover. Because a dent repair has <strong>no second take</strong>." data-zh="這就是為什麼卓越堅持使用<strong>進口工具、與國際接軌</strong>、不小看每一個凹痕，交車前還要由另一位技師以光板逐一覆核鈑面。因為我們很清楚：修凹痕，<strong>沒有「再來一次」</strong>。">這就是為什麼卓越堅持使用<strong>進口工具、與國際接軌</strong>、不小看每一個凹痕，交車前還要由另一位技師以光板逐一覆核鈑面。因為我們很清楚：修凹痕，<strong>沒有「再來一次」</strong>。</p>
-        <blockquote class="ow-quote" data-en="&#8220;Paintless dent repair is a one-way street. The first tech either fixes it right, or ruins it and takes the chance away from everyone who comes after.&#8221;" data-zh="「凹痕修復是一條單行道。第一個技師，要嘛把它修對，要嘛就毀了它 —— 讓後面每一個人，都再也沒有機會。」">「凹痕修復是一條單行道。第一個技師，要嘛把它修對，要嘛就毀了它 —— 讓後面每一個人，都再也沒有機會。」</blockquote>
-        <div class="ow-author">
-          <img src="media/jay-avatar.webp" alt="小馬 Jay Ma">
-          <div><div class="ow-name">小馬 JAY MA</div><div class="ow-role" data-en="SUPERIOR PDR · Taiwan PDR Leader" data-zh="卓越凹痕修復 SUPERIOR PDR · 台灣 PDR 領導者">卓越凹痕修復 SUPERIOR PDR · 台灣 PDR 領導者</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="ow-below">
-    <div class="ow-cons reveal">
-      <div class="ow-cons-head" data-en="Once the factory paint <span class='accent'>cracks</span>, PDR is off the table." data-zh="一旦原廠漆被<span class='accent'>弄裂</span>，就回不去 PDR 了。">一旦原廠漆被<span class="accent">弄裂</span>，就回不去 PDR 了。</div>
-      <div class="ow-cons-flow">
-        <span class="step" data-en="Cracked paint" data-zh="弄裂原廠漆">弄裂原廠漆</span><span class="arw">&rarr;</span>
-        <span class="step" data-en="Grind panel" data-zh="磨平鈑面">磨平鈑面</span><span class="arw">&rarr;</span>
-        <span class="step" data-en="Body filler" data-zh="上補土">上補土</span><span class="arw">&rarr;</span>
-        <span class="step" data-en="Repaint" data-zh="重新烤漆">重新烤漆</span><span class="arw">&rarr;</span>
-        <span class="step bad" data-en="Longer downtime &amp; lost resale value" data-zh="工時拉長・原漆價值折損">工時拉長・原漆價值折損</span>
-      </div>
-      <p class="ow-cons-note" data-en="The whole value of PDR is that it <b>never touches the factory paint</b>. Once the paint cracks, the only path left is a traditional body shop &mdash; grinding, filler and repaint. Not only does the downtime grow, the car also loses its original-paint value at resale or trade-in. That is exactly why the first repair has to be done by the right hands." data-zh="PDR 最大的價值，就是「<b>完全不動原廠漆</b>」。一旦爆漆，就只能走傳統鈑烤 —— 磨掉、補土、烤漆；不只工時大幅拉長，車輛在賣出或換車時，原漆價值也一起被折損。這，就是為什麼第一次一定要找對人。">PDR 最大的價值，就是「<b>完全不動原廠漆</b>」。一旦爆漆，就只能走傳統鈑烤 —— 磨掉、補土、烤漆；不只工時大幅拉長，車輛在賣出或換車時，原漆價值也一起被折損。這，就是為什麼第一次一定要找對人。</p>
-    </div>
-    <div class="ow-photos reveal">
-      <figure class="ow-zoom"><img loading="lazy" decoding="async" src="media/badrepair-1.webp" alt="修復不當造成板金凹凸不平"><figcaption data-en="<b>BAD REPAIR</b>Uneven, lumpy panel" data-zh="<b>修復不當</b>板金凹凸不平"><b>修復不當</b>板金凹凸不平</figcaption></figure>
-      <figure><img loading="lazy" decoding="async" src="media/badrepair-2.webp" alt="過度出力造成金屬疲乏爆漆"><figcaption data-en="<b>OVER-FORCED</b>Metal fatigue and paint burst" data-zh="<b>過度出力</b>金屬疲乏爆漆"><b>過度出力</b>金屬疲乏爆漆</figcaption></figure>
-      <figure><img loading="lazy" decoding="async" src="media/badrepair-3.webp" alt="施作不當造成鈑面波浪反光扭曲"><figcaption data-en="<b>BAD TECHNIQUE</b>Wavy panel surface" data-zh="<b>施作不當</b>鈑面波浪"><b>施作不當</b>鈑面波浪</figcaption></figure>
-      <figure><img loading="lazy" decoding="async" src="media/badrepair-4.webp" alt="施力不當造成漆面尖點與波浪"><figcaption data-en="<b>WRONG FORCE</b>Sharp points and waves" data-zh="<b>施力不當</b>漆面尖點與波浪"><b>施力不當</b>漆面尖點與波浪</figcaption></figure>
-      <div class="ow-ba">
-        <div class="ow-ba-tag" data-en="FAILED CASE · BEFORE / AFTER" data-zh="失敗案例 · 修復前後對比">失敗案例 · 修復前後對比</div>
-        <div class="ow-ba-im"><img loading="lazy" decoding="async" src="media/badrepair-5.webp" alt="修復前的凹痕"><span class="ba-lb before" data-en="BEFORE" data-zh="修復前">修復前</span></div>
-        <div class="ow-ba-im"><img loading="lazy" decoding="async" src="media/badrepair-6.webp" alt="別家修復後鈑面凸起失敗"><span class="ba-lb after" data-en="AFTER · FAILED" data-zh="修復後 · 失敗">修復後 · 失敗</span></div>
-      </div>
-    </div>
-    <p class="ow-cap reveal"><span class="warn">&#9888;</span><span data-en="These are real cars, over-pushed elsewhere and then brought to Superior. Find the right hands and get it right the first time." data-zh="這些，都是在別家推壞後、送到卓越時的真實狀況。找對人，第一次就把它修對。">這些，都是在別家推壞後、送到卓越時的真實狀況。找對人，第一次就把它修對。</span></p>
   </div>
 </section>
 
