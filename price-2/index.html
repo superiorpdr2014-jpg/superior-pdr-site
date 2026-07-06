@@ -597,6 +597,7 @@
     <h2 class="section-title reveal" data-en="Transparent, by design." data-zh="完整透明的收費依據。">完整透明的收費依據。</h2>
     <p class="section-sub reveal" data-en="A complete, transparent price table is the basis of how we charge — offered to every customer as a starting reference before the on-site estimate." data-zh="一份完整又透明的凹痕修復價目表，是我們的收費依據，提供給每位客戶在現場估價前作為初步參考。">一份完整又透明的凹痕修復價目表，是我們的收費依據，提供給每位客戶在現場估價前作為初步參考。</p>
 
+    <div class="fp-step reveal" style="margin-top:8px"><span class="fp-step-no">1</span><b data-en="Choose a panel" data-zh="選擇部件">選擇部件</b><small data-en="sets the base reference price" data-zh="設定基礎參考價">設定基礎參考價</small></div>
     <div class="price-calc reveal">
       <!-- Panel selector -->
       <div class="pc-panels">
@@ -696,60 +697,99 @@
       </div>
     </div>
 
-    <!-- ============ 修復變因加成對照表 ============ -->
+    <!-- ============ 修復變因加成對照表（互動試算） ============ -->
     <style>
-      .factor-pct{margin-top:46px;border-top:1px solid var(--line);padding-top:42px}
+      .factor-pct{margin-top:20px}
+      .fp-step{display:flex;align-items:center;gap:11px;margin:30px 0 16px;flex-wrap:wrap}
+      .fp-step .fp-step-no{width:25px;height:25px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex:0 0 auto}
+      .fp-step b{color:var(--ink);font-weight:700;font-size:15px}
+      .fp-step small{color:var(--ink-mute);font-size:12.5px}
       .factor-pct .fp-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
       .factor-pct .fp-title{font-size:clamp(20px,2.6vw,30px);color:var(--ink);margin:0 0 14px;font-weight:700;line-height:1.32}
-      .factor-pct .fp-sub{color:var(--ink-dim);font-size:14.5px;line-height:1.85;max-width:800px;margin:0 0 30px}
+      .factor-pct .fp-sub{color:var(--ink-dim);font-size:14.5px;line-height:1.85;max-width:820px;margin:0 0 26px}
+      /* 互動試算列 */
+      .fp-calc{position:sticky;top:12px;z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;background:linear-gradient(135deg,rgba(255,42,61,.13),var(--bg-elev));border:1px solid var(--accent);border-radius:14px;padding:18px 24px;margin:0 0 26px;box-shadow:0 16px 44px rgba(0,0,0,.42)}
+      .fp-calc .fpc-block{display:flex;flex-direction:column;gap:3px}
+      .fp-calc .fpc-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)}
+      .fp-calc .fpc-base-val{font-size:17px;font-weight:700;color:var(--ink)}
+      .fp-calc .fpc-basehint{font-size:11px;color:var(--ink-mute);max-width:180px}
+      .fp-calc .fpc-pct{font-size:19px;font-weight:800;font-family:'JetBrains Mono',monospace;color:var(--accent)}
+      .fp-calc .fpc-arrow{color:var(--ink-mute);font-size:16px;font-family:'JetBrains Mono',monospace}
+      .fp-calc .fpc-total-val{font-family:'Bebas Neue',sans-serif;font-size:30px;font-weight:400;color:var(--accent);letter-spacing:.02em;line-height:1}
+      .fp-calc .fpc-reset{margin-left:auto;background:transparent;border:1px solid var(--line-bright);color:var(--ink-dim);border-radius:8px;padding:8px 16px;font-size:12.5px;cursor:pointer;transition:.2s;white-space:nowrap}
+      .fp-calc .fpc-reset:hover{border-color:var(--accent);color:var(--accent)}
+      @media(max-width:640px){.fp-calc{gap:12px 16px;padding:16px}.fp-calc .fpc-total-val{font-size:26px}.fp-calc .fpc-reset{margin-left:0}}
       .fp-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
       @media(max-width:820px){.fp-groups{grid-template-columns:1fr}}
-      .fp-col{background:var(--bg-elev);border:1px solid var(--line);border-radius:13px;padding:22px 22px 10px}
+      .fp-col{background:var(--bg-elev);border:1px solid var(--line);border-radius:13px;padding:20px 20px 12px}
       .fp-gtitle{font-size:14.5px;font-weight:700;color:var(--ink);letter-spacing:.04em;padding-bottom:13px;margin-bottom:6px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:9px}
       .fp-gtitle::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);flex:0 0 auto}
-      .fp-item{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,.07);font-size:14px}
+      .fp-item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 8px;margin:0 -8px;border-radius:9px;border-bottom:1px dashed rgba(255,255,255,.07);font-size:14px;cursor:pointer;user-select:none;transition:background .18s}
       .fp-item:last-child{border-bottom:0}
-      .fp-item .fp-name{color:var(--ink-dim);line-height:1.4}
+      .fp-item:hover{background:rgba(255,42,61,.07)}
+      .fp-item.on{background:rgba(255,42,61,.15)}
+      .fp-item .fp-name{color:var(--ink-dim);line-height:1.4;display:flex;align-items:center;gap:10px}
+      .fp-item .fp-name::before{content:"";width:16px;height:16px;flex:0 0 auto;border:1.6px solid var(--line-bright);border-radius:5px;transition:.18s;background-position:center;background-repeat:no-repeat;background-size:11px}
+      .fp-item.on .fp-name{color:var(--ink)}
+      .fp-item.on .fp-name::before{background-color:var(--accent);border-color:var(--accent);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.5'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E")}
       .fp-item .fp-val{color:var(--accent);font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14.5px;white-space:nowrap}
       .fp-item .fp-val.base{color:var(--ink-mute)}
-      .fp-note{margin-top:20px;font-size:12.5px;color:var(--ink-mute);line-height:1.75;max-width:840px}
+      .fp-note{margin-top:20px;font-size:12.5px;color:var(--ink-mute);line-height:1.75;max-width:860px}
     </style>
     <div class="factor-pct reveal">
-      <div class="fp-eyebrow" data-en="REPAIR FACTOR SURCHARGES" data-zh="修復變因加成對照">修復變因加成對照</div>
-      <h2 class="fp-title" data-en="How each repair factor affects the base price." data-zh="每一項修復變因，如何影響基礎價格。">每一項修復變因，如何影響基礎價格。</h2>
-      <p class="fp-sub" data-en="The prices above are the base starting point for a single dent. In practice the dent's position, severity and the panel's material all add to that base by difficulty. Below is the surcharge for each factor — the final quote is always confirmed on site." data-zh="上方為單一基礎凹痕的參考起價。實際修復時，凹痕的「位置」、「損傷程度」與鈑件「材質特性」等變因，都會在基礎價格上依難度加成。以下為各變因對基礎價格的加成幅度參考，最終仍以現場評估為準。">上方為單一基礎凹痕的參考起價。實際修復時，凹痕的「位置」、「損傷程度」與鈑件「材質特性」等變因，都會在基礎價格上依難度加成。以下為各變因對基礎價格的加成幅度參考，最終仍以現場評估為準。</p>
+      <div class="fp-step"><span class="fp-step-no">2</span><b data-en="Tap the repair factors" data-zh="點選修復變因">點選修復變因</b><small data-en="each one adds its surcharge to the base" data-zh="每點一項，就在基礎價上加成一次">每點一項，就在基礎價上加成一次</small></div>
+
+      <div class="fp-calc" role="group" aria-label="估算">
+        <div class="fpc-block">
+          <span class="fpc-lbl" data-en="Base price" data-zh="基礎價格">基礎價格</span>
+          <span class="fpc-base-val" id="fpBase">NT$ 1,500</span>
+          <span class="fpc-basehint" id="fpHint" data-en="demo value · pick a panel above" data-zh="示範值 · 可先於上方選部件">示範值 · 可先於上方選部件</span>
+        </div>
+        <span class="fpc-arrow">+</span>
+        <div class="fpc-block">
+          <span class="fpc-lbl" data-en="Surcharge" data-zh="已選加成">已選加成</span>
+          <span class="fpc-pct" id="fpPct">+0%</span>
+        </div>
+        <span class="fpc-arrow">=</span>
+        <div class="fpc-block">
+          <span class="fpc-lbl" data-en="Estimated price" data-zh="估算參考價">估算參考價</span>
+          <span class="fpc-total-val" id="fpTotal">NT$ 1,500</span>
+        </div>
+        <button type="button" class="fpc-reset" id="fpReset" data-en="Clear" data-zh="清除選取">清除選取</button>
+      </div>
+
       <div class="fp-groups">
         <div class="fp-col">
           <div class="fp-gtitle" data-en="① Location &amp; Access" data-zh="① 位置與通道">① 位置與通道</div>
-          <div class="fp-item"><span class="fp-name" data-en="Braced Panel" data-zh="加固鈑件">加固鈑件</span><span class="fp-val">+25%</span></div>
-          <div class="fp-item"><span class="fp-name" data-en="Panel Edge" data-zh="鈑件邊緣">鈑件邊緣</span><span class="fp-val">+25%</span></div>
-          <div class="fp-item"><span class="fp-name" data-en="Obstructed Access" data-zh="受阻通道">受阻通道</span><span class="fp-val">+25%</span></div>
-          <div class="fp-item"><span class="fp-name" data-en="On Body Line" data-zh="車身折線上">車身折線上</span><span class="fp-val">+50%</span></div>
-          <div class="fp-item"><span class="fp-name" data-en="Concave Curvature Layering" data-zh="內凹弧度加層">內凹弧度加層</span><span class="fp-val">+10%</span></div>
+        <div class="fp-item" data-pct="25" role="button" tabindex="0"><span class="fp-name" data-en="Braced Panel" data-zh="加固鈑件">加固鈑件</span><span class="fp-val">+25%</span></div>
+        <div class="fp-item" data-pct="25" role="button" tabindex="0"><span class="fp-name" data-en="Panel Edge" data-zh="鈑件邊緣">鈑件邊緣</span><span class="fp-val">+25%</span></div>
+        <div class="fp-item" data-pct="25" role="button" tabindex="0"><span class="fp-name" data-en="Obstructed Access" data-zh="受阻通道">受阻通道</span><span class="fp-val">+25%</span></div>
+        <div class="fp-item" data-pct="50" role="button" tabindex="0"><span class="fp-name" data-en="On Body Line" data-zh="車身折線上">車身折線上</span><span class="fp-val">+50%</span></div>
+        <div class="fp-item" data-pct="10" role="button" tabindex="0"><span class="fp-name" data-en="Concave Curvature Layering" data-zh="內凹弧度加層">內凹弧度加層</span><span class="fp-val">+10%</span></div>
         </div>
         <div class="fp-col">
           <div class="fp-gtitle" data-en="② Damage Severity" data-zh="② 損傷程度">② 損傷程度</div>
-          <div class="fp-item"><span class="fp-name" data-en="Shallow Depth" data-zh="淺層凹痕">淺層凹痕</span><span class="fp-val base" data-en="Base +0%" data-zh="基礎 +0%">基礎 +0%</span></div>
-          <div class="fp-item"><span class="fp-name" data-en="Medium Depth" data-zh="中度凹痕">中度凹痕</span><span class="fp-val">+15%</span></div>
-          <div class="fp-item"><span class="fp-name" data-en="Deep Depth" data-zh="深層凹痕">深層凹痕</span><span class="fp-val">+30%</span></div>
-          <div class="fp-item"><span class="fp-name" data-en="Crease" data-zh="摺痕">摺痕</span><span class="fp-val">+25%</span></div>
+        <div class="fp-item" data-pct="0" role="button" tabindex="0"><span class="fp-name" data-en="Shallow Depth" data-zh="淺層凹痕">淺層凹痕</span><span class="fp-val base" data-en="Base +0%" data-zh="基礎 +0%">基礎 +0%</span></div>
+        <div class="fp-item" data-pct="15" role="button" tabindex="0"><span class="fp-name" data-en="Medium Depth" data-zh="中度凹痕">中度凹痕</span><span class="fp-val">+15%</span></div>
+        <div class="fp-item" data-pct="30" role="button" tabindex="0"><span class="fp-name" data-en="Deep Depth" data-zh="深層凹痕">深層凹痕</span><span class="fp-val">+30%</span></div>
+        <div class="fp-item" data-pct="25" role="button" tabindex="0"><span class="fp-name" data-en="Crease" data-zh="摺痕">摺痕</span><span class="fp-val">+25%</span></div>
         </div>
         <div class="fp-col">
           <div class="fp-gtitle" data-en="③ Material &amp; Special" data-zh="③ 材質與特殊">③ 材質與特殊</div>
-          <div class="fp-item"><span class="fp-name" data-en="Aluminum / HSS" data-zh="鋁合金／高強度鋼">鋁合金／高強度鋼</span><span class="fp-val">+50%</span></div>
-          <div class="fp-item"><span class="fp-name" data-en="Classic / Vintage Metal" data-zh="經典／古董車金屬">經典／古董車金屬</span><span class="fp-val">+30%</span></div>
-          <div class="fp-item"><span class="fp-name" data-en="Exotic Vehicle" data-zh="稀有車款">稀有車款</span><span class="fp-val">+40%</span></div>
-          <div class="fp-item"><span class="fp-name" data-en="Glue Pull Required" data-zh="需膠拉修復">需膠拉修復</span><span class="fp-val">+50%</span></div>
-          <div class="fp-item"><span class="fp-name" data-en="Structural Panel Conditioning" data-zh="結構鈑件調整">結構鈑件調整</span><span class="fp-val">+35%</span></div>
-          <div class="fp-item"><span class="fp-name" data-en="Lateral Tension" data-zh="側向張力">側向張力</span><span class="fp-val">+25%</span></div>
-          <div class="fp-item"><span class="fp-name" data-en="Laminated Glass (No R&amp;I)" data-zh="膠合玻璃（免R&amp;I）">膠合玻璃（免R&amp;I）</span><span class="fp-val">+25%</span></div>
-          <div class="fp-item"><span class="fp-name" data-en="Sound Deadener" data-zh="隔音材">隔音材</span><span class="fp-val">+25%</span></div>
+        <div class="fp-item" data-pct="50" role="button" tabindex="0"><span class="fp-name" data-en="Aluminum / HSS" data-zh="鋁合金／高強度鋼">鋁合金／高強度鋼</span><span class="fp-val">+50%</span></div>
+        <div class="fp-item" data-pct="30" role="button" tabindex="0"><span class="fp-name" data-en="Classic / Vintage Metal" data-zh="經典／古董車金屬">經典／古董車金屬</span><span class="fp-val">+30%</span></div>
+        <div class="fp-item" data-pct="40" role="button" tabindex="0"><span class="fp-name" data-en="Exotic Vehicle" data-zh="稀有車款">稀有車款</span><span class="fp-val">+40%</span></div>
+        <div class="fp-item" data-pct="50" role="button" tabindex="0"><span class="fp-name" data-en="Glue Pull Required" data-zh="需膠拉修復">需膠拉修復</span><span class="fp-val">+50%</span></div>
+        <div class="fp-item" data-pct="35" role="button" tabindex="0"><span class="fp-name" data-en="Structural Panel Conditioning" data-zh="結構鈑件調整">結構鈑件調整</span><span class="fp-val">+35%</span></div>
+        <div class="fp-item" data-pct="25" role="button" tabindex="0"><span class="fp-name" data-en="Lateral Tension" data-zh="側向張力">側向張力</span><span class="fp-val">+25%</span></div>
+        <div class="fp-item" data-pct="25" role="button" tabindex="0"><span class="fp-name" data-en="Laminated Glass (No R&amp;I)" data-zh="膠合玻璃（免R&amp;I）">膠合玻璃（免R&amp;I）</span><span class="fp-val">+25%</span></div>
+        <div class="fp-item" data-pct="25" role="button" tabindex="0"><span class="fp-name" data-en="Sound Deadener" data-zh="隔音材">隔音材</span><span class="fp-val">+25%</span></div>
         </div>
       </div>
-      <p class="fp-note" data-en="Surcharges reflect the added labour, difficulty and technique required (e.g. glue-pull, lateral tension). More than one factor can apply to the same dent. All percentages are a reference guide only — the final quote is confirmed after a free on-site inspection." data-zh="加成反映的是額外工時、修復難度與所需技術（例如膠拉、側向張力等）。同一個凹痕可能同時適用多項變因。以上百分比僅供參考，實際報價一律以免費現場評估為準。">加成反映的是額外工時、修復難度與所需技術（例如膠拉、側向張力等）。同一個凹痕可能同時適用多項變因。以上百分比僅供參考，實際報價一律以免費現場評估為準。</p>
+      <p class="fp-note" data-en="Surcharges reflect the added labour, difficulty and technique required (e.g. glue-pull, lateral tension). More than one factor can apply to the same dent. This estimator is a reference guide only — the final quote is confirmed after a free on-site inspection." data-zh="加成反映的是額外工時、修復難度與所需技術（例如膠拉、側向張力等）。同一個凹痕可能同時適用多項變因。此試算僅供參考，實際報價一律以免費現場評估為準。">加成反映的是額外工時、修復難度與所需技術（例如膠拉、側向張力等）。同一個凹痕可能同時適用多項變因。此試算僅供參考，實際報價一律以免費現場評估為準。</p>
     </div>
 
-    <div class="pc-disclaimer reveal">
+        <div class="pc-disclaimer reveal">
       ＊ 以上價格為單一基礎凹痕（直徑約 2 cm 以下）之參考起價，實際報價依凹痕深度、位置、數量及車款鈑件特性而定。最終以現場評估為準。
     </div>
   </div>
@@ -870,6 +910,52 @@
     if(entries[0].isIntersecting){ qflow.classList.add('animated'); obs.disconnect(); }
   },{threshold:0.2});
   obs.observe(qflow);
+})();
+</script>
+<script>
+/* 修復變因互動試算 */
+(function(){
+  var base = 1500;
+  function fmt(n){ return 'NT$ ' + Math.round(n).toLocaleString('en-US'); }
+  function recompute(){
+    var sum = 0;
+    document.querySelectorAll('.fp-item.on').forEach(function(it){ sum += parseFloat(it.dataset.pct)||0; });
+    var pct = document.getElementById('fpPct'), tot = document.getElementById('fpTotal');
+    if(pct) pct.textContent = '+' + sum + '%';
+    if(tot) tot.textContent = fmt(base * (1 + sum/100));
+  }
+  function init(){
+    var baseEl = document.getElementById('fpBase');
+    if(!baseEl) return;
+    document.querySelectorAll('.fp-item').forEach(function(it){
+      function toggle(){ it.classList.toggle('on'); recompute(); }
+      it.addEventListener('click', toggle);
+      it.addEventListener('keydown', function(e){ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); toggle(); } });
+    });
+    var reset = document.getElementById('fpReset');
+    if(reset) reset.addEventListener('click', function(){
+      document.querySelectorAll('.fp-item.on').forEach(function(it){ it.classList.remove('on'); });
+      recompute();
+    });
+    // 從上方部件計算器同步基礎價
+    document.querySelectorAll('.pc-btn').forEach(function(b){
+      b.addEventListener('click', function(){
+        setTimeout(function(){
+          var pv = document.getElementById('pc-price');
+          var zh = document.getElementById('pc-title');
+          var txt = pv ? pv.textContent : '';
+          var m = txt.replace(/,/g,'').match(/(\d{3,})/);
+          var hint = document.getElementById('fpHint');
+          if(m){ base = parseInt(m[1],10); baseEl.textContent = fmt(base);
+                 if(hint) hint.textContent = (zh?zh.textContent+' · ':'') + txt.trim(); }
+          else { if(hint) hint.textContent = txt.trim() || '現場評估（另議）'; }
+          recompute();
+        }, 40);
+      });
+    });
+    recompute();
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init); } else { init(); }
 })();
 </script>
 </body>
