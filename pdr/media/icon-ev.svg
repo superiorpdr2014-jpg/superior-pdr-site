@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1258 1258" role="img" aria-label="電動車凹痕修復">
+  <defs>
+    <clipPath id="evc"><circle cx="629" cy="629" r="474"/></clipPath>
+    <filter id="evsh" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="16" stdDeviation="15" flood-color="#3a0002" flood-opacity="0.32"/>
+    </filter>
+  </defs>
+
+  <!-- 紅色漸層圓（對角分割：左淺右深，對齊現有 icon 配色） -->
+  <g clip-path="url(#evc)">
+    <rect x="150" y="150" width="958" height="958" fill="#98202a"/>
+    <polygon points="700,150 1108,150 1108,1108 566,1108" fill="#7e0202"/>
+  </g>
+
+  <!-- 白色線稿：電動車側身 + 閃電（充電） + 充電插頭 -->
+  <g fill="#ffffff" filter="url(#evsh)" transform="translate(615 576) scale(1.16) translate(-615 -576)">
+    <!-- 車身（EV 掀背/跨界側面） -->
+    <path d="M 356 792
+             q -34 0 -34 -34
+             l 0 -44
+             q 0 -30 30 -34
+             l 92 -10
+             l 78 -104
+             q 20 -26 54 -26
+             l 176 0
+             q 40 0 64 32
+             l 66 92
+             l 74 10
+             q 30 4 30 34
+             l 0 50
+             q 0 34 -34 34
+             l -46 0
+             q 4 -14 4 -26
+             q 0 -66 -66 -66
+             q -66 0 -66 66
+             q 0 12 4 26
+             l -300 0
+             q 4 -14 4 -26
+             q 0 -66 -66 -66
+             q -66 0 -66 66
+             q 0 12 4 26
+             z" />
+    <!-- 車窗（深色玻璃，暗示車身） -->
+    <path d="M 540 620 l 60 -80 q 10 -14 30 -14 l 92 0 l 0 94 z" fill="#8a1016"/>
+    <path d="M 754 620 l 0 -94 l 60 0 q 22 0 36 18 l 58 76 z" fill="#8a1016"/>
+    <!-- 前輪 -->
+    <circle cx="470" cy="792" r="70"/>
+    <circle cx="470" cy="792" r="32" fill="#7e0202"/>
+    <!-- 後輪 -->
+    <circle cx="812" cy="792" r="70"/>
+    <circle cx="812" cy="792" r="32" fill="#7e0202"/>
+
+    <!-- 閃電（充電符號，置於上方如同其他 icon 的爆點位置） -->
+    <path d="M 690 300
+             l -150 210
+             l 84 0
+             l -54 150
+             l 172 -232
+             l -86 0
+             l 78 -128 z"
+          stroke="#98202a" stroke-width="10" stroke-linejoin="round"/>
+
+    <!-- 充電插頭 + 線（左上） -->
+    <g stroke="#ffffff" stroke-width="26" stroke-linecap="round" fill="none">
+      <path d="M 300 468 q -34 -70 34 -104"/>
+    </g>
+    <circle cx="300" cy="452" r="30"/>
+    <circle cx="300" cy="452" r="12" fill="#98202a"/>
+  </g>
+</svg>

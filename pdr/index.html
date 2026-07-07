@@ -206,6 +206,34 @@
 </div>
 </div>
 
+<!-- 服務項目範圍 -->
+<style>
+  .svc-scope{max-width:1260px;margin:0 auto;padding:56px 48px}
+  .svc-scope h2{font-family:'Bebas Neue';font-size:clamp(30px,3.5vw,50px);letter-spacing:.02em;margin:8px 0 8px;line-height:1}
+  .svc-scope .sub{font-size:16px;color:var(--ink-dim);line-height:1.7;margin:0 0 32px;max-width:760px}
+  .scope-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+  @media(max-width:940px){.scope-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:560px){.scope-grid{grid-template-columns:repeat(2,1fr)}}
+  .scope-card{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:26px 12px 22px;border:1px solid var(--line);border-radius:16px;background:var(--bg-elev);text-decoration:none;transition:transform .25s,border-color .25s,background .25s}
+  .scope-card:hover{transform:translateY(-6px);border-color:var(--accent);background:rgba(255,42,61,.05)}
+  .scope-card img{width:104px;height:104px;display:block}
+  .scope-card .t{font-size:15.5px;font-weight:700;color:var(--ink);line-height:1.4}
+  .scope-card .a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute)}
+  .scope-card:hover .a{color:var(--accent)}
+</style>
+<section class="svc-scope reveal">
+  <div class="section-eyebrow" data-en="SERVICE SCOPE" data-zh="服務項目範圍">服務項目範圍</div>
+  <h2>各類凹痕，我們都修</h2>
+  <p class="sub">從一般碰撞凹痕，到鋁合金、重機油箱、電動車與大面積凹痕，卓越都有專項修復。點擊了解各項目：</p>
+  <div class="scope-grid">
+    <a class="scope-card" href="/pdr/"><img src="pdr/media/icon-collision.webp" alt="一般車碰撞凹痕修復" loading="lazy"><span class="t">一般車碰撞凹痕</span><span class="a">了解更多 →</span></a>
+    <a class="scope-card" href="/aluminum/"><img src="pdr/media/icon-aluminum.webp" alt="鋁合金凹痕修復" loading="lazy"><span class="t">鋁合金凹痕修復</span><span class="a">了解更多 →</span></a>
+    <a class="scope-card" href="/motortank/"><img src="pdr/media/icon-motortank.webp" alt="重機油箱凹痕修復" loading="lazy"><span class="t">重機油箱凹痕修復</span><span class="a">了解更多 →</span></a>
+    <a class="scope-card" href="/bigdent/"><img src="pdr/media/icon-bigdent.webp" alt="大面積凹痕修復" loading="lazy"><span class="t">大撞凹痕修復</span><span class="a">了解更多 →</span></a>
+    <a class="scope-card" href="/electriccar/"><img src="pdr/media/icon-ev.svg" alt="電動車凹痕修復" loading="lazy"><span class="t">電動車凹痕修復</span><span class="a">了解更多 →</span></a>
+  </div>
+</section>
+
 <!-- 什麼是 PDR -->
 <section class="sec reveal">
   <div class="section-eyebrow" data-en="WHAT IS PDR" data-zh="關於 PDR">關於 PDR</div>
