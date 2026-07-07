@@ -116,6 +116,17 @@
   .keco-grid figure{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative;min-height:220px}
   .keco-grid img{width:100%;height:100%;object-fit:cover;display:block}
   .keco-cap{position:absolute;left:0;right:0;bottom:0;padding:24px 16px 12px;background:linear-gradient(transparent,rgba(6,7,10,.92));font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+  /* KECO 工具車裝飾(填右側空白) */
+  .keco-gpr-sec{position:relative;overflow:hidden}
+  .keco-gpr-sec>*:not(.gpr-deco){position:relative;z-index:1}
+  .gpr-deco{position:absolute;top:60px;right:18px;width:372px;opacity:.72;z-index:0;pointer-events:none;filter:drop-shadow(0 24px 60px rgba(0,0,0,.6))}
+  @media(min-width:1161px){.keco-gpr-sec>p{max-width:620px}}
+  @media(max-width:1160px){.gpr-deco{display:none}}
+  /* AUDI e-tron 經典案例 */
+  .etron-ba{margin-top:30px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .etron-ba img{width:100%;height:auto;display:block}
+  .etron-video{margin:20px auto 0;max-width:900px;border-radius:14px;overflow:hidden;border:1px solid var(--line-bright);aspect-ratio:16/9;background:#000}
+  .etron-video iframe{width:100%;height:100%;border:0;display:block}
 
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
   .reveal.in{opacity:1;transform:none}
@@ -200,6 +211,20 @@
         "name": "卓越凹痕修復 Superior PDR",
         "logo": { "@type": "ImageObject", "url": "https://tar-tw.com/media/logo-circle.png" }
       }
+    },
+    {
+      "@type": "VideoObject",
+      "name": "AUDI e-tron GT 鋁合金車門凹痕修復實錄 — SUPERIOR PDR",
+      "description": "純電跑車 Audi e-tron GT 鋁合金車門深凹痕，卓越以 PDR 搭配 KECO GPR 膠拉從外部還原，不下電池、不重新烤漆，完整保留原廠塗裝。",
+      "thumbnailUrl": ["https://i.ytimg.com/vi/_pVs_Ld4C4o/hqdefault.jpg"],
+      "uploadDate": "2023-10-03",
+      "contentUrl": "https://youtu.be/_pVs_Ld4C4o",
+      "embedUrl": "https://www.youtube.com/embed/_pVs_Ld4C4o",
+      "publisher": {
+        "@type": "Organization",
+        "name": "卓越凹痕修復 Superior PDR",
+        "logo": { "@type": "ImageObject", "url": "https://tar-tw.com/media/logo-circle.png" }
+      }
     }
   ]
 }
@@ -264,7 +289,8 @@
 </section>
 
 <!-- KECO GPR 膠拉技術 -->
-<section class="sec reveal">
+<section class="sec reveal keco-gpr-sec">
+  <img class="gpr-deco" src="aluminum/media/keco-cart.webp" alt="KECO Glue Pull Repair 膠拉工具車" loading="lazy">
   <div class="section-eyebrow" data-zh="關鍵技術 · GPR 膠拉" data-en="KECO GLUE PULL REPAIR">關鍵技術 · GPR 膠拉</div>
   <h2>KECO GPR 膠拉技術<br>讓鋁合金修復更輕鬆</h2>
   <p>鋁合金不像鋼板有「金屬記憶」，強度約為鋼的 <strong>7 倍</strong>、更硬也更難塑形；修復時必須精準控制施力與溫度（鋁合金約需加熱到 <strong>30–35°C</strong> 才會變得柔軟），施力過猛容易把板件拉伸、甚至龜裂——一旦裂開就無法再用免烤漆方式修復。</p>
@@ -340,6 +366,17 @@
     <figure><img src="aluminum/media/case-c250.jpg" alt="Mercedes-Benz C250 鋁合金葉子板凹痕修復前後對比" loading="lazy"><figcaption>Benz C250 · 葉子板</figcaption></figure>
     <figure><img src="aluminum/media/case-cla250.jpg" alt="Mercedes-Benz CLA250 鋁合金引擎蓋凹痕修復前後對比" loading="lazy"><figcaption>Benz CLA250 · 引擎蓋</figcaption></figure>
     <figure><img src="aluminum/media/case-rav4.jpg" alt="Toyota RAV4 鋁合金尾門凹痕修復" loading="lazy"><figcaption>Toyota RAV4 · 鋁合金尾門</figcaption></figure>
+  </div>
+</section>
+
+<!-- 鋁合金經典案例 · AUDI e-tron GT -->
+<section class="sec reveal">
+  <div class="section-eyebrow" data-zh="鋁合金經典案例" data-en="SIGNATURE CASE">鋁合金經典案例</div>
+  <h2>AUDI e-tron GT · 鋁合金車門</h2>
+  <p>Audi e-tron GT 是純電性能跑車，車門與側裙採用鋁合金板件。這道深凹痕看似棘手，卓越以 PDR 搭配 <strong>KECO GPR 膠拉</strong>從板件外部一點一點還原——<strong>不需下電池、不重新烤漆</strong>，完整保留原廠鈑件與塗裝。這正是「鋁合金 ＋ 電動車」修復的經典示範。</p>
+  <div class="etron-ba"><img src="aluminum/media/etron-ba.jpg" alt="AUDI e-tron GT 鋁合金車門凹痕修復前後對比" loading="lazy"></div>
+  <div class="etron-video">
+    <iframe src="https://www.youtube.com/embed/_pVs_Ld4C4o?rel=0&modestbranding=1" title="AUDI e-tron GT 鋁合金車門凹痕修復實錄 — SUPERIOR PDR" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
   </div>
 </section>
 
