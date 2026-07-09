@@ -1003,10 +1003,10 @@
     if(base == null){ totEl.textContent = '現場評估'; return; }
     var total = Math.round(base * (1 + sum/100));
     if(sum > 0){
-      /* 有選修復變因 → 以區間表示實際價格 */
+      /* 有選修復變因 → 以區間表示實際價格，端點四捨五入至百位 */
       var b = bracket(total);
-      var lo = Math.max(0, total - b[0]);
-      var hi = total + b[1];
+      var lo = Math.round(Math.max(0, total - b[0]) / 100) * 100;
+      var hi = Math.round((total + b[1]) / 100) * 100;
       totEl.textContent = fmt(lo) + '～' + hi.toLocaleString('en-US');
     } else {
       totEl.textContent = fmt(total);
