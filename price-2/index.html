@@ -986,11 +986,31 @@
   var base = 1500;
   var baseEl, pctEl, totEl, hintEl;
   function fmt(n){ return 'NT$ ' + Math.round(n).toLocaleString('en-US'); }
+  /* 依價格級距回傳 [往下, 往上] 區間幅度 */
+  function bracket(p){
+    if(p < 2000)   return [200,300];
+    if(p < 3000)   return [300,500];
+    if(p < 5000)   return [500,1000];
+    if(p < 8000)   return [1000,1500];
+    if(p <= 15000) return [1200,2000];
+    return [1500,3000];
+  }
   function recompute(){
     var sum = 0;
     document.querySelectorAll('.fp-item.on').forEach(function(it){ sum += parseFloat(it.dataset.pct)||0; });
     if(pctEl) pctEl.textContent = '+' + sum + '%';
-    if(totEl) totEl.textContent = (base == null) ? '現場評估' : fmt(base * (1 + sum/100));
+    if(!totEl) return;
+    if(base == null){ totEl.textContent = '現場評估'; return; }
+    var total = Math.round(base * (1 + sum/100));
+    if(sum > 0){
+      /* 有選修復變因 → 以區間表示實際價格 */
+      var b = bracket(total);
+      var lo = Math.max(0, total - b[0]);
+      var hi = total + b[1];
+      totEl.textContent = fmt(lo) + '～' + hi.toLocaleString('en-US');
+    } else {
+      totEl.textContent = fmt(total);
+    }
   }
   /* 供上方部件選擇 / 公分輸入呼叫：設定基礎價（site=true 代表需現場評估） */
   window.pcSetBase = function(n, site, hintText){
