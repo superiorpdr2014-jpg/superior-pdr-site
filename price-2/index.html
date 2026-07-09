@@ -669,7 +669,7 @@
           </button>
           <button class="pc-btn super" data-zone="rocker" onclick="pcSelect(this)">
             <span class="pc-dot"></span>
-            <span class="pc-zh">門檻板</span>
+            <span class="pc-zh">門檻戶定</span>
             <span class="pc-en">Rocker Panel</span>
             <span class="pc-diff">超高難度</span>
           </button>
@@ -897,7 +897,7 @@
     'door-rear':    { zh:'後車門',   en:'REAR DOOR',   zone:'易修區', zoneEn:'EASY ZONE',    color:'#c8d8f0', price:'NT$ 1,200 起', sp:false, desc:'後車門與前車門相似，中央平整區域修復條件良好。', fn:'門框邊緣、下沿及把手周邊難度較高，需現場評估。' },
     'fender-rear':  { zh:'後葉子板', en:'REAR FENDER', zone:'高難度', zoneEn:'HARD ZONE',   color:'#3d4455', price:'NT$ 1,500 起', sp:false, desc:'後葉子板（後翼子板）曲面較多，部分車款工具進入點有限。', fn:'輪拱上方及尾燈周邊需現場評估，特殊車款結構另報。' },
     'bumper':       { zh:'前後保險桿', en:'BUMPERS',    zone:'高難度', zoneEn:'HARD ZONE',    color:'#3d4455', price:'現場評估',    sp:true,  desc:'保險桿材質多為 PP 塑料，與金屬鈑件特性不同，PDR 適用性需現場判斷。前後保險桿均適用。', fn:'部分凹陷可修復，建議攜車至現場由技師評估後報價。' },
-    'rocker':       { zh:'門檻板',   en:'ROCKER PANEL',zone:'超高難度', zoneEn:'EXTREME ZONE', color:'#8b1a1a', price:'NT$ 1,500 起',    sp:false,  desc:'牛腿（門檻板中段外側鈑件）為特殊修復區域，工具進入受限。', fn:'下車身及車門下沿（紅虛線以下）難度更高，需現場評估。' },
+    'rocker':       { zh:'門檻戶定', en:'ROCKER PANEL',zone:'超高難度', zoneEn:'EXTREME ZONE', color:'#8b1a1a', price:'NT$ 1,800 起',    sp:false, min:1800, desc:'牛腿（門檻戶定中段外側鈑件）為特殊修復區域，工具進入受限。', fn:'下車身及車門下沿（紅虛線以下）難度更高，需現場評估。' },
     'bumper-rear':  { zh:'後保險桿', en:'REAR BUMPER', zone:'高難度', zoneEn:'HARD ZONE',    color:'#3d4455', price:'現場評估',    sp:true,  desc:'後保險桿同為塑料材質。',    fn:'部分凹陷可修復。' }
   };
   /* 凹痕大小(公分) → 參考價（依 superior-pdr-calculator config.js 的公分表，中間值線性內插） */
@@ -919,11 +919,13 @@
     var inp = document.getElementById('pc-cm');
     var pv  = document.getElementById('pc-price');
     var d = curZone; if(!d || d.sp) return;
+    var floor = d.min || 0;
     var raw = inp ? inp.value.trim() : '';
     var v = parseFloat(raw);
     if(raw === '' || isNaN(v) || v <= 0){
-      pv.textContent = 'NT$ 1,500'; pv.className = 'pc-pval';
-      if(window.pcSetBase) window.pcSetBase(1500, false, d.zh + ' · 3cm 參考價（輸入實際大小調整）');
+      var p0 = Math.max(1500, floor);
+      pv.textContent = 'NT$ ' + p0.toLocaleString('en-US'); pv.className = 'pc-pval';
+      if(window.pcSetBase) window.pcSetBase(p0, false, d.zh + (floor>1500 ? ' · 起價（輸入實際大小調整）' : ' · 3cm 參考價（輸入實際大小調整）'));
       return;
     }
     if(v > 60){
@@ -931,7 +933,7 @@
       if(window.pcSetBase) window.pcSetBase(null, true, d.zh + ' · ' + v + 'cm，需現場評估');
       return;
     }
-    var p = priceForCm(v);
+    var p = Math.max(priceForCm(v), floor);
     pv.textContent = 'NT$ ' + p.toLocaleString('en-US'); pv.className = 'pc-pval';
     if(window.pcSetBase) window.pcSetBase(p, false, d.zh + ' · ' + v + 'cm 參考價');
   }
