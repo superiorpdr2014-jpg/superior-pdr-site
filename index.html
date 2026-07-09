@@ -1876,6 +1876,19 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .oneway .ow-cap{margin:24px 0 0;color:var(--ink-dim);font-size:14.5px;line-height:1.8;display:flex;align-items:flex-start;gap:9px;max-width:820px}
   .oneway .ow-cap .warn{color:var(--accent);flex:0 0 auto;font-size:16px}
 </style>
+<!-- =============== VIDEO BAND =============== -->
+<style>
+  .video-band{position:relative;width:100%;line-height:0;background:var(--bg);overflow:hidden}
+  .video-band .vb-vid{width:100%;height:clamp(320px,50vw,680px);object-fit:cover;object-position:center;display:block}
+  .video-band::before{content:"";position:absolute;left:0;right:0;top:0;height:130px;z-index:1;pointer-events:none;background:linear-gradient(var(--bg),transparent)}
+  .video-band::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:200px;z-index:1;pointer-events:none;background:linear-gradient(transparent,var(--bg) 92%)}
+</style>
+<section class="video-band" aria-label="卓越 SUPERIOR PDR 影片">
+  <video class="vb-vid" autoplay muted loop playsinline preload="metadata" poster="media/home-intro-band.jpg">
+    <source src="media/home-intro-band.mp4" type="video/mp4">
+  </video>
+</section>
+
 <section class="oneway" data-screen-label="找對人">
   <div class="ow-hero">
     <div class="ow-hero-img"></div>
