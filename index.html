@@ -1128,10 +1128,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
   /* ------- CERTIFICATIONS ------- */
   .certs{
-    padding:80px 48px 80px;position:relative;overflow:hidden;
-    background:linear-gradient(180deg,var(--bg) 0%,#080a10 100%);
+    padding:80px 48px 44px;position:relative;overflow:hidden;
+    background:linear-gradient(180deg,var(--bg) 0%,#0a0d14 55%,var(--bg) 100%);
     border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
+    border-bottom:none;
   }
   .certs::before{
     content:"";position:absolute;inset:0;
@@ -1839,9 +1839,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <!-- =============== ONE-WAY STREET / 找對人 =============== -->
 <style>
   .oneway{position:relative;background:var(--bg);padding:0 0 96px;overflow:hidden}
-  .oneway .ow-hero{position:relative;padding:104px 48px;overflow:hidden}
+  .oneway .ow-hero{position:relative;padding:40px 48px 104px;overflow:hidden}
   .oneway .ow-hero-img{position:absolute;left:0;top:0;bottom:0;width:56%;z-index:0;background:url("media/oneway-bg.webp") center center/cover no-repeat;-webkit-mask-image:linear-gradient(90deg,#000 0,#000 42%,transparent 94%);mask-image:linear-gradient(90deg,#000 0,#000 42%,transparent 94%)}
-  .oneway .ow-hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg),transparent 22%,transparent 78%,var(--bg))}
+  .oneway .ow-hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg),transparent 10%,transparent 82%,var(--bg))}
   .oneway .ow-hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;display:flex;justify-content:flex-end}
   .oneway .ow-body{width:52%;min-width:0;max-width:600px}
   @media(max-width:860px){.oneway .ow-hero{padding:78px 20px}.oneway .ow-hero-img{width:100%;opacity:.22;-webkit-mask-image:none;mask-image:none}.oneway .ow-hero-inner{justify-content:stretch}.oneway .ow-body{width:100%;max-width:none}}
@@ -1878,10 +1878,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 </style>
 <!-- =============== VIDEO BAND =============== -->
 <style>
-  .video-band{position:relative;width:100%;line-height:0;background:var(--bg);overflow:hidden}
+  .video-band{position:relative;margin-top:-44px;width:100%;line-height:0;background:var(--bg);overflow:hidden}
   .video-band .vb-vid{width:100%;height:clamp(320px,50vw,680px);object-fit:cover;object-position:center;display:block}
-  .video-band::before{content:"";position:absolute;left:0;right:0;top:0;height:130px;z-index:1;pointer-events:none;background:linear-gradient(var(--bg),transparent)}
-  .video-band::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:200px;z-index:1;pointer-events:none;background:linear-gradient(transparent,var(--bg) 92%)}
+  .video-band::before{content:"";position:absolute;left:0;right:0;top:0;height:210px;z-index:1;pointer-events:none;background:linear-gradient(var(--bg),transparent)}
+  .video-band::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:90px;z-index:1;pointer-events:none;background:linear-gradient(transparent,var(--bg) 92%)}
 </style>
 <section class="video-band" aria-label="卓越 SUPERIOR PDR 影片">
   <video class="vb-vid" autoplay muted loop playsinline preload="metadata" poster="media/home-intro-band.jpg">
