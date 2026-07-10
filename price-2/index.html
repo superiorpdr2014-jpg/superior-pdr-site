@@ -257,6 +257,16 @@
   .cmp-table b{font-weight:700;color:var(--ink)}
   .cmp-table .coins{justify-content:center}
   .cmp-cap{font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.04em;color:var(--ink-mute);margin-top:14px;line-height:1.7}
+  /* 手機版：凹痕形狀改直向堆疊，讓形狀圖佔滿整欄寬(否則被數字擠到看不見)，並加粗線條 */
+  @media(max-width:560px){
+    .cmp-table .ty{width:34%;padding:14px 7px}
+    .cmp-table th,.cmp-table td{padding:12px 5px}
+    .ty-cell{flex-direction:column;gap:8px}
+    .ty-no{width:24px;height:24px;font-size:14px}
+    .ty-mini{width:100%;max-width:none;min-height:30px}
+    .ty-mini .m-line{stroke-width:4.5}
+    .ty-mini .m-shadow{stroke-width:4.5;stroke:rgba(255,255,255,0.5)}
+  }
 
   /* ====== PRICE TABLE GALLERY ====== */
   .pt-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:46px}
