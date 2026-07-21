@@ -99,19 +99,16 @@
 .alumni-note p:last-child{margin-bottom:0}
 .alumni-note p strong{color:var(--ink)}
 
-/* ── reels grid (IG 直式) ── */
-.reel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:22px}
-@media(max-width:720px){.reel-grid{grid-template-columns:1fr}}
-.reel-card{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--bg-card);display:flex;flex-direction:column}
-.reel-card.main{border-color:rgba(255,42,61,.4)}
-.reel-label{padding:13px 18px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
-.reel-card.main .reel-label{color:var(--accent)}
-.reel-tag{font-size:9px;letter-spacing:.14em;padding:3px 8px;border-radius:4px;border:1px solid rgba(255,42,61,.4);color:var(--accent);background:rgba(255,42,61,.07)}
-.reel-embed{position:relative;width:100%;aspect-ratio:9/14;background:#000;overflow:hidden}
-.reel-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
-/* 尚未載入時的佔位（避免版面跳動、提示載入中） */
-.reel-embed:not(.loaded)::after{content:"影片載入中…";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;color:var(--ink-mute);background:var(--bg-card)}
-@supports not (aspect-ratio:1){.reel-embed{padding-bottom:155.5%}}
+/* ── reels grid (IG 短影音) ── */
+.reels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+@media(max-width:920px){.reels-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.reels-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto}}
+.reel-ph{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#000;aspect-ratio:9/16}
+.reel-ph video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.reel-ig{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:8px;padding:26px 12px 11px;background:linear-gradient(transparent,rgba(6,7,10,.92));color:#fff;text-decoration:none;font-size:11.5px;z-index:3}
+.reel-ig .ig-ico{width:22px;height:22px;flex:0 0 auto;border-radius:6px;background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);display:flex;align-items:center;justify-content:center}
+.reel-ig .ig-nm{font-weight:600;letter-spacing:.02em}
+.reel-ig .ig-go{margin-left:auto;color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:10.5px;white-space:nowrap}
 
 /* ── photo mosaic ── */
 .photo-mosaic{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:36px}
@@ -251,22 +248,18 @@
     </div>
   </div>
 
-  <div class="reel-grid">
-    <div class="reel-card main">
-      <div class="reel-label">Advanced Training · 現場實錄 <span class="reel-tag">主打</span></div>
-      <div class="reel-embed" data-reel="https://www.instagram.com/reel/DYzSWCqTT0w/embed/"></div>
+  <div class="reels-grid">
+    <div class="reel-ph">
+      <video src="/media/reels/reel-adv-01.mp4" poster="/media/reels/reel-adv-01.webp" muted loop playsinline preload="metadata" data-autoplay></video>
+      <a class="reel-ig" href="https://www.instagram.com/reel/DYzSWCqTT0w/" target="_blank" rel="noopener"><span class="ig-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#fff" stroke="none"/></svg></span><span class="ig-nm">@superiorpdrtaiwan</span><span class="ig-go">看更多 →</span></a>
     </div>
-    <div class="reel-card">
-      <div class="reel-label">Advanced Training · 訓練片段</div>
-      <div class="reel-embed" data-reel="https://www.instagram.com/reel/DZxHPyuzMyl/embed/"></div>
+    <div class="reel-ph">
+      <video src="/media/reels/reel-adv-02.mp4" poster="/media/reels/reel-adv-02.webp" muted loop playsinline preload="metadata" data-autoplay></video>
+      <a class="reel-ig" href="https://www.instagram.com/reel/DZxHPyuzMyl/" target="_blank" rel="noopener"><span class="ig-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#fff" stroke="none"/></svg></span><span class="ig-nm">@superiorpdrtaiwan</span><span class="ig-go">看更多 →</span></a>
     </div>
-    <div class="reel-card">
-      <div class="reel-label">Advanced Training · 訓練片段</div>
-      <div class="reel-embed" data-reel="https://www.instagram.com/reel/DZpVpJBTVqx/embed/"></div>
-    </div>
-    <div class="reel-card">
-      <div class="reel-label">Advanced Training · 訓練片段</div>
-      <div class="reel-embed" data-reel="https://www.instagram.com/reel/DZFSZplzAmn/embed/"></div>
+    <div class="reel-ph">
+      <video src="/media/reels/reel-adv-03.mp4" poster="/media/reels/reel-adv-03.webp" muted loop playsinline preload="metadata" data-autoplay></video>
+      <a class="reel-ig" href="https://www.instagram.com/reel/DZpVpJBTVqx/" target="_blank" rel="noopener"><span class="ig-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#fff" stroke="none"/></svg></span><span class="ig-nm">@superiorpdrtaiwan</span><span class="ig-go">看更多 →</span></a>
     </div>
   </div>
 </section>
@@ -534,33 +527,18 @@
 <script src="assets/site.js"></script>
 <script src="assets/immersive.js"></script>
 <script>
-/* Reel 延遲載入：捲到才載入 IG iframe，避免拖慢首次開頁（手機/桌機皆適用） */
+/* Reel 短影音：只在畫面內播放，離開暫停省效能（preload=metadata，不拖慢首次開頁） */
 (function(){
-  var boxes = document.querySelectorAll('.reel-embed[data-reel]');
-  if(!boxes.length) return;
-  function load(box){
-    if(box.dataset.loaded) return;
-    box.dataset.loaded = '1';
-    var f = document.createElement('iframe');
-    f.src = box.dataset.reel;
-    f.loading = 'lazy';
-    f.setAttribute('scrolling','no');
-    f.setAttribute('allowtransparency','true');
-    f.setAttribute('allowfullscreen','true');
-    f.setAttribute('frameborder','0');
-    f.setAttribute('title','SUPERIOR PDR 進階訓練 Instagram 影片');
-    f.onload = function(){ box.classList.add('loaded'); };
-    box.appendChild(f);
-  }
+  var vids = document.querySelectorAll('video[data-autoplay]');
+  if(!vids.length) return;
   if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
+    var vo = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
-        if(e.isIntersecting){ load(e.target); io.unobserve(e.target); }
+        var v = e.target;
+        if(e.isIntersecting){ v.play().catch(function(){}); } else { v.pause(); }
       });
-    }, { rootMargin: '400px 0px' });
-    boxes.forEach(function(b){ io.observe(b); });
-  } else {
-    boxes.forEach(load);
+    }, { threshold: 0.25 });
+    vids.forEach(function(v){ vo.observe(v); });
   }
 })();
 </script>
