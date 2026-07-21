@@ -84,6 +84,35 @@
 .video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
 .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
 
+/* ── alumni feature (Michael) ── */
+.alumni-feature{display:grid;grid-template-columns:0.82fr 1fr;gap:0;align-items:stretch;margin-top:36px;background:var(--bg-card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+@media(max-width:720px){.alumni-feature{grid-template-columns:1fr}}
+.alumni-photo{position:relative;min-height:100%}
+.alumni-photo img{width:100%;height:100%;max-height:560px;object-fit:cover;object-position:center 22%;display:block}
+@media(max-width:720px){.alumni-photo img{max-height:440px;object-position:center 18%}}
+.alumni-cap{position:absolute;left:0;right:0;bottom:0;padding:26px 20px 14px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.85);background:linear-gradient(to top,rgba(7,8,11,.9),transparent)}
+.alumni-note{padding:40px 44px}
+@media(max-width:720px){.alumni-note{padding:30px 26px}}
+.alumni-flag{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.alumni-note h3{font-family:'Bebas Neue';font-size:30px;letter-spacing:.03em;color:var(--ink);margin:0 0 16px;line-height:1.3}
+.alumni-note p{font-size:15px;color:var(--ink-dim);line-height:1.74;margin:0 0 12px}
+.alumni-note p:last-child{margin-bottom:0}
+.alumni-note p strong{color:var(--ink)}
+
+/* ── reels grid (IG 直式) ── */
+.reel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:22px}
+@media(max-width:720px){.reel-grid{grid-template-columns:1fr}}
+.reel-card{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--bg-card);display:flex;flex-direction:column}
+.reel-card.main{border-color:rgba(255,42,61,.4)}
+.reel-label{padding:13px 18px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.reel-card.main .reel-label{color:var(--accent)}
+.reel-tag{font-size:9px;letter-spacing:.14em;padding:3px 8px;border-radius:4px;border:1px solid rgba(255,42,61,.4);color:var(--accent);background:rgba(255,42,61,.07)}
+.reel-embed{position:relative;width:100%;aspect-ratio:9/14;background:#000;overflow:hidden}
+.reel-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
+/* 尚未載入時的佔位（避免版面跳動、提示載入中） */
+.reel-embed:not(.loaded)::after{content:"影片載入中…";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;color:var(--ink-mute);background:var(--bg-card)}
+@supports not (aspect-ratio:1){.reel-embed{padding-bottom:155.5%}}
+
 /* ── photo mosaic ── */
 .photo-mosaic{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:36px}
 @media(max-width:860px){.photo-mosaic{grid-template-columns:1fr 1fr}}
@@ -198,6 +227,46 @@
         <a href="/training-2week/" style="font-family:'JetBrains Mono';font-size:12px;letter-spacing:.1em;padding:8px 16px;border-radius:6px;border:1px solid var(--line-bright);color:var(--ink-dim);text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,42,61,.4)'" onmouseout="this.style.borderColor=''">中階訓練 (2週) →</a>
         <a href="/training-4week/" style="font-family:'JetBrains Mono';font-size:12px;letter-spacing:.1em;padding:8px 16px;border-radius:6px;border:1px solid var(--line-bright);color:var(--ink-dim);text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,42,61,.4)'" onmouseout="this.style.borderColor=''">完整訓練 (4週) →</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 訓練實錄 · Michael + Reels ── -->
+<section class="sec reveal" data-screen-label="訓練實錄">
+  <div class="section-eyebrow" data-en="ADVANCED TRAINING · LIVE" data-zh="訓練實錄">訓練實錄</div>
+  <h2>一週進階訓練 · 真實紀錄</h2>
+  <p>技術不會說謊。以下是進階課程中的真實訓練片段與學員紀錄——從遠道而來的同業技師，到膠拉、折線、鋁合金的實戰手感，這一週，我們把技術毫無保留地交到學員手上。</p>
+
+  <div class="alumni-feature">
+    <div class="alumni-photo">
+      <img loading="lazy" decoding="async" src="media/adv-alumni-michael.jpg" alt="從加拿大來的學員 Michael 與 Jay Ma 完成一週進階訓練的合照 — 手持 Advanced Paintless Dent Repair 結業證書">
+      <div class="alumni-cap">從加拿大來的學員 Michael · 完成一週 Advanced Training</div>
+    </div>
+    <div class="alumni-note">
+      <div class="alumni-flag">🇨🇦 FROM CANADA · 加拿大</div>
+      <h3>從加拿大飛來台灣的學員 Michael</h3>
+      <p>Michael（Michael Tak Chiu Tam）遠從<strong>加拿大</strong>飛來台灣，在卓越完成了為期<strong>一週的 Advanced Training</strong> 進階技術訓練。</p>
+      <p>從基礎手感的重新校正，到膠拉、車身折線與鋁合金等進階技法，一週紮實的針對性訓練後，他帶走的不只是這張結業證書，而是能實際帶回工作場上、立刻派上用場的技術。</p>
+      <p><strong>給你一張地圖，路還是要你自己走</strong>——而卓越，會陪著每一位遠道而來的技師走完這段路。</p>
+    </div>
+  </div>
+
+  <div class="reel-grid">
+    <div class="reel-card main">
+      <div class="reel-label">Advanced Training · 現場實錄 <span class="reel-tag">主打</span></div>
+      <div class="reel-embed" data-reel="https://www.instagram.com/reel/DYzSWCqTT0w/embed/"></div>
+    </div>
+    <div class="reel-card">
+      <div class="reel-label">Advanced Training · 訓練片段</div>
+      <div class="reel-embed" data-reel="https://www.instagram.com/reel/DZxHPyuzMyl/embed/"></div>
+    </div>
+    <div class="reel-card">
+      <div class="reel-label">Advanced Training · 訓練片段</div>
+      <div class="reel-embed" data-reel="https://www.instagram.com/reel/DZpVpJBTVqx/embed/"></div>
+    </div>
+    <div class="reel-card">
+      <div class="reel-label">Advanced Training · 訓練片段</div>
+      <div class="reel-embed" data-reel="https://www.instagram.com/reel/DZFSZplzAmn/embed/"></div>
     </div>
   </div>
 </section>
@@ -464,5 +533,36 @@
 
 <script src="assets/site.js"></script>
 <script src="assets/immersive.js"></script>
+<script>
+/* Reel 延遲載入：捲到才載入 IG iframe，避免拖慢首次開頁（手機/桌機皆適用） */
+(function(){
+  var boxes = document.querySelectorAll('.reel-embed[data-reel]');
+  if(!boxes.length) return;
+  function load(box){
+    if(box.dataset.loaded) return;
+    box.dataset.loaded = '1';
+    var f = document.createElement('iframe');
+    f.src = box.dataset.reel;
+    f.loading = 'lazy';
+    f.setAttribute('scrolling','no');
+    f.setAttribute('allowtransparency','true');
+    f.setAttribute('allowfullscreen','true');
+    f.setAttribute('frameborder','0');
+    f.setAttribute('title','SUPERIOR PDR 進階訓練 Instagram 影片');
+    f.onload = function(){ box.classList.add('loaded'); };
+    box.appendChild(f);
+  }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ load(e.target); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '400px 0px' });
+    boxes.forEach(function(b){ io.observe(b); });
+  } else {
+    boxes.forEach(load);
+  }
+})();
+</script>
 </body>
 </html>
