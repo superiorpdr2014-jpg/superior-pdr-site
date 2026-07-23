@@ -52,6 +52,23 @@
   .cr-tier-desc{color:var(--ink-dim);font-size:14px;line-height:1.7;margin-top:13px}
   .cr-note-line{text-align:center;color:var(--ink-dim);font-size:14.5px;line-height:1.8;max-width:680px;margin:34px auto 0}
   .cr-note-line b{color:var(--ink);font-weight:600}
+  /* filled media (real photo/video replaces drop placeholder) */
+  .ph.filled{border-style:solid}
+  .ph.filled::before{display:none}
+  .ph video{width:100%;height:100%;object-fit:cover;display:block}
+  .ph-badge{position:absolute;top:12px;left:12px;z-index:4;font-family:'JetBrains Mono';font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#fff;background:rgba(6,7,10,0.72);border:1px solid var(--line-bright);padding:5px 10px;border-radius:5px}
+  .cr-tier.feat .ph-badge{border-color:rgba(255,42,61,0.5);color:var(--accent)}
+  .cr-tier .ph.wide.video{aspect-ratio:9/16}   /* 直式修復影片 */
+  /* 完整修復流程影片（您獲得的保障） */
+  .proc-video{position:relative;width:100%;max-width:360px;margin:0 auto;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#000;aspect-ratio:9/16}
+  .proc-video video{width:100%;height:100%;object-fit:cover;display:block}
+  .proc-ig{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:9px;padding:28px 14px 13px;background:linear-gradient(transparent,rgba(6,7,10,0.92));color:#fff;text-decoration:none;font-size:12.5px;font-weight:600;z-index:3}
+  .proc-ig .ig-ico{width:22px;height:22px;flex:0 0 auto;border-radius:6px;background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);display:flex;align-items:center;justify-content:center}
+  .proc-ig .go{margin-left:auto;color:var(--accent);font-family:'JetBrains Mono';font-size:12px}
+  .proc-cap{text-align:center;max-width:360px;margin:15px auto 0;font-family:'JetBrains Mono';font-size:11.5px;letter-spacing:0.14em;color:var(--ink-mute);text-transform:uppercase}
+  .craft-line{margin-top:24px;padding-top:22px;border-top:1px solid var(--line);font-size:15.5px;line-height:1.8;color:var(--ink-dim)}
+  .craft-line b{color:var(--ink);font-weight:600}
+  .craft-line .accent{color:var(--accent)}
   /* --- quality philosophy --- */
   .ql-lead{max-width:880px;margin:26px 0 0}
   .ql-lead p{font-size:18px;line-height:1.85;color:var(--ink-dim);margin:0 0 16px;text-wrap:pretty}
@@ -314,9 +331,9 @@
     <p class="section-sub reveal" data-en="We're committed to chasing the very best result — every overseas training trip and self-challenge exists to give you the best repair experience. For the same damage we offer three levels — Rough, Level and Refined — so you choose by need and budget. Here's one engine-hood 10cm dent, repaired three ways." data-zh="我們致力於挑戰最好的修復程度 —— 每一次出國精進與自我挑戰，都是為了讓客戶體驗最好的修復過程與結果。同一道損傷，我們提供大概、平整、精緻三種修復程度，讓您依需求與預算自由選擇。以下以一道引擎蓋 10cm 凹痕為例。">我們致力於挑戰最好的修復程度 —— 每一次出國精進與自我挑戰，都是為了讓客戶體驗最好的修復過程與結果。同一道損傷，我們提供大概、平整、精緻三種修復程度，讓您依需求與預算自由選擇。以下以一道引擎蓋 10cm 凹痕為例。</p>
 
     <div class="cr-case reveal">
-      <div class="ph wide">
+      <div class="ph wide filled">
         <span class="ph-badge" data-en="ORIGINAL DAMAGE" data-zh="原始損傷">原始損傷</span>
-        <span class="ph-label" data-en="DROP MAIN DAMAGE PHOTO<br>landscape · 16:9 · the original dent" data-zh="拖入主要損傷照片<br>橫式 · 16:9 · 修復前的大傷">拖入主要損傷照片<br>橫式 · 16:9 · 修復前的大傷</span>
+        <img loading="lazy" decoding="async" src="media/cr-damage.jpg" alt="引擎蓋 10cm 原始凹痕損傷 — 修復前">
       </div>
       <div class="cr-case-cap">
         <span class="cc-dmg" data-en="This case · Engine hood — 10cm dent" data-zh="本案例 · 引擎蓋 10cm 損傷">本案例 · 引擎蓋 10cm 損傷</span>
@@ -328,9 +345,9 @@
 
     <div class="cr-grid">
       <div class="cr-tier reveal">
-        <div class="ph wide video">
+        <div class="ph wide video filled">
           <span class="ph-badge" data-en="RESULT VIDEO" data-zh="修復影片">修復影片</span>
-          <span class="ph-label" data-en="DROP VIDEO<br>Rough repair result" data-zh="拖入影片<br>大概修復結果">拖入影片<br>大概修復結果</span>
+          <video src="media/cr-rough.mp4" poster="media/cr-rough.webp" muted loop playsinline preload="metadata" data-autoplay></video>
         </div>
         <div class="cr-tier-body">
           <div class="cr-tier-tags">
@@ -342,9 +359,9 @@
       </div>
 
       <div class="cr-tier reveal delay-1">
-        <div class="ph wide video">
+        <div class="ph wide video filled">
           <span class="ph-badge" data-en="RESULT VIDEO" data-zh="修復影片">修復影片</span>
-          <span class="ph-label" data-en="DROP VIDEO<br>Level repair result" data-zh="拖入影片<br>平整修復結果">拖入影片<br>平整修復結果</span>
+          <video src="media/cr-level.mp4" poster="media/cr-level.webp" muted loop playsinline preload="metadata" data-autoplay></video>
         </div>
         <div class="cr-tier-body">
           <div class="cr-tier-tags">
@@ -356,9 +373,9 @@
       </div>
 
       <div class="cr-tier feat reveal delay-2">
-        <div class="ph wide video">
+        <div class="ph wide video filled">
           <span class="ph-badge" data-en="RESULT VIDEO" data-zh="修復影片">修復影片</span>
-          <span class="ph-label" data-en="DROP VIDEO<br>Refined repair result" data-zh="拖入影片<br>精緻修復結果">拖入影片<br>精緻修復結果</span>
+          <video src="media/cr-refined.mp4" poster="media/cr-refined.webp" muted loop playsinline preload="metadata" data-autoplay></video>
         </div>
         <div class="cr-tier-body">
           <div class="cr-tier-tags">
@@ -379,7 +396,15 @@
 <section class="block">
   <div class="block-inner two-col">
     <div class="col-img reveal">
-      <div class="ph tall"><span class="ph-label" data-en="BEFORE / AFTER COMPARISON<br>portrait · approx. 720×900" data-zh="修復前 / 後對比照<br>直式 · 約 720×900">修復前 / 後對比照<br>直式 · 約 720×900</span></div>
+      <div class="proc-video">
+        <video src="/media/reels/reel-08.mp4" poster="/media/reels/reel-08.webp" muted loop playsinline preload="metadata" data-autoplay></video>
+        <a class="proc-ig" href="https://www.instagram.com/reel/DSr35KqE3dt/" target="_blank" rel="noopener">
+          <span class="ig-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#fff" stroke="none"/></svg></span>
+          <span data-en="Watch the full repair" data-zh="看完整修復過程">看完整修復過程</span>
+          <span class="go">→</span>
+        </a>
+      </div>
+      <p class="proc-cap" data-en="THE FULL REPAIR PROCESS · START TO FINISH" data-zh="完整修復流程 · 全程紀錄">完整修復流程 · 全程紀錄</p>
     </div>
     <div class="col-text reveal delay-1">
       <div class="section-eyebrow" data-en="WHAT YOU GET" data-zh="您獲得的保障">您獲得的保障</div>
@@ -391,6 +416,7 @@
         <li data-html data-en="<b>Faster turnaround</b> — most repairs done same day." data-zh="<b>工時更短</b> —— 多數案件當日即可完工。"><b>工時更短</b> —— 多數案件當日即可完工。</li>
         <li data-html data-en="<b>Trained at the source</b> — skills sharpened through ongoing overseas study." data-zh="<b>技術源自國際</b> —— 持續出國深造，不斷精進。"><b>技術源自國際</b> —— 持續出國深造，不斷精進。</li>
       </ul>
+      <p class="craft-line" data-html data-en="From rough to level to refined — the <b>entire repair process</b> of a single dent, Superior can do every step by hand. <span class='accent'>That is what true craftsmanship means.</span>" data-zh="從大概、平整到精緻，一道傷的<b>完整修復流程</b>，卓越都能親手為你做到。<span class='accent'>這，才是最完美的工匠精神。</span>">從大概、平整到精緻，一道傷的<b>完整修復流程</b>，卓越都能親手為你做到。<span class="accent">這，才是最完美的工匠精神。</span></p>
     </div>
   </div>
 </section>
@@ -454,6 +480,20 @@
       '不噴漆、不補土、不破壞原廠防鏽。真正的無痕修復，是讓鈑面回到出廠那一刻 —— 連光線都看不出曾經受損。',
       'text']
   ];
+</script>
+<script>
+/* 客製化修復影片：靜音循環、只在畫面內播放（preload=metadata，不拖慢開頁） */
+(function(){
+  var vids = document.querySelectorAll('video[data-autoplay]');
+  if(!vids.length || !('IntersectionObserver' in window)) return;
+  var vo = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var v = e.target;
+      if(e.isIntersecting){ v.play().catch(function(){}); } else { v.pause(); }
+    });
+  }, { threshold: 0.25 });
+  vids.forEach(function(v){ vo.observe(v); });
+})();
 </script>
 <script src="assets/site.js"></script>
 <script src="assets/immersive.js"></script>
