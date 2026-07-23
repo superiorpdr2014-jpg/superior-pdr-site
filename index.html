@@ -1214,6 +1214,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
   @keyframes wmPing{0%{transform:scale(0.5);opacity:.9}100%{transform:scale(2.6);opacity:0}}
   .leaflet-tooltip.wm-tip{background:transparent;border:0;box-shadow:none;color:#e4e9f2;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;font-weight:500;padding:0;text-shadow:0 1px 4px rgba(0,0,0,0.95)}
   .leaflet-tooltip.wm-tip.o{color:#ff2a3d;font-family:'Bebas Neue',sans-serif;font-size:20px;font-weight:700;letter-spacing:0.08em}
+  .wm-pin.in{width:12px;height:12px}
+  .wm-pin.in .core{width:7px;height:7px;background:#33e1e6;box-shadow:0 0 8px 2px rgba(51,225,230,0.7)}
+  .leaflet-tooltip.wm-tip.in{color:#7fe6ec;font-size:11px}
   .leaflet-tooltip.wm-tip:before{display:none}
   .worldmap-cap{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--ink-mute);text-align:center;margin-top:14px}
 
@@ -1803,7 +1806,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div class="wm-corner tl"></div><div class="wm-corner tr"></div><div class="wm-corner bl"></div><div class="wm-corner br"></div>
     <div class="wm-badge"><span class="wm-dot"></span>GLOBAL TRAINING NETWORK</div>
   </div>
-  <div class="worldmap-cap">台灣 出發 — 連線世界 14 座城市</div>
+  <div class="worldmap-cap"><span style="color:#ff6b78">●</span> 台灣出發 · 連線世界　　<span style="color:#4fe3e8">●</span> 14 國學生 · 飛越國界來台灣學藝</div>
 </div>
 
     <div class="cert-row">
@@ -2696,11 +2699,11 @@ function hideTweaks(){
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {subdomains:'abcd', minZoom:1, maxZoom:8}).addTo(map);
   var renderer = L.svg({padding:0.5}).addTo(map);
   var arcPaths = [];
-  function arc(a,b){
+  function arc(a,b,inb){
     var lift=Math.min(Math.abs(b.lng-a.lng)*0.18,34);
-    var cLat=Math.max(a.lat,b.lat)+lift, cLng=(a.lng+b.lng)/2, pts=[];
+    var cLat=(inb? Math.min(a.lat,b.lat)-lift : Math.max(a.lat,b.lat)+lift), cLng=(a.lng+b.lng)/2, pts=[];
     for(var t=0;t<=1.001;t+=1/40){var u=1-t;pts.push([u*u*a.lat+2*u*t*cLat+t*t*b.lat, u*u*a.lng+2*u*t*cLng+t*t*b.lng]);}
-    return L.polyline(pts,{renderer:renderer,color:'#ff2a3d',weight:1.6,opacity:0.65,lineCap:'round'}).addTo(map);
+    return L.polyline(pts,{renderer:renderer,color:inb?'#33e1e6':'#ff2a3d',weight:1.6,opacity:inb?0.6:0.65,lineCap:'round'}).addTo(map);
   }
   CITIES.forEach(function(c){
     if(!c.o){ arcPaths.push(arc(origin,c)); }
@@ -2709,14 +2712,40 @@ function hideTweaks(){
     var dir = c.o ? 'left' : (c.lng>200 ? 'top' : 'top');
     L.marker([c.lat,c.lng],{icon:icon, interactive:false}).addTo(map).bindTooltip(c.zh,{permanent:true, direction:dir, className:'wm-tip'+(c.o?' o':''), offset:c.o?[-8,0]:[0,-8]}).openTooltip();
   });
-  var grp=L.featureGroup(arcPaths);
+  // 14 國學生「飛進台灣」— 青色線、往下彎，與紅色出發線區隔
+  var INBOUND=[
+    {"zh":"香港","lat":22.3,"lng":114.17,"dir":"bottom"},
+    {"zh":"新加坡","lat":1.35,"lng":103.82,"dir":"bottom"},
+    {"zh":"越南","lat":21.03,"lng":105.85,"dir":"left"},
+    {"zh":"馬來西亞","lat":3.14,"lng":101.69,"dir":"left"},
+    {"zh":"澳洲","lat":-33.87,"lng":151.21,"dir":"bottom"},
+    {"zh":"英國","lat":51.51,"lng":-0.13,"dir":"left"},
+    {"zh":"加拿大","lat":49.28,"lng":236.88,"dir":"top"},
+    {"zh":"模里西斯","lat":-20.35,"lng":57.55,"dir":"bottom"},
+    {"zh":"印尼","lat":-6.21,"lng":106.85,"dir":"bottom"},
+    {"zh":"汶萊","lat":4.9,"lng":114.94,"dir":"right"},
+    {"zh":"泰國","lat":13.76,"lng":100.5,"dir":"bottom"},
+    {"zh":"中國","lat":39.9,"lng":116.4,"dir":"left"},
+    {"zh":"多明尼加","lat":18.47,"lng":290.1,"dir":"bottom"},
+    {"zh":"伊朗","lat":35.7,"lng":51.4,"dir":"left"}
+  ];
+  var arcPathsIn=[];
+  function nearPinned(c){ return CITIES.some(function(x){ return Math.abs(x.lat-c.lat)<0.8 && Math.abs(((x.lng-c.lng+540)%360)-180)<0.8; }); }
+  INBOUND.forEach(function(c){
+    arcPathsIn.push(arc(c,origin,true));
+    if(nearPinned(c)) return;           // 與紅色點重疊(香港/泰國/中國)則只畫線不重複標籤
+    var off = c.dir==='top'?[0,-7] : c.dir==='bottom'?[0,7] : c.dir==='left'?[-7,0] : [7,0];
+    var icon=L.divIcon({className:'wm-pin-wrap', html:'<div class="wm-pin in"><div class="core"></div></div>', iconSize:[12,12], iconAnchor:[6,6]});
+    L.marker([c.lat,c.lng],{icon:icon, interactive:false}).addTo(map).bindTooltip(c.zh,{permanent:true, direction:c.dir, className:'wm-tip in', offset:off}).openTooltip();
+  });
+  var grp=L.featureGroup(arcPaths.concat(arcPathsIn));
   try{ map.fitBounds(grp.getBounds(),{padding:[48,64],animate:false}); }catch(e){}
   function prep(p){ try{var len=p._path.getTotalLength();p._path.style.transition='none';p._path.style.strokeDasharray=len;p._path.style.strokeDashoffset=len;p._path.getBoundingClientRect();}catch(e){} }
   function draw(p,d){ try{var len=p._path.getTotalLength();p._path.style.transition='none';p._path.style.strokeDasharray=len;p._path.style.strokeDashoffset=len;p._path.getBoundingClientRect();p._path.style.transition='stroke-dashoffset 1.0s cubic-bezier(.45,0,.25,1) '+d+'s';p._path.style.strokeDashoffset=0;}catch(e){} }
-  setTimeout(function(){arcPaths.forEach(prep);},80);
+  setTimeout(function(){arcPaths.concat(arcPathsIn).forEach(prep);},80);
   map.invalidateSize();
   var fired=false;
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!fired){fired=true;map.invalidateSize();setTimeout(function(){arcPaths.forEach(function(p,i){draw(p,0.15+i*0.12);});},80);io.disconnect();}});},{threshold:0.1});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!fired){fired=true;map.invalidateSize();setTimeout(function(){arcPaths.forEach(function(p,i){draw(p,0.15+i*0.12);});arcPathsIn.forEach(function(p,i){draw(p,0.5+i*0.10);});},80);io.disconnect();}});},{threshold:0.1});
   io.observe(document.querySelector('.worldmap'));
 })();
 
