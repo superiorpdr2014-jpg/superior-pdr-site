@@ -15,11 +15,11 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>卓越認證學員查詢｜PDR 結訓證書驗證 — 卓越 SUPERIOR PDR</title>
-<meta name="description" content="卓越認證學員名單查詢。完成卓越 SUPERIOR PDR 完整訓練課程（4 Week）或進階訓練課程的技師，皆核發 Taiwan PDR Art Technologies 結訓證書並登錄唯一編號（CAC 編號）。輸入姓名或證書編號即可線上驗證真偽。">
+<meta name="description" content="卓越認證學員名單查詢。完成卓越 SUPERIOR PDR 中階（2 Week）、完整（4 Week）或進階訓練課程的技師，皆核發 Taiwan PDR Art Technologies 結訓證書並登錄唯一編號（CAC 編號）。輸入姓名或證書編號即可線上驗證真偽。">
 <meta name="keywords" content="卓越認證學員,PDR證書查詢,PDR結訓證書,凹痕修復證照,PDR認證技師,CAC編號,PDR證書驗證,Taiwan PDR Art Technologies,superior pdr certificate">
 <link rel="canonical" href="https://tar-tw.com/certified-graduates/">
 <meta property="og:title" content="卓越認證學員查詢｜PDR 結訓證書驗證 — 卓越 SUPERIOR PDR">
-<meta property="og:description" content="輸入姓名或證書編號，線上驗證卓越 SUPERIOR PDR 結訓證書真偽。歷屆認證學員來自 11 個國家與地區。">
+<meta property="og:description" content="輸入姓名或證書編號，線上驗證卓越 SUPERIOR PDR 結訓證書真偽。歷屆認證學員來自 12 個國家與地區。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tar-tw.com/certified-graduates/">
 <meta property="og:image" content="https://tar-tw.com/media/og-default.jpg">
@@ -89,6 +89,7 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
 .cg-badge{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:5px 11px;border-radius:999px;white-space:nowrap;border:1px solid}
 .cg-badge.full{color:#e8c68a;border-color:rgba(212,164,90,.4);background:rgba(212,164,90,.10)}
 .cg-badge.adv{color:#8fb6ff;border-color:rgba(120,160,255,.34);background:rgba(120,160,255,.09)}
+.cg-badge.two{color:#7ed7b8;border-color:rgba(110,215,180,.34);background:rgba(110,215,180,.09)}
 .cg-empty{padding:56px 24px;text-align:center;color:var(--ink-mute);font-size:15px}
 .cg-empty b{display:block;color:var(--ink);font-size:17px;margin-bottom:8px}
 
@@ -169,6 +170,7 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
     <div class="cg-selects">
       <select id="fCourse" aria-label="依課程篩選">
         <option value="">全部課程</option>
+        <option value="two">中階訓練課程 2 Week</option>
         <option value="full">完整訓練課程 4 Week</option>
         <option value="adv">進階訓練課程 1 Week</option>
       </select>
@@ -223,8 +225,9 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
         </ul>
       </div>
       <div class="cg-idbox">
-        <div class="ex" style="color:var(--ink);font-size:15px;letter-spacing:.02em">兩種課程證書</div>
+        <div class="ex" style="color:var(--ink);font-size:15px;letter-spacing:.02em">三種課程證書</div>
         <ul>
+          <li class="crs"><span class="cg-badge two">中階 2 Week</span><div>兩週中階技術訓練，把基礎手法練到穩，適合想先投入較短時間確認方向的人。</div></li>
           <li class="crs"><span class="cg-badge full">完整 4 Week</span><div>四週完整技術訓練，從基礎手法、光線判讀到膠拉與實車操作，結訓後具備獨立接案能力。</div></li>
           <li class="crs"><span class="cg-badge adv">進階 1 Week</span><div>為已有基礎的技師開設的一週進階訓練，聚焦高難度傷、鋁合金與 GPR 膠拉技術。</div></li>
         </ul>
@@ -279,6 +282,7 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
     TW:['台灣','Taiwan','tw'],
     CN:['中國','China','cn'],
     HK:['香港','Hong Kong','hk'],
+    SG:['新加坡','Singapore','sg'],
     JP:['日本','Japan','jp'],
     VN:['越南','Vietnam','vn'],
     IR:['伊朗','Iran','ir'],
@@ -290,8 +294,10 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
   };
 
   var D=[
-    ['CAC/2023/03/001','Hoang Nguyen','full','2023/03/01','VN'],
-    ['CAC/2023/03/002','Tyler Mckinnon','full','2023/03/01','VN'],
+    ['CAC/2023/03/001','Lee De Sheng','two','2023/03/22','SG'],
+    ['CAC/2023/03/002','Kevin Koh Wei Quan','two','2023/03/22','SG'],
+    ['CAC/2023/05/001','Hoang Nguyen','full','2023/05/01','VN'],
+    ['CAC/2023/05/002','Tyler Mckinnon','full','2023/05/01','VN'],
     ['CAC/2023/05/002','Lim Ghee Seng','adv','2023/05/12','MY'],
     ['CAC/2023/12/001','Eason Chen','full','2023/12/10','TW'],
     ['CAC/2023/12/002','Chu Chia Hung','full','2023/12/10','TW'],
@@ -326,7 +332,7 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
     ['CAC/2025/08/003','Leo Wang','full','2025/08/26','CA'],
     ['CAC/2025/11/001','Weng Wei Ting','full','2025/11/20','TW'],
     ['CAC/2026/01/001','Lee Tsang Chi','full','2026/01/31','TW'],
-    ['CAC/2026/01/002','Chou Chih Cheng','full','2026/01/31','TW'],
+    ['CAC/2026/01/001','Chou Chih Cheng','full','2026/01/31','TW'],
     ['CAC/2026/03/001','Pan Yi Chung','full','2026/03/28','TW'],
     ['CAC/2026/04/001','Fantao Meng','full','2026/04/22','AU'],
     ['CAC/2026/04/002','Tu Chieh Wei','full','2026/04/24','TW'],
@@ -336,7 +342,7 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
     ['CAC/2026/07/002','Zeng Yu Hao','full','2026/07/15','TW']
   ].map(function(r){return {id:r[0],name:r[1],course:r[2],date:r[3],country:r[4]};});
 
-  var CN={full:'完整 4 Week',adv:'進階 1 Week'};
+  var CN={two:'中階 2 Week',full:'完整 4 Week',adv:'進階 1 Week'};
   function $(s){return document.querySelector(s);}
   var tb=$('#tb'),empty=$('#empty'),cnt=$('#cnt'),q=$('#q'),qClear=$('#qClear'),
       fCourse=$('#fCourse'),fCountry=$('#fCountry');
