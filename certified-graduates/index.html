@@ -19,7 +19,7 @@
 <meta name="keywords" content="卓越認證學員,PDR證書查詢,PDR結訓證書,凹痕修復證照,PDR認證技師,CAC編號,PDR證書驗證,Taiwan PDR Art Technologies,superior pdr certificate">
 <link rel="canonical" href="https://tar-tw.com/certified-graduates/">
 <meta property="og:title" content="卓越認證學員查詢｜PDR 結訓證書驗證 — 卓越 SUPERIOR PDR">
-<meta property="og:description" content="輸入姓名或證書編號，線上驗證卓越 SUPERIOR PDR 結訓證書真偽。歷屆認證學員來自 12 個國家與地區。">
+<meta property="og:description" content="輸入姓名或證書編號，線上驗證卓越 SUPERIOR PDR 結訓證書真偽。歷屆認證學員來自 14 個國家與地區。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tar-tw.com/certified-graduates/">
 <meta property="og:image" content="https://tar-tw.com/media/og-default.jpg">
@@ -146,7 +146,7 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
   <div class="grid-overlay"></div>
   <img class="seal" src="media/cert-seal.webp" alt="Taiwan PDR Art Technologies 認證徽章" width="560" height="559">
   <div class="inner">
-    <div class="eyebrow" data-en="CERTIFIED GRADUATES · SINCE 2023" data-zh="卓越認證學員 · 自 2023">卓越認證學員 · 自 2023</div>
+    <div class="eyebrow" data-en="CERTIFIED GRADUATES · SINCE 2019" data-zh="卓越認證學員 · 自 2019">卓越認證學員 · 自 2019</div>
     <h1 data-en="CERTIFIED <em>GRADUATES</em>" data-zh="卓越<em>認證學員</em>">卓越<em>認證學員</em></h1>
     <p class="lead" data-en="Every technician who completes a Superior PDR training course receives a Taiwan PDR Art Technologies certificate carrying a unique registered ID. Search the list below by name or certificate number to verify one." data-zh="每一位完成卓越 SUPERIOR PDR 訓練課程的技師，都會取得 Taiwan PDR Art Technologies 結訓證書，並登錄唯一編號。輸入姓名或證書編號，即可在下方名單查證真偽。">每一位完成卓越 SUPERIOR PDR 訓練課程的技師，都會取得 Taiwan PDR Art Technologies 結訓證書，並登錄唯一編號。輸入姓名或證書編號，即可在下方名單查證真偽。</p>
     <div class="cg-stats">
@@ -285,6 +285,8 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
     SG:['新加坡','Singapore','sg'],
     JP:['日本','Japan','jp'],
     VN:['越南','Vietnam','vn'],
+    ID:['印尼','Indonesia','id'],
+    BN:['汶萊','Brunei','bn'],
     IR:['伊朗','Iran','ir'],
     MY:['馬來西亞','Malaysia','my'],
     MU:['模里西斯','Mauritius','mu'],
@@ -294,8 +296,10 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
   };
 
   var D=[
+    ['CAC/2019/07/001','Adhi Surya Yodjana','full','2019/07/26','ID'],
     ['CAC/2023/03/001','Lee De Sheng','two','2023/03/22','SG'],
     ['CAC/2023/03/002','Kevin Koh Wei Quan','two','2023/03/22','SG'],
+    ['CAC/2023/04/001','Andy Ang','adv','2023/04/14','BN'],
     ['CAC/2023/05/001','Hoang Nguyen','full','2023/05/01','VN'],
     ['CAC/2023/05/002','Tyler Mckinnon','full','2023/05/01','VN'],
     ['CAC/2023/05/002','Lim Ghee Seng','adv','2023/05/12','MY'],
@@ -349,11 +353,11 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
   var sortKey='date',sortDir=-1;
 
   /* 統計 */
-  var years={},ctry={};
-  D.forEach(function(r){years[r.date.slice(0,4)]=1;ctry[r.country]=1;});
+  var years=[],ctry={};
+  D.forEach(function(r){years.push(+r.date.slice(0,4));ctry[r.country]=1;});
   $('#stTotal').textContent=D.length;
   $('#stCountry').textContent=Object.keys(ctry).length;
-  $('#stYear').textContent=Object.keys(years).length;
+  $('#stYear').textContent=Math.max.apply(null,years)-Math.min.apply(null,years)+1;
 
   /* 國家下拉：依人數排序 */
   var byC={};
