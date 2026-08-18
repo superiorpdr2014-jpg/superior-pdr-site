@@ -508,6 +508,34 @@
     <div class="section-eyebrow" data-en="ALUMNI" data-zh="學員足跡">學員足跡</div>
     <h2 style="font-family:'Bebas Neue';font-size:clamp(32px,3.5vw,56px);letter-spacing:.02em;margin:0 0 16px;line-height:1">卓越認證技師 · 遍布亞洲</h2>
     <p style="font-size:17px;color:var(--ink-dim);line-height:1.8;max-width:700px;margin:0">從台灣到香港、新加坡、印尼、汶萊、模里西斯、越南、伊朗、英國、加拿大、澳洲，持有「Taiwan PDR Art Technologies Certificate」的卓越認證技師在世界各地開枝散葉。</p>
+    <a class="cert-lookup" href="/certified-graduates/">
+      <img loading="lazy" decoding="async" src="media/cert-seal.webp" alt="Taiwan PDR Art Technologies 認證徽章" width="560" height="559">
+      <div class="cl-txt">
+        <div class="cl-eyebrow">CERTIFIED GRADUATES · 認證學員名單</div>
+        <div class="cl-h">查詢卓越認證學員</div>
+        <p>每位結訓學員都持有登錄編號的結訓證書。輸入姓名或證書編號，即可線上查證真偽。</p>
+      </div>
+      <span class="cl-btn">查詢名單
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>
+      </span>
+    </a>
+    <style>
+      .cert-lookup{display:flex;align-items:center;gap:26px;margin-top:34px;padding:26px 30px;border:1px solid rgba(212,164,90,.3);background:linear-gradient(120deg,rgba(212,164,90,.09),rgba(212,164,90,.02));border-radius:14px;transition:border-color .25s,background .25s,transform .25s}
+      .cert-lookup:hover{border-color:rgba(212,164,90,.62);background:linear-gradient(120deg,rgba(212,164,90,.15),rgba(212,164,90,.04));transform:translateY(-2px)}
+      .cert-lookup>img{width:76px;height:76px;flex:0 0 auto;filter:drop-shadow(0 4px 16px rgba(212,164,90,.35))}
+      .cert-lookup .cl-txt{flex:1 1 auto;min-width:0}
+      .cert-lookup .cl-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+      .cert-lookup .cl-h{font-family:'Bebas Neue';font-size:30px;letter-spacing:.03em;color:var(--ink);line-height:1;margin-bottom:9px}
+      .cert-lookup p{font-size:14.5px;color:var(--ink-dim);line-height:1.7;margin:0;max-width:560px}
+      .cert-lookup .cl-btn{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--gold);border:1px solid rgba(212,164,90,.45);border-radius:999px;padding:11px 20px;white-space:nowrap;transition:background .25s,color .25s}
+      .cert-lookup:hover .cl-btn{background:var(--gold);color:#0b0c0f;border-color:var(--gold)}
+      @media(max-width:860px){
+        .cert-lookup{flex-wrap:wrap;gap:18px;padding:22px}
+        .cert-lookup>img{width:56px;height:56px}
+        .cert-lookup .cl-txt{flex:1 1 200px}
+        .cert-lookup .cl-btn{width:100%;justify-content:center}
+      }
+    </style>
     <div class="alumni-masonry">
       <div class="alumni-item"><img loading="lazy" decoding="async" src="media/alumni-1.jpg" alt="學員結業 — Wade Lin, Chung Wen Chim"></div>
       <div class="alumni-item"><img loading="lazy" decoding="async" src="media/alumni-2.jpg" alt="學員結業 — Oscar Tan 香港"></div>

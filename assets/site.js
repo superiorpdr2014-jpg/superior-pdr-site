@@ -55,7 +55,7 @@
   function buildNavHTML(cur) {
     var aboutKeys = ['excellence','about','quality','pricing','technicians'];
     var svcKeys   = ['svc-pdr','svc-ev','svc-large','svc-alloy','svc-moto'];
-    var trainKeys = ['training','training-2w','training-4w','training-adv','training-event','training-school'];
+    var trainKeys = ['training','training-2w','training-4w','training-adv','training-event','training-school','training-cert'];
     var aboutOn = aboutKeys.indexOf(cur) > -1;
     var svcOn   = svcKeys.indexOf(cur) > -1;
     var trainOn = trainKeys.indexOf(cur) > -1;
@@ -101,6 +101,7 @@
       '      <a class="ddi'+ddc('training-adv')+'" data-d="training-adv" href="/advancedtraining/">PDR進階技術訓練</a>',
       '      <a class="ddi'+ddc('training-event')+'" data-d="training-event" href="/advancedevent/">國際進階訓練研討會</a>',
       '      <a class="ddi'+ddc('training-school')+'" data-d="training-school" href="/vocational-school-training/">前進校園｜技職扎根</a>',
+      '      <a class="ddi'+ddc('training-cert')+'" data-d="training-cert" href="/certified-graduates/">卓越認證學員</a>',
       '    </div>',
       '  </div>',
       '  <a class="nav-link'+cc('contact')+'" href="/contact/" data-key="locations">據點分佈</a>',
