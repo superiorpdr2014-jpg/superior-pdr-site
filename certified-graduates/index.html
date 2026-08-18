@@ -129,9 +129,28 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
 .btn-line{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:8px;font-size:15px;font-weight:600;border:1px solid var(--line-bright);color:var(--ink);text-decoration:none;transition:opacity .2s}
 .btn-line:hover{opacity:.72}
 
+/* ─── 結業照牆 ─── */
+.grad-wall{position:relative;border-top:1px solid var(--line);padding:62px 0 68px;overflow:hidden}
+.gw-head{max-width:1260px;margin:0 auto 32px;padding:0 48px}
+.gw-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.gw-head h2{font-family:'Bebas Neue';font-size:clamp(26px,3vw,44px);letter-spacing:.02em;margin:0 0 12px;line-height:1.04}
+.gw-head p{font-size:15.5px;color:var(--ink-dim);line-height:1.75;margin:0;max-width:760px}
+.gw-track{position:relative;width:100%;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.gw-row{display:flex;gap:14px;width:max-content;animation:gwscroll 68s linear infinite}
+.grad-wall:hover .gw-row{animation-play-state:paused}
+.gw-row img{width:300px;height:200px;flex:0 0 auto;object-fit:cover;border-radius:10px;border:1px solid var(--line);transition:transform .3s,border-color .3s}
+.gw-row img:hover{transform:scale(1.045);border-color:rgba(212,164,90,.55)}
+@keyframes gwscroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 7px),0,0)}}
+@media(max-width:820px){.gw-head{padding:0 22px}.gw-row img{width:230px;height:154px}}
+@media(prefers-reduced-motion:reduce){.gw-row{animation:none}.gw-track{overflow-x:auto}}
+
 /* ─── cta ─── */
-.cg-cta{background:var(--bg-elev);border-top:1px solid var(--line)}
-.cg-cta .in{max-width:1260px;margin:0 auto;padding:70px 48px;text-align:center}
+.cg-cta{position:relative;background:var(--bg-elev);border-top:1px solid var(--line);overflow:hidden}
+.cg-cta .cta-bg{position:absolute;inset:0;z-index:0;background:url('media/grad-cta.webp') center 42%/cover no-repeat;opacity:.3}
+.cg-cta .cta-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,12,15,.82) 0%,rgba(10,12,15,.9) 60%,rgba(10,12,15,.96) 100%)}
+.cg-cta .in{position:relative;z-index:2;max-width:1260px;margin:0 auto;padding:78px 48px;text-align:center}
 .cg-cta h2{font-family:'Bebas Neue';font-size:clamp(30px,4vw,54px);margin:0 0 14px;letter-spacing:.02em}
 .cg-cta p{color:var(--ink-dim);font-size:16px;margin:0 auto 30px;max-width:620px;line-height:1.8}
 .cg-cta .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
@@ -205,6 +224,42 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
   </div>
 </section>
 
+<section class="grad-wall" aria-label="卓越學員結業實況">
+  <div class="gw-head">
+    <div class="gw-eyebrow">GRADUATION DAY · 結業現場</div>
+    <h2 data-en="EVERY ID ON THAT LIST IS A DAY LIKE THIS" data-zh="名單上的每一組編號，背後都是這樣的一天">名單上的每一組編號，背後都是這樣的一天</h2>
+    <p>結訓當天，學員拿到的是一張登錄在案的證書——上面那組編號，就是你在上方名單查得到的那一組。</p>
+  </div>
+  <div class="gw-track">
+    <div class="gw-row">
+        <img loading="lazy" decoding="async" src="media/grad-strip-1.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-2.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-3.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-4.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-5.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-6.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-7.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-8.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-9.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-10.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-11.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-12.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-1.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-2.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-3.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-4.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-5.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-6.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-7.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-8.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-9.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-10.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-11.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+        <img loading="lazy" decoding="async" src="media/grad-strip-12.webp" alt="卓越 SUPERIOR PDR 學員結業實況" width="600" height="400">
+    </div>
+  </div>
+</section>
+
 <section class="cg-sec">
   <h2 data-en="ABOUT THE CERTIFICATE" data-zh="關於這張證書">關於這張證書</h2>
   <p data-en="Issued by Taiwan PDR Art Technologies and signed by chief instructor Jay Ma, with a gold embossed seal at the centre and a registered certificate ID printed at the lower left." data-zh="證書由 <strong>Taiwan PDR Art Technologies</strong> 核發，首席講師 <strong>Jay Ma（馬成傑）</strong>簽署，中央為金色壓印徽章，左下角印有唯一的證書編號與核發日期——這組編號就是查證的依據。">證書由 <strong>Taiwan PDR Art Technologies</strong> 核發，首席講師 <strong>Jay Ma（馬成傑）</strong>簽署，中央為金色壓印徽章，左下角印有唯一的證書編號與核發日期——這組編號就是查證的依據。</p>
@@ -237,6 +292,8 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
 </section>
 
 <div class="cg-cta">
+  <div class="cta-bg"></div>
+  <div class="cta-shade"></div>
   <div class="in">
     <h2 data-en="WANT YOUR NAME ON THIS LIST?" data-zh="想讓自己的名字出現在這份名單上？">想讓自己的名字出現在這份名單上？</h2>
     <p data-en="Superior PDR runs full four-week and advanced training courses in Taiwan — open to complete beginners and working technicians alike." data-zh="卓越在台灣開設完整訓練課程與進階訓練課程，零基礎與現職技師都收。先從 3 小時體驗課開始，親手做一次再決定。">卓越在台灣開設完整訓練課程與進階訓練課程，零基礎與現職技師都收。先從 3 小時體驗課開始，親手做一次再決定。</p>
