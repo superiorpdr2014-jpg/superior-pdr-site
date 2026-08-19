@@ -69,14 +69,20 @@
 .cg-count b{color:var(--gold);font-weight:500}
 
 /* ─── table ─── */
-.cg-tablewrap{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg-elev)}
+.cg-tablewrap{border:1px solid var(--line);border-radius:14px;background:var(--bg-elev);
+  max-height:min(855px,86vh);overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;
+  scrollbar-color:var(--line-bright) transparent}
+.cg-tablewrap::-webkit-scrollbar{width:10px}
+.cg-tablewrap::-webkit-scrollbar-track{background:transparent}
+.cg-tablewrap::-webkit-scrollbar-thumb{background:var(--line-bright);border-radius:999px;border:3px solid var(--bg-elev)}
+.cg-tablewrap::-webkit-scrollbar-thumb:hover{background:rgba(212,164,90,.6)}
 table.cg{width:100%;border-collapse:collapse;font-size:14.5px}
-table.cg thead th{background:var(--bg-card);text-align:left;font-weight:600;font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);padding:15px 18px;border-bottom:1px solid var(--line-bright);white-space:nowrap;cursor:pointer;user-select:none;transition:color .2s}
+table.cg thead th{position:sticky;top:0;z-index:3;background:var(--bg-card);text-align:left;font-weight:600;font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);padding:14px 18px;box-shadow:inset 0 -1px 0 var(--line-bright);white-space:nowrap;cursor:pointer;user-select:none;transition:color .2s}
 table.cg thead th:hover{color:var(--gold)}
 table.cg thead th .arrow{opacity:0;margin-left:6px;font-size:9px}
 table.cg thead th.sorted{color:var(--gold)}
 table.cg thead th.sorted .arrow{opacity:1}
-table.cg tbody td{padding:15px 18px;border-bottom:1px solid var(--line);color:var(--ink-dim);vertical-align:middle}
+table.cg tbody td{padding:12px 18px;border-bottom:1px solid var(--line);color:var(--ink-dim);vertical-align:middle}
 table.cg tbody tr:last-child td{border-bottom:none}
 table.cg tbody tr{transition:background .18s}
 table.cg tbody tr:hover{background:rgba(212,164,90,.045)}
@@ -97,7 +103,7 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
 
 /* mobile: table → cards */
 @media(max-width:760px){
-  .cg-tablewrap{border:none;background:none;border-radius:0}
+  .cg-tablewrap{border:none;background:none;border-radius:0;max-height:72vh;padding-right:2px}
   table.cg,table.cg tbody,table.cg tr,table.cg td{display:block;width:100%}
   table.cg thead{display:none}
   table.cg tbody tr{background:var(--bg-elev);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;padding:6px 2px}
