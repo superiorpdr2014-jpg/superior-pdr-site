@@ -201,6 +201,7 @@
       '    <a href="/advancedtraining/">PDR進階技術訓練</a>',
       '    <a href="/advancedevent/">國際進階訓練研討會</a>',
       '    <a href="/vocational-school-training/">前進校園｜技職扎根</a>',
+      '    <a href="/certified-graduates/">卓越認證學員</a>',
       '  </div>',
       '</div>',
       '<div class="mob-group"><a href="/contact/">據點分佈</a></div>',
