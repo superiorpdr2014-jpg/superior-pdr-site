@@ -90,6 +90,8 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
 .cg-badge.full{color:#e8c68a;border-color:rgba(212,164,90,.4);background:rgba(212,164,90,.10)}
 .cg-badge.adv{color:#8fb6ff;border-color:rgba(120,160,255,.34);background:rgba(120,160,255,.09)}
 .cg-badge.two{color:#7ed7b8;border-color:rgba(110,215,180,.34);background:rgba(110,215,180,.09)}
+.cg-shop{color:var(--ink);font-size:13.5px}
+.cg-none{color:var(--ink-mute);font-size:13px}
 .cg-empty{padding:56px 24px;text-align:center;color:var(--ink-mute);font-size:15px}
 .cg-empty b{display:block;color:var(--ink);font-size:17px;margin-bottom:8px}
 
@@ -178,7 +180,7 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
 
 <section class="cg-sec">
   <h2 data-en="VERIFY A CERTIFICATE" data-zh="證書查詢">證書查詢</h2>
-  <p data-en="Type a name, a certificate ID, or any part of one — the list filters as you type." data-zh="輸入<strong>姓名</strong>或<strong>證書編號</strong>（可只輸入片段，例如 <strong>2025</strong> 或 <strong>08/002</strong>），名單會即時篩選。">輸入<strong>姓名</strong>或<strong>證書編號</strong>（可只輸入片段，例如 <strong>2025</strong> 或 <strong>08/002</strong>），名單會即時篩選。</p>
+  <p data-en="Type a name, a certificate ID, or any part of one — the list filters as you type." data-zh="輸入<strong>姓名</strong>或<strong>證書編號</strong>（可只輸入片段，例如 <strong>2025</strong> 或 <strong>08/002</strong>），名單會即時篩選。">輸入<strong>姓名</strong>或<strong>證書編號</strong>（可只輸入片段，例如 <strong>2025</strong> 或 <strong>08/002</strong>），名單會即時篩選；有登記現職據點的學員，打店名也查得到。</p>
 
   <div class="cg-tools">
     <div class="cg-search">
@@ -208,6 +210,7 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
           <th data-k="course">課程 COURSE<span class="arrow">▲</span></th>
           <th data-k="date">結訓日期 DATE<span class="arrow">▲</span></th>
           <th data-k="country">國家地區 COUNTRY<span class="arrow">▲</span></th>
+          <th data-k="shop">現職據點 STUDIO<span class="arrow">▲</span></th>
         </tr>
       </thead>
       <tbody id="tb"></tbody>
@@ -354,44 +357,44 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
 
   var D=[
     ['CAC/2018/05/001','YU TZU HUNG','full','2018/07/03','TW'],
-    ['CAC/2018/05/001','KO MENG TSUNG','two','2018/07/14','TW'],
+    ['CAC/2018/05/001','KO MENG TSUNG','two','2018/07/14','TW','車炫凹痕修復中心'],
     ['CAC/2018/09/001','WANG SHIH HAO','full','2018/09/19','TW'],
-    ['CAC/2018/12/001','Yeh Chieh Hung','full','2018/12/28','TW'],
-    ['CAC/2018/12/002','Tsai Tsung Hsun','full','2018/12/28','TW'],
+    ['CAC/2018/12/001','Yeh Chieh Hung','full','2018/12/28','TW','頂尖凹痕修復中心 Master PDR'],
+    ['CAC/2018/12/002','Tsai Tsung Hsun','full','2018/12/28','TW','頂尖凹痕修復中心 Master PDR'],
     ['CAC/2019/01/001','NICKY YIP','two','2019/01/20','HK'],
-    ['CAC/2019/05/002','David Lo','full','2019/05/03','TW'],
+    ['CAC/2019/05/002','David Lo','full','2019/05/03','TW','ACE王牌凹痕修復'],
     ['CAC/2019/05/001','Paul Chen','two','2019/05/04','ID'],
     ['CAC/2018/06/001','HU SHIEN CHENG','full','2019/06/13','TW'],
     ['CAC/2019/06/001','ALEX WONG','full','2019/06/22','HK'],
     ['CAC/2019/06/001','詹富丞','full','2019/06/28','TW'],
-    ['CAC/2020/02/001','HUSNG SHIN LI','adv','2020/02/16','TW'],
-    ['CAC/2020/02/002','TSAI YU FENG','adv','2020/02/16','TW'],
-    ['CAC/2020/02/003','HSIEH WEI AN','adv','2020/02/16','TW'],
-    ['CAC/2019/12/001','Chen Wei Heng','full','2020/02/27','TW'],
-    ['CAC/2020/03/001','Lin Gia Wei','full','2020/03/16','TW'],
+    ['CAC/2020/02/001','HUSNG SHIN LI','adv','2020/02/16','TW','高雄曼特鈑金凹痕修復中心'],
+    ['CAC/2020/02/002','TSAI YU FENG','adv','2020/02/16','TW','琢登汽車凹痕修復專門店'],
+    ['CAC/2020/02/003','HSIEH WEI AN','adv','2020/02/16','TW','中億汽車鈑金凹痕修復中心'],
+    ['CAC/2019/12/001','Chen Wei Heng','full','2020/02/27','TW','台南捌貮車藝凹痕修復中心'],
+    ['CAC/2020/03/001','Lin Gia Wei','full','2020/03/16','TW','凹痕特區凹痕修復中心'],
     ['CAC/2020/04/001','CHEN WEI LIANG','full','2020/04/17','TW'],
     ['CAC/2020/05/001','黃郁欣','full','2020/05/16','TW'],
-    ['CAC/2020/05/001','陳威典','full','2020/05/16','TW'],
+    ['CAC/2020/05/001','陳威典','full','2020/05/16','TW','焦點凹痕修復中心'],
     ['CAC/2020/05/002','吳進財','two','2020/05/16','TW'],
-    ['CAC/2019/06/001','蔡富舜','full','2020/06/10','TW'],
+    ['CAC/2019/06/001','蔡富舜','full','2020/06/10','TW','NoTrace無痕車業'],
     ['CAC/2020/08/001','卓子陽','full','2020/08/28','TW'],
-    ['CAC/2020/08/003','張家豪','full','2020/08/28','TW'],
-    ['CAC/2020/09/002','ZHUO YU QIN','adv','2020/09/11','TW'],
+    ['CAC/2020/08/003','張家豪','full','2020/08/28','TW','永亨PDR汽車凹痕'],
+    ['CAC/2020/09/002','ZHUO YU QIN','adv','2020/09/11','TW','花蓮東騰微鈑金'],
     ['CAC/2020/09/001','羅健肔','two','2020/09/15','TW'],
     ['CAC/2020/12/001','王永駿','two','2020/12/07','TW'],
     ['CAC/2021/03/001','林宗鴻','two','2021/03/29','TW'],
     ['CAC/2021/04/001','吳俊逸','two','2021/04/28','TW'],
-    ['CAC/2021/10/001','Leo Li','full','2021/10/21','TW'],
-    ['CAC/2021/01/001','許權閎','full','2022/01/21','TW'],
-    ['CAC/2022/10/001','Wade Lin','full','2022/10/19','TW'],
-    ['CAC/2022/10/002','CHUNG WENCHIH','full','2022/10/19','TW'],
-    ['CAC/2022/11/001','OSCAR TAN','full','2022/11/17','HK'],
+    ['CAC/2021/10/001','Leo Li','full','2021/10/21','TW','鉄人微鈑金凹痕修復中心'],
+    ['CAC/2021/01/001','許權閎','full','2022/01/21','TW','SUPERIOR卓越凹痕修復'],
+    ['CAC/2022/10/001','Wade Lin','full','2022/10/19','TW','匠人凹痕修復工房'],
+    ['CAC/2022/10/002','CHUNG WENCHIH','full','2022/10/19','TW','Venn’s 凹痕修復'],
+    ['CAC/2022/11/001','OSCAR TAN','full','2022/11/17','HK','香港老凹汽車凹痕修復'],
     ['CAC/2022/12/002','黃景楠','full','2022/12/28','TW'],
     ['CAC/2022/12/003','黃羿荃','full','2022/12/28','TW'],
-    ['CAC/2022/12/001','鄭祖名','full','2022/12/29','TW'],
-    ['CAC/2023/01/001','HUI CHI MAN ANDY','full','2023/01/16','HK'],
-    ['CAC/2023/05/001','HUNG I HSIAO','full','2023/05/12','TW'],
-    ['CAC/2023/05/002','TIM HUANG','full','2023/05/12','TW'],
+    ['CAC/2022/12/001','鄭祖名','full','2022/12/29','TW','SUPERIOR卓越凹痕修復'],
+    ['CAC/2023/01/001','HUI CHI MAN ANDY','full','2023/01/16','HK','香港LeMons Workz'],
+    ['CAC/2023/05/001','HUNG I HSIAO','full','2023/05/12','TW','順寶汽車/免烤漆凹痕修復'],
+    ['CAC/2023/05/002','TIM HUANG','full','2023/05/12','TW','高雄立暘汽車凹痕修復中心'],
     ['CAC/2019/07/001','Adhi Surya Yodjana','full','2019/07/26','ID'],
     ['CAC/2023/03/001','Lee De Sheng','two','2023/03/22','SG'],
     ['CAC/2023/03/002','Kevin Koh Wei Quan','two','2023/03/22','SG'],
@@ -440,7 +443,7 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
     ['CAC/2026/05/001','Michael Tak Chiu Tam','adv','2026/05/23','CA'],
     ['CAC/2026/07/001','Oy Ip','full','2026/07/15','CA'],
     ['CAC/2026/07/002','Zeng Yu Hao','full','2026/07/15','TW']
-  ].map(function(r){return {id:r[0],name:r[1],course:r[2],date:r[3],country:r[4]};});
+  ].map(function(r){return {id:r[0],name:r[1],course:r[2],date:r[3],country:r[4],shop:r[5]||''};});
 
   var CN={two:'中階 2 Week',full:'完整 4 Week',adv:'進階 1 Week'};
   function $(s){return document.querySelector(s);}
@@ -478,7 +481,8 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
       if(!kw)return true;
       return norm(r.id).indexOf(kw)>-1||norm(r.name).indexOf(kw)>-1||
              norm(C[r.country][0]).indexOf(kw)>-1||norm(C[r.country][1]).indexOf(kw)>-1||
-             norm(CN[r.course]).indexOf(kw)>-1;
+             norm(CN[r.course]).indexOf(kw)>-1||
+             (!!r.shop&&norm(r.shop).indexOf(kw)>-1);
     });
     rows.sort(function(a,b){
       var x,y;
@@ -497,6 +501,7 @@ table.cg tbody tr.hit{background:rgba(212,164,90,.10)}
         '<td data-l="COURSE"><span class="cg-badge '+r.course+'">'+CN[r.course]+'</span></td>'+
         '<td data-l="DATE"><span class="cg-date">'+esc(r.date)+'</span></td>'+
         '<td data-l="COUNTRY"><span class="cg-ct"><img class="cg-flag" src="media/flags/'+C[r.country][2]+'.svg" alt="" width="21" height="16" loading="lazy" decoding="async">'+C[r.country][0]+'</span></td>'+
+        '<td data-l="STUDIO">'+(r.shop?'<span class="cg-shop">'+esc(r.shop)+'</span>':'<span class="cg-none">—</span>')+'</td>'+
       '</tr>';
     }).join('');
     empty.style.display=rows.length?'none':'block';
