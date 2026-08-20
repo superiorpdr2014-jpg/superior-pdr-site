@@ -129,6 +129,30 @@
   .loc-card .lc-name{font-size:19px;font-weight:600;color:var(--ink);margin-top:8px;letter-spacing:0.01em}
   .loc-card .lc-pin{position:absolute;top:22px;right:22px;color:var(--line-bright);transition:color .25s}
   .loc-card:hover .lc-pin{color:var(--accent)}
+  .loc-grid{align-items:start}
+  /* ── 品牌影片 ── */
+  .film-wrap{position:relative;margin-top:34px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#000;aspect-ratio:16/9}
+  .film-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+  .film-play{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer;display:block}
+  .film-play img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease,opacity .3s}
+  .film-play:hover img{transform:scale(1.035);opacity:.82}
+  .film-btn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;
+    background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;
+    box-shadow:0 12px 44px rgba(255,42,61,.45);transition:transform .25s,box-shadow .25s}
+  .film-play:hover .film-btn{transform:translate(-50%,-50%) scale(1.09);box-shadow:0 16px 56px rgba(255,42,61,.6)}
+  .film-tag{position:absolute;left:20px;bottom:18px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:rgba(255,255,255,.92);background:rgba(0,0,0,.52);padding:7px 12px;border-radius:6px;
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  @media(max-width:640px){.film-btn{width:60px;height:60px}.film-tag{left:12px;bottom:12px;font-size:10px}}
+  .loc-card{min-height:172px;cursor:pointer}
+  .lc-meta{position:absolute;inset:0;border-radius:9px;padding:20px 22px;display:flex;flex-direction:column;justify-content:center;gap:8px;
+    background:linear-gradient(160deg,rgba(16,19,25,.985),rgba(11,13,17,.995));border:1px solid var(--accent);
+    opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .25s,transform .25s,visibility .25s}
+  .loc-card:hover .lc-meta,.loc-card.open .lc-meta{opacity:1;visibility:visible;transform:none}
+  .lc-meta .lz{font-size:16px;font-weight:700;color:#fff;letter-spacing:.01em}
+  .lc-meta a{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:rgba(255,255,255,.9);text-decoration:none;letter-spacing:.02em;line-height:1.5}
+  .lc-meta a:hover{color:var(--accent)}
+  .lc-meta .lh{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:rgba(255,255,255,.66);line-height:1.55}
 
   /* --- 各分店電話下拉選單 --- */
   .phone-dropdown{
@@ -176,6 +200,21 @@
     <div class="about-lead-sub" data-en="SINCE 2014 · 8 DIRECT STUDIOS · TAIWAN" data-zh="自 2014 · 八家直營據點 · 台灣">自 2014 · 八家直營據點 · 台灣</div>
   </div>
 </header>
+
+<!-- ============ BRAND FILM ============ -->
+<section class="block">
+  <div class="block-inner">
+    <div class="section-eyebrow reveal" data-en="BRAND FILM · CHINESE &amp; ENGLISH SUBTITLES" data-zh="品牌影片 · 中英雙語字幕">品牌影片 · 中英雙語字幕</div>
+    <h2 class="section-title reveal" data-en="See the craft in motion." data-zh="一支影片，看懂卓越在做什麼。">一支影片，看懂卓越在做什麼。</h2>
+    <div class="film-wrap reveal" id="filmWrap">
+      <button class="film-play" id="filmPlay" type="button" aria-label="播放卓越凹痕修復品牌影片">
+        <img src="media/about-video-poster.webp" alt="卓越 SUPERIOR PDR 品牌影片｜免烤漆凹痕修復實作" width="1280" height="720" decoding="async">
+        <span class="film-btn"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
+        <span class="film-tag">中英字幕 · Chinese / English subtitles</span>
+      </button>
+    </div>
+  </div>
+</section>
 
 <!-- ============ BRAND STORY ============ -->
 <section class="block">
@@ -346,14 +385,14 @@
     <p class="section-sub reveal" data-en="Every studio is directly operated with a unified process. No franchise gap — wherever you are, it's the same precise craft." data-zh="每一間皆為直營體系、流程統一。沒有加盟落差 —— 不論您在哪裡，都是同樣的精準工藝。">每一間皆為直營體系、流程統一。沒有加盟落差 —— 不論您在哪裡，都是同樣的精準工藝。</p>
 
     <div class="loc-grid">
-      <div class="loc-card reveal"><div class="lc-no">01</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="NEW TAIPEI" data-zh="新北">新北</div><div class="lc-name" data-en="Banqiao Studio" data-zh="板橋店">板橋店</div></div>
-      <div class="loc-card reveal"><div class="lc-no">02</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="NEW TAIPEI" data-zh="新北">新北</div><div class="lc-name" data-en="Zhonghe Studio" data-zh="中和店">中和店</div></div>
-      <div class="loc-card reveal"><div class="lc-no">03</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="TAIPEI" data-zh="台北">台北</div><div class="lc-name" data-en="Shilin Studio" data-zh="士林店">士林店</div></div>
-      <div class="loc-card reveal"><div class="lc-no">04</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="TAIPEI" data-zh="台北">台北</div><div class="lc-name" data-en="Binjiang Studio" data-zh="濱江店">濱江店</div></div>
-      <div class="loc-card reveal"><div class="lc-no">05</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="TAOYUAN" data-zh="桃園">桃園</div><div class="lc-name" data-en="Pingzhen Studio" data-zh="平鎮店">平鎮店</div></div>
-      <div class="loc-card reveal"><div class="lc-no">06</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="HSINCHU" data-zh="新竹">新竹</div><div class="lc-name" data-en="Zhubei Studio" data-zh="竹北店">竹北店</div></div>
-      <div class="loc-card reveal"><div class="lc-no">07</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="TAICHUNG" data-zh="台中">台中</div><div class="lc-name" data-en="South District" data-zh="南區店">南區店</div></div>
-      <div class="loc-card reveal"><div class="lc-no">08</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="KAOHSIUNG" data-zh="高雄">高雄</div><div class="lc-name" data-en="Nanzi Studio" data-zh="楠梓店">楠梓店</div></div>
+      <div class="loc-card reveal"><div class="lc-no">01</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="NEW TAIPEI" data-zh="新北">新北</div><div class="lc-name" data-en="Banqiao Studio" data-zh="板橋店">板橋店</div><div class="lc-meta"><span class="lz">板橋總店</span><a href="tel:0966732865">☎ 0966-732-865</a><a href="https://www.google.com/maps/search/?api=1&query=新北市板橋區民生路三段153號" target="_blank" rel="noopener">◉ 新北市板橋區民生路三段153號</a><span class="lh">🕘 一～五 11:00-20:00｜六 12:00-18:00｜日 店休</span></div></div>
+      <div class="loc-card reveal"><div class="lc-no">02</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="NEW TAIPEI" data-zh="新北">新北</div><div class="lc-name" data-en="Zhonghe Studio" data-zh="中和店">中和店</div><div class="lc-meta"><span class="lz">中和旗艦店</span><a href="tel:0903310894">☎ 0903-310-894</a><a href="https://www.google.com/maps/search/?api=1&query=新北市中和區橋安街25號" target="_blank" rel="noopener">◉ 新北市中和區橋安街25號</a><span class="lh">🕘 一～五 10:00-19:30｜六 10:00-19:30｜日 店休</span></div></div>
+      <div class="loc-card reveal"><div class="lc-no">03</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="TAIPEI" data-zh="台北">台北</div><div class="lc-name" data-en="Shilin Studio" data-zh="士林店">士林店</div><div class="lc-meta"><span class="lz">士林旗艦店</span><a href="tel:0978016802">☎ 0978-016-802</a><a href="https://www.google.com/maps/search/?api=1&query=台北市士林區承德路四段300號" target="_blank" rel="noopener">◉ 台北市士林區承德路四段300號</a><span class="lh">🕘 一～五 11:00-20:00｜六 12:00-18:00｜日 店休</span></div></div>
+      <div class="loc-card reveal"><div class="lc-no">04</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="TAIPEI" data-zh="台北">台北</div><div class="lc-name" data-en="Binjiang Studio" data-zh="濱江店">濱江店</div><div class="lc-meta"><span class="lz">台北濱江店</span><a href="tel:0901242511">☎ 0901-242-511</a><a href="https://www.google.com/maps/search/?api=1&query=台北市中山區濱江街332-1號" target="_blank" rel="noopener">◉ 台北市中山區濱江街332-1號</a><span class="lh">🕘 一～五 09:00-19:00｜六 09:00-18:00｜日 店休</span></div></div>
+      <div class="loc-card reveal"><div class="lc-no">05</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="TAOYUAN" data-zh="桃園">桃園</div><div class="lc-name" data-en="Pingzhen Studio" data-zh="平鎮店">平鎮店</div><div class="lc-meta"><span class="lz">桃園旗艦店</span><a href="tel:0972706679">☎ 0972-706-679</a><a href="https://www.google.com/maps/search/?api=1&query=桃園市平鎮區興隆路230號" target="_blank" rel="noopener">◉ 桃園市平鎮區興隆路230號</a><span class="lh">🕘 一～五 09:00-18:00｜六 09:00-17:00｜日 店休</span></div></div>
+      <div class="loc-card reveal"><div class="lc-no">06</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="HSINCHU" data-zh="新竹">新竹</div><div class="lc-name" data-en="Zhubei Studio" data-zh="竹北店">竹北店</div><div class="lc-meta"><span class="lz">竹北旗艦店</span><a href="tel:0972937993">☎ 0972-937-993</a><a href="https://www.google.com/maps/search/?api=1&query=新竹縣竹北市台科路132號" target="_blank" rel="noopener">◉ 新竹縣竹北市台科路132號</a><span class="lh">🕘 一～五 10:00-19:00｜六 11:00-17:00｜日 店休</span></div></div>
+      <div class="loc-card reveal"><div class="lc-no">07</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="TAICHUNG" data-zh="台中">台中</div><div class="lc-name" data-en="South District" data-zh="南區店">南區店</div><div class="lc-meta"><span class="lz">台中旗艦店</span><a href="tel:0900787210">☎ 0900-787-210</a><a href="https://www.google.com/maps/search/?api=1&query=台中市南屯區文昌街468號" target="_blank" rel="noopener">◉ 台中市南屯區文昌街468號</a><span class="lh">🕘 一～五 10:00-19:00｜六 11:00-17:00｜日 店休</span></div></div>
+      <div class="loc-card reveal"><div class="lc-no">08</div><svg class="lc-pin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><div class="lc-region" data-en="KAOHSIUNG" data-zh="高雄">高雄</div><div class="lc-name" data-en="Nanzi Studio" data-zh="楠梓店">楠梓店</div><div class="lc-meta"><span class="lz">高雄旗艦店</span><a href="tel:0978860558">☎ 0978-860-558</a><a href="https://www.google.com/maps/search/?api=1&query=高雄市楠梓區惠誠街82-1號" target="_blank" rel="noopener">◉ 高雄市楠梓區惠誠街82-1號</a><span class="lh">🕘 一～五 09:00-19:30｜六 09:00-17:00｜日 店休</span></div></div>
     </div>
   </div>
 </section>
@@ -418,6 +457,32 @@
 </script>
 <script src="assets/site.js"></script>
 <script src="assets/immersive.js"></script>
+<script>
+(function(){
+  // 品牌影片：點了才載入 YouTube（避免一進頁面就吃掉頻寬）
+  var btn=document.getElementById('filmPlay'), wrap=document.getElementById('filmWrap');
+  if(btn&&wrap){
+    btn.addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src='https://www.youtube-nocookie.com/embed/ZG8RAU5RnFE?autoplay=1&rel=0&cc_load_policy=1';
+      f.title='卓越凹痕修復品牌影片（中英字幕）';
+      f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen=true;
+      f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+      wrap.innerHTML=''; wrap.appendChild(f);
+    });
+  }
+  // 觸控裝置沒有 hover，點一下展開分店資訊
+  document.querySelectorAll('.loc-card').forEach(function(c){
+    c.addEventListener('click',function(e){
+      if(e.target.closest('a')) return;
+      var was=c.classList.contains('open');
+      document.querySelectorAll('.loc-card.open').forEach(function(o){o.classList.remove('open');});
+      if(!was) c.classList.add('open');
+    });
+  });
+})();
+</script>
 <script>
 (function(){
   var trigger = document.getElementById('callTrigger');
