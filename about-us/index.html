@@ -58,6 +58,12 @@
   .beat .bt{font-size:16px;font-weight:600;color:var(--ink);margin:14px 0 8px}
   .beat .bd{color:var(--ink-dim);font-size:14px;line-height:1.7}
   .beat .bk{position:absolute;top:24px;right:26px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.2em;color:var(--ink-mute)}
+  .story-more{display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding-bottom:4px;
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;
+    color:var(--accent);border-bottom:1px solid transparent;transition:border-color .25s,gap .25s}
+  .story-more:hover{border-color:var(--accent);gap:16px}
+  .story-more svg{transition:transform .25s}
+  .story-more:hover svg{transform:translateX(3px)}
 
   /* --- founder --- */
   .founder-img{position:relative}
@@ -205,7 +211,6 @@
 <section class="block">
   <div class="block-inner">
     <div class="section-eyebrow reveal" data-en="BRAND FILM · CHINESE &amp; ENGLISH SUBTITLES" data-zh="品牌影片 · 中英雙語字幕">品牌影片 · 中英雙語字幕</div>
-    <h2 class="section-title reveal" data-en="See the craft in motion." data-zh="一支影片，看懂卓越在做什麼。">一支影片，看懂卓越在做什麼。</h2>
     <div class="film-wrap reveal" id="filmWrap">
       <button class="film-play" id="filmPlay" type="button" aria-label="播放卓越凹痕修復品牌影片">
         <img src="media/about-video-poster.webp" alt="卓越 SUPERIOR PDR 品牌影片｜免烤漆凹痕修復實作" width="1280" height="720" decoding="async">
@@ -254,6 +259,9 @@
         <div class="bd" data-en="Eight direct studios, international competition judging and training — a well-known name in Taiwan's PDR scene." data-zh="八家直營據點、國際賽事裁判與教學，成為台灣 PDR 的知名人物。">八家直營據點、國際賽事裁判與教學，成為台灣 PDR 的知名人物。</div>
       </div>
     </div>
+    <a class="story-more reveal" href="/history/"><span data-en="THE FULL TIMELINE · OUR JOURNEY" data-zh="展開完整年表 · 卓越歷程">展開完整年表 · 卓越歷程</span>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"></path></svg>
+    </a>
   </div>
 </section>
 
