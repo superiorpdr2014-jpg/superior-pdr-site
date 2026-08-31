@@ -1606,73 +1606,322 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <!-- ══ SCHEMA.ORG — AEO & Rich Results ══ -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://tar-tw.com/#website",
+   "url": "https://tar-tw.com",
+   "name": "卓越凹痕修復 Superior PDR",
+   "alternateName": [
+    "Superior PDR Taiwan",
+    "卓越PDR",
+    "台灣凹痕修復領導品牌",
+    "微板金台灣",
+    "免烤漆板金台灣"
+   ],
+   "description": "台灣凹痕修復領導品牌。PDR免烤漆板金（微板金）、電動車Tesla凹痕修復、鋁合金板件，IMI二級電動車認證，全台8間直營門市，2026義大利世界大賽第三名，Since 2014。",
+   "inLanguage": [
+    "zh-TW",
+    "en"
+   ],
+   "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+     "@type": "EntryPoint",
+     "urlTemplate": "https://tar-tw.com/?s={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+   }
+  },
+  {
+   "@type": "AutoRepair",
+   "@id": "https://tar-tw.com/#business",
+   "name": "卓越凹痕修復 Superior PDR",
+   "alternateName": [
+    "Superior PDR",
+    "台灣凹痕修復領導品牌",
+    "卓越PDR",
+    "微板金台灣",
+    "免烤漆板金台灣"
+   ],
+   "url": "https://tar-tw.com",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://tar-tw.com/media/logo-circle.png"
+   },
+   "image": "https://tar-tw.com/media/pdr-sam.jpg",
+   "description": "台灣凹痕修復領導品牌，2014年創立，全台8間直營門市。提供PDR免烤漆板金（微板金）、電動車Tesla凹痕修復、鋁合金板件修復、大面積冰雹損傷修復。持有IMI英國汽車工業學會二級電動車維修認證，VALE Master Craftman認證，2026義大利DB EXPO世界大賽第三名，主辦三屆亞洲PDR研討會（AAW），台灣最具國際視野的PDR品牌。",
+   "foundingDate": "2014",
+   "telephone": "+886978016802",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "承德路四段300號",
+    "addressLocality": "士林區",
+    "addressRegion": "台北市",
+    "postalCode": "111",
+    "addressCountry": "TW"
+   },
+   "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 25.0937,
+    "longitude": 121.5239
+   },
+   "openingHoursSpecification": [
     {
-      "@type": "WebSite",
-      "@id": "https://tar-tw.com/#website",
-      "url": "https://tar-tw.com",
-      "name": "卓越凹痕修復 Superior PDR",
-      "alternateName": ["Superior PDR Taiwan","卓越PDR","台灣凹痕修復領導品牌","微板金台灣","免烤漆板金台灣"],
-      "description": "台灣凹痕修復領導品牌。PDR免烤漆板金（微板金）、電動車Tesla凹痕修復、鋁合金板件，IMI二級電動車認證，全台8間直營門市，2026義大利世界大賽第三名，Since 2014。",
-      "inLanguage": ["zh-TW","en"],
-      "potentialAction": {"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://tar-tw.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}
+     "@type": "OpeningHoursSpecification",
+     "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+     ],
+     "opens": "11:00",
+     "closes": "20:00"
     },
     {
-      "@type": "AutoRepair",
-      "@id": "https://tar-tw.com/#business",
-      "name": "卓越凹痕修復 Superior PDR",
-      "alternateName": ["Superior PDR","台灣凹痕修復領導品牌","卓越PDR","微板金台灣","免烤漆板金台灣"],
-      "url": "https://tar-tw.com",
-      "logo": {"@type":"ImageObject","url":"https://tar-tw.com/media/logo-circle.png"},
-      "image": "https://tar-tw.com/media/pdr-sam.jpg",
-      "description": "台灣凹痕修復領導品牌，2014年創立，全台8間直營門市。提供PDR免烤漆板金（微板金）、電動車Tesla凹痕修復、鋁合金板件修復、大面積冰雹損傷修復。持有IMI英國汽車工業學會二級電動車維修認證，VALE Master Craftman認證，2026義大利DB EXPO世界大賽第三名，主辦三屆亞洲PDR研討會（AAW），台灣最具國際視野的PDR品牌。",
-      "foundingDate": "2014",
-      "telephone": "+886978016802",
-      "address": {"@type":"PostalAddress","streetAddress":"承德路四段300號","addressLocality":"士林區","addressRegion":"台北市","postalCode":"111","addressCountry":"TW"},
-      "geo": {"@type":"GeoCoordinates","latitude":25.0937,"longitude":121.5239},
-      "openingHoursSpecification": [
-        {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"11:00","closes":"20:00"},
-        {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"12:00","closes":"18:00"}
-      ],
-      "sameAs": [
-        "https://www.facebook.com/PdrSuperior",
-        "https://www.instagram.com/superiorpdrtaiwan/",
-        "https://www.youtube.com/channel/UC8mXr_dYrD6Or-jA91W1irw"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "PDR 凹痕修復服務",
-        "itemListElement": [
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"PDR凹痕修復（免烤漆微板金）","alternateName":["微板金","免烤漆板金","不烤漆凹痕修復","微鈑金"],"description":"使用推桿從車身板件內側將凹痕推平，完全不接觸原廠塗裝，保留原廠漆面，不影響原廠保固"}},
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Tesla電動車PDR凹痕修復","description":"IMI二級電動車認證技師，安全修復Tesla Model 3/Y/S/X鋁合金板件，不影響原廠保固"}},
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"鋁合金板件凹痕修復","description":"Porsche、BMW、Audi、Mercedes等豪華車鋁合金板件專業PDR修復"}},
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"大面積冰雹損傷修復","description":"冰雹連珠凹痕大面積PDR修復，不烤漆完整保留原廠塗裝"}},
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"PDR技術訓練課程","description":"2週/4週密集訓練，最多一對二小班制，VALE認證技師親授，100+世界各地結業學員"}}
-        ]
-      },
-      "hasCredential": [
-        {"@type":"EducationalOccupationalCredential","name":"IMI International Level 2 Award in Electric/Hybrid Vehicle Routine Maintenance Activities","recognizedBy":{"@type":"Organization","name":"Institute of the Motor Industry"}},
-        {"@type":"EducationalOccupationalCredential","name":"VALE Master Craftman PDR Certification"}
-      ],
-      "award": ["2026 MTE義大利DB EXPO世界大賽第三名","2026 MTE國際技術大賽PDR競賽評審","Asia Advanced Training Workshop主辦機構（2018、2023、2026）"],
-      "slogan": "台灣凹痕修復領導品牌 · 世界級免烤漆板金技術",
-      "numberOfEmployees": {"@type":"QuantitativeValue","value":30},
-      "areaServed": {"@type":"Country","name":"台灣"},
-      "priceRange": "$$"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {"@type":"Question","name":"什麼是PDR凹痕修復？什麼是微板金？","acceptedAnswer":{"@type":"Answer","text":"PDR（Paintless Dent Repair，免烤漆凹痕修復），台灣俗稱「微板金」、「免烤漆板金」或「微鈑金」，是從車身板件內側以特殊推桿將凹痕推平的修復技術，完全不接觸原廠塗裝，不需重新烤漆。與傳統板金烤漆相比：PDR保留原廠塗裝、不影響原廠保固、修復時間僅數小時、費用低30–60%、維持車輛原廠保值性。"}},
-        {"@type":"Question","name":"卓越PDR為什麼是台灣凹痕修復領導品牌？","acceptedAnswer":{"@type":"Answer","text":"卓越Superior PDR自2014年創立，擁有以下國際成就：台灣唯一IMI英國汽車工業學會二級電動車維修認證PDR技師；VALE Master Craftman認證；2026年義大利DB EXPO世界大賽第三名；擔任MTE國際PDR競賽評審；三屆亞洲PDR進階研討會（AAW 2018/2023/2026）主辦機構；美國Dent Trainer認證講師；全台8間直營門市統一品質標準；100+來自亞洲10+國家的結業學員。"}},
-        {"@type":"Question","name":"PDR凹痕修復費用大約多少？","acceptedAnswer":{"@type":"Answer","text":"PDR凹痕修復費用依凹痕大小、位置、深度和板件材質（鋼板或鋁合金）而定。小型凹痕（直徑5cm以下）約新台幣1,500–5,000元；中型凹痕約5,000–12,000元；大型或複雜凹痕需現場評估；鋁合金板件（電動車、豪華車）比鋼板高約30–50%。建議透過LINE @pdr.tw傳送清晰照片取得免費估價。"}},
-        {"@type":"Question","name":"Tesla電動車的凹痕可以用PDR修復嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。卓越持有IMI二級電動車認證，是台灣極少數安全、合規的Tesla PDR技師。Tesla大量使用鋁合金車身，高壓電池電壓達350–450V，需要具備電動車認證的專業技師才能安全施工。已成功修復數百輛Tesla Model 3/Y/S/X，不影響原廠保固。"}},
-        {"@type":"Question","name":"台灣哪裡可以做PDR凹痕修復？卓越有幾間門市？","acceptedAnswer":{"@type":"Answer","text":"卓越凹痕修復在全台共有8間直營門市：台北士林旗艦店、台北濱江店、新北中和旗艦店、新北板橋總店、桃園平鎮旗艦店、新竹竹北旗艦店、台中南屯旗艦店、高雄楠梓旗艦店。相同品牌標準、相同修復品質，均可透過LINE @pdr.tw預約。"}},
-        {"@type":"Question","name":"冰雹打壞的車可以做PDR凹痕修復嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。冰雹損傷（Hail Damage）是PDR最常見的修復項目之一。大面積冰雹凹痕選擇PDR的優勢：完整保留原廠塗裝、費用遠低於傳統全車重噴、修復時間1–3天、維持車輛原廠保值性。建議事故後盡快拍照記錄，透過LINE傳給技師免費評估。"}}
-      ]
+     "@type": "OpeningHoursSpecification",
+     "dayOfWeek": "Saturday",
+     "opens": "12:00",
+     "closes": "18:00"
     }
-  ]
+   ],
+   "sameAs": [
+    "https://www.facebook.com/PdrSuperior",
+    "https://www.instagram.com/superiorpdrtaiwan/",
+    "https://www.youtube.com/channel/UC8mXr_dYrD6Or-jA91W1irw"
+   ],
+   "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "PDR 凹痕修復服務",
+    "itemListElement": [
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "PDR凹痕修復（免烤漆微板金）",
+       "alternateName": [
+        "微板金",
+        "免烤漆板金",
+        "不烤漆凹痕修復",
+        "微鈑金"
+       ],
+       "description": "使用推桿從車身板件內側將凹痕推平，完全不接觸原廠塗裝，保留原廠漆面，不影響原廠保固"
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "Tesla電動車PDR凹痕修復",
+       "description": "IMI二級電動車認證技師，安全修復Tesla Model 3/Y/S/X鋁合金板件，不影響原廠保固"
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "鋁合金板件凹痕修復",
+       "description": "Porsche、BMW、Audi、Mercedes等豪華車鋁合金板件專業PDR修復"
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "大面積冰雹損傷修復",
+       "description": "冰雹連珠凹痕大面積PDR修復，不烤漆完整保留原廠塗裝"
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "PDR技術訓練課程",
+       "description": "2週/4週密集訓練，最多一對二小班制，VALE認證技師親授，100+世界各地結業學員"
+      }
+     }
+    ]
+   },
+   "hasCredential": [
+    {
+     "@type": "EducationalOccupationalCredential",
+     "name": "IMI International Level 2 Award in Electric/Hybrid Vehicle Routine Maintenance Activities",
+     "recognizedBy": {
+      "@type": "Organization",
+      "name": "Institute of the Motor Industry"
+     }
+    },
+    {
+     "@type": "EducationalOccupationalCredential",
+     "name": "VALE Master Craftman PDR Certification"
+    }
+   ],
+   "award": [
+    "2026 MTE義大利DB EXPO世界大賽第三名",
+    "2026 MTE國際技術大賽PDR競賽評審",
+    "Asia Advanced Training Workshop主辦機構（2018、2023、2026）"
+   ],
+   "slogan": "台灣凹痕修復領導品牌 · 世界級免烤漆板金技術",
+   "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": 30
+   },
+   "areaServed": [
+    {
+     "@type": "Country",
+     "name": "台灣"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "新北市"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "台北市"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "桃園市"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "新竹縣"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "新竹市"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "台中市"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "高雄市"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "彰化縣"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "苗栗縣"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "台南市"
+    }
+   ],
+   "priceRange": "$$",
+   "department": [
+    {
+     "@type": "AutoRepair",
+     "@id": "https://tar-tw.com/contact/#banqiao",
+     "name": "卓越凹痕修復 板橋總店"
+    },
+    {
+     "@type": "AutoRepair",
+     "@id": "https://tar-tw.com/contact/#zhonghe",
+     "name": "卓越凹痕修復 中和旗艦店"
+    },
+    {
+     "@type": "AutoRepair",
+     "@id": "https://tar-tw.com/contact/#shilin",
+     "name": "卓越凹痕修復 士林旗艦店"
+    },
+    {
+     "@type": "AutoRepair",
+     "@id": "https://tar-tw.com/contact/#binjiang",
+     "name": "卓越凹痕修復 台北濱江店"
+    },
+    {
+     "@type": "AutoRepair",
+     "@id": "https://tar-tw.com/contact/#pingzhen",
+     "name": "卓越凹痕修復 桃園旗艦店"
+    },
+    {
+     "@type": "AutoRepair",
+     "@id": "https://tar-tw.com/contact/#zhubei",
+     "name": "卓越凹痕修復 竹北旗艦店"
+    },
+    {
+     "@type": "AutoRepair",
+     "@id": "https://tar-tw.com/contact/#taichung",
+     "name": "卓越凹痕修復 台中旗艦店"
+    },
+    {
+     "@type": "AutoRepair",
+     "@id": "https://tar-tw.com/contact/#nanzi",
+     "name": "卓越凹痕修復 高雄楠梓店"
+    }
+   ],
+   "knowsAbout": [
+    "免烤漆凹痕修復 PDR",
+    "微板金",
+    "冰雹凹痕修復",
+    "鋁合金板件凹痕修復",
+    "電動車與 Tesla 板件凹痕修復",
+    "GPR 膠拉修復",
+    "重機油箱凹痕修復",
+    "PDR 技術教學與認證"
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "什麼是PDR凹痕修復？什麼是微板金？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "PDR（Paintless Dent Repair，免烤漆凹痕修復），台灣俗稱「微板金」、「免烤漆板金」或「微鈑金」，是從車身板件內側以特殊推桿將凹痕推平的修復技術，完全不接觸原廠塗裝，不需重新烤漆。與傳統板金烤漆相比：PDR保留原廠塗裝、不影響原廠保固、修復時間僅數小時、費用低30–60%、維持車輛原廠保值性。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "卓越PDR為什麼是台灣凹痕修復領導品牌？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "卓越Superior PDR自2014年創立，擁有以下國際成就：台灣唯一IMI英國汽車工業學會二級電動車維修認證PDR技師；VALE Master Craftman認證；2026年義大利DB EXPO世界大賽第三名；擔任MTE國際PDR競賽評審；三屆亞洲PDR進階研討會（AAW 2018/2023/2026）主辦機構；美國Dent Trainer認證講師；全台8間直營門市統一品質標準；100+來自亞洲10+國家的結業學員。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "PDR凹痕修復費用大約多少？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "PDR凹痕修復費用依凹痕大小、位置、深度和板件材質（鋼板或鋁合金）而定。小型凹痕（直徑5cm以下）約新台幣1,500–5,000元；中型凹痕約5,000–12,000元；大型或複雜凹痕需現場評估；鋁合金板件（電動車、豪華車）比鋼板高約30–50%。建議透過LINE @pdr.tw傳送清晰照片取得免費估價。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Tesla電動車的凹痕可以用PDR修復嗎？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "可以。卓越持有IMI二級電動車認證，是台灣極少數安全、合規的Tesla PDR技師。Tesla大量使用鋁合金車身，高壓電池電壓達350–450V，需要具備電動車認證的專業技師才能安全施工。已成功修復數百輛Tesla Model 3/Y/S/X，不影響原廠保固。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "台灣哪裡可以做PDR凹痕修復？卓越有幾間門市？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "卓越凹痕修復在全台共有8間直營門市：台北士林旗艦店、台北濱江店、新北中和旗艦店、新北板橋總店、桃園平鎮旗艦店、新竹竹北旗艦店、台中南屯旗艦店、高雄楠梓旗艦店。相同品牌標準、相同修復品質，均可透過LINE @pdr.tw預約。"
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "冰雹打壞的車可以做PDR凹痕修復嗎？",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "可以。冰雹損傷（Hail Damage）是PDR最常見的修復項目之一。大面積冰雹凹痕選擇PDR的優勢：完整保留原廠塗裝、費用遠低於傳統全車重噴、修復時間1–3天、維持車輛原廠保值性。建議事故後盡快拍照記錄，透過LINE傳給技師免費評估。"
+     }
+    }
+   ]
+  }
+ ]
 }
 </script>
 </head>
