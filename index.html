@@ -1755,7 +1755,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
     },
     {
      "@type": "EducationalOccupationalCredential",
-     "name": "VALE Master Craftman PDR Certification"
+     "name": "VALE Master Craftman PDR Certification",
+     "url": "https://www.valetrainingsolutions.com/paintless-dent-repair-technicians/"
     }
    ],
    "award": [
@@ -1970,12 +1971,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
     {
      "@type": "EducationalOrganization",
      "name": "PDR College",
-     "description": "美國德州 PDR College — 擔任技術講師",
+     "description": "美國德州 PDR College — 2025 Advanced Skills Seminar 受邀講師，主講高難度修復與社群經營",
      "address": {
       "@type": "PostalAddress",
       "addressRegion": "Texas",
       "addressCountry": "US"
-     }
+     },
+     "url": "https://www.pdrcollege.com/"
     },
     {
      "@type": "Organization",
@@ -1984,7 +1986,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
      "address": {
       "@type": "PostalAddress",
       "addressCountry": "IT"
-     }
+     },
+     "url": "https://dbexpo.it/"
     },
     {
      "@type": "Organization",
@@ -2021,7 +2024,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
     },
     {
      "@type": "EducationalOccupationalCredential",
-     "name": "VALE Master Craftman PDR Certification"
+     "name": "VALE Master Craftman PDR Certification",
+     "url": "https://www.valetrainingsolutions.com/paintless-dent-repair-technicians/",
+     "identifier": "10616"
     }
    ],
    "knowsAbout": [
@@ -2033,7 +2038,50 @@ svg.leaflet-image-layer.leaflet-interactive path {
     "電動車與 Tesla 板件修復",
     "冰雹凹痕修復",
     "PDR 技術教學與師資培訓"
-   ]
+   ],
+   "sameAs": [
+    "https://www.valetrainingsolutions.com/paintless-dent-repair-technicians/",
+    "https://www.pdrcollege.com/events/2025-advanced-skills-seminar-burleson/"
+   ],
+   "identifier": {
+    "@type": "PropertyValue",
+    "name": "VALE Technician I.D.",
+    "value": "10616"
+   },
+   "subjectOf": {
+    "@id": "https://tar-tw.com/#pdrcollege2025"
+   }
+  },
+  {
+   "@type": "EducationEvent",
+   "@id": "https://tar-tw.com/#pdrcollege2025",
+   "name": "2025 PDR College Advanced Skills Seminar",
+   "description": "美國德州 PDR College 進階技術研討會。卓越 SUPERIOR PDR 創辦人馬成傑（Jay Ma）受邀擔任講師，主講 advanced repairs and social-media presence（高難度修復與社群經營）。",
+   "startDate": "2025-10-08",
+   "endDate": "2025-10-11",
+   "url": "https://www.pdrcollege.com/events/2025-advanced-skills-seminar-burleson/",
+   "eventStatus": "https://schema.org/EventScheduled",
+   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+   "organizer": {
+    "@type": "Organization",
+    "name": "PDR College",
+    "url": "https://www.pdrcollege.com/"
+   },
+   "location": {
+    "@type": "Place",
+    "name": "Anson PDR",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5600 Highpoint Parkway",
+     "addressLocality": "Burleson",
+     "addressRegion": "TX",
+     "postalCode": "76028",
+     "addressCountry": "US"
+    }
+   },
+   "performer": {
+    "@id": "https://tar-tw.com/#founder"
+   }
   }
  ]
 }
