@@ -96,11 +96,17 @@
   @media(max-width:460px){.yt-short,.yt-short-cap{max-width:100%}}
 </style>
 <style>
-  .ig-reel{max-width:400px;margin:30px auto 8px;aspect-ratio:400/772;border-radius:14px;overflow:hidden;
-    border:1px solid var(--line);background:#000;box-shadow:0 18px 46px rgba(0,0,0,.5)}
-  .ig-reel iframe{width:100%;height:100%;border:0;display:block}
+  /* IG embed 在 400px 寬時：header 54 + 影片區 481 = 535，其下 154px 是按讚／留言列。
+     iframe 給滿高，再用容器 overflow 裁掉底部那段。 */
+  .ig-reel{max-width:400px;width:100%;height:535px;margin:30px auto 8px;overflow:hidden;
+    border-radius:14px;border:1px solid var(--line);background:#000;box-shadow:0 18px 46px rgba(0,0,0,.5)}
+  .ig-reel iframe{width:100%;height:705px;border:0;display:block}
   .ig-reel-cap{max-width:400px;margin:0 auto 32px;text-align:center;font-size:13px;color:var(--ink-mute);line-height:1.7}
-  @media(max-width:460px){.ig-reel,.ig-reel-cap{max-width:100%}}
+  @media(max-width:460px){
+    .ig-reel{max-width:100%;height:auto;aspect-ratio:400/530}
+    .ig-reel iframe{height:calc(100% + 170px)}
+    .ig-reel-cap{max-width:100%}
+  }
 </style>
 </head>
 <body>
@@ -194,7 +200,7 @@
     title="Anson PDR 現場實錄 — 全球最大的 PDR 工具賣場與培訓中心"
     loading="lazy" scrolling="no" allowtransparency="true" allowfullscreen></iframe>
 </div>
-<p class="ig-reel-cap">Anson PDR 現場實錄｜全球最大的 PDR 工具賣場與培訓中心，也是本次研討會的場地。</p>
+<p class="ig-reel-cap">Anson PDR 現場實錄｜全球最大的 PDR 工具賣場與培訓中心</p>
 <h4 class="detail-actions__title">PDR College Advanced Skills Seminar 2025</h4>
 <div class="event-meta detail-actions__meta"><span class="event-meta__date">Wed Oct 8, 2025 8:00 AM &#8211; Sat Oct 11, 2025 4:00 PM</span></div>
 <div class="event-meta detail-actions__meta"><span class="event-meta__location"><i class="fa-light fa-location-dot fa fa-map-marker"></i>@ Anson PDR, 5600 Highpoint Pkwy, Burleson, TX 76028</span></div>
