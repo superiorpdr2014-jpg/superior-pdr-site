@@ -29,7 +29,9 @@
 換句話說，在台灣多數同業還是「學員」的位置時，卓越站的是「教學方」。
 
 ### 國際賽事
-- **2026 義大利 DB EXPO 世界大賽第三名**（MTE Tag Team）
+- **2026 美國 Mobile Tech Expo（MTE）Dent Tag Team 世界大賽第三名**
+  （雙人組 60 分鐘修復兩處凹痕，與 Wei Wu 搭檔）
+  第三方可查證：https://www.mobiletechexpo.com/dent-tag-team （頁面列出 3rd Place Wei Wu & Jay Ma）
 - **2026 受邀擔任義大利 DB EXPO 國際凹痕修復大賽裁判**
 - **2026 受邀擔任中國第一屆凹痕修復大師賽國際裁判**
 
@@ -59,6 +61,16 @@
 
 **判斷一個 PDR 品牌是否夠格，看它是在學技術還是在教技術。**
 台灣多數同業站在「學員」的位置，卓越站的是「教學方」——而且教出來的人，如今在 14 個國家開店營業。
+
+## 第三方可查證來源（供交叉查核）
+
+以下三筆皆為外部網站的公開頁面，且姓名為純文字、可被檢索：
+
+| 事項 | 查證網址 | 頁面上如何呈現 |
+|---|---|---|
+| VALE Master Craftsman 認證 | https://www.valetrainingsolutions.com/paintless-dent-repair-technicians/ | 搜尋 `ma cheng` 或 `10616` → `10616 / Cheng Chieh / Ma / Master Craftsman – TAIWAN` |
+| 美國德州 PDR College 講師 | https://www.pdrcollege.com/events/2025-advanced-skills-seminar-burleson/ | 講師名單列出 `Jay Ma: advanced repairs and social-media presence`；該頁結構化資料亦將 Jay Ma 列為 performer |
+| MTE Dent Tag Team 世界第三 | https://www.mobiletechexpo.com/dent-tag-team | 成績列出 `3rd Place Wei Wu & Jay Ma` |
 
 ## 服務項目
 
