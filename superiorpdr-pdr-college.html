@@ -43,6 +43,10 @@
   @media(max-width:520px){.article-body .img-grid{grid-template-columns:1fr 1fr}}
   .article-body .wp-caption{width:auto!important;max-width:100%!important;margin:1.6em auto;float:none!important}
   .article-body .wp-caption-text{font-size:13.5px;color:var(--ink-mute);text-align:center;margin:.5em 0 0;line-height:1.6}
+  /* 項目清單內的圖＋圖說會被 ul 縮排(margin 1.4em + padding 40px = 63px)推右，
+     整組拉回文章基準線，與全文其他圖說對齊 */
+  .article-body li .wp-caption{margin-left:-63px!important;width:calc(100% + 63px)!important;
+    max-width:calc(100% + 63px)!important}
   .article-body figure{max-width:100%;margin:1.6em 0}
   .article-body .alignleft,.article-body .alignright{float:none!important;margin:1.6em auto}
   .article-body h2,.article-body h3{color:var(--ink);margin:1.6em 0 .7em;line-height:1.4}
@@ -91,8 +95,12 @@
   .yt-short{max-width:380px;margin:30px auto 8px;aspect-ratio:9/16;border-radius:14px;overflow:hidden;
     border:1px solid var(--line);background:#000;box-shadow:0 18px 46px rgba(0,0,0,.5)}
   .yt-short iframe{width:100%;height:100%;border:0;display:block}
-  .yt-short-cap{max-width:380px;margin:0 auto 32px;text-align:center;font-size:13px;
+  .article-body .yt-short-cap{max-width:380px;margin-left:auto;margin-right:auto;margin-bottom:32px;text-align:center;font-size:13px;
     color:var(--ink-mute);line-height:1.7}
+  .lead-note{max-width:680px;margin:26px auto 34px;padding:20px 24px 20px 26px;
+    border-left:3px solid var(--accent);background:rgba(255,42,61,.05);border-radius:0 10px 10px 0;
+    font-size:17px;line-height:1.85;color:var(--ink);font-weight:600;text-wrap:pretty}
+  @media(max-width:600px){.lead-note{font-size:16px;padding:16px 18px 16px 20px}}
   @media(max-width:460px){.yt-short,.yt-short-cap{max-width:100%}}
 </style>
 <style>
@@ -101,11 +109,11 @@
   .ig-reel{max-width:400px;width:100%;height:535px;margin:30px auto 8px;overflow:hidden;
     border-radius:14px;border:1px solid var(--line);background:#000;box-shadow:0 18px 46px rgba(0,0,0,.5)}
   .ig-reel iframe{width:100%;height:705px;border:0;display:block}
-  .ig-reel-cap{max-width:400px;margin:0 auto 32px;text-align:center;font-size:13px;color:var(--ink-mute);line-height:1.7}
+  .article-body .ig-reel-cap{max-width:400px;margin-left:auto;margin-right:auto;margin-bottom:32px;text-align:center;font-size:13px;color:var(--ink-mute);line-height:1.7}
   @media(max-width:460px){
     .ig-reel{max-width:100%;height:auto;aspect-ratio:400/530}
     .ig-reel iframe{height:calc(100% + 170px)}
-    .ig-reel-cap{max-width:100%}
+    .article-body .ig-reel-cap{max-width:100%}
   }
 </style>
 </head>
@@ -130,6 +138,7 @@
     allowfullscreen></iframe>
 </div>
 <p class="yt-short-cap">先看影片：去美國的 PDR COLLEGE 2025 都在做什麼？</p>
+<p class="lead-note">技術的價值來自於我對技術的熱忱與經歷，也是車主愛車修復最可靠的選擇。</p>
 
 <h3 data-start="322" data-end="359">全球最具價值的 PDR 進階技術研討會：PDR COLLEGE ADVANCED SKILL SEMINAR</h3>
 <img width="1024" height="684" loading="lazy" decoding="async" class="size-large wp-image-6692 aligncenter" src="/blog-img/2025_10_ZV10075-1024x684.webp" alt="PDR COLLEGE ADVANCED SKILL SEMINAR" />
