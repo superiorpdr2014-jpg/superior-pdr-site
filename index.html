@@ -2049,9 +2049,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
     "name": "VALE Technician I.D.",
     "value": "10616"
    },
-   "subjectOf": {
-    "@id": "https://tar-tw.com/#pdrcollege2025"
-   }
+   "subjectOf": [
+    {
+     "@id": "https://tar-tw.com/#pdrcollege2025"
+    },
+    {
+     "@id": "https://tar-tw.com/#mte2026"
+    }
+   ]
   },
   {
    "@type": "EducationEvent",
@@ -2086,6 +2091,45 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "image": [
     "https://tar-tw.com/blog-img/2025_10_ZV10075-1024x684.webp"
    ]
+  },
+  {
+   "@type": "Event",
+   "@id": "https://tar-tw.com/#mte2026",
+   "name": "Mobile Tech Expo 2026 — Dent Tag Team Competition",
+   "description": "美國 Mobile Tech Expo（MTE）Dent Tag Team 雙人凹痕修復競賽，兩人一組於 60 分鐘內完成兩處凹痕修復。卓越 SUPERIOR PDR 創辦人馬成傑（Jay Ma）與 Wei Wu 搭檔獲第三名。MTE 2026 為該展 25 週年。",
+   "url": "https://www.mobiletechexpo.com/dent-tag-team",
+   "startDate": "2026-01-28",
+   "endDate": "2026-01-31",
+   "eventStatus": "https://schema.org/EventScheduled",
+   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+   "image": [
+    "https://tar-tw.com/media/og-default.jpg"
+   ],
+   "location": {
+    "@type": "Place",
+    "name": "Rosen Shingle Creek Resort",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "9939 Universal Blvd",
+     "addressLocality": "Orlando",
+     "addressRegion": "FL",
+     "postalCode": "32819",
+     "addressCountry": "US"
+    }
+   },
+   "organizer": {
+    "@type": "Organization",
+    "name": "Mobile Tech Expo",
+    "url": "https://www.mobiletechexpo.com/"
+   },
+   "performer": {
+    "@id": "https://tar-tw.com/#founder"
+   },
+   "superEvent": {
+    "@type": "Event",
+    "name": "Mobile Tech Expo 2026",
+    "url": "https://www.mobiletechexpo.com/"
+   }
   }
  ]
 }
